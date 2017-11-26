@@ -1,0 +1,7 @@
+*.DS_Store
+Carthage/
+xcuserdata/
+*.xcuserstate
+*.dSYM.zip
+*.dSYM
+.build/

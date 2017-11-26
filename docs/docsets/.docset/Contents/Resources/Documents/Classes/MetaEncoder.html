@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MetaEncoder Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/MetaEncoder" class="dashAnchor"></a>
+    <a title="MetaEncoder Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (60% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        MetaEncoder Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ArrayUnkeyedContainerMeta.html">ArrayUnkeyedContainerMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CodingStack.html">CodingStack</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CodingStack/Status.html">– Status</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CodingStack/Operation.html">– Operation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CodingStack/StackError.html">– StackError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DictionaryKeyedContainerMeta.html">DictionaryKeyedContainerMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MetaDecoder.html">MetaDecoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MetaEncoder.html">MetaEncoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MetaKeyedDecodingContainer.html">MetaKeyedDecodingContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MetaSingleValueDecodingContainer.html">MetaSingleValueDecodingContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MetaUnkeyedDecodingContainer.html">MetaUnkeyedDecodingContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:17MetaSerialization011ReferencingA7DecoderC">ReferencingMetaDecoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ReferencingMetaEncoder.html">ReferencingMetaEncoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SimpleGenericMeta.html">SimpleGenericMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TranslatingCoder.html">TranslatingCoder</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/MetaEncodingError.html">MetaEncodingError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SpecialCodingKey.html">SpecialCodingKey</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/ContainerReference.html">ContainerReference</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/DecodingRepresentation.html">DecodingRepresentation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/DirectlyDecodable.html">DirectlyDecodable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/DirectlyEncodable.html">DirectlyEncodable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/EncodingRepresentation.html">EncodingRepresentation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/GenericMeta.html">GenericMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IntermediateDecoder.html">IntermediateDecoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IntermediateEncoder.html">IntermediateEncoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/KeyedContainerMeta.html">KeyedContainerMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Meta.html">Meta</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/MetaCoder.html">MetaCoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:17MetaSerialization03NilA8ProtocolP">NilMetaProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Reference.html">Reference</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Representation.html">Representation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Translator.html">Translator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/UnkeyedContainerMeta.html">UnkeyedContainerMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/WrappingMeta.html">WrappingMeta</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/BoolWrappedToStringMeta.html">BoolWrappedToStringMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DirectReference.html">DirectReference</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DoubleWrappedToStringMeta.html">DoubleWrappedToStringMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/EmptyOnlyKeyedContainerMeta.html">EmptyOnlyKeyedContainerMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/FloatWrappedToStringMeta.html">FloatWrappedToStringMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/GenericNil.html">GenericNil</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/IndexCodingKey.html">IndexCodingKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Int16WrappedToStringMeta.html">Int16WrappedToStringMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Int32WrappedToStringMeta.html">Int32WrappedToStringMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Int64WrappedToStringMeta.html">Int64WrappedToStringMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Int8WrappedToStringMeta.html">Int8WrappedToStringMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/IntWrappedToStringMeta.html">IntWrappedToStringMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/KeyedContainerReference.html">KeyedContainerReference</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NilMeta.html">NilMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NonRegualarCodingKey.html">NonRegualarCodingKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/StackReference.html">StackReference</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/UInt16WrappedToStringMeta.html">UInt16WrappedToStringMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/UInt32WrappedToStringMeta.html">UInt32WrappedToStringMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/UInt64WrappedToStringMeta.html">UInt64WrappedToStringMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/UInt8WrappedToStringMeta.html">UInt8WrappedToStringMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/UIntWrappedToStringMeta.html">UIntWrappedToStringMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/UnkeyedContainerReference.html">UnkeyedContainerReference</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ValuePresenceIndicator.html">ValuePresenceIndicator</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:17MetaSerialization15DirectlyCodablea">DirectlyCodable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:17MetaSerialization0B0a">Serialization</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>MetaEncoder</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">MetaEncoder</span><span class="p">:</span> <span class="kt">Encoder</span><span class="p">,</span> <span class="kt"><a href="../Protocols/MetaCoder.html">MetaCoder</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>An Encoder that constucts a Meta entity insted of encoding directly to the desired format</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:s7EncoderP8userInfos10DictionaryVys010CodingUserC3KeyVypGv"></a>
+                    <a name="//apple_ref/swift/Property/userInfo" class="dashAnchor"></a>
+                    <a class="token" href="#/s:s7EncoderP8userInfos10DictionaryVys010CodingUserC3KeyVypGv">userInfo</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">userInfo</span><span class="p">:</span> <span class="p">[</span><span class="kt">CodingUserInfoKey</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17MetaSerialization0A7EncoderC5stackAA11CodingStackCv"></a>
+                    <a name="//apple_ref/swift/Property/stack" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization0A7EncoderC5stackAA11CodingStackCv">stack</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>the CodingStack of this encoder</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span>  <span class="k">var</span> <span class="nv">stack</span><span class="p">:</span> <span class="kt"><a href="../Classes/CodingStack.html">CodingStack</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:s7EncoderP10codingPathSays9CodingKey_pGv"></a>
+                    <a name="//apple_ref/swift/Property/codingPath" class="dashAnchor"></a>
+                    <a class="token" href="#/s:s7EncoderP10codingPathSays9CodingKey_pGv">codingPath</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">codingPath</span><span class="p">:</span> <span class="p">[</span><span class="kt">CodingKey</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/front%20end"></a>
+                <a name="//apple_ref/swift/Section/front end" class="dashAnchor"></a>
+                <a href="#/front%20end">
+                  <h3 class="section-name">front end</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17MetaSerialization0A7EncoderC28representationOfEncodedValuexyKlF"></a>
+                    <a name="//apple_ref/swift/Method/representationOfEncodedValue()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization0A7EncoderC28representationOfEncodedValuexyKlF">representationOfEncodedValue()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the representation or raw value of the value encoded to this encoder, if a value was already encoded to it and that encoding process has suceeded, otherwise it will return nil.
+Throws: This function will throw an error, if the translation process in translator throws an error</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">representationOfEncodedValue</span><span class="o">&lt;</span><span class="kt">Raw</span><span class="o">&gt;</span><span class="p">()</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Raw</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/translator"></a>
+                <a name="//apple_ref/swift/Section/translator" class="dashAnchor"></a>
+                <a href="#/translator">
+                  <h3 class="section-name">translator</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17MetaSerialization0A7EncoderC10translatorAA10Translator_pv"></a>
+                    <a name="//apple_ref/swift/Property/translator" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization0A7EncoderC10translatorAA10Translator_pv">translator</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The translator used to get and finally translate Metas</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">translator</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Translator.html">Translator</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17MetaSerialization0A7EncoderC4wrapAA0A0_pxKs9EncodableRzlF"></a>
+                    <a name="//apple_ref/swift/Method/wrap(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization0A7EncoderC4wrapAA0A0_pxKs9EncodableRzlF">wrap(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>wraps an encodable value into a meta requested from translator</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">wrap</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">Encodable</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/Meta.html">Meta</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/initalization"></a>
+                <a name="//apple_ref/swift/Section/initalization" class="dashAnchor"></a>
+                <a href="#/initalization">
+                  <h3 class="section-name">initalization</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17MetaSerialization0A7EncoderCACSays9CodingKey_pG2at_s10DictionaryVys0d8UserInfoE0VypG04withhI0AA10Translator_p10translatortcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(at:withUserInfo:translator:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization0A7EncoderCACSays9CodingKey_pG2at_s10DictionaryVys0d8UserInfoE0VypG04withhI0AA10Translator_p10translatortcfc">init(at:withUserInfo:translator:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initalizes a new MetaEncoder with the given values.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">at</span> <span class="nv">codingPath</span><span class="p">:</span> <span class="p">[</span><span class="kt">CodingKey</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">withUserInfo</span> <span class="nv">userInfo</span><span class="p">:</span> <span class="p">[</span><span class="kt">CodingUserInfoKey</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">[:],</span> <span class="nv">translator</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Translator.html">Translator</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>translator</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The translator the encoder will use to get and translate Metas.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/container%20methods"></a>
+                <a name="//apple_ref/swift/Section/container methods" class="dashAnchor"></a>
+                <a href="#/container%20methods">
+                  <h3 class="section-name">container methods</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:s7EncoderP9containers22KeyedEncodingContainerVyqd__Gqd__m7keyedBy_ts9CodingKeyRd__lF"></a>
+                    <a name="//apple_ref/swift/Method/container(keyedBy:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:s7EncoderP9containers22KeyedEncodingContainerVyqd__Gqd__m7keyedBy_ts9CodingKeyRd__lF">container(keyedBy:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">container</span><span class="o">&lt;</span><span class="kt">Key</span><span class="o">&gt;</span><span class="p">(</span><span class="n">keyedBy</span> <span class="nv">keyType</span><span class="p">:</span> <span class="kt">Key</span><span class="o">.</span><span class="k">Type</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">KeyedEncodingContainer</span><span class="o">&lt;</span><span class="kt">Key</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">Key</span> <span class="p">:</span> <span class="kt">CodingKey</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:s7EncoderP16unkeyedContainers015UnkeyedEncodingC0_pyF"></a>
+                    <a name="//apple_ref/swift/Method/unkeyedContainer()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:s7EncoderP16unkeyedContainers015UnkeyedEncodingC0_pyF">unkeyedContainer()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">unkeyedContainer</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">UnkeyedEncodingContainer</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:s7EncoderP20singleValueContainers06Singlec8EncodingD0_pyF"></a>
+                    <a name="//apple_ref/swift/Method/singleValueContainer()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:s7EncoderP20singleValueContainers06Singlec8EncodingD0_pyF">singleValueContainer()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">singleValueContainer</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">SingleValueEncodingContainer</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2017-11-24)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
