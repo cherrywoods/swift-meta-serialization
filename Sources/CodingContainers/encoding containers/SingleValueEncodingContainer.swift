@@ -11,7 +11,7 @@ import Foundation
 /**
  Manages all kinds of metas, that represent some kind of single value
  */
-internal class MetaSingleValueEncodingContainer: SingleValueEncodingContainer {
+open class MetaSingleValueEncodingContainer: SingleValueEncodingContainer {
     
     private var reference: Reference
     

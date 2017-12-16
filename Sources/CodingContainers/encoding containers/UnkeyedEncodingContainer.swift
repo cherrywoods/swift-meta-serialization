@@ -11,7 +11,7 @@ import Foundation
 /**
  Manages a UnkeyedContainerMeta
  */
-internal class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
+open class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
     
     private var reference: Reference
     private var referencedMeta: UnkeyedContainerMeta {

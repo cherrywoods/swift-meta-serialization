@@ -11,7 +11,7 @@ import Foundation
 /**
  Manages a KeyedContainerMeta
  */
-internal class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProtocol {
+open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProtocol {
     
     typealias Key = K
     

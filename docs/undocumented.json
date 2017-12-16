@@ -22,6 +22,27 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingContainers/encoding containers/KeyedEncodingContainer.swift",
+      "line": 32,
+      "symbol": "MetaKeyedEncodingContainer.init(referencing:codingPath:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingContainers/encoding containers/SingleValueEncodingContainer.swift",
+      "line": 22,
+      "symbol": "MetaSingleValueEncodingContainer.init(referencing:codingPath:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingContainers/encoding containers/UnkeyedEncodingContainer.swift",
+      "line": 36,
+      "symbol": "MetaUnkeyedEncodingContainer.init(referencing:codingPath:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
       "line": 20,
       "symbol": "CodingStack.codingPath",
