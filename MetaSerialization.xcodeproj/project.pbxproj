@@ -12,11 +12,11 @@
 		637982BD1FC1B1A0008BD5D5 /* meta_serialization_macOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7532C1FC1ACF9000A2319 /* meta_serialization_macOSTests.swift */; };
 		637982BE1FC1B1A3008BD5D5 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7532D1FC1ACF9000A2319 /* Tree.swift */; };
 		637982BF1FC1B1A5008BD5D5 /* Tree+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753291FC1ACF9000A2319 /* Tree+Equatable.swift */; };
-		637982C01FC1B1A8008BD5D5 /* UselessTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7532A1FC1ACF9000A2319 /* UselessTranslator.swift */; };
 		63B6AA351FE5BDFF00040FB8 /* Encodable and Decodable + Representation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B6AA341FE5BDFF00040FB8 /* Encodable and Decodable + Representation.swift */; };
 		63B6AA361FE5BDFF00040FB8 /* Encodable and Decodable + Representation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B6AA341FE5BDFF00040FB8 /* Encodable and Decodable + Representation.swift */; };
 		63B6AA371FE5BDFF00040FB8 /* Encodable and Decodable + Representation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B6AA341FE5BDFF00040FB8 /* Encodable and Decodable + Representation.swift */; };
 		63B6AA381FE5BDFF00040FB8 /* Encodable and Decodable + Representation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B6AA341FE5BDFF00040FB8 /* Encodable and Decodable + Representation.swift */; };
+		63B6AA441FE5C17100040FB8 /* UselessTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7532A1FC1ACF9000A2319 /* UselessTranslator.swift */; };
 		63BC5BD31FC95A7E0035005D /* PrimitivesEnumTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BC5BD21FC95A7E0035005D /* PrimitivesEnumTranslator.swift */; };
 		63BC5BD41FC95A7E0035005D /* PrimitivesEnumTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BC5BD21FC95A7E0035005D /* PrimitivesEnumTranslator.swift */; };
 		63BC5BD51FC95A7E0035005D /* PrimitivesEnumTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BC5BD21FC95A7E0035005D /* PrimitivesEnumTranslator.swift */; };
@@ -683,7 +683,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				637982C01FC1B1A8008BD5D5 /* UselessTranslator.swift in Sources */,
+				63B6AA441FE5C17100040FB8 /* UselessTranslator.swift in Sources */,
 				637982BD1FC1B1A0008BD5D5 /* meta_serialization_macOSTests.swift in Sources */,
 				637982BE1FC1B1A3008BD5D5 /* Tree.swift in Sources */,
 				637982BF1FC1B1A5008BD5D5 /* Tree+Equatable.swift in Sources */,
