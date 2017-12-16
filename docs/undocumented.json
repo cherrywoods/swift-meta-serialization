@@ -449,6 +449,20 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Serialization/Serialization+Default Implementations.swift",
+      "line": 11,
+      "symbol": "IntermediateEncoder.encode(value:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Serialization/Serialization+Default Implementations.swift",
+      "line": 25,
+      "symbol": "IntermediateDecoder.decode(toType:from:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/TranslatingCoder.swift",
       "line": 11,
       "symbol": "TranslatingCoder",
@@ -512,13 +526,6 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/meta default implementations/EmptyOnlyKeyedContainerMeta.swift",
-      "line": 9,
-      "symbol": "EmptyOnlyKeyedContainerMeta",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/meta default implementations/NilMeta.swift",
       "line": 17,
       "symbol": "NilMeta.nil",
@@ -543,6 +550,13 @@
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/meta default implementations/SimpleGenericMeta.swift",
       "line": 15,
       "symbol": "SimpleGenericMeta.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/meta default implementations/SimpleGenericMeta.swift",
+      "line": 17,
+      "symbol": "SimpleGenericMeta.init(value:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },

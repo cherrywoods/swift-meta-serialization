@@ -14,7 +14,7 @@
     <a title="IntermediateDecoder Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html"> Docs</a> (60% documented)</p>
+        <p><a href="../index.html"> Docs</a> (63% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -193,6 +193,15 @@
                 <a href="../Structs/NonRegualarCodingKey.html">NonRegualarCodingKey</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/PrimitivesEnumTranslator.html">PrimitivesEnumTranslator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PrimitivesEnumTranslator/Primitive.html">– Primitive</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PrimitivesEnumTranslator/Wrapper.html">– Wrapper</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/StackReference.html">StackReference</a>
               </li>
               <li class="nav-group-task">
@@ -277,13 +286,10 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:17MetaSerialization19IntermediateDecoderP6decodeqd__qd__m6toType_3RawQz4fromtKs9DecodableRd__lF"></a>
-                    <a name="//apple_ref/swift/Method/decode(toType:from:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization19IntermediateDecoderP6decodeqd__qd__m6toType_3RawQz4fromtKs9DecodableRd__lF">decode(toType:from:)</a>
+                    <a name="/s:17MetaSerialization19IntermediateDecoderP6decodeqd__qd__m4type_3RawQz4fromtKs9DecodableRd__lF"></a>
+                    <a name="//apple_ref/swift/Method/decode(type:from:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization19IntermediateDecoderP6decodeqd__qd__m4type_3RawQz4fromtKs9DecodableRd__lF">decode(type:from:)</a>
                     </code>
-                      <span class="declaration-note">
-                        Default implementation
-                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
@@ -293,15 +299,11 @@
                         <p>decodes a value of the given type from a raw representation</p>
 
                       </div>
-                      <h4>Default Implementation</h4>
-                      <div class="default_impl abstract">
-                        
-                      </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="n">decode</span><span class="o">&lt;</span><span class="kt">D</span><span class="p">:</span> <span class="kt">Decodable</span><span class="o">&gt;</span><span class="p">(</span><span class="n">toType</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">D</span><span class="o">.</span><span class="k">Type</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="kt"><a href="../Protocols/IntermediateDecoder.html#/s:17MetaSerialization19IntermediateDecoderP3Raw">Raw</a></span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">D</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="n">decode</span><span class="o">&lt;</span><span class="kt">D</span><span class="p">:</span> <span class="kt">Decodable</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt">D</span><span class="o">.</span><span class="k">Type</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="kt"><a href="../Protocols/IntermediateDecoder.html#/s:17MetaSerialization19IntermediateDecoderP3Raw">Raw</a></span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">D</span></code></pre>
 
                         </div>
                       </div>
@@ -337,10 +339,44 @@
                 </li>
               </ul>
             </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17MetaSerialization19IntermediateDecoderPAAE6decodeqd__qd__m6toType_3RawQz4fromtKs9DecodableRd__lF"></a>
+                    <a name="//apple_ref/swift/Method/decode(toType:from:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization19IntermediateDecoderPAAE6decodeqd__qd__m6toType_3RawQz4fromtKs9DecodableRd__lF">decode(toType:from:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="n">decode</span><span class="o">&lt;</span><span class="kt">D</span><span class="p">:</span> <span class="kt">Decodable</span><span class="o">&gt;</span><span class="p">(</span><span class="n">toType</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">D</span><span class="o">.</span><span class="k">Type</span><span class="p">,</span> <span class="n">from</span> <span class="nv">raw</span><span class="p">:</span> <span class="kt"><a href="../Protocols/IntermediateDecoder.html#/s:17MetaSerialization19IntermediateDecoderP3Raw">Raw</a></span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">D</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2017-11-24)</p>
+          <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2017-12-16)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
