@@ -13,7 +13,7 @@ import Foundation
  */
 open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProtocol {
     
-    typealias Key = K
+    public typealias Key = K
     
     private var reference: Reference
     private var referencedMeta: KeyedContainerMeta {
@@ -25,7 +25,7 @@ open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProto
         }
     }
     
-    var codingPath: [CodingKey]
+    open var codingPath: [CodingKey]
     
     // MARK: - initalization
     
@@ -38,11 +38,11 @@ open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProto
     
     // MARK: - encode
     
-    func encodeNil(forKey key: Key) throws {
+    open func encodeNil(forKey key: Key) throws {
         try encode(GenericNil.instance, forKey: key)
     }
     
-    func encode<T: Encodable>(_ value: T, forKey key: Key) throws {
+    open func encode<T: Encodable>(_ value: T, forKey key: Key) throws {
         
         // the coding path needs to be extended, because wrap(value) may throw an error
         try reference.coder.stack.append(codingKey: key)
@@ -65,7 +65,7 @@ open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProto
     }
     
     // MARK: - nested container
-    func nestedContainer<NestedKey>(keyedBy keyType: NestedKey.Type, forKey key: K) -> KeyedEncodingContainer<NestedKey> where NestedKey : CodingKey {
+    open func nestedContainer<NestedKey>(keyedBy keyType: NestedKey.Type, forKey key: K) -> KeyedEncodingContainer<NestedKey> where NestedKey : CodingKey {
         
         let nestedMeta = self.reference.coder.translator.keyedContainerMeta()
         
@@ -83,7 +83,7 @@ open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProto
         
     }
     
-    func nestedUnkeyedContainer(forKey key: K) -> UnkeyedEncodingContainer {
+    open func nestedUnkeyedContainer(forKey key: K) -> UnkeyedEncodingContainer {
         
         let nestedMeta = self.reference.coder.translator.unkeyedContainerMeta()
         
@@ -101,11 +101,11 @@ open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProto
     
     // MARK: - super encoder
     
-    func superEncoder() -> Encoder {
+    open func superEncoder() -> Encoder {
         return superEncoderImpl(forKey: SpecialCodingKey.super.rawValue)
     }
     
-    func superEncoder(forKey key: K) -> Encoder {
+    open func superEncoder(forKey key: K) -> Encoder {
         return superEncoderImpl(forKey: key)
     }
     

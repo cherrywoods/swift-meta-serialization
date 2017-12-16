@@ -23,9 +23,9 @@ open class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
         }
     }
     
-    var codingPath: [CodingKey]
+    open var codingPath: [CodingKey]
     
-    var count: Int {
+    open var count: Int {
         
         return referencedMeta.count
         
@@ -42,11 +42,11 @@ open class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
     
     // MARK: - encode
     
-    func encodeNil() throws {
+    open func encodeNil() throws {
         try encode(GenericNil.instance)
     }
     
-    func encode<T: Encodable>(_ value: T) throws {
+    open func encode<T: Encodable>(_ value: T) throws {
         
         // the coding path needs to be extended, because wrap(value) may throw an error
         try reference.coder.stack.append(codingKey: IndexCodingKey(intValue: self.count)! )
@@ -70,7 +70,7 @@ open class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
     }
     
     // MARK: - nested container
-    func nestedContainer<NestedKey>(keyedBy keyType: NestedKey.Type) -> KeyedEncodingContainer<NestedKey> where NestedKey : CodingKey {
+    open func nestedContainer<NestedKey>(keyedBy keyType: NestedKey.Type) -> KeyedEncodingContainer<NestedKey> where NestedKey : CodingKey {
         
         // key needs to be added, because it is passed to the new MetaKeyedEncodingContainer
         // at this point, count is the index at which nestedMeta will be inserted
@@ -89,7 +89,7 @@ open class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
         
     }
     
-    func nestedUnkeyedContainer() -> UnkeyedEncodingContainer {
+    open func nestedUnkeyedContainer() -> UnkeyedEncodingContainer {
         
         // key needs to be added, because it is passed to the new MetaKeyedEncodingContainer
         // at this point, count is the index at which nestedMeta will be inserted
@@ -108,7 +108,7 @@ open class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
     
     // MARK: - super encoder
     
-    func superEncoder() -> Encoder {
+    open func superEncoder() -> Encoder {
         
         let reference = UnkeyedContainerReference(coder: self.reference.coder, element: self.referencedMeta, index: self.count)
         return ReferencingMetaEncoder(referencing: reference)

@@ -15,7 +15,7 @@ open class MetaSingleValueEncodingContainer: SingleValueEncodingContainer {
     
     private var reference: Reference
     
-    var codingPath: [CodingKey]
+    open var codingPath: [CodingKey]
     
     // MARK: - initalization
     
@@ -26,11 +26,11 @@ open class MetaSingleValueEncodingContainer: SingleValueEncodingContainer {
         
     }
     
-    func encodeNil() throws {
+    open func encodeNil() throws {
         try self.encode(GenericNil.instance)
     }
     
-    func encode<T>(_ value: T) throws where T : Encodable {
+    open func encode<T>(_ value: T) throws where T : Encodable {
         
         // if the referenced element is a PlacholderMeta,
         // there was no value encoded in this single value container
