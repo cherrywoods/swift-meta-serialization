@@ -33,7 +33,7 @@ public protocol Representation: EncodingRepresentation, DecodingRepresentation {
  However, this protocol gives you also more control about the encoding process, because you will have to instantiate a new MetaEncoder, that you may pack with more information, than TranslatingCoder can handle.
  For example you may provide a userInfo dictionary or an initial codingPath.
  */
-public protocol EncodingRepresentation: Encoder {
+public protocol EncodingRepresentation {
     
     var encoder: MetaEncoder { get }
     
@@ -47,7 +47,7 @@ public protocol EncodingRepresentation: Encoder {
  However, this protocol gives you also more control about the decoding process, because you will have to instantiate a new MetaDecoder, that you may pack with more information, than TranslatingCoder can handle.
  For example you may provide a userInfo dictionary or an initial codingPath.
  */
-public protocol DecodingRepresentation: Decoder {
+public protocol DecodingRepresentation {
     
     var decoder: MetaDecoder { get }
     
