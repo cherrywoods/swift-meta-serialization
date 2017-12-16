@@ -40,13 +40,13 @@ public protocol Translator {
     // MARK: wrapper
     
     /**
-     Creates and returns a new empty Meta for the given type, or nil, if the given type is not supported, respectively can not be translated by this translator.
+     Creates and returns a new empty Meta for the given value, or nil, if the given value is not supported, respectively can not be translated by this translator.
      This method will be called very frequently.
-     This method will be asked to return an Meta for the type GenericNil from this framework for any nil value that is requested to be encoded or decoded. Return nil, if you don't support nil values. If you support Nil values, you are invited to use NilMeta from meta-serialization, however the Meta you return should conform to NilMetaProtocol.
-     - Parameter forSwiftType: The SwiftType for wich a wrapping Meta should be returned.
-     - Returns: A Meta that will wrap an instance of forSwiftType.
+     This method will be asked to return an Meta for an instance of the type GenericNil from this framework for any nil value that is requested to be encoded or decoded. Return nil, if you don't support nil values. If you support Nil values, you are invited to use NilMeta from meta-serialization, but however the Meta you return needs to conform to NilMetaProtocol.
+     - Parameter for: The value for which a wrapping Meta should be returned.
+     - Returns: A Meta that will wrap value.
      */
-    func wrapingMeta<T>(forSwiftType: T.Type) -> Meta?
+    func wrapingMeta<T>(for value: T) -> Meta?
     
     /**
      Extract the swift value from a meta, you initalized during decode(). If you don't support the requested type directly, return nil. If you decoded to a Meta conforming to NilMetaProtocol, that Meta will not reach your method.

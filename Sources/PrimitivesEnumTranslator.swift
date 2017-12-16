@@ -148,7 +148,7 @@ public struct PrimitivesEnumTranslator<Raw>: Translator {
     
     // MARK: Translator implementation
     
-    public func wrapingMeta<T>(forSwiftType: T.Type) -> Meta? {
+    public func wrapingMeta<T>(for value: T) -> Meta? {
         
         // handle nil values first
         if T.self == GenericNil.self && primitives.contains(.nil) {
