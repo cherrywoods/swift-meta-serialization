@@ -8,7 +8,7 @@
 
 public extension IntermediateEncoder {
     
-    func encode<E: Encodable>(value: E) throws -> Raw {
+    func encode<E: Encodable>(_ value: E) throws -> Raw {
         
         let encoder = self.provideNewEncoder()
         

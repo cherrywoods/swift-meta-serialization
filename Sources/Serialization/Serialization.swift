@@ -40,7 +40,7 @@ public protocol IntermediateDecoder {
     associatedtype Raw
     
     /// decodes a value of the given type from a raw representation
-    func decode<D: Decodable>(type: D.Type, from: Raw) throws -> D
+    func decode<D: Decodable>(toType type: D.Type, from: Raw) throws -> D
     
     /// returns a new MetaDecoder
     func provideNewDecoder(raw: Raw) -> MetaDecoder
