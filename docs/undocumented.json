@@ -421,34 +421,6 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Representation/Representation+Default Implementations.swift",
-      "line": 25,
-      "symbol": "EncodingRepresentation.codingPath",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Representation/Representation+Default Implementations.swift",
-      "line": 29,
-      "symbol": "EncodingRepresentation.userInfo",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Representation/Representation+Default Implementations.swift",
-      "line": 49,
-      "symbol": "DecodingRepresentation.codingPath",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Representation/Representation+Default Implementations.swift",
-      "line": 53,
-      "symbol": "DecodingRepresentation.userInfo",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Representation/Representation.swift",
       "line": 24,
       "symbol": "Representation.coder",
@@ -467,20 +439,6 @@
       "line": 52,
       "symbol": "DecodingRepresentation.decoder",
       "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Serialization/Serialization+Default Implementations.swift",
-      "line": 11,
-      "symbol": "IntermediateEncoder.encode(value:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Serialization/Serialization+Default Implementations.swift",
-      "line": 25,
-      "symbol": "IntermediateDecoder.decode(toType:from:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {

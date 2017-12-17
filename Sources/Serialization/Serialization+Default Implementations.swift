@@ -24,7 +24,7 @@ public extension IntermediateDecoder {
     
     func decode<D: Decodable>(toType type: D.Type, from raw: Raw) throws -> D {
         
-        let decoder = self.provideNewDecoder(raw: raw)
+        let decoder = try self.provideNewDecoder(raw: raw)
         
         return try type.init(from: decoder)
         

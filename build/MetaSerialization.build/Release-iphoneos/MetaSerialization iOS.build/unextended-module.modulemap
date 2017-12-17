@@ -1,0 +1,10 @@
+framework module MetaSerialization {
+  umbrella header "MetaSerialization.h"
+
+  export *
+  module * { export * }
+}
+
+module MetaSerialization.__Swift {
+    exclude header "MetaSerialization-Swift.h"
+}

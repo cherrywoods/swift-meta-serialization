@@ -1,0 +1,11 @@
+framework module MetaSerialization {
+  umbrella header "MetaSerialization.h"
+
+  export *
+  module * { export * }
+}
+
+module MetaSerialization.Swift {
+    header "MetaSerialization-Swift.h"
+    requires objc
+}

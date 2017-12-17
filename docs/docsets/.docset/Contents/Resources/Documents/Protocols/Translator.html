@@ -14,7 +14,7 @@
     <a title="Translator Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html"> Docs</a> (63% documented)</p>
+        <p><a href="../index.html"> Docs</a> (65% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -375,9 +375,9 @@ However this method has a default implementation returning a new ArrayUnkeyedCon
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:17MetaSerialization10TranslatorP07wrapingA0AA0A0_pSgqd__m12forSwiftType_tlF"></a>
-                    <a name="//apple_ref/swift/Method/wrapingMeta(forSwiftType:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization10TranslatorP07wrapingA0AA0A0_pSgqd__m12forSwiftType_tlF">wrapingMeta(forSwiftType:)</a>
+                    <a name="/s:17MetaSerialization10TranslatorP07wrapingA0AA0A0_pSgqd__3for_tlF"></a>
+                    <a name="//apple_ref/swift/Method/wrapingMeta(for:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization10TranslatorP07wrapingA0AA0A0_pSgqd__3for_tlF">wrapingMeta(for:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -385,16 +385,16 @@ However this method has a default implementation returning a new ArrayUnkeyedCon
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Creates and returns a new empty Meta for the given type, or nil, if the given type is not supported, respectively can not be translated by this translator.
+                        <p>Creates and returns a new empty Meta for the given value, or nil, if the given value is not supported, respectively can not be translated by this translator.
 This method will be called very frequently.
-This method will be asked to return an Meta for the type GenericNil from this framework for any nil value that is requested to be encoded or decoded. Return nil, if you don&rsquo;t support nil values. If you support Nil values, you are invited to use NilMeta from meta-serialization, however the Meta you return should conform to NilMetaProtocol.</p>
+This method will be asked to return an Meta for an instance of the type GenericNil from this framework for any nil value that is requested to be encoded or decoded. Return nil, if you don&rsquo;t support nil values. If you support Nil values, you are invited to use NilMeta from meta-serialization, but however the Meta you return needs to conform to NilMetaProtocol.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="n">wrapingMeta</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">forSwiftType</span><span class="p">:</span> <span class="kt">T</span><span class="o">.</span><span class="k">Type</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/Meta.html">Meta</a></span><span class="p">?</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="n">wrapingMeta</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="k">for</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/Meta.html">Meta</a></span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -405,12 +405,12 @@ This method will be asked to return an Meta for the type GenericNil from this fr
                             <tr>
                               <td>
                                 <code>
-                                <em>forSwiftType</em>
+                                <em>for</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>The SwiftType for wich a wrapping Meta should be returned.</p>
+                                  <p>The value for which a wrapping Meta should be returned.</p>
                                 </div>
                               </td>
                             </tr>
@@ -419,7 +419,7 @@ This method will be asked to return an Meta for the type GenericNil from this fr
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>A Meta that will wrap an instance of forSwiftType.</p>
+                        <p>A Meta that will wrap value.</p>
                       </div>
                     </section>
                   </div>
@@ -645,7 +645,7 @@ This method will be asked to return an Meta for the type GenericNil from this fr
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2017-12-16)</p>
+          <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2017-12-17)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

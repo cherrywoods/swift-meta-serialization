@@ -1,0 +1,13 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': '/Users/David/Documents/Programmierung/MetaSerialization/build/Release-iphoneos/MetaSerialization.framework/Modules'
+    'contents': [{
+      'type': 'file',
+      'name': 'module.modulemap',
+      'external-contents': '/Users/David/Documents/Programmierung/MetaSerialization/build/MetaSerialization.build/Release-iphoneos/MetaSerialization iOS.build/unextended-module.modulemap',
+    }]
+  }]
+}
