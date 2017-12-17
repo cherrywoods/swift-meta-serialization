@@ -9,9 +9,9 @@ import Foundation
 
 extension Encodable {
     
-    func encode(to representation: Representation) throws {
+    mutating func encode(to representation: inout EncodingRepresentation) throws {
         
-        try self.encode(to: representation.encoder)
+        try representation.encode(self as Self)
         
     }
     
@@ -19,9 +19,9 @@ extension Encodable {
 
 extension Decodable {
     
-    init(from representation: Representation) throws {
+    init(from representation: DecodingRepresentation) throws {
         
-        try self.init(from: representation.decoder)
+        self = try representation.decode(type: Self.self)
         
     }
     

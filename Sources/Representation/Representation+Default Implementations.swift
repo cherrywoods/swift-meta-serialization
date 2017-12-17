@@ -8,22 +8,22 @@
 
 import Foundation
 
-public extension Representation {
-    
-    public var encoder: MetaEncoder {
-        return self.coder.encoder
-    }
-    
-    public var decoder: MetaDecoder {
-        return self.coder.decoder
-    }
-    
-}
-
 public extension EncodingRepresentation {
+    
+    mutating func encode<E: Encodable>(_ value: E) throws {
+        
+        self = try provideNewEncoder().encode(value)
+        
+    }
     
 }
 
 public extension DecodingRepresentation {
+    
+    func decode<D: Decodable>(type: D.Type) throws -> D {
+        
+        return (try provideNewDecoder().decode(type: type))!
+        
+    }
     
 }

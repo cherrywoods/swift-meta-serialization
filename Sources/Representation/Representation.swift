@@ -19,11 +19,7 @@ import Foundation
  It is usefull to write a subprotocol of Representation before you extend your raw data type. For example, if you want to write another library for pasing JSON, first write a protocol JSON: Representation, for which you provide the default implementation in an extension and then extends your raw type, e.g. Data by JSON.
  When you encode or decode to or from the raw type you should give the reader and swift a hint what format to use, by adding `as JSON` to the raw types object. This will save you time if you decide to add another serialization framwork to your application that has the same raw representation type and will give some hints about what you are doing right inside your code.
  */
-public protocol Representation: EncodingRepresentation, DecodingRepresentation {
-    
-    var coder: TranslatingCoder { get }
-    
-}
+public typealias Representation = EncodingRepresentation & DecodingRepresentation
 
 /**
  A protocol for encoded data, that will only be written.
@@ -35,7 +31,13 @@ public protocol Representation: EncodingRepresentation, DecodingRepresentation {
  */
 public protocol EncodingRepresentation {
     
-    var encoder: MetaEncoder { get }
+    /**
+     Encodes the given value into this EncodingRepresentation
+     */
+    mutating func encode<E: Encodable>(_ value: E) throws
+    
+    /// returns a new MetaEncoder for self
+    func provideNewEncoder() -> MetaEncoder
     
 }
 
@@ -49,6 +51,12 @@ public protocol EncodingRepresentation {
  */
 public protocol DecodingRepresentation {
     
-    var decoder: MetaDecoder { get }
+    /**
+     Decodes a value of the given type from this representation
+     */
+    func decode<D: Decodable>(type: D.Type) throws -> D
+    
+    /// returns a new MetaDecoder for self
+    func provideNewDecoder() throws -> MetaDecoder
     
 }

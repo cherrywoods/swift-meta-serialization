@@ -117,10 +117,6 @@
 		63E754331FC1AD7C000A2319 /* ContainerMetas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753691FC1AD7B000A2319 /* ContainerMetas.swift */; };
 		63E754341FC1AD7C000A2319 /* ContainerMetas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753691FC1AD7B000A2319 /* ContainerMetas.swift */; };
 		63E754351FC1AD7C000A2319 /* ContainerMetas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753691FC1AD7B000A2319 /* ContainerMetas.swift */; };
-		63E7543E1FC1AD7C000A2319 /* TranslatingCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7536C1FC1AD7B000A2319 /* TranslatingCoder.swift */; };
-		63E7543F1FC1AD7C000A2319 /* TranslatingCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7536C1FC1AD7B000A2319 /* TranslatingCoder.swift */; };
-		63E754401FC1AD7C000A2319 /* TranslatingCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7536C1FC1AD7B000A2319 /* TranslatingCoder.swift */; };
-		63E754411FC1AD7C000A2319 /* TranslatingCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7536C1FC1AD7B000A2319 /* TranslatingCoder.swift */; };
 		63E754421FC1AD7C000A2319 /* CodingStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7536D1FC1AD7B000A2319 /* CodingStack.swift */; };
 		63E754431FC1AD7C000A2319 /* CodingStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7536D1FC1AD7B000A2319 /* CodingStack.swift */; };
 		63E754441FC1AD7C000A2319 /* CodingStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7536D1FC1AD7B000A2319 /* CodingStack.swift */; };
@@ -216,7 +212,6 @@
 		63E753631FC1AD7A000A2319 /* WrapInStringMeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrapInStringMeta.swift; sourceTree = "<group>"; };
 		63E753641FC1AD7A000A2319 /* WrappingMeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrappingMeta.swift; sourceTree = "<group>"; };
 		63E753691FC1AD7B000A2319 /* ContainerMetas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerMetas.swift; sourceTree = "<group>"; };
-		63E7536C1FC1AD7B000A2319 /* TranslatingCoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslatingCoder.swift; sourceTree = "<group>"; };
 		63E7536D1FC1AD7B000A2319 /* CodingStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodingStack.swift; sourceTree = "<group>"; };
 		63E7536F1FC1AD7B000A2319 /* CodingKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodingKeys.swift; sourceTree = "<group>"; };
 		63E753711FC1AD7B000A2319 /* KeyedDecodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyedDecodingContainer.swift; sourceTree = "<group>"; };
@@ -440,7 +435,6 @@
 		63E7547B1FC1AEBC000A2319 /* Usage */ = {
 			isa = PBXGroup;
 			children = (
-				63E7536C1FC1AD7B000A2319 /* TranslatingCoder.swift */,
 				63E7535A1FC1AD7A000A2319 /* Serialization */,
 				63E753441FC1AD79000A2319 /* Representation */,
 				63E7534E1FC1AD7A000A2319 /* Encodable and Decodable */,
@@ -712,7 +706,6 @@
 				63E7544E1FC1AD7C000A2319 /* SingleValueDecodingContainer.swift in Sources */,
 				63E754321FC1AD7C000A2319 /* ContainerMetas.swift in Sources */,
 				63E7544A1FC1AD7C000A2319 /* KeyedDecodingContainer.swift in Sources */,
-				63E7543E1FC1AD7C000A2319 /* TranslatingCoder.swift in Sources */,
 				63E7545A1FC1AD7C000A2319 /* SingleValueEncodingContainer.swift in Sources */,
 				63E753FA1FC1AD7C000A2319 /* NilMeta.swift in Sources */,
 				63E753F61FC1AD7C000A2319 /* EmptyOnlyKeyedContainerMeta.swift in Sources */,
@@ -753,7 +746,6 @@
 				63E7544F1FC1AD7C000A2319 /* SingleValueDecodingContainer.swift in Sources */,
 				63E754331FC1AD7C000A2319 /* ContainerMetas.swift in Sources */,
 				63E7544B1FC1AD7C000A2319 /* KeyedDecodingContainer.swift in Sources */,
-				63E7543F1FC1AD7C000A2319 /* TranslatingCoder.swift in Sources */,
 				63E7545B1FC1AD7C000A2319 /* SingleValueEncodingContainer.swift in Sources */,
 				63E753FB1FC1AD7C000A2319 /* NilMeta.swift in Sources */,
 				63E753F71FC1AD7C000A2319 /* EmptyOnlyKeyedContainerMeta.swift in Sources */,
@@ -794,7 +786,6 @@
 				63E754501FC1AD7C000A2319 /* SingleValueDecodingContainer.swift in Sources */,
 				63E754341FC1AD7C000A2319 /* ContainerMetas.swift in Sources */,
 				63E7544C1FC1AD7C000A2319 /* KeyedDecodingContainer.swift in Sources */,
-				63E754401FC1AD7C000A2319 /* TranslatingCoder.swift in Sources */,
 				63E7545C1FC1AD7C000A2319 /* SingleValueEncodingContainer.swift in Sources */,
 				63E753FC1FC1AD7C000A2319 /* NilMeta.swift in Sources */,
 				63E753F81FC1AD7C000A2319 /* EmptyOnlyKeyedContainerMeta.swift in Sources */,
@@ -834,7 +825,6 @@
 				63BC5BD61FC95A7E0035005D /* PrimitivesEnumTranslator.swift in Sources */,
 				63E754351FC1AD7C000A2319 /* ContainerMetas.swift in Sources */,
 				63E7544D1FC1AD7C000A2319 /* KeyedDecodingContainer.swift in Sources */,
-				63E754411FC1AD7C000A2319 /* TranslatingCoder.swift in Sources */,
 				63E7545D1FC1AD7C000A2319 /* SingleValueEncodingContainer.swift in Sources */,
 				63E753FD1FC1AD7C000A2319 /* NilMeta.swift in Sources */,
 				63E753F91FC1AD7C000A2319 /* EmptyOnlyKeyedContainerMeta.swift in Sources */,

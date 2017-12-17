@@ -13,9 +13,7 @@ public extension IntermediateEncoder {
         
         let encoder = self.provideNewEncoder()
         
-        try value.encode(to: encoder)
-        
-        return try encoder.representationOfEncodedValue() as Raw
+        return try encoder.encode(value) as Raw
         
     }
     
@@ -28,7 +26,9 @@ public extension IntermediateDecoder {
         
         let decoder = try self.provideNewDecoder(raw: raw)
         
-        return try type.init(from: decoder)
+        // force unwrap,
+        // because decoder is freshly initalized
+        return (try decoder.decode(type: type))!
         
     }
     

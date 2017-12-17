@@ -24,8 +24,30 @@ public class MetaEncoder: Encoder, MetaCoder {
     
     // MARK: - front end
     
-    /// Returns the representation or raw value of the value encoded to this encoder, if a value was already encoded to it and that encoding process has suceeded, otherwise it will return nil.
-    /// Throws: This function will throw an error, if the translation process in translator throws an error
+    /**
+     Encodes the given value.
+     
+     Use this method rather than directly calling encode(to:).
+     Encode(to:) will not detect types in the first place
+     that are directly supported by the translator.
+     Example: If data is a Data instance and the translator supportes
+     Data objects directly. Then calling data.encode(to:) will not fall back
+     to that support, it will be encoded as Data encodes itself.
+     */
+    public func encode<E, Raw>(_ value: E) throws -> Raw where E: Encodable {
+        
+        // encode over wrap function
+        // this will keep E from encoding itself,
+        // if it is supported by translator
+        let meta = try wrap(value)
+        return try representationOfEncodedValue(meta: meta)
+        
+    }
+    
+    /*
+     Returns the representation or raw value of the value encoded to this encoder, if a value was already encoded to it and that encoding process has suceeded, otherwise it will return nil.
+     Throws: This function will throw an error, if the translation process in translator throws an error
+     */
     public func representationOfEncodedValue<Raw>() throws -> Raw {
         
         // if there's not exectly one element on the stack, the encoding has not finished or has not suceeded
@@ -33,9 +55,15 @@ public class MetaEncoder: Encoder, MetaCoder {
             throw MetaEncodingError.encodingProcessHasNotFinishedProperly
         }
         
+        return try representationOfEncodedValue(meta: stack.first!)
+        
+    }
+    
+    internal func representationOfEncodedValue<Raw>(meta: Meta) throws -> Raw {
+        
         // if stack.first is a PlaceholderMeta, an empty keyed container meta should be used (according to the documentation of encodable
         // a PlaceholderMeta may never be returned to an outside-framework entity
-        let finalMeta = stack.first is PlaceholderMeta ? translator.keyedContainerMeta() : stack.first!
+        let finalMeta = meta is PlaceholderMeta ? translator.keyedContainerMeta() : meta
         
         return try translator.encode(finalMeta)
         

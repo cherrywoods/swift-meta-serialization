@@ -22,10 +22,43 @@ open class MetaDecoder: Decoder, MetaCoder {
         return stack.codingPath
     }
     
+    // MARK: - front end
+    
+    /**
+     Decodes a value of type D
+     
+     Use this method rather than directly calling init(from:).
+     init(from:) will not detect types in the first place
+     that are directly supported by the translator.
+     Therefor some actually decodable values would fail to be decoded.
+     
+     If this decoder is freshly initalized, this function will return a non-nil value.
+     
+     - Returns: A new decoded value of type D or nil, if this decoder is not in an appropiate state to decode a value.
+     */
+    public func decode<D>(type: D.Type) throws -> D? where D: Decodable {
+        
+        // decode over unwrap function
+        // this will keep D from decoding itself,
+        // if it is supported by translator
+        
+        // return the unwrapped topContainer
+        
+        guard let meta = stack.first else {
+            // if stack has somehow no first element:
+            return nil
+        }
+        
+        return try unwrap(meta) as D
+        
+    }
+    
     // MARK: - translator
     
     /// The translator used to get and finally translate Metas
     public let translator: Translator
+    
+    
     
     /// wraps a meta into a decodable value
     public func unwrap<T: Decodable>(_ meta: Meta) throws -> T {
