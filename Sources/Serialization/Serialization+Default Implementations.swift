@@ -9,7 +9,7 @@
 public extension IntermediateEncoder {
     
     /// encodes the given value into a raw representation
-    func encodeImplementation<E: Encodable>(_ value: E) throws -> Raw {
+    func encode<E: Encodable>(_ value: E) throws -> Raw {
         
         let encoder = self.provideNewEncoder()
         
@@ -24,7 +24,7 @@ public extension IntermediateEncoder {
 public extension IntermediateDecoder {
     
     /// decodes a value of the given type from a raw representation
-    func decodeImplementation<D: Decodable>(toType type: D.Type, from raw: Raw) throws -> D {
+    func decode<D: Decodable>(toType type: D.Type, from raw: Raw) throws -> D {
         
         let decoder = try self.provideNewDecoder(raw: raw)
         
