@@ -23,9 +23,6 @@ public protocol IntermediateEncoder {
     /// the raw type you encode to and decode from, for example Data
     associatedtype Raw
     
-    /// encodes the given value into a raw representation
-    func encode<E: Encodable>(_ value: E) throws -> Raw
-    
     /// returns a new MetaEncoder
     func provideNewEncoder() -> MetaEncoder
     
@@ -38,9 +35,6 @@ public protocol IntermediateDecoder {
     
     /// the raw type you encode to and decode from, for example Data
     associatedtype Raw
-    
-    /// decodes a value of the given type from a raw representation
-    func decode<D: Decodable>(toType type: D.Type, from: Raw) throws -> D
     
     /// returns a new MetaDecoder
     func provideNewDecoder(raw: Raw) throws -> MetaDecoder
