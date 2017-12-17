@@ -17,10 +17,12 @@ public struct GenericNil: Codable {
     
 }
 
-/// This struct is the equivalent to GenericNil on the decoding side
-///
-/// You will be asked to decode this type to check, whether a value is nil.
-/// You will then return an instance of this type, correspoding to wheather you found a value or not/found a null value.
+/**
+ This struct is the equivalent to GenericNil on the decoding side
+ 
+ You will be asked to decode this type to check, whether a value is nil.
+ You will then return an instance of this type, correspoding to wheather you found a value or not/found a null value.
+ */
 public struct ValuePresenceIndicator: Codable {
     
     public let isNil: Bool

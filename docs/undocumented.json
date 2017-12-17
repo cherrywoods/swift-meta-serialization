@@ -44,112 +44,112 @@
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 20,
+      "line": 22,
       "symbol": "CodingStack.codingPath",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 29,
+      "line": 31,
       "symbol": "CodingStack.lastOperation",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 31,
+      "line": 33,
       "symbol": "CodingStack.mayPushNewMeta",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 37,
+      "line": 39,
       "symbol": "CodingStack.mayPopMeta",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 40,
+      "line": 42,
       "symbol": "CodingStack.mayAppendNewCodingKey",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 43,
+      "line": 45,
       "symbol": "CodingStack.mayRemoveLastCodingKey",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 47,
+      "line": 49,
       "symbol": "CodingStack.Status",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 57,
+      "line": 59,
       "symbol": "CodingStack.Operation",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 58,
+      "line": 60,
       "symbol": "CodingStack.Operation.initalization",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 59,
+      "line": 61,
       "symbol": "CodingStack.Operation.pushed",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 60,
+      "line": 62,
       "symbol": "CodingStack.Operation.poped",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 61,
+      "line": 63,
       "symbol": "CodingStack.Operation.appended",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 62,
+      "line": 64,
       "symbol": "CodingStack.Operation.removedLast",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 65,
+      "line": 67,
       "symbol": "CodingStack.StackError",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 66,
+      "line": 68,
       "symbol": "CodingStack.StackError.statusMismatch",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 67,
+      "line": 69,
       "symbol": "CodingStack.StackError.emptyStack",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
@@ -191,14 +191,14 @@
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/GenericNil.swift",
-      "line": 26,
+      "line": 28,
       "symbol": "ValuePresenceIndicator.isNil",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/GenericNil.swift",
-      "line": 28,
+      "line": 30,
       "symbol": "ValuePresenceIndicator.init(isNil:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -229,6 +229,13 @@
       "line": 14,
       "symbol": "MetaDecoder",
       "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/MetaEncoder.swift",
+      "line": 51,
+      "symbol": "MetaEncoder.representationOfEncodedValue()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
@@ -403,62 +410,6 @@
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Reference.swift",
       "line": 112,
       "symbol": "UnkeyedContainerReference.insert(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Representation/Representation+Default Implementations.swift",
-      "line": 13,
-      "symbol": "Representation.encoder",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Representation/Representation+Default Implementations.swift",
-      "line": 17,
-      "symbol": "Representation.decoder",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Representation/Representation.swift",
-      "line": 24,
-      "symbol": "Representation.coder",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Representation/Representation.swift",
-      "line": 38,
-      "symbol": "EncodingRepresentation.encoder",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Representation/Representation.swift",
-      "line": 52,
-      "symbol": "DecodingRepresentation.decoder",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/TranslatingCoder.swift",
-      "line": 11,
-      "symbol": "TranslatingCoder",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/TranslatingCoder.swift",
-      "line": 21,
-      "symbol": "TranslatingCoder.translator",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/TranslatingCoder.swift",
-      "line": 24,
-      "symbol": "TranslatingCoder.init(translator:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },

@@ -10,11 +10,13 @@
 
 import Foundation
 
-/// CodingStack is a collection of metas and codingKeys with special adding and removing rules.
-/// It is a stack in that sence, that new elements may only be added on top and only be removed from top of the stack.
-/// However elements at a specific index can be read and exchanged, but not removed or added.
-/// Furthermore the stack checks, that every codingKey has also an associated meta, before a new CodingKey can be added (prevents entities encoding or decoding from requesting no container) and checks, that metas are only added, if a CodingKey was added for them ahead (prevents entities encoding or decoding from requesting more than one container).
-/// It does however not guarantee, that there is a meta for every CodingKey
+/**
+ CodingStack is a collection of metas and codingKeys with special adding and removing rules.
+ It is a stack in that sence, that new elements may only be added on top and only be removed from top of the stack.
+ However elements at a specific index can be read and exchanged, but not removed or added.
+ Furthermore the stack checks, that every codingKey has also an associated meta, before a new CodingKey can be added (prevents entities encoding or decoding from requesting no container) and checks, that metas are only added, if a CodingKey was added for them ahead (prevents entities encoding or decoding from requesting more than one container).
+ It does however not guarantee, that there is a meta for every CodingKey
+ */
 open class CodingStack {
     
     private(set) public var codingPath: [CodingKey]

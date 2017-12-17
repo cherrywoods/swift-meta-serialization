@@ -14,7 +14,7 @@
     <a title="MetaDecoder Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html"> Docs</a> (65% documented)</p>
+        <p><a href="../index.html"> Docs</a> (68% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -81,9 +81,6 @@
               <li class="nav-group-task">
                 <a href="../Classes/SimpleGenericMeta.html">SimpleGenericMeta</a>
               </li>
-              <li class="nav-group-task">
-                <a href="../Classes/TranslatingCoder.html">TranslatingCoder</a>
-              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -138,9 +135,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Reference.html">Reference</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Protocols/Representation.html">Representation</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Translator.html">Translator</a>
@@ -243,6 +237,9 @@
                 <a href="../Typealiases.html#/s:17MetaSerialization15DirectlyCodablea">DirectlyCodable</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:17MetaSerialization14Representationa">Representation</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Typealiases.html#/s:17MetaSerialization0B0a">Serialization</a>
               </li>
             </ul>
@@ -340,6 +337,55 @@
                           <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">codingPath</span><span class="p">:</span> <span class="p">[</span><span class="kt">CodingKey</span><span class="p">]</span></code></pre>
 
                         </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/front%20end"></a>
+                <a name="//apple_ref/swift/Section/front end" class="dashAnchor"></a>
+                <a href="#/front%20end">
+                  <h3 class="section-name">front end</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17MetaSerialization0A7DecoderC6decodexSgxm4type_tKs9DecodableRzlF"></a>
+                    <a name="//apple_ref/swift/Method/decode(type:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization0A7DecoderC6decodexSgxm4type_tKs9DecodableRzlF">decode(type:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Decodes a value of type D</p>
+
+<p>Use this method rather than directly calling init(from:).
+init(from:) will not detect types in the first place
+that are directly supported by the translator.
+Therefor some actually decodable values would fail to be decoded.</p>
+
+<p>If this decoder is freshly initalized, this function will return a non-nil value.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">decode</span><span class="o">&lt;</span><span class="kt">D</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt">D</span><span class="o">.</span><span class="k">Type</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">D</span><span class="p">?</span> <span class="k">where</span> <span class="kt">D</span><span class="p">:</span> <span class="kt">Decodable</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new decoded value of type D or nil, if this decoder is not in an appropiate state to decode a value.</p>
                       </div>
                     </section>
                   </div>
