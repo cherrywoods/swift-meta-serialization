@@ -14,8 +14,10 @@ import Foundation
  */
 public protocol KeyedContainerMeta: Meta {
     
-    /// access the value inside this container for key
-    /// return nil, if there's no value contained for this key
+    /**
+     access the value inside this container for key
+     return nil, if there's no value contained for this key
+     */
     subscript(key: CodingKey) -> Meta? { get set }
     
     /**

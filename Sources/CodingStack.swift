@@ -37,7 +37,7 @@ open class CodingStack {
         return status == .pathMissesMeta
     }
     public var mayPopMeta: Bool {
-        return isEmpty && status == .pathFilled
+        return status == .pathFilled
     }
     public var mayAppendNewCodingKey: Bool {
         return status == .pathFilled
@@ -47,12 +47,17 @@ open class CodingStack {
     }
     
     public enum Status {
-        /// first status of a new CodingStack
-        /// expresses, that a new meta needs to be added or a codingKey removed to proceed.
+        /**
+         first status of a new CodingStack
+         expresses, that a new meta needs to be added or a codingKey removed to proceed.
+        */
         case pathMissesMeta
-        /// if a CodingStack has this status, it currently contains at least one meta and waits for a new coding key, so another meta may be added.
-        /// expresses, that a coding key may be added, or a meta removed.
-        /// however this status expresses some validity of the stack, respectively that it is not waiting for a meta to be pushed.
+        /**
+         If a CodingStack has this status, it currently contains at least one meta and waits for a new coding key, so another meta may be added.
+         
+         Expresses, that a coding key may be added, or a meta removed.
+         However this status expresses some validity of the stack, respectively that it is not waiting for a meta to be pushed.
+         */
         case pathFilled
     }
     
@@ -71,8 +76,10 @@ open class CodingStack {
     
     // MARK: - init
     
-    /// inits a new CodingStack at the given codingPath.
-    /// By default, `at` is an empty array and `with` is .pathMissesMeta
+    /**
+     inits a new CodingStack at the given codingPath.
+     By default, `at` is an empty array and `with` is .pathMissesMeta
+     */
     public init(at codingPath: [CodingKey] = [], with status: Status = .pathMissesMeta ) {
         
         self.codingPath = codingPath
@@ -119,9 +126,11 @@ open class CodingStack {
         }
     }
     
-    /// push a new meta on top of the stack
-    ///
-    /// - Throws: StackError.statusMismatch if status != .awaitingMeta
+    /**
+     push a new meta on top of the stack
+    
+     - Throws: StackError.statusMismatch if status != .awaitingMeta
+     */
     public func push(meta: Meta) throws {
         
         // check wether we are awaiting a meta to be pushed
@@ -137,11 +146,13 @@ open class CodingStack {
         
     }
     
-    /// pops a meta from the top of the stack
-    ///
-    /// - Throws:
-    /// - StackError.emptyStack if the meta stack is empty
-    /// - StackError.statusMismatch: if status != .awaitingCodingKey
+    /**
+     pops a meta from the top of the stack
+    
+     - Throws:
+     - StackError.emptyStack if the meta stack is empty
+     - StackError.statusMismatch: if status != .awaitingCodingKey
+     */
     public func pop() throws -> Meta {
         
         // check whether the meta stack is not empty
@@ -164,8 +175,10 @@ open class CodingStack {
     
     // MARK: coding keys
     
-    /// appends a new CodingKey to the codingPath
-    /// - Throws: StackError.statusMismatch if status != .pathFilled
+    /**
+     appends a new CodingKey to the codingPath
+     - Throws: StackError.statusMismatch if status != .pathFilled
+     */
     public func append(codingKey key: CodingKey) throws {
         
         guard self.status == .pathFilled else {
@@ -179,8 +192,10 @@ open class CodingStack {
         
     }
     
-    /// removes the last CodingKey from the codingPath
-    /// - Throws: StackError.statusMismatch if status != .pathMissesMeta
+    /**
+      removes the last CodingKey from the codingPath
+     - Throws: StackError.statusMismatch if status != .pathMissesMeta
+     */
     public func removeLastCodingKey() throws {
         
         guard self.status == .pathMissesMeta else {
