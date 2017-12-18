@@ -113,12 +113,8 @@ public class MetaEncoder: Encoder, MetaCoder {
         // let value encode itself to this encoder
         try value.encode(to: self)
         
-        // check whether value requested a new container
-        // I consider it neccessary to check for the last operation performed to,
-        // not just whether a value may be poped
-        // because in that case it was theoretically also possible to remove a codingKey insted of pushing
-        // and that would lead to realy strange behaviours of this framework
-        if self.stack.lastOperation == .pushed {
+        // check whether a meta may be poped
+        if self.stack.mayPopMeta {
             
             // in this case, value requested a container
             // this container is poped and returned
