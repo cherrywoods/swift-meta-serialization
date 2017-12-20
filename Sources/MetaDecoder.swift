@@ -49,7 +49,19 @@ open class MetaDecoder: Decoder, MetaCoder {
             return nil
         }
         
-        return try unwrap(meta) as D
+        // in diffrence to MetaEncoder,
+        // we may not simply call unwrap here
+        // because our meta is allready at the stack
+        
+        // therefor we "manually" check whether translator
+        // supportes meta directly
+        
+        if let directlySupported = try translator.unwrap(meta: meta) as D? {
+            return directlySupported
+        }
+        
+        // and if it isn't directly supported, we call
+        return try D(from: self) // and let D decode itself
         
     }
     
@@ -59,8 +71,9 @@ open class MetaDecoder: Decoder, MetaCoder {
     public let translator: Translator
     
     
-    
-    /// wraps a meta into a decodable value
+    /**
+     wraps a meta into a decodable value
+     */
     public func unwrap<T: Decodable>(_ meta: Meta) throws -> T {
         
         // single value containers may not redecode their values with new containers,

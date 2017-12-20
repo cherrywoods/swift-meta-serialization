@@ -160,8 +160,7 @@ open class CodingStack {
             throw StackError.emptyStack
         }
         
-        // check whether status is .awaitingCodingKey
-        //
+        // check whether status is .pathFilled
         guard self.status == .pathFilled else {
             throw StackError.statusMismatch(expected: .pathFilled, current: self.status)
         }
