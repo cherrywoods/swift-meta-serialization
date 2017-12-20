@@ -92,7 +92,7 @@ public class MetaEncoder: Encoder, MetaCoder {
         
         // whatever case we have, it's allways possible,
         // that translator supports the value's type natively
-        if var newMeta = self.translator.wrapingMeta(for: value) {
+        if var newMeta = self.translator.wrappingMeta(for: value) {
             
             // if that is the case, set the value of newMeta and return it without ever using stack
             try newMeta.set(value: value)

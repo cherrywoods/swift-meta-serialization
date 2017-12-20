@@ -46,7 +46,7 @@ public protocol Translator {
      - Parameter for: The value for which a wrapping Meta should be returned.
      - Returns: A Meta that will wrap value.
      */
-    func wrapingMeta<T>(for value: T) -> Meta?
+    func wrappingMeta<T>(for value: T) -> Meta?
     
     /**
      Extract the swift value from a meta, you initalized during decode(). If you don't support the requested type directly, return nil. If you decoded to a Meta conforming to NilMetaProtocol, that Meta will not reach your method.

@@ -33,7 +33,7 @@ public protocol NilMetaProtocol: Meta {  }
 /**
  A subprotocol of Meta, enabeling you to rely on a specfic type, so you don't need to check for this type all the time
  
- meta-serialization provides default implementations for set(value:) and get(). set(value:) will crash (using the precodingtion method) the programm if a value with the wrong type is passed to set(value:). However, meta-serialization will never do this, unless you do not implement wrapingMeta(forSwiftType:) in your implementation of Translator with faults.
+ meta-serialization provides default implementations for set(value:) and get(). set(value:) will crash (using the precodingtion method) the programm if a value with the wrong type is passed to set(value:). However, meta-serialization will never do this, unless you do not implement wrappingMeta(forSwiftType:) in your implementation of Translator with faults.
  */
 public protocol GenericMeta: Meta {
     associatedtype SwiftValueType

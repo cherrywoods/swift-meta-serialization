@@ -12,7 +12,7 @@ import Foundation
 /// This translator does nothing. It translates to and from Metas.
 class UselessTranslator: Translator {
     
-    func wrapingMeta<T>(for value: T) -> Meta? {
+    func wrappingMeta<T>(for value: T) -> Meta? {
         
         if T.self == GenericNil.self {
             return NilMeta()
