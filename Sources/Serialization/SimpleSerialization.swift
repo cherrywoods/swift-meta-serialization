@@ -8,10 +8,10 @@
 import Foundation
 
 /**
- Provides a simple Serialization structure, you pass a translator in initalization.
+ Provides a simple Serialization class, you pass a translator in initalization.
  SimpleSerialization uses that translator for all objects it serializes.
  */
-public struct SimpleSerialization<R>: Serialization {
+public class SimpleSerialization<R>: Serialization {
     
     public typealias Raw = R
     

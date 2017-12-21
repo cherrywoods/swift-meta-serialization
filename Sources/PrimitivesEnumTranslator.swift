@@ -10,7 +10,7 @@ import Foundation
 /**
  A implementation of Translator, that gets Metas out of your way, so you will only have to work with Arrays, Dictionarys and the Primitive types you pass to it.
  */
-public struct PrimitivesEnumTranslator<Raw>: Translator {
+public class PrimitivesEnumTranslator<Raw>: Translator {
     
     /**
      This enum contains cases for all primitive types this Translator can handle.
