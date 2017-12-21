@@ -31,13 +31,22 @@ class UselessTranslator: Translator {
     }
     
     func encode<Raw>(_ meta: Meta) throws -> Raw {
+        return try UselessTranslator.encodeToMeta( meta )
+    }
+    
+    func decode<Raw>(_ raw: Raw) throws -> Meta {
+        return try UselessTranslator.decodeFromMeta( raw )
+    }
+    
+    static func encodeToMeta<Raw>(_ meta: Meta) throws -> Raw {
         precondition(Raw.self == Meta.self, "Incorrect translation type")
         return meta as! Raw
     }
     
-    func decode<Raw>(_ raw: Raw) throws -> Meta {
+    static func decodeFromMeta<Raw>(_ raw: Raw) throws -> Meta {
         precondition(Raw.self == Meta.self, "Incorrect translation type")
         return raw as! Meta
     }
+
     
 }

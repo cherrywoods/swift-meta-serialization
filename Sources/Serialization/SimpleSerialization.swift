@@ -25,13 +25,13 @@ public struct SimpleSerialization<R>: Serialization {
     
     public func provideNewEncoder() -> MetaEncoder {
         
-        return TranslatingCoder(translator: self.translator).encoder
+        return MetaEncoder(translator: translator)
         
     }
     
     public func provideNewDecoder(raw: R) -> MetaDecoder {
         
-        return TranslatingCoder(translator: self.translator).decoder
+        return try! MetaDecoder(translator: translator, raw: raw)
         
     }
     

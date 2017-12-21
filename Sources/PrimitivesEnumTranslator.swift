@@ -16,7 +16,7 @@ public struct PrimitivesEnumTranslator<Raw>: Translator {
      This enum contains cases for all primitive types this Translator can handle.
      The provided cases correspond to the types from the standard library, that have no mode of serializing themselves to another type (rely on a SingleValue(Encoding/Decoding)Container).
      */
-    public enum Primitive {
+    public enum Primitive: Hashable {
         /// stands for the swift String type
         case string
         /// stands for the swift Bool type
@@ -47,6 +47,10 @@ public struct PrimitivesEnumTranslator<Raw>: Translator {
         case uInt64
         /// stands for a nil value
         case `nil`
+        
+        public static var all: Set<Primitive> {
+            return Set<Primitive>(arrayLiteral: Primitive.string, .bool, .float, .double, .int, .uInt, .int8, .uInt8, .int16, .uInt16, .int32, .uInt32, .int64, .uInt64, .nil )
+        }
         
         /**
          Creates a new Primitive for the given swift type, if it is supported.
@@ -118,7 +122,10 @@ public struct PrimitivesEnumTranslator<Raw>: Translator {
      - Parameter encode: Your encoding closure. You may expect the Any? parameter to be one of your primitive types (and non-nil, if you did not added .nil to the primitives you passed), an array of your primitive types or a dictionary of Strings and one of your primitive types (it isn't possible to avoid these strings per se). The arrays and dictionarys might indeed contain nested arrays and dictionarys.
      - Parameter decode: Your decoding closure. You need to return one of your primitive types, an array of your primitive types, or a dictionary of Strings and your primitive types (or with nested arrays and dictionarys).
      */
-    init(primitives: Set<Primitive>, wrappers: [Primitive : Wrapper] = [:], encode: @escaping (Any?) throws -> Raw, decode: @escaping (Raw) throws -> Any? ) {
+    init(primitives: Set<Primitive>,
+         wrappers: [Primitive : Wrapper] = [:],
+         encode: @escaping (Any?) throws -> Raw,
+         decode: @escaping (Raw) throws -> Any? ) {
         
         // make sure wrappers.values is a subset of primitives
         // if the wrappers would not be primitives, we could not wrap to them
@@ -223,19 +230,19 @@ public struct PrimitivesEnumTranslator<Raw>: Translator {
                     case .string:
                         let string = value as! String
                         switch primitive {
-                        case .bool:     return Bool(string) as! T?
-                        case .float:    return Float(string) as! T?
-                        case .double:   return Double(string) as! T?
-                        case .int:      return Int(string) as! T?
-                        case .uInt:     return UInt(string) as! T?
-                        case .int8:     return Int8(string) as! T?
-                        case .uInt8:    return UInt8(string) as! T?
-                        case .int16:    return Int16(string) as! T?
-                        case .uInt16:   return UInt16(string) as! T?
-                        case .int32:    return Int32(string) as! T?
-                        case .uInt32:   return UInt32(string) as! T?
-                        case .int64:    return Int64(string) as! T?
-                        case .uInt64:   return UInt64(string) as! T?
+                        case .bool:     return Bool(string) as? T
+                        case .float:    return Float(string) as? T
+                        case .double:   return Double(string) as? T
+                        case .int:      return Int(string) as? T
+                        case .uInt:     return UInt(string) as? T
+                        case .int8:     return Int8(string) as? T
+                        case .uInt8:    return UInt8(string) as? T
+                        case .int16:    return Int16(string) as? T
+                        case .uInt16:   return UInt16(string) as? T
+                        case .int32:    return Int32(string) as? T
+                        case .uInt32:   return UInt32(string) as? T
+                        case .int64:    return Int64(string) as? T
+                        case .uInt64:   return UInt64(string) as? T
                         default: // this is .string and .nil (but nil is impossible), so just .string
                             // thats ofcourse nonsence, but I decided to tolerate it
                             return value
@@ -269,11 +276,67 @@ public struct PrimitivesEnumTranslator<Raw>: Translator {
         
         // Meta is garanteed to be a SimpleGenericMeta of one of the Primitive types
         // or a DictionaryKeyedContainerMeta or ArrayUnkeyedContainerMeta
-        // that are both also SimpleGenericMetas
+        // that are both GenericMetas
         
-        guard let value = (meta as! SimpleGenericMeta<Any>).value else {
-            // this is a serious error in the Basic Coding code
-            preconditionFailure("Meta had no value at encoding time")
+        let value: Any
+        if meta is DictionaryKeyedContainerMeta {
+            
+            let d = (meta as! DictionaryKeyedContainerMeta).value!
+            value = try d.mapValues { return try encode($0) as R }
+            
+        } else if meta is ArrayUnkeyedContainerMeta {
+            
+            let a = (meta as! ArrayUnkeyedContainerMeta).value!
+            value = try a.map { return try encode($0) as R }
+            
+        } else {
+            
+            if meta is SimpleGenericMeta<String> {
+                value = (meta as! SimpleGenericMeta<String>).value!
+                
+            } else if meta is SimpleGenericMeta<Bool> {
+                value = (meta as! SimpleGenericMeta<Bool>).value!
+                
+            } else if meta is SimpleGenericMeta<Float> {
+                value = (meta as! SimpleGenericMeta<Float>).value!
+                
+            } else if meta is SimpleGenericMeta<Double> {
+                value = (meta as! SimpleGenericMeta<Double>).value!
+                
+            } else if meta is SimpleGenericMeta<Int> {
+                value = (meta as! SimpleGenericMeta<Int>).value!
+                
+            } else if meta is SimpleGenericMeta<UInt> {
+                value = (meta as! SimpleGenericMeta<UInt>).value!
+                
+            } else if meta is SimpleGenericMeta<Int8> {
+                value = (meta as! SimpleGenericMeta<Int8>).value!
+                
+            } else if meta is SimpleGenericMeta<UInt8> {
+                value = (meta as! SimpleGenericMeta<UInt8>).value!
+                
+            } else if meta is SimpleGenericMeta<Int16> {
+                value = (meta as! SimpleGenericMeta<Int16>).value!
+                
+            } else if meta is SimpleGenericMeta<UInt16> {
+                value = (meta as! SimpleGenericMeta<UInt16>).value!
+                
+            } else if meta is SimpleGenericMeta<Int32> {
+                value = (meta as! SimpleGenericMeta<Int32>).value!
+                
+            } else if meta is SimpleGenericMeta<UInt32> {
+                value = (meta as! SimpleGenericMeta<UInt32>).value!
+                
+            } else if meta is SimpleGenericMeta<Int64> {
+                value = (meta as! SimpleGenericMeta<Int64>).value!
+                
+            } else if meta is SimpleGenericMeta<UInt64> {
+               value = (meta as! SimpleGenericMeta<UInt64>).value!
+                
+            } else {
+                preconditionFailure("Unknown Meta")
+            }
+            
         }
         
         // value is eigther a primitive type
@@ -301,12 +364,12 @@ public struct PrimitivesEnumTranslator<Raw>: Translator {
             if primitives.contains(.nil) {
                 return NilMeta.nil
             } else {
-                preconditionFailure("You may not return nil in \(self.decodingClosure), if you do not support nil a a primitive type.")
+                preconditionFailure("May not return nil in \(self.decodingClosure), if no support for nil as primitive type is given.")
             }
             
         }
         
-        // check for (keyed container
+        // check for keyed container
         if let dictionary = value as? Dictionary<String, Any?> {
             
             // create metas for values first (recursively)
@@ -344,7 +407,7 @@ public struct PrimitivesEnumTranslator<Raw>: Translator {
         } else if let float = value as? Float {
             return SimpleGenericMeta(value: float)
             
-        } else if let double = value as? Bool {
+        } else if let double = value as? Double {
             return SimpleGenericMeta(value: double)
             
         } else if let int = value as? Int {
