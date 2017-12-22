@@ -34,7 +34,7 @@ public protocol EncodingRepresentation {
     /**
      Encodes the given value into this EncodingRepresentation
      */
-    mutating func encode<E: Encodable>(_ value: E) throws
+    init<E: Encodable>(encoding value: E) throws
     
     /// returns a new MetaEncoder for self
     func provideNewEncoder() -> MetaEncoder
