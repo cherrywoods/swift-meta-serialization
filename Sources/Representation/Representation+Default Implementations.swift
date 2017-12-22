@@ -10,9 +10,15 @@ import Foundation
 
 public extension EncodingRepresentation {
     
+    init<E: Encodable>(encoding value: E) throws {
+        
+        self = try Self.provideNewEncoder().encode(value)
+        
+    }
+    
     mutating func encode<E: Encodable>(_ value: E) throws {
         
-        self = try provideNewEncoder().encode(value)
+        self = try Self.provideNewEncoder().encode(value)
         
     }
     

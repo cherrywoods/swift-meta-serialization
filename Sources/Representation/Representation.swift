@@ -32,12 +32,17 @@ public typealias Representation = EncodingRepresentation & DecodingRepresentatio
 public protocol EncodingRepresentation {
     
     /**
-     Encodes the given value into this EncodingRepresentation
+     Inits encoding the given value
      */
     init<E: Encodable>(encoding value: E) throws
     
+    /**
+     Encodes the given value into this EncodingRepresentation
+     */
+    mutating func encode<E: Encodable>(_ value: E) throws
+    
     /// returns a new MetaEncoder for self
-    func provideNewEncoder() -> MetaEncoder
+    static func provideNewEncoder() -> MetaEncoder
     
 }
 
