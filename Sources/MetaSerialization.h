@@ -5,7 +5,7 @@
 //  Created by cherrywoods on 19.11.17.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for MetaSerialization.
 FOUNDATION_EXPORT double MetaSerializationVersionNumber;

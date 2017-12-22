@@ -11,14 +11,14 @@ import Foundation
 // encoder will create a meta object
 
 /// An Encoder that constucts a Meta entity insted of encoding directly to the desired format
-public class MetaEncoder: Encoder, MetaCoder {
+open class MetaEncoder: Encoder, MetaCoder {
     
     public var userInfo: [CodingUserInfoKey : Any]
     
     /// the CodingStack of this encoder
-    public  var stack: CodingStack
+    public var stack: CodingStack
     
-    public var codingPath: [CodingKey] {
+    open var codingPath: [CodingKey] {
         return stack.codingPath
     }
     
@@ -34,7 +34,7 @@ public class MetaEncoder: Encoder, MetaCoder {
      Data objects directly. Then calling data.encode(to:) will not fall back
      to that support, it will be encoded as Data encodes itself.
      */
-    public func encode<E, Raw>(_ value: E) throws -> Raw where E: Encodable {
+    open func encode<E, Raw>(_ value: E) throws -> Raw where E: Encodable {
         
         // encode over wrap function
         // this will keep E from encoding itself,
@@ -48,7 +48,7 @@ public class MetaEncoder: Encoder, MetaCoder {
      Returns the representation or raw value of the value encoded to this encoder, if a value was already encoded to it and that encoding process has suceeded, otherwise it will return nil.
      Throws: This function will throw an error, if the translation process in translator throws an error
      */
-    public func representationOfEncodedValue<Raw>() throws -> Raw {
+    open func representationOfEncodedValue<Raw>() throws -> Raw {
         
         // if there's not exectly one element on the stack, the encoding has not finished or has not suceeded
         guard stack.count == 1 else {
@@ -72,10 +72,10 @@ public class MetaEncoder: Encoder, MetaCoder {
     // MARK: - translator
     
     /// The translator used to get and finally translate Metas
-    public let translator: Translator
+    open let translator: Translator
     
     /// wraps an encodable value into a meta requested from translator
-    public func wrap<T: Encodable>(_ value: T) throws -> Meta {
+    open func wrap<T: Encodable>(_ value: T) throws -> Meta {
         
         // On call of this method, two cases are possible.
         // Eighter the stack is at status .pathMissesMeta, in which case a keyed or unkeyed container
@@ -144,7 +144,7 @@ public class MetaEncoder: Encoder, MetaCoder {
     
     // MARK: - container methods
     
-    public func container<Key>(keyedBy keyType: Key.Type) -> KeyedEncodingContainer<Key> where Key : CodingKey {
+    open func container<Key>(keyedBy keyType: Key.Type) -> KeyedEncodingContainer<Key> where Key : CodingKey {
         
         // if there's no container at the current codingPath, let translator create a new one and append it
         // if there is one and it is a KeyedContainerMeta, its allright
@@ -166,7 +166,7 @@ public class MetaEncoder: Encoder, MetaCoder {
         
     }
     
-    public func unkeyedContainer() -> UnkeyedEncodingContainer {
+    open func unkeyedContainer() -> UnkeyedEncodingContainer {
         
         // if there's no container at the current codingPath, let translator create a new one and append it
         // if there is one and it is a UnkeyedContainerMeta, its allright
@@ -186,7 +186,7 @@ public class MetaEncoder: Encoder, MetaCoder {
         
     }
     
-    public func singleValueContainer() -> SingleValueEncodingContainer {
+    open func singleValueContainer() -> SingleValueEncodingContainer {
         
         // if there's no container at the current codingPath, insert a PlaceholderMeta
         // if there is a meta, continue with that one
@@ -214,7 +214,7 @@ public class MetaEncoder: Encoder, MetaCoder {
 }
 
 /// Used by superEncoder() in MetaKeyedEncodingContainer and MetaUnkeyedEncodingContainer
-public  class ReferencingMetaEncoder: MetaEncoder {
+open class ReferencingMetaEncoder: MetaEncoder {
     
     private var reference: ContainerReference
     

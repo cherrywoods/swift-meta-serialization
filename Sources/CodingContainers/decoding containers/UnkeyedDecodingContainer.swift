@@ -23,7 +23,7 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
         }
     }
     
-    public var codingPath: [CodingKey]
+    open var codingPath: [CodingKey]
     
     // MARK: - initalization
     
@@ -36,12 +36,12 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     
     // MARK: - container methods
     
-    public var count: Int? {
+    open var count: Int? {
         // because the unkeyed container is already halfway decoded, the number of elements should be known
         return referencedMeta.count
     }
     
-    public var isAtEnd: Bool {
+    open var isAtEnd: Bool {
         return self.currentIndex == self.count
     }
     
@@ -50,7 +50,7 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     
     // MARK: - decoding
     
-    public func decodeNil() throws -> Bool {
+    open func decodeNil() throws -> Bool {
         
         let isNil = try self.decode(ValuePresenceIndicator.self).isNil
         // as documentation says, we should not increment currentIndex, if the value is not nil,
@@ -61,7 +61,7 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
         
     }
     
-    public func decode<T>(_ type: T.Type) throws -> T where T : Decodable {
+    open func decode<T>(_ type: T.Type) throws -> T where T : Decodable {
         
         // first check whether the container still has an element
         guard let subMeta = referencedMeta.get(at: currentIndex) else {
@@ -93,7 +93,7 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     
     // MARK: - nested container
     
-    public func nestedContainer<NestedKey>(keyedBy type: NestedKey.Type) throws -> KeyedDecodingContainer<NestedKey> where NestedKey : CodingKey {
+    open func nestedContainer<NestedKey>(keyedBy type: NestedKey.Type) throws -> KeyedDecodingContainer<NestedKey> where NestedKey : CodingKey {
         
         // need to extend coding path in decoder, because decoding might result in an error thrown
         // and furthermore the new container gets the codingPath from decoder
@@ -133,7 +133,7 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
         
     }
     
-    public func nestedUnkeyedContainer() throws -> UnkeyedDecodingContainer {
+    open func nestedUnkeyedContainer() throws -> UnkeyedDecodingContainer {
         
         // need to extend coding path in decoder, because decoding might result in an error thrown
         // and furthermore the new container gets the codingPath from decoder
@@ -173,7 +173,7 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     
     // MARK: - super encoder
     
-    public func superDecoder() throws -> Decoder {
+    open func superDecoder() throws -> Decoder {
         
         // need to extend coding path in decoder, because decoding might result in an error thrown
         try reference.coder.stack.append(codingKey: IndexCodingKey(intValue: self.currentIndex)!)

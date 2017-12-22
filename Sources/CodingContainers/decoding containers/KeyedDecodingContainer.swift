@@ -27,7 +27,7 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
         }
     }
     
-    public var codingPath: [CodingKey]
+    open var codingPath: [CodingKey]
     
     // MARK: - initalization
     
@@ -40,22 +40,22 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
     
     // MARK: - container methods
     
-    public var allKeys: [K] {
+    open var allKeys: [K] {
         // because only this class should access reference, all keys should be K
         return referencedMeta.allKeys() as [K]
     }
     
-    public func contains(_ key: K) -> Bool {
+    open func contains(_ key: K) -> Bool {
         return referencedMeta.contains(key: key)
     }
     
     // MARK: - decoding
     
-    public func decodeNil(forKey key: K) throws -> Bool {
+    open func decodeNil(forKey key: K) throws -> Bool {
         return try self.decode(ValuePresenceIndicator.self, forKey: key).isNil
     }
     
-    public func decode<T>(_ type: T.Type, forKey key: K) throws -> T where T : Decodable {
+    open func decode<T>(_ type: T.Type, forKey key: K) throws -> T where T : Decodable {
         
         // if subscript return nil, there's no value contained
         guard let subMeta = referencedMeta[key] else {
@@ -82,7 +82,7 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
     
     // MARK: - nested container
     
-    public func nestedContainer<NestedKey>(keyedBy type: NestedKey.Type, forKey key: K) throws -> KeyedDecodingContainer<NestedKey> where NestedKey : CodingKey {
+    open func nestedContainer<NestedKey>(keyedBy type: NestedKey.Type, forKey key: K) throws -> KeyedDecodingContainer<NestedKey> where NestedKey : CodingKey {
         
         // need to extend coding path in decoder, because decoding might result in an error thrown
         // and furthermore the new container gets the codingPath from decoder
@@ -120,7 +120,7 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
         
     }
     
-    public func nestedUnkeyedContainer(forKey key: K) throws -> UnkeyedDecodingContainer {
+    open func nestedUnkeyedContainer(forKey key: K) throws -> UnkeyedDecodingContainer {
         
         // need to extend coding path in decoder, because decoding might result in an error thrown
         // and furthermore the new container gets the codingPath from decoder
@@ -158,11 +158,11 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
     
     // MARK: - super encoder
     
-    public func superDecoder() throws -> Decoder {
+    open func superDecoder() throws -> Decoder {
         return try self.superDecoderImpl(forKey: SpecialCodingKey.super.rawValue)
     }
     
-    public func superDecoder(forKey key: K) throws -> Decoder {
+    open func superDecoder(forKey key: K) throws -> Decoder {
         return try self.superDecoderImpl(forKey: key)
     }
     

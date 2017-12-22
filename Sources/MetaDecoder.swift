@@ -18,7 +18,7 @@ open class MetaDecoder: Decoder, MetaCoder {
     /// the CodingStack of this decoder
     public var stack: CodingStack
     
-    public var codingPath: [CodingKey] {
+    open var codingPath: [CodingKey] {
         return stack.codingPath
     }
     
@@ -36,7 +36,7 @@ open class MetaDecoder: Decoder, MetaCoder {
      
      - Returns: A new decoded value of type D or nil, if this decoder is not in an appropiate state to decode a value.
      */
-    public func decode<D>(type: D.Type) throws -> D? where D: Decodable {
+    open func decode<D>(type: D.Type) throws -> D? where D: Decodable {
         
         // decode over unwrap function
         // this will keep D from decoding itself,
@@ -68,13 +68,13 @@ open class MetaDecoder: Decoder, MetaCoder {
     // MARK: - translator
     
     /// The translator used to get and finally translate Metas
-    public let translator: Translator
+    open let translator: Translator
     
     
     /**
      wraps a meta into a decodable value
      */
-    public func unwrap<T: Decodable>(_ meta: Meta) throws -> T {
+    open func unwrap<T: Decodable>(_ meta: Meta) throws -> T {
         
         // single value containers may not redecode their values with new containers,
         // so their values need to be supported directly by the translator
@@ -142,7 +142,7 @@ open class MetaDecoder: Decoder, MetaCoder {
     
     // MARK: - container methods
     
-    public func container<Key>(keyedBy keyType: Key.Type) throws -> KeyedDecodingContainer<Key> where Key : CodingKey {
+    open func container<Key>(keyedBy keyType: Key.Type) throws -> KeyedDecodingContainer<Key> where Key : CodingKey {
         
         guard self.stack.last is KeyedContainerMeta else {
             let context = DecodingError.Context(codingPath: self.codingPath, debugDescription: "Encoded type dos not match with expected type.")
@@ -156,7 +156,7 @@ open class MetaDecoder: Decoder, MetaCoder {
         
     }
     
-    public func unkeyedContainer() throws -> UnkeyedDecodingContainer {
+    open func unkeyedContainer() throws -> UnkeyedDecodingContainer {
         
         guard self.stack.last is UnkeyedContainerMeta else {
             let context = DecodingError.Context(codingPath: self.codingPath, debugDescription: "Encoded type dos not match with expected type.")
@@ -168,7 +168,7 @@ open class MetaDecoder: Decoder, MetaCoder {
         
     }
     
-    public func singleValueContainer() -> SingleValueDecodingContainer {
+    open func singleValueContainer() -> SingleValueDecodingContainer {
         
         let referencing = StackReference(coder: self, at: stack.lastIndex) as Reference
         return MetaSingleValueDecodingContainer(referencing: referencing)

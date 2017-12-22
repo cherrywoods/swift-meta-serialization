@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		637982AD1FC1B117008BD5D5 /* MetaSerialization macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 637982A71FC1B0E6008BD5D5 /* MetaSerialization macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		637982B71FC1B190008BD5D5 /* MetaSerialization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E752FF1FC1A5A6000A2319 /* MetaSerialization.framework */; };
 		637982BD1FC1B1A0008BD5D5 /* meta_serialization_macOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7532C1FC1ACF9000A2319 /* meta_serialization_macOSTests.swift */; };
 		637982BE1FC1B1A3008BD5D5 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7532D1FC1ACF9000A2319 /* Tree.swift */; };
@@ -17,6 +16,7 @@
 		6393728F1FEC211A00840D11 /* SimpleSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6393728D1FEC210900840D11 /* SimpleSerialization.swift */; };
 		639372901FEC211A00840D11 /* SimpleSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6393728D1FEC210900840D11 /* SimpleSerialization.swift */; };
 		639372911FEC211A00840D11 /* SimpleSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6393728D1FEC210900840D11 /* SimpleSerialization.swift */; };
+		6393729F1FEC5B9E00840D11 /* MetaSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 63E752DA1FC1A557000A2319 /* MetaSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		63B6AA351FE5BDFF00040FB8 /* Encodable and Decodable + Representation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B6AA341FE5BDFF00040FB8 /* Encodable and Decodable + Representation.swift */; };
 		63B6AA361FE5BDFF00040FB8 /* Encodable and Decodable + Representation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B6AA341FE5BDFF00040FB8 /* Encodable and Decodable + Representation.swift */; };
 		63B6AA371FE5BDFF00040FB8 /* Encodable and Decodable + Representation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B6AA341FE5BDFF00040FB8 /* Encodable and Decodable + Representation.swift */; };
@@ -175,7 +175,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		637982A71FC1B0E6008BD5D5 /* MetaSerialization macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MetaSerialization macOS.h"; sourceTree = "<group>"; };
 		637982B21FC1B190008BD5D5 /* MetaSerializationTests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MetaSerializationTests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6393728B1FEC1CDA00840D11 /* Forest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forest.swift; sourceTree = "<group>"; };
 		6393728D1FEC210900840D11 /* SimpleSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleSerialization.swift; sourceTree = "<group>"; };
@@ -183,13 +182,10 @@
 		63BC5BD21FC95A7E0035005D /* PrimitivesEnumTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimitivesEnumTranslator.swift; sourceTree = "<group>"; };
 		63E752D71FC1A557000A2319 /* MetaSerialization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MetaSerialization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63E752DA1FC1A557000A2319 /* MetaSerialization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetaSerialization.h; sourceTree = "<group>"; };
-		63E752DB1FC1A557000A2319 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
+		63E752DB1FC1A557000A2319 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63E752E51FC1A56F000A2319 /* MetaSerialization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MetaSerialization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		63E752E81FC1A56F000A2319 /* Info-watchOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-watchOS.plist"; sourceTree = "<group>"; };
 		63E752F21FC1A582000A2319 /* MetaSerialization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MetaSerialization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		63E752F51FC1A582000A2319 /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
 		63E752FF1FC1A5A6000A2319 /* MetaSerialization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MetaSerialization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		63E753021FC1A5A6000A2319 /* Info-macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-macOS.plist"; sourceTree = "<group>"; };
 		63E7530E1FC1ABB5000A2319 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		63E753131FC1ABBF000A2319 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		63E753201FC1AC83000A2319 /* Info-macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-macOS.plist"; sourceTree = "<group>"; };
@@ -309,11 +305,7 @@
 				63BC5BD11FC95A260035005D /* SimpleTranslator */,
 				63E7547B1FC1AEBC000A2319 /* Usage */,
 				63E752DA1FC1A557000A2319 /* MetaSerialization.h */,
-				637982A71FC1B0E6008BD5D5 /* MetaSerialization macOS.h */,
-				63E752DB1FC1A557000A2319 /* Info-iOS.plist */,
-				63E752E81FC1A56F000A2319 /* Info-watchOS.plist */,
-				63E752F51FC1A582000A2319 /* Info-tvOS.plist */,
-				63E753021FC1A5A6000A2319 /* Info-macOS.plist */,
+				63E752DB1FC1A557000A2319 /* Info.plist */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -482,7 +474,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				637982AD1FC1B117008BD5D5 /* MetaSerialization macOS.h in Headers */,
+				6393729F1FEC5B9E00840D11 /* MetaSerialization.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1106,7 +1098,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Sources/Info-iOS.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1175,7 +1167,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Sources/Info-iOS.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1248,7 +1240,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Sources/Info-watchOS.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -1316,7 +1308,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Sources/Info-watchOS.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -1389,7 +1381,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Sources/Info-tvOS.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -1457,7 +1449,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Sources/Info-tvOS.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -1532,7 +1524,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Sources/Info-macOS.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
@@ -1601,7 +1593,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Sources/Info-macOS.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
