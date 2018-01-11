@@ -28,7 +28,7 @@ open class MetaEncoder: Encoder, MetaCoder {
      Encodes the given value.
      
      Use this method rather than directly calling encode(to:).
-     Encode(to:) will not detect types in the first place
+     encode(to:) will not detect types in the first place
      that are directly supported by the translator.
      Example: If data is a Data instance and the translator supportes
      Data objects directly. Then calling data.encode(to:) will not fall back
@@ -66,6 +66,28 @@ open class MetaEncoder: Encoder, MetaCoder {
         let finalMeta = meta is PlaceholderMeta ? translator.keyedContainerMeta() : meta
         
         return try translator.encode(finalMeta)
+        
+    }
+    
+    /**
+     Encodes the given intermediate value.
+     Use this method if you encode other values inside your implementation of Encodable's encode(to:) method.
+     
+     Use this method rather than directly calling encode(to:).
+     encode(to:) will not detect types in the first place
+     that are directly supported by the translator.
+     Example: If data is a Data instance and the translator supportes
+     Data objects directly. Then calling data.encode(to:) will not fall back
+     to that support, it will be encoded as Data encodes itself.
+     */
+    open func encodeIntermediate<E>(_ value: E) throws where E: Encodable {
+        
+        // encode over wrap function
+        // this will keep E from encoding itself,
+        // if it is supported by translator
+        let meta = try wrap(value)
+        // readd the meta to the stack
+        try self.stack.push(meta: meta)
         
     }
     

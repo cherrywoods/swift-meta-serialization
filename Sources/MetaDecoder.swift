@@ -44,8 +44,8 @@ open class MetaDecoder: Decoder, MetaCoder {
         
         // return the unwrapped topContainer
         
-        guard let meta = stack.first else {
-            // if stack has somehow no first element:
+        guard let meta = stack.last else {
+            // if stack has somehow no element:
             return nil
         }
         
