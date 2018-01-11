@@ -39,7 +39,7 @@ open class MetaEncoder: Encoder, MetaCoder {
         // encode over wrap function
         // this will keep E from encoding itself,
         // if it is supported by translator
-        let meta = try wrap(value)
+        let meta = try wrap(value, typeForErrorDescription: "\(E.self)")
         return try representationOfEncodedValue(meta: meta)
         
     }
@@ -80,7 +80,7 @@ open class MetaEncoder: Encoder, MetaCoder {
      Data objects directly. Then calling data.encode(to:) will not fall back
      to that support, it will be encoded as Data encodes itself.
      */
-    open func encodeIntermediate<E>(_ value: E) throws where E: Encodable {
+    open func encodeIntermediate(_ value: Encodable) throws {
         
         // encode over wrap function
         // this will keep E from encoding itself,
@@ -96,8 +96,8 @@ open class MetaEncoder: Encoder, MetaCoder {
     /// The translator used to get and finally translate Metas
     open let translator: Translator
     
-    /// wraps an encodable value into a meta requested from translator
-    open func wrap<T: Encodable>(_ value: T) throws -> Meta {
+    /// wraps an encodable value into a meta requested from translator.
+    open func wrap(_ value: Encodable, typeForErrorDescription typeDescrption: String = "") throws -> Meta {
         
         // On call of this method, two cases are possible.
         // Eighter the stack is at status .pathMissesMeta, in which case a keyed or unkeyed container
@@ -127,7 +127,7 @@ open class MetaEncoder: Encoder, MetaCoder {
         guard self.stack.mayPushNewMeta else {
             // this error is thrown, if an entity, that requested a single value container
             // was not supported natively by the translator
-            throw EncodingError.invalidValue(value, EncodingError.Context.init(codingPath: self.codingPath, debugDescription: "Type \(T.self) is not supported by this serialization framework."))
+            throw EncodingError.invalidValue(value, EncodingError.Context.init(codingPath: self.codingPath, debugDescription: "Type \(typeDescrption) is not supported by this serialization framework."))
         }
         
         // <now it is sure, that stack will accept a new meta>
