@@ -40,6 +40,10 @@ public struct DirectReference: Reference {
     public var element: Meta
     
     // default initalizer
+    public init(coder: MetaCoder, element: Meta) {
+        self.coder = coder
+        self.element = element
+    }
     
 }
 
