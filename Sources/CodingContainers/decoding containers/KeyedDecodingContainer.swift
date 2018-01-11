@@ -67,16 +67,14 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
         
         // the coding path needs to be extended, because unwrap(meta) may throw an error
         try reference.coder.stack.append(codingKey: key)
-        defer {
-            do {
-                try reference.coder.stack.removeLastCodingKey()
-            } catch {
-                // see MetaKeyedEncodingContainer
-                preconditionFailure("Tried to remove codingPath with associated container")
-            }
-        }
         
-        return try (self.reference.coder as! MetaDecoder).unwrap(subMeta)
+        let unwrapped = try (self.reference.coder as! MetaDecoder).unwrap(subMeta) as T
+        
+        // we do not use defer here, because a failure indicates corrupted data
+        // and that should be reported in a error
+        try reference.coder.stack.removeLastCodingKey()
+        
+        return unwrapped
         
     }
     
@@ -87,14 +85,6 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
         // need to extend coding path in decoder, because decoding might result in an error thrown
         // and furthermore the new container gets the codingPath from decoder
         try reference.coder.stack.append(codingKey: key)
-        defer {
-            do {
-                try reference.coder.stack.removeLastCodingKey()
-            } catch {
-                // this should never happen
-                preconditionFailure("Tried to remove codingPath with associated container")
-            }
-        }
         
         // first check whether there's a meta at all for the key
         guard let subMeta = self.referencedMeta[key] else {
@@ -112,6 +102,10 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
             throw DecodingError.typeMismatch(KeyedDecodingContainer<NestedKey>.self, context)
         }
         
+        // do not use defer here, because a failure indicates corrupted data
+        // and that should be reported in a error
+        try reference.coder.stack.removeLastCodingKey()
+        
         let nestedReference = DirectReference(coder: self.reference.coder, element: keyedSubMeta)
         
         return KeyedDecodingContainer(
@@ -125,14 +119,6 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
         // need to extend coding path in decoder, because decoding might result in an error thrown
         // and furthermore the new container gets the codingPath from decoder
         try reference.coder.stack.append(codingKey: key)
-        defer {
-            do {
-                try reference.coder.stack.removeLastCodingKey()
-            } catch {
-                // this should never happen
-                preconditionFailure("Tried to remove codingPath with associated container")
-            }
-        }
         
         // first check whether there's a meta at all for the key
         guard let subMeta = self.referencedMeta[key] else {
@@ -149,6 +135,10 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
                                                 debugDescription: "Encoded and expected type did not match")
             throw DecodingError.typeMismatch(UnkeyedDecodingContainer.self, context)
         }
+        
+        // do not use defer here, because a failure indicates corrupted data
+        // and that should be reported in a error
+        try reference.coder.stack.removeLastCodingKey()
         
         let nestedReference = DirectReference(coder: self.reference.coder, element: unkeyedSubMeta)
         
@@ -170,18 +160,16 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
         
         // need to extend coding path in decoder, because decoding might result in an error thrown
         try reference.coder.stack.append(codingKey: key)
-        defer {
-            do {
-                try reference.coder.stack.removeLastCodingKey()
-            } catch {
-                // this should never happen
-                preconditionFailure("Tried to remove codingPath with associated container")
-            }
-        }
         
         let subMeta = self.referencedMeta[key] ?? NilMeta()
         let referenceToOwnMeta = KeyedContainerReference(coder: self.reference.coder, element: self.referencedMeta, at: key)
-        return ReferencingMetaDecoder(referencing: referenceToOwnMeta, meta: subMeta)
+        let decoder = ReferencingMetaDecoder(referencing: referenceToOwnMeta, meta: subMeta)
+        
+        // do not use defer here, because a failure indicates corrupted data
+        // and that should be reported in a error
+        try reference.coder.stack.removeLastCodingKey()
+        
+        return decoder
         
     }
     

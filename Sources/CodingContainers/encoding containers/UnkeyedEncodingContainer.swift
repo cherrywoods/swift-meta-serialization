@@ -50,22 +50,14 @@ open class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
         
         // the coding path needs to be extended, because wrap(value) may throw an error
         try reference.coder.stack.append(codingKey: IndexCodingKey(intValue: self.count)! )
-        defer {
-            do {
-                try reference.coder.stack.removeLastCodingKey()
-            } catch {
-                // this should acutally never happen
-                // in one case, if wrap does not pop the added container again, wrap already throwed an error and this code will not be executed
-                // in the other case, if wrap added no container, the same applies.
-                // but I think it is better to crash the programm with a reason, than crash it without one using try!
-                preconditionFailure("Tried to remove codingPath with associated container")
-            }
-        }
-        
         
         let meta = try (self.reference.coder as! MetaEncoder).wrap(value)
         
         self.referencedMeta.append(element: meta)
+        
+        // do not use defer here, because a failure indicates corrupted data
+        // and that should be reported in a error
+        try reference.coder.stack.removeLastCodingKey()
         
     }
     
