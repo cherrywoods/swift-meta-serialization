@@ -16,7 +16,7 @@ open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProto
     public typealias Key = K
     
     private(set) open var reference: Reference
-    private(set) open var referencedMeta: KeyedContainerMeta {
+    open var referencedMeta: KeyedContainerMeta {
         get {
             return reference.element as! KeyedContainerMeta
         }

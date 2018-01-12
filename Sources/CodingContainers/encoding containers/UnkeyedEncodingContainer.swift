@@ -14,7 +14,7 @@ import Foundation
 open class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
     
     private(set) open var reference: Reference
-    private(set) open var referencedMeta: UnkeyedContainerMeta {
+    open var referencedMeta: UnkeyedContainerMeta {
         get {
             return reference.element as! UnkeyedContainerMeta
         }
