@@ -88,7 +88,7 @@ class meta_serialization_macOSTests: XCTestCase {
             }
             
         } catch {
-            XCTFail("encoding merlin failed: \(error)")
+            XCTFail("encoding forest failed: \(error)")
             return
         }
         

@@ -80,7 +80,7 @@ open class MetaEncoder: Encoder, MetaCoder {
      Data objects directly. Then calling data.encode(to:) will not fall back
      to that support, it will be encoded as Data encodes itself.
      */
-    open func encodeIntermediate(_ value: Encodable) throws {
+    open func encodeIntermediate<E>(_ value: E) throws where E: Encodable {
         
         // encode over wrap function
         // this will keep E from encoding itself,
@@ -97,7 +97,7 @@ open class MetaEncoder: Encoder, MetaCoder {
     open let translator: Translator
     
     /// wraps an encodable value into a meta requested from translator.
-    open func wrap(_ value: Encodable, typeForErrorDescription typeDescrption: String = "") throws -> Meta {
+    open func wrap<E>(_ value: E, typeForErrorDescription typeDescription: String = "") throws -> Meta where E: Encodable {
         
         // On call of this method, two cases are possible.
         // Eighter the stack is at status .pathMissesMeta, in which case a keyed or unkeyed container
@@ -127,7 +127,7 @@ open class MetaEncoder: Encoder, MetaCoder {
         guard self.stack.mayPushNewMeta else {
             // this error is thrown, if an entity, that requested a single value container
             // was not supported natively by the translator
-            throw EncodingError.invalidValue(value, EncodingError.Context.init(codingPath: self.codingPath, debugDescription: "Type \(typeDescrption) is not supported by this serialization framework."))
+            throw EncodingError.invalidValue(value, EncodingError.Context.init(codingPath: self.codingPath, debugDescription: "Type \(typeDescription) is not supported by this serialization framework."))
         }
         
         // <now it is sure, that stack will accept a new meta>
