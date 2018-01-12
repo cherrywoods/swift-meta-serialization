@@ -18,7 +18,7 @@ public struct StackReference: Reference {
     public var coder: MetaCoder
     private let index: Int
     
-    init(coder: MetaCoder, at index: Int) {
+    public init(coder: MetaCoder, at index: Int) {
         self.coder = coder
         self.index = index
     }
@@ -48,8 +48,8 @@ public struct DirectReference: Reference {
 }
 
 public protocol ContainerReference: Reference {
-    var codingKey: CodingKey { get }
-    mutating func insert(_: Meta)
+    public var codingKey: CodingKey { get }
+    public mutating func insert(_: Meta)
 }
 
 public struct KeyedContainerReference: ContainerReference {
