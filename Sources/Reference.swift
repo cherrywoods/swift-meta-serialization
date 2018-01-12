@@ -48,8 +48,8 @@ public struct DirectReference: Reference {
 }
 
 public protocol ContainerReference: Reference {
-    public var codingKey: CodingKey { get }
-    public mutating func insert(_: Meta)
+    var codingKey: CodingKey { get }
+    mutating func insert(_: Meta)
 }
 
 public struct KeyedContainerReference: ContainerReference {
