@@ -13,7 +13,7 @@ import Foundation
  */
 open class MetaSingleValueEncodingContainer: SingleValueEncodingContainer {
     
-    private var reference: Reference
+    private(set) open var reference: Reference
     
     open var codingPath: [CodingKey]
     
