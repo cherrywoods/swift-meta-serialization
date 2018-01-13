@@ -43,7 +43,7 @@ open class MetaSingleValueEncodingContainer: SingleValueEncodingContainer {
             preconditionFailure("Tried to encode a second value at the same coding path: \(codingPath)")
         }
         
-        self.reference.element = try (self.reference.coder as! MetaEncoder).wrap(value, typeForErrorDescription: "\(T.self)")
+        self.reference.element = try (self.reference.coder as! MetaEncoder).wrap(value)
         
     }
     

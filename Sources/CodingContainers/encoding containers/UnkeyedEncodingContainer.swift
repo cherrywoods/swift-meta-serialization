@@ -51,7 +51,7 @@ open class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
         // the coding path needs to be extended, because wrap(value) may throw an error
         try reference.coder.stack.append(codingKey: IndexCodingKey(intValue: self.count)! )
         
-        let meta = try (self.reference.coder as! MetaEncoder).wrap(value, typeForErrorDescription: "\(T.self)")
+        let meta = try (self.reference.coder as! MetaEncoder).wrap(value)
         
         self.referencedMeta.append(element: meta)
         

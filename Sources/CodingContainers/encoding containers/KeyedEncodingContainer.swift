@@ -47,7 +47,7 @@ open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProto
         // the coding path needs to be extended, because wrap(value) may throw an error
         try reference.coder.stack.append(codingKey: key)
         
-        let meta = try (self.reference.coder as! MetaEncoder).wrap(value, typeForErrorDescription: "\(T.self)")
+        let meta = try (self.reference.coder as! MetaEncoder).wrap(value)
         
         self.referencedMeta[key] = meta
         

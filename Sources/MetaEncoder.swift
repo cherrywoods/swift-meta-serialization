@@ -39,7 +39,7 @@ open class MetaEncoder: Encoder, MetaCoder {
         // encode over wrap function
         // this will keep E from encoding itself,
         // if it is supported by translator
-        let meta = try wrap(value, typeForErrorDescription: "\(E.self)")
+        let meta = try wrap(value)
         return try representationOfEncodedValue(meta: meta)
         
     }
@@ -97,7 +97,7 @@ open class MetaEncoder: Encoder, MetaCoder {
     open let translator: Translator
     
     /// wraps an encodable value into a meta requested from translator.
-    open func wrap<E>(_ value: E, typeForErrorDescription typeDescription: String = "") throws -> Meta where E: Encodable {
+    open func wrap<E>(_ value: E) throws -> Meta where E: Encodable {
         
         // On call of this method, two cases are possible.
         // Eighter the stack is at status .pathMissesMeta, in which case a keyed or unkeyed container
@@ -127,7 +127,7 @@ open class MetaEncoder: Encoder, MetaCoder {
         guard self.stack.mayPushNewMeta else {
             // this error is thrown, if an entity, that requested a single value container
             // was not supported natively by the translator
-            throw EncodingError.invalidValue(value, EncodingError.Context.init(codingPath: self.codingPath, debugDescription: "Type \(typeDescription) is not supported by this serialization framework."))
+            throw EncodingError.invalidValue(value, EncodingError.Context.init(codingPath: self.codingPath, debugDescription: "Type \(type(of: value)) is not supported by this serialization framework."))
         }
         
         // <now it is sure, that stack will accept a new meta>
