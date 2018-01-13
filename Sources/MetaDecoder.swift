@@ -189,7 +189,7 @@ public class ReferencingMetaDecoder: MetaDecoder {
      - Parameter referening: A ContainerReference to the (encoding or decoding) container this referencing encoder will reference
      - Parameter meta: The meta that should be decoded by this decoder
      */
-    init(referencing reference: ContainerReference, meta: Meta) {
+    public init(referencing reference: ContainerReference, meta: Meta) {
         
         self.reference = reference
         super.init(at: reference.coder.codingPath, translator: reference.coder.translator, topContainer: meta)

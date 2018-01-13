@@ -57,7 +57,7 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
             
             let context = DecodingError.Context(codingPath: self.codingPath,
                                                 debugDescription: "UnkeyedContainer is at end.")
-            throw DecodingError.valueNotFound(NSNull.self, context)
+            throw DecodingError.valueNotFound(Any?.self, context)
         }
         
         let isNil = subMeta is NilMetaProtocol
