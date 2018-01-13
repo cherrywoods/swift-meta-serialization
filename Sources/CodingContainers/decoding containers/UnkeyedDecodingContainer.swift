@@ -52,11 +52,18 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     
     open func decodeNil() throws -> Bool {
         
-        let isNil = try self.decode(ValuePresenceIndicator.self).isNil
-        // as documentation says, we should not increment currentIndex, if the value is not nil,
-        // but decode already incremented currentValue,
-        // so if the value isn't nil, we need to decrement it again
-        if !isNil { self.currentIndex -= 1 }
+        // first check whether the container still has an element
+        guard let subMeta = referencedMeta.get(at: currentIndex) else {
+            
+            let context = DecodingError.Context(codingPath: self.codingPath,
+                                                debugDescription: "UnkeyedContainer is at end.")
+            throw DecodingError.valueNotFound(NSNull.self, context)
+        }
+        
+        let isNil = subMeta is NilMetaProtocol
+        // as documentation says, we should only increment currentValue,
+        // if the encoded value is nil
+        if isNil { self.currentIndex += 1 }
         return isNil
         
     }

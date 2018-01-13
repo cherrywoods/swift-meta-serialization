@@ -52,12 +52,22 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
     // MARK: - decoding
     
     open func decodeNil(forKey key: K) throws -> Bool {
-        return try self.decode(ValuePresenceIndicator.self, forKey: key).isNil
+        
+        // if subscript returns nil, there's no value contained
+        guard let subMeta = referencedMeta[key] else {
+            
+            let context = DecodingError.Context(codingPath: self.codingPath,
+                                                debugDescription: "No value for key \(key) (\"\(key.stringValue)\") contained.")
+            throw DecodingError.keyNotFound(key, context)
+        }
+        
+        return subMeta is NilMetaProtocol
+        
     }
     
     open func decode<T>(_ type: T.Type, forKey key: K) throws -> T where T : Decodable {
         
-        // if subscript return nil, there's no value contained
+        // if subscript returns nil, there's no value contained
         guard let subMeta = referencedMeta[key] else {
             
             let context = DecodingError.Context(codingPath: self.codingPath,
