@@ -4,12 +4,12 @@
 meta-serialization is a framework to simplify writing new serialisation libraries for the swift standard library environment (Encodable, Decodable, etc.)
 It's aim is to let anyone create a serialization library that works with the swift serialization framework by nearly just writing the real serialization code.
 
-This framework has is **untested**!
-I would really appreciate your help testing this framework.
+This framework is **untested**!
+Any help is welcome.
 
 ## What it does
 meta-serialization provides a layer inbetween your serialization framework and the swift standard library interface 
-(mainly Encoder and Decoder) and furthermore provides you blueprints for some kinds of frontends.
+(mainly Encoder and Decoder) and implements most of the overhead Encoder and Decoder require.
 ### What it does in many words
 meta-serialization provides a MetaEncoder and MetaDecoder, that depend on a so-called Translator. 
 
@@ -80,6 +80,8 @@ let encoded = try! serialization.encode( /*some object*/ )
 // or:
 let decoded = try! serialization.decode(type: /*some type*/, from: /*your raw object, some Data in this example*/)
 ```
+## Limitation
+MetaSerialization can only do it's work properly, if you do not use the function encode(to: ) of the Encodable protocol directly in your implementation of it. Use the encode methods of the (Un)Keyed/SingleValueEncodingContainers instead. 
 ## Further documentation
 Please consult the documentation tab in github
 ## Spelling and grammar errors
