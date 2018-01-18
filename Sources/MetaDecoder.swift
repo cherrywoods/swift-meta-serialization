@@ -145,7 +145,7 @@ open class MetaDecoder: Decoder, MetaCoder {
     open func container<Key>(keyedBy keyType: Key.Type) throws -> KeyedDecodingContainer<Key> where Key : CodingKey {
         
         guard self.stack.last is KeyedContainerMeta else {
-            let context = DecodingError.Context(codingPath: self.codingPath, debugDescription: "Encoded type dos not match with expected type.")
+            let context = DecodingError.Context(codingPath: self.codingPath, debugDescription: "Encoded type does not match with expected type.")
             throw DecodingError.typeMismatch(KeyedDecodingContainer<Key>.self, context)
         }
         
@@ -159,7 +159,7 @@ open class MetaDecoder: Decoder, MetaCoder {
     open func unkeyedContainer() throws -> UnkeyedDecodingContainer {
         
         guard self.stack.last is UnkeyedContainerMeta else {
-            let context = DecodingError.Context(codingPath: self.codingPath, debugDescription: "Encoded type dos not match with expected type.")
+            let context = DecodingError.Context(codingPath: self.codingPath, debugDescription: "Encoded type does not match with expected type.")
             throw DecodingError.typeMismatch(UnkeyedDecodingContainer.self, context)
         }
         
@@ -202,7 +202,7 @@ public class ReferencingMetaDecoder: MetaDecoder {
     // this can only be done at this point, because before the meta object may be a copy-type (struct) and therefor not ready until now
     deinit {
         
-        precondition(stack.count <= 1, "ReferencingEncoder deinitalized holding multiple containers")
+        precondition(stack.count <= 1, "ReferencingEncoder deinitalized while holding multiple containers")
         
         // if there's no element on the stack, do nothing
         if let meta = stack.first {

@@ -21,22 +21,26 @@ plus any array, dictionary, tuple, Int, String, and so on to an external (I call
 say, Numbers, String and some kind of Dictionarys and Arrays by mainly writing the code to convert a swift Int to your representation of a number, a swift String to your representation of a String, a swift Array of exclusively your supported types (Number, String, Dictionary, Array in this example) to your representation of a *unkeyed container* or Array and  a swift Dictionary (of exclusively your supported types) to your representation of a *keyed container* or Dictionary (or Map).
 
 ## Installation
-Currently only carthage is supported (swift package manager is only half-way supported).
-I can not guarante, that cartage will work out, It builds on my computer and all schemes are set public, but I never tried installing it somewere else. I did not manage to add full swift-package-manager support or cocoapods support.
+Install MetaSerialization via Cartage, CocoaPods or swift package manager.
 ### Carthage
 Add the following line to your projects Cartfile:
 ```ogdl
 github "cherrywoods/swift-meta-serialization"
 ```
 For more information about cartage and it's usage, please consult [carthage's github repository](https://github.com/Carthage/Carthage "https://github.com/Carthage/Carthage").
-### Swift Package Manager (iOS only)
-You may use the swift package manager, but only for the iOS framework.
-The other three targets aren't supported because refering to [the swift package manager repository](https://github.com/apple/swift-package-manager/blob/master/Documentation/PackageDescriptionV4.md#targets) "It is an error if the paths of two targets overlap (unless resolved with exclude)" (If I missunderstood that part please open a pull request).
-So, if you need the macOS, tvOS or watchOS target, you may not (simply) use the swift package manager, but the code for all the targets is pretty much the same (there is a little additional code for macOS, but these code only includes a String wrapping Meta For Float80).
-However, insert the following code into your Package.swift file, into the dependencies array of your Package.
+### CocoaPods
+Add the following line to your Podfile:
+```ruby
+pod 'MetaSerialization', '~> 0.1.0'
+```
+For more information about Cocoapods, consult [cocoapods.org](https://cocoapods.org)
+### Swift Package Manager
+Insert the following code into your Package.swift file, into the dependencies array of your Package.
 ```swift
 .package(url: "https://github.com/cherrywoods/swift-meta-serialization.git", from: "0.0.4"),
 ```
+Please note, that I never tested whether this will work, please open a pull request if it doesn't. Carthage should work.
+
 For more information about the swift package manager, visit [https://swift.org/package-manager/](https://swift.org/package-manager/ "https://swift.org/package-manager/").
 
 ## Usage
@@ -86,3 +90,7 @@ MetaSerialization can only do it's work properly, if you do not use the function
 Please consult the documentation tab in github
 ## Spelling and grammar errors
 The project documentation and sourcecode will contain spelling and grammar errors. If they obscure the meaning, please tell me about it.
+## What could be done
+ - Include more tests
+ - Check the decoding and encoding code
+ - Write more documentation

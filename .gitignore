@@ -6,3 +6,4 @@ xcuserdata/
 *.dSYM.zip
 *.dSYM
 .build/
+*.framework.zip
