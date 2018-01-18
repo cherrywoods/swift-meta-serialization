@@ -91,6 +91,6 @@ Please consult the documentation tab in github
 ## Spelling and grammar errors
 The project documentation and sourcecode will contain spelling and grammar errors. If they obscure the meaning, please tell me about it.
 ## What could be done
- - Include more tests
- - Check the decoding and encoding code
- - Write more documentation
+ - [ ] Include more tests
+ - [ ] Check the decoding and encoding code
+ - [ ] Write more documentation
