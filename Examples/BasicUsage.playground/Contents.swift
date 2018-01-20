@@ -154,9 +154,6 @@ struct Shape: Codable {
 }
 
 let triange = Shape(numberOfSides: 3, sideLength: 4)
-let littleSquare = Shape(numberOfSides: 4, sideLength: 1)
-let hugeHexagon = Shape(numberOfSides: 6, sideLength: 100000)
-
 let array = [ "three", "four", "six" ]
 let dictionary = [ "triangle" : 3, "square" : 4, "hexagon" : 6 ]
 
