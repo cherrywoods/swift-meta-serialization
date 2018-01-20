@@ -10,7 +10,7 @@ import Foundation
 /**
  A implementation of Translator, that gets Metas out of your way, so you will only have to work with Arrays, Dictionarys and the Primitive types you pass to it.
  */
-public class PrimitivesEnumTranslator<Raw>: Translator {
+public class PrimitivesEnumTranslator: Translator {
     
     /**
      This enum contains cases for all primitive types this Translator can handle.
@@ -119,13 +119,13 @@ public class PrimitivesEnumTranslator<Raw>: Translator {
      If these conditions are violated, this initalizer will not return (crash).
      - Parameter primitives: A set of primitives types you can handle directly
      - Parameter wrappers: A dictionary containing certain Primitive types and Wrapper types, to which the primitive types should be wrapped.
-     - Parameter encode: Your encoding closure. You may expect the Any? parameter to be one of your primitive types (and non-nil, if you did not added .nil to the primitives you passed), an array of your primitive types or a dictionary of Strings and one of your primitive types (it isn't possible to avoid these strings per se). The arrays and dictionarys might indeed contain nested arrays and dictionarys.
+     - Parameter encode: Your encoding closure. You may expect the Any? parameter to be one of your primitive types (and non-nil, if you did not added .nil to the primitives you passed), an array of already encoded values or a dictionary of Strings and already encoded values (it isn't possible to avoid these strings per se). The arrays and dictionarys might indeed contain nested arrays and dictionarys.
      - Parameter decode: Your decoding closure. You need to return one of your primitive types, an array of your primitive types, or a dictionary of Strings and your primitive types (or with nested arrays and dictionarys).
      */
-    init(primitives: Set<Primitive>,
+    public init(primitives: Set<Primitive>,
          wrappers: [Primitive : Wrapper] = [:],
-         encode: @escaping (Any?) throws -> Raw,
-         decode: @escaping (Raw) throws -> Any? ) {
+         encode: @escaping (Any?) throws -> Any?,
+         decode: @escaping (Any?) throws -> Any? ) {
         
         // make sure wrappers.values is a subset of primitives
         // if the wrappers would not be primitives, we could not wrap to them
@@ -150,8 +150,8 @@ public class PrimitivesEnumTranslator<Raw>: Translator {
     private let primitives: Set<Primitive>
     private let wrappers: [Primitive : Wrapper]
     
-    private let encodingClosure: (Any) throws -> Raw
-    private let decodingClosure: (Raw) throws -> Any
+    private let encodingClosure: (Any) throws -> Any
+    private let decodingClosure: (Any) throws -> Any
     
     // MARK: Translator implementation
     
@@ -272,8 +272,6 @@ public class PrimitivesEnumTranslator<Raw>: Translator {
     
     public func encode<R>(_ meta: Meta) throws -> R {
         
-        precondition(R.self == Raw.self, "Can not encode to unknown raw type: \(R.self). Expected: \(Raw.self)")
-        
         // Meta is garanteed to be a SimpleGenericMeta of one of the Primitive types
         // or a DictionaryKeyedContainerMeta or ArrayUnkeyedContainerMeta
         // that are both GenericMetas
@@ -348,10 +346,8 @@ public class PrimitivesEnumTranslator<Raw>: Translator {
     
     public func decode<R>(_ raw: R) throws -> Meta {
         
-        precondition(R.self == Raw.self, "Can not decode from unknown raw type: \(R.self). Expected: \(Raw.self)")
-        
         // decode and create Metas
-        let value = try self.decodingClosure(raw as! Raw)
+        let value = try self.decodingClosure(raw)
         return createMeta(from: value)
         
     }
@@ -370,7 +366,7 @@ public class PrimitivesEnumTranslator<Raw>: Translator {
         }
         
         // check for keyed container
-        if let dictionary = value as? Dictionary<String, Any?> {
+        if let dictionary = value! as? Dictionary<String, Any?> {
             
             // create metas for values first (recursively)
             var metaDict = Dictionary<String, Meta>(minimumCapacity: dictionary.capacity)
@@ -384,60 +380,58 @@ public class PrimitivesEnumTranslator<Raw>: Translator {
             
         }
         
-        if let array = value as? Array<Any?> {
+        if let array = value! as? Array<Any?> {
             
             // create metas for values first (recursively)
-            let metaArray = array.map() { createMeta(from: $0) }
+            let metaArray = array.map { return createMeta(from: $0) }
             
             let meta = ArrayUnkeyedContainerMeta()
             meta.value = metaArray
             return meta
             
         }
-        
         // return SimpleGenericMeta for the simple (and primitive) types
         // Wrappers will be applied in unwrap, when the final type is known
-        if let string = value as? String {
-            
+        if let string = value! as? String {
             return SimpleGenericMeta(value: string)
             
-        } else if let boolean = value as? Bool {
+        } else if let boolean = value! as? Bool {
             return SimpleGenericMeta(value: boolean)
             
-        } else if let float = value as? Float {
+        } else if let float = value! as? Float {
             return SimpleGenericMeta(value: float)
             
-        } else if let double = value as? Double {
+        } else if let double = value! as? Double {
             return SimpleGenericMeta(value: double)
             
-        } else if let int = value as? Int {
+        } else if let int = value! as? Int {
             return SimpleGenericMeta(value: int)
             
-        } else if let uint = value as? UInt {
+        } else if let uint = value! as? UInt {
             return SimpleGenericMeta(value: uint)
             
-        } else if let int8 = value as? Int8 {
+        } else if let int8 = value! as? Int8 {
             return SimpleGenericMeta(value: int8)
             
-        } else if let uint8 = value as? UInt8 {
+        } else if let uint8 = value! as? UInt8 {
             return SimpleGenericMeta(value: uint8)
             
-        } else if let int16 = value as? Int16 {
+        } else if let int16 = value! as? Int16 {
             return SimpleGenericMeta(value: int16)
             
-        } else if let uint16 = value as? UInt16 {
+        } else if let uint16 = value! as? UInt16 {
             return SimpleGenericMeta(value: uint16)
             
-        } else if let int32 = value as? Int32 {
+        } else if let int32 = value! as? Int32 {
             return SimpleGenericMeta(value: int32)
             
-        } else if let uint32 = value as? UInt32 {
+        } else if let uint32 = value! as? UInt32 {
             return SimpleGenericMeta(value: uint32)
             
-        } else if let int64 = value as? Int64 {
+        } else if let int64 = value! as? Int64 {
             return SimpleGenericMeta(value: int64)
             
-        } else if let uint64 = value as? UInt64 {
+        } else if let uint64 = value! as? UInt64 {
             return SimpleGenericMeta(value: uint64)
             
         } else {

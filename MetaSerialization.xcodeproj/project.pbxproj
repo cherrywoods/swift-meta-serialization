@@ -175,6 +175,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6324A03F20128114006DA7A1 /* BasicUsage.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = BasicUsage.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		637982B21FC1B190008BD5D5 /* MetaSerializationTests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MetaSerializationTests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6393728B1FEC1CDA00840D11 /* Forest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forest.swift; sourceTree = "<group>"; };
 		6393728D1FEC210900840D11 /* SimpleSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleSerialization.swift; sourceTree = "<group>"; };
@@ -267,6 +268,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6324A03E201280DC006DA7A1 /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				6324A03F20128114006DA7A1 /* BasicUsage.playground */,
+			);
+			path = Examples;
+			sourceTree = "<group>";
+		};
 		63BC5BD11FC95A260035005D /* SimpleTranslator */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +289,7 @@
 			children = (
 				63E753131FC1ABBF000A2319 /* LICENSE */,
 				63E7530E1FC1ABB5000A2319 /* README.md */,
+				6324A03E201280DC006DA7A1 /* Examples */,
 				63E753071FC1A5B2000A2319 /* Sources */,
 				63E753271FC1AC87000A2319 /* Tests */,
 				63E752D81FC1A557000A2319 /* Products */,
