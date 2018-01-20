@@ -44,46 +44,8 @@ Please note, that I never tested whether this will work, please open a pull requ
 For more information about the swift package manager, visit [https://swift.org/package-manager/](https://swift.org/package-manager/ "https://swift.org/package-manager/").
 
 ## Usage
-There are multiple ways to use this framework.
-A verry simple way is this one:
-```swift
-import MetaSerialization
-
-var primitives = Set<PrimitivesEnumTranslator.Primitive>()
-primitives.insert(.string) /*this says, that we can only serialize Strings. */
-
-/*
-If we tried to serialize any value that had for example an Int property serialization would fail.
-Adding all cases from the Primitives enum will enable us to serialize nearly any value.
-*/
-
-let translator = PrimitivesEnumTranslator(primitives: primitives,
-                                          encode: /* your encoding closure */,
-                                          decode: /* your decoding closure */)
-
-/*
- The encoding closures get Any? as parameter,
- but you can be sure that the value is non nil in our example
- (but you may allow nil values, by adding .nil to your primitives)
- and one of your primitives (in this case String),
- an Array<Any?> or a Dictionary<String, Any?>,
- where the Any? parameter is again eigther a String, Array<Any?>,
- Dictionary<String, Any?> and so on.
- The decoding closure may only return one of that values.
-*/
-
-/*
- You need to provide a Raw type to SimpleSerialization, in this case we use Data.
- This type need to be the same you take in decode and return in encode.
-*/
-let serialization = SimpleSerialization<Data>(translator: translator)
-
-// now you might just call
-let encoded = try! serialization.encode( /*some object*/ )
-
-// or:
-let decoded = try! serialization.decode(type: /*some type*/, from: /*your raw object, some Data in this example*/)
-```
+You can find a example [here](https://github.com/cherrywoods/swift-meta-serialization/blob/master/Examples/BasicUsage.playground/Contents.swift). The example presents a verry simple and basic way to use MetaSerialization, that is also the shortest way to use this framework. Clone this repository, if you'd like to play around with it.
+- [ ] add more detailed example
 ## Limitation
 MetaSerialization can only do it's work properly, if you do not use the function encode(to: ) of the Encodable protocol directly in your implementation of it. Use the encode methods of the (Un)Keyed/SingleValueEncodingContainers instead. 
 ## Further documentation
