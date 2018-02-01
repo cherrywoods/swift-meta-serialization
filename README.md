@@ -45,13 +45,16 @@ For more information about the swift package manager, visit [https://swift.org/p
 
 ## Usage
 You can find a example [here](https://github.com/cherrywoods/swift-meta-serialization/blob/master/Examples/BasicUsage.playground/Contents.swift). The example presents a verry simple and basic way to use MetaSerialization, that is also the shortest way to use this framework. Clone this repository, if you'd like to play around with it.
-- [ ] add more detailed example
+
+[This repository](https://github.com/cherrywoods/meta-serialization-example) contains a complete example implementation for a self invented useless serialization format. You may use this example as a blueprint for most other implementations.
+
+Finally [swift-msgpack-serialization](https://github.com/cherrywoods/swift-msgpack-serialization) is a real implementation for the [msgpack serialization format](msgpack.org), that deploys further features of MetaSerialization.
 ## Limitation
 MetaSerialization can only do it's work properly, if you do not use the function encode(to: ) of the Encodable protocol directly in your implementation of it. Use the encode methods of the (Un)Keyed/SingleValueEncodingContainers instead. 
 ## Further documentation
 Please consult the documentation tab in github
 ## Spelling and grammar errors
-The project documentation and sourcecode will contain spelling and grammar errors. If they obscure the meaning, please tell me about it.
+The project documentation and sourcecode will contain spelling and grammar mistakes. If they obscure the meaning, please open an issue.
 ## What could be done
  - [ ] Include more tests
  - [ ] Check the decoding and encoding code
