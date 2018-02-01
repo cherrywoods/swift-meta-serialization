@@ -16,12 +16,6 @@ public extension EncodingRepresentation {
         
     }
     
-    mutating func encode<E: Encodable>(_ value: E) throws {
-        
-        self = try Self.provideNewEncoder().encode(value)
-        
-    }
-    
 }
 
 public extension DecodingRepresentation {
