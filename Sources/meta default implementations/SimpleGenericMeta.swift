@@ -10,7 +10,7 @@ open class SimpleGenericMeta<T>: GenericMeta {
     
     public typealias SwiftValueType = T
     
-    public var value: T?
+    public var value: T!
     
     public init() {  }
     

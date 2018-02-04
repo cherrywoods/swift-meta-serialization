@@ -18,7 +18,7 @@ public protocol WrappingMeta: Meta {
     /// the type that is used in raw representations
     associatedtype WrappingType
     
-    var wrappedValue: WrappedType? { get set }
+    var wrappedValue: WrappedType! { get set }
     
     /**
      Convert the wrapped type into a WrappingType representation, that will convert back to the same wrapped value, if it is passed to convert(wrapping:).

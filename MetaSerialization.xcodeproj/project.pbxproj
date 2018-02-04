@@ -101,7 +101,6 @@
 		63E7540B1FC1AD7C000A2319 /* Reference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7535D1FC1AD7A000A2319 /* Reference.swift */; };
 		63E7540C1FC1AD7C000A2319 /* Reference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7535D1FC1AD7A000A2319 /* Reference.swift */; };
 		63E7540D1FC1AD7C000A2319 /* Reference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7535D1FC1AD7A000A2319 /* Reference.swift */; };
-		63E754151FC1AD7C000A2319 /* StringWrapperFloat80.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753611FC1AD7A000A2319 /* StringWrapperFloat80.swift */; };
 		63E754161FC1AD7C000A2319 /* StringWrapperStandardTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753621FC1AD7A000A2319 /* StringWrapperStandardTypes.swift */; };
 		63E754171FC1AD7C000A2319 /* StringWrapperStandardTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753621FC1AD7A000A2319 /* StringWrapperStandardTypes.swift */; };
 		63E754181FC1AD7C000A2319 /* StringWrapperStandardTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753621FC1AD7A000A2319 /* StringWrapperStandardTypes.swift */; };
@@ -206,7 +205,6 @@
 		63E7535B1FC1AD7A000A2319 /* Serialization+Default Implementations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Serialization+Default Implementations.swift"; sourceTree = "<group>"; };
 		63E7535C1FC1AD7A000A2319 /* Serialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serialization.swift; sourceTree = "<group>"; };
 		63E7535D1FC1AD7A000A2319 /* Reference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reference.swift; sourceTree = "<group>"; };
-		63E753611FC1AD7A000A2319 /* StringWrapperFloat80.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringWrapperFloat80.swift; sourceTree = "<group>"; };
 		63E753621FC1AD7A000A2319 /* StringWrapperStandardTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringWrapperStandardTypes.swift; sourceTree = "<group>"; };
 		63E753631FC1AD7A000A2319 /* WrapInStringMeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrapInStringMeta.swift; sourceTree = "<group>"; };
 		63E753641FC1AD7A000A2319 /* WrappingMeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrappingMeta.swift; sourceTree = "<group>"; };
@@ -381,7 +379,6 @@
 			children = (
 				63E753631FC1AD7A000A2319 /* WrapInStringMeta.swift */,
 				63E753621FC1AD7A000A2319 /* StringWrapperStandardTypes.swift */,
-				63E753611FC1AD7A000A2319 /* StringWrapperFloat80.swift */,
 			);
 			path = string;
 			sourceTree = "<group>";
@@ -837,7 +834,6 @@
 				63E753F91FC1AD7C000A2319 /* EmptyOnlyKeyedContainerMeta.swift in Sources */,
 				63E754091FC1AD7C000A2319 /* Serialization.swift in Sources */,
 				63E754611FC1AD7C000A2319 /* UnkeyedEncodingContainer.swift in Sources */,
-				63E754151FC1AD7C000A2319 /* StringWrapperFloat80.swift in Sources */,
 				63E754491FC1AD7C000A2319 /* CodingKeys.swift in Sources */,
 				63E7539D1FC1AD7C000A2319 /* Translator.swift in Sources */,
 				63E754751FC1AD7C000A2319 /* GenericNil.swift in Sources */,
