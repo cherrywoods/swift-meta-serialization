@@ -136,7 +136,7 @@ open class MetaDecoder: Decoder, MetaCoder {
                 topContainer meta: Meta) {
         self.userInfo = userInfo
         self.translator = translator
-        self.stack = CodingStack(at: codingPath, with: .pathMissesMeta)
+        self.stack = CodingStack(at: codingPath)
         try! self.stack.push(meta: meta) // since stack is inited with .pathMissesMeta, this will not throw
     }
     
@@ -202,7 +202,7 @@ public class ReferencingMetaDecoder: MetaDecoder {
     // this can only be done at this point, because before the meta object may be a copy-type (struct) and therefor not ready until now
     deinit {
         
-        precondition(stack.count <= 1, "ReferencingEncoder deinitalized while holding multiple containers")
+        precondition(stack.count <= 1, "ReferencingDecoder deinitalized holding multiple containers")
         
         // if there's no element on the stack, do nothing
         if let meta = stack.first {

@@ -37,7 +37,7 @@ public protocol NilMetaProtocol: Meta {  }
  */
 public protocol GenericMeta: Meta {
     associatedtype SwiftValueType
-    var value: SwiftValueType? { get set }
+    var value: SwiftValueType! { get set }
 }
 
 public extension GenericMeta {

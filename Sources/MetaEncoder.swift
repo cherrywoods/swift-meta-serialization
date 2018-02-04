@@ -45,7 +45,7 @@ open class MetaEncoder: Encoder, MetaCoder {
     }
     
     /*
-     Returns the representation or raw value of the value encoded to this encoder, if a value was already encoded to it and that encoding process has suceeded, otherwise it will return nil.
+     Returns the representation or raw value of the value encoded to this encoder, if a value was already encoded to it and that encoding process has suceeded, otherwise it will throw an error.
      Throws: This function will throw an error, if the translation process in translator throws an error
      */
     open func representationOfEncodedValue<Raw>() throws -> Raw {
@@ -73,7 +73,7 @@ open class MetaEncoder: Encoder, MetaCoder {
      Encodes the given intermediate value.
      Use this method if you encode other values inside your implementation of Encodable's encode(to:) method.
      
-     Use this method rather than directly calling encode(to:).
+     Use this method rather than directly calling encode(to:), if you can not use a container.
      encode(to:) will not detect types in the first place
      that are directly supported by the translator.
      Example: If data is a Data instance and the translator supportes
@@ -110,7 +110,7 @@ open class MetaEncoder: Encoder, MetaCoder {
         // in which case no new container may be added.
         // Therefor the only option for value is, that it's type is supported natively by translator
         
-        // (note that this behavior defers as far as I can see from the one defined in JSONEncoder and PlistEncoder in the swift standard library. As I see it, in Foundation, one entity at one coding path may very well request nominaly two containers (but in the end there will be only one in the storage). This happens, as I read the code, if we got one of the (fileprivate) encoders passed to our own encodable class and requested a SingleValueContainer by the method with the same name. Now we may (maybe, I'm realy not so sure) request again a SingleValueContainer container or any other container from this encoder, because it will not extend it's storage on the request of the first container and codingPath remains one element shorter than storage. This behavior may be intended, but it's confusing to me and conflicts with my understanding of the (short) documentation of SingleValueEncodingContainer, so my library will not allow an entity to request a single value container and then request a whole new keyed container with all subcontainers through the backdoor. (But in the swift standard library it's no problem, because they are not adding containers to their storage in singleValueContainer()) )
+        // (note that this behavior defers as far as I can see from the one defined in JSONEncoder and PlistEncoder in the swift standard library. As I see it, in Foundation, one entity at one coding path may very well request nominaly two containers (but in the end there will be only one in the storage). This happens, as I read the code, if we got one of the (fileprivate) encoders passed to our own encodable class and requested a SingleValueContainer by the method with the same name. Now we may (maybe, I'm realy not so sure) request again a SingleValueContainer or any other container from this encoder, because it will not extend it's storage on the request of the first container and codingPath remains one element shorter than storage. This behavior may be intended, but it's confusing to me and conflicts with my understanding of the (short) documentation of SingleValueEncodingContainer, so this library will not allow an entity to request a single value container and then request a whole new keyed container with all subcontainers through the backdoor. (But in the swift standard library it's no problem anyway, because they are not adding containers to their storage in singleValueContainer()) )
         
         // whatever case we have, it's allways possible,
         // that translator supports the value's type natively
@@ -122,20 +122,23 @@ open class MetaEncoder: Encoder, MetaCoder {
             
         }
         
-        // <now the value's type is not supported natively by translator>
+        // ** now the value's type is not supported natively by translator **
         
         guard self.stack.mayPushNewMeta else {
             // this error is thrown, if an entity, that requested a single value container
             // was not supported natively by the translator
-            throw EncodingError.invalidValue(value, EncodingError.Context.init(codingPath: self.codingPath, debugDescription: "Type \(type(of: value)) is not supported by this serialization framework."))
+            throw EncodingError.invalidValue(value, EncodingError.Context.init(codingPath: self.codingPath, debugDescription: "Type \(type(of: value)) is not supported as primtive type by this serialization framework."))
         }
         
-        // <now it is sure, that stack will accept a new meta>
+        // ** now it is sure, that stack will accept a new meta **
         
         // let value encode itself to this encoder
         try value.encode(to: self)
         
-        // check whether a meta may be poped
+        // check whether encode really pushed a meta
+        // in theory also removeLastCodingKey() could be called.
+        // This can't be prevented without a 'protected' visibility modifier
+        // as far as I can see.
         if self.stack.mayPopMeta {
             
             // in this case, value requested a container
@@ -145,7 +148,8 @@ open class MetaEncoder: Encoder, MetaCoder {
             
         } else {
             
-            // if value requests no container, we are promted by the documention of Encodable to encode an empty keyed container
+            // if value requests no container,
+            // we are promted by the documention of Encodable to encode an empty keyed container
             return translator.keyedContainerMeta()
             
         }
