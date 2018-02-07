@@ -11,25 +11,12 @@
  
  This implementation uses the stringValue of each CodingKey as key. The intValues are ignored.
  */
-open class DictionaryKeyedContainerMeta: KeyedContainerMeta, GenericMeta {
+open class DictionaryKeyedContainerMeta: SimpleGenericMeta<Dictionary<String, Meta>>, KeyedContainerMeta {
     
-    /*
-     I assume, that all CodingKeys are fully identified by theire stringValues,
-     although I cloudn't find any documentation about this topic.
-     
-     However, JSONDecoder from swift standard library does the same.
-     */
-    
-    public typealias SwiftValueType = Dictionary<String, Meta>
-    
-    public init() {
-        // init with default value
+    public override init() {
+        super.init()
+        self.value = [:]
     }
-    
-    /**
-     The dictionary value of this container.
-     */
-    open var value: Dictionary<String, Meta>! = [:]
     
     /**
      Set the value for a certain string key.
