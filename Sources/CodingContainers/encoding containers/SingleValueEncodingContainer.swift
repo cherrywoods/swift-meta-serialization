@@ -38,7 +38,9 @@ open class MetaSingleValueEncodingContainer: SingleValueEncodingContainer {
         // otherwise there's already a real meta and someone already encoded at the correspondig coding path
         // that's basically the same as requesting two containers from encoder (and therefor not allowed)
         // note that no custom Translator can use PlaceholderMeta -
-        // for other purposes than this one or any purpose - because it is declared project-private/internal 
+        // for other purposes than this one or any purpose -
+        // because it is declared project-private/internal
+        
         guard self.reference.element is PlaceholderMeta else {
             preconditionFailure("Tried to encode a second value at the same coding path: \(codingPath)")
         }

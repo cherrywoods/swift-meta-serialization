@@ -8,7 +8,7 @@
 import XCTest
 @testable import MetaSerialization
 
-class meta_serialization_macOSTests: XCTestCase {
+class BasicTesting: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -20,7 +20,7 @@ class meta_serialization_macOSTests: XCTestCase {
         super.tearDown()
     }
     
-    func test1() {
+    func testUsingUselessTranslator() {
         
         // our object to encode and decode
         let merlinTheMapleTree = Tree(name: "Merlin", species: .maple, age: 201, height: 10, numberOfBranches: 7)
@@ -41,7 +41,7 @@ class meta_serialization_macOSTests: XCTestCase {
                 let isThisStillMerlin = try Tree(from: decoder)
                 
                 //finals equality check
-                XCTAssert(merlinTheMapleTree == isThisStillMerlin, "Initinal and decoded tree does not match: initinal: \(merlinTheMapleTree), decoded: \(isThisStillMerlin)")
+                XCTAssert(merlinTheMapleTree == isThisStillMerlin, "Initinal and decoded tree do not match: initinal: \(merlinTheMapleTree), decoded: \(isThisStillMerlin)")
                 
                 // if this succeds, encoding and decoding works in the very broad frame
                 
@@ -57,12 +57,13 @@ class meta_serialization_macOSTests: XCTestCase {
         
     }
     
-    func test2() {
+    func testUsingPrimitvesEnumTranslator() {
         
-        // our object to encode and decode
+        // our instances to encode and decode
         let merlin = Tree2(height: 10, width: 12.5, age: 201, kind: .maple)
         let claire = Tree2(height: 13, width: 11.6, age: 256, kind: .cherry)
         let forest = Forest(trees: [merlin, claire], location: "hill near the river")
+        
         let translator = PrimitivesEnumTranslator(primitives: PrimitivesEnumTranslator.Primitive.all,
                                                   encode: { return $0 },
                                                   decode: { return $0 })
@@ -80,7 +81,7 @@ class meta_serialization_macOSTests: XCTestCase {
                 let isThisStillOurForest = try serialization.decode(toType: Forest.self, from: kindOfRawForest)
                 
                 //final equality check
-                XCTAssert(forest == isThisStillOurForest, "Initinal and decoded tree does not match: initinal: \(forest), decoded: \(isThisStillOurForest)")
+                XCTAssert(forest == isThisStillOurForest, "Initinal and decoded tree do not match: initinal: \(forest), decoded: \(isThisStillOurForest)")
                 
             } catch {
                 XCTFail("decoding merlin failed \(error)")

@@ -27,7 +27,7 @@ public extension IntermediateDecoder {
         let decoder = try self.provideNewDecoder(raw: raw)
         
         // force unwrap,
-        // because decoder is freshly initalized
+        // because decoder was freshly initalized
         return (try decoder.decode(type: type))!
         
     }

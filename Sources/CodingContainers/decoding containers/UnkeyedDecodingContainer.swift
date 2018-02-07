@@ -37,12 +37,13 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     // MARK: - container methods
     
     open var count: Int? {
-        // because the unkeyed container is already halfway decoded, the number of elements should be known
         return referencedMeta.count
     }
     
     open var isAtEnd: Bool {
-        return self.currentIndex == self.count
+        // if the number of elements is unknown
+        // one can't say, if there are still more elements...
+        return self.count != nil && self.currentIndex >= self.count!
     }
     
     // UnkeyedContainerMeta is required to start at 0 and end at count-1
@@ -80,12 +81,9 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
         
         // the coding path needs to be extended, because unwrap(meta) may throw an error
         try reference.coder.stack.append(codingKey: IndexCodingKey(intValue: currentIndex)!)
+        defer{ try! reference.coder.stack.removeLastCodingKey() }
         
         let value: T = try (self.reference.coder as! MetaDecoder).unwrap(subMeta)
-        
-        // do not use defer here, because a failure indicates corrupted data
-        // and that should be reported in a error
-        try reference.coder.stack.removeLastCodingKey()
         
         // now we decoded a value with success,
         // therefor we can increment currentIndex
@@ -102,6 +100,7 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
         // need to extend coding path in decoder, because decoding might result in an error thrown
         // and furthermore the new container gets the codingPath from decoder
         try reference.coder.stack.append(codingKey: IndexCodingKey(intValue: self.currentIndex)!)
+        defer{ try! reference.coder.stack.removeLastCodingKey() }
         
         // first check whether the container still has an element
         guard let subMeta = self.referencedMeta.get(at: currentIndex) else {
@@ -119,10 +118,6 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
             throw DecodingError.typeMismatch(KeyedDecodingContainer<NestedKey>.self, context)
         }
         
-        // do not use defer here, because a failure indicates corrupted data
-        // and that should be reported in a error
-        try reference.coder.stack.removeLastCodingKey()
-        
         // now all errors, that might have happend, have not been thrown, and currentIndex can be incremented
         currentIndex += 1
         let nestedReference = DirectReference(coder: self.reference.coder, element: keyedSubMeta)
@@ -138,6 +133,7 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
         // need to extend coding path in decoder, because decoding might result in an error thrown
         // and furthermore the new container gets the codingPath from decoder
         try reference.coder.stack.append(codingKey: IndexCodingKey(intValue: self.currentIndex)!)
+        defer{ try! reference.coder.stack.removeLastCodingKey() }
         
         // first check whether the container still has an element
         guard let subMeta = self.referencedMeta.get(at: currentIndex) else {
@@ -155,10 +151,6 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
             throw DecodingError.typeMismatch(UnkeyedDecodingContainer.self, context)
         }
         
-        // do not use defer here, because a failure indicates corrupted data
-        // and that should be reported in a error
-        try reference.coder.stack.removeLastCodingKey()
-        
         // now all errors, that might have happend, have not been thrown, and currentIndex can be incremented
         currentIndex += 1
         let nestedReference = DirectReference(coder: self.reference.coder, element: unkeyedSubMeta)
@@ -173,14 +165,7 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
         
         // need to extend coding path in decoder, because decoding might result in an error thrown
         try reference.coder.stack.append(codingKey: IndexCodingKey(intValue: self.currentIndex)!)
-        defer {
-            do {
-                try reference.coder.stack.removeLastCodingKey()
-            } catch {
-                // this should never happen
-                preconditionFailure("Tried to remove codingPath with associated container")
-            }
-        }
+        defer{ try! reference.coder.stack.removeLastCodingKey() }
         
         // first check whether the container still has an element
         guard let subMeta = self.referencedMeta.get(at: currentIndex) else {
@@ -192,10 +177,6 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
         
         let referenceToOwnMeta = UnkeyedContainerReference(coder: self.reference.coder, element: self.referencedMeta, index: currentIndex)
         let decoder = ReferencingMetaDecoder(referencing: referenceToOwnMeta, meta: subMeta)
-        
-        // do not use defer here, because a failure indicates corrupted data
-        // and that should be reported in a error
-        try reference.coder.stack.removeLastCodingKey()
         
         self.currentIndex += 1
         return decoder

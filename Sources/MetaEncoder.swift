@@ -99,21 +99,17 @@ open class MetaEncoder: Encoder, MetaCoder {
     /// wraps an encodable value into a meta requested from translator.
     open func wrap<E>(_ value: E) throws -> Meta where E: Encodable {
         
-        // On call of this method, two cases are possible.
-        // Eighter the stack is at status .pathMissesMeta, in which case a keyed or unkeyed container
-        // called this method, and value may eighter be supported directly by the translator,
-        // or it may as well be encoded using value.encode(to: self)
-        // that's possible, because stack's status is .pathMissingMeta,
-        // and therefor value can request another container from this encoder.
+        // In difference to the old version, now stack
+        // can also push a new meta, if the last meta is a
+        // PlaceholderMeta.
         
-        // The other case is, that stack is not at .pathMissesMeta,
-        // in which case no new container may be added.
-        // Therefor the only option for value is, that it's type is supported natively by translator
+        // This makes requesting a single value container
+        // and then encoding a "single value" like an array
+        // which failed in the old versions.
+        // This is the same behavior as JSONEncoder from
+        // Foundation shows.
         
-        // (note that this behavior defers as far as I can see from the one defined in JSONEncoder and PlistEncoder in the swift standard library. As I see it, in Foundation, one entity at one coding path may very well request nominaly two containers (but in the end there will be only one in the storage). This happens, as I read the code, if we got one of the (fileprivate) encoders passed to our own encodable class and requested a SingleValueContainer by the method with the same name. Now we may (maybe, I'm realy not so sure) request again a SingleValueContainer or any other container from this encoder, because it will not extend it's storage on the request of the first container and codingPath remains one element shorter than storage. This behavior may be intended, but it's confusing to me and conflicts with my understanding of the (short) documentation of SingleValueEncodingContainer, so this library will not allow an entity to request a single value container and then request a whole new keyed container with all subcontainers through the backdoor. (But in the swift standard library it's no problem anyway, because they are not adding containers to their storage in singleValueContainer()) )
-        
-        // whatever case we have, it's allways possible,
-        // that translator supports the value's type natively
+        // check whether translator supports the value's type directly
         if var newMeta = self.translator.wrappingMeta(for: value) {
             
             // if that is the case, set the value of newMeta and return it without ever using stack
@@ -127,7 +123,7 @@ open class MetaEncoder: Encoder, MetaCoder {
         guard self.stack.mayPushNewMeta else {
             // this error is thrown, if an entity, that requested a single value container
             // was not supported natively by the translator
-            throw EncodingError.invalidValue(value, EncodingError.Context.init(codingPath: self.codingPath, debugDescription: "Type \(type(of: value)) is not supported as primtive type by this serialization framework."))
+            throw EncodingError.invalidValue(value, EncodingError.Context.init(codingPath: self.codingPath, debugDescription: "Can not encode another value. Path is filled."))
         }
         
         // ** now it is sure, that stack will accept a new meta **
@@ -160,10 +156,12 @@ open class MetaEncoder: Encoder, MetaCoder {
     
     /**
      Initalizes a new MetaEncoder with the given values.
+     
+     This constructor uses StrictCodingStack as CodingStack implementation.
      - Parameter translator: The translator the encoder will use to get and translate Metas.
      */
     public init(at codingPath: [CodingKey] = [], withUserInfo userInfo: [CodingUserInfoKey : Any] = [:], translator: Translator) {
-        self.stack = CodingStack(at: codingPath)
+        self.stack = StrictCodingStack(at: codingPath)
         self.userInfo = userInfo
         self.translator = translator
     }
@@ -247,7 +245,9 @@ open class ReferencingMetaEncoder: MetaEncoder {
     // MARK: initalization
     
     /**
-     Initalizes a new SubEncoder with the given values.
+     Initalizes a new ReferencingMetaEncoder with the given values.
+     
+     This constructor uses StrictCodingStack as CodingStack implementation.
      - Parameter referening: A ContainerReference to the (encoding or decoding) container this referencing encoder will reference
      */
     public init(referencing reference: ContainerReference) {
@@ -262,7 +262,7 @@ open class ReferencingMetaEncoder: MetaEncoder {
         // in the following configuration, stack starts at .pathFilled
         // and changes as reference.codingKey is added to .pathMissingMeta
         // (which is the status we want, so new containers can be requested)
-        self.stack = CodingStack(at: reference.coder.codingPath, with: .pathFilled)
+        self.stack = StrictCodingStack(at: reference.coder.codingPath, with: .pathFilled)
         try! self.stack.append(codingKey: reference.codingKey)
         
     }

@@ -27,17 +27,9 @@ open class DictionaryKeyedContainerMeta: KeyedContainerMeta, GenericMeta {
     }
     
     /**
-     The arry value of this container.
-     
-     Note that you may never set it to nil and that it never will be nil.
+     The dictionary value of this container.
      */
-    open var value: Dictionary<String, Meta>? = [:] {
-        willSet {
-            // this precondition enables the save use of ! in the implementations below
-            precondition(newValue != nil,
-                         "The value property of an DictionaryKeyedContainerMeta may never be nil. Do not set it to nil. If you wan't to delete all key-value-pairs, set it to [:].")
-        }
-    }
+    open var value: Dictionary<String, Meta>! = [:]
     
     /**
      Set the value for a certain string key.

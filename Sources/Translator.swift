@@ -53,8 +53,11 @@ public protocol Translator {
      
      In difference from the call of decode(), now the final type is known.
      
+     It is important that you do not return nil, if the given type does not match the expected type.
+     Throw a TranslatorError.typeMismatch error instead.
+     
      This method will be called for every meta you created.
-     - Throws: If meta does not match the type you expect, throw a DecodingError.typeMismatch Error.
+     - Throws: If meta does not match the type you expect, throw a TranslatorError.typeMismatch error.
      - Parameter T: The type from swift you should cast to.
      - Parameter meta: The meta, that contains the value in some meta encoded form, that you should cast to T.
      - Returns: A value of type T, that was contained in meta. Returns nil, if the requested type is not supported directly.
@@ -83,9 +86,10 @@ public protocol Translator {
     
 }
 
+// MARK: default implementations for containers
+
 public extension Translator {
     
-    // MARK: default implementations for containers
     public func keyedContainerMeta() -> KeyedContainerMeta {
         return DictionaryKeyedContainerMeta()
     }
@@ -95,3 +99,4 @@ public extension Translator {
     }
     
 }
+

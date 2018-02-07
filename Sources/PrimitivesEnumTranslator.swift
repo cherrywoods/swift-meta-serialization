@@ -221,47 +221,47 @@ public class PrimitivesEnumTranslator: Translator {
         
         if let primitive = Primitive(fromSwiftType: T.self) {
             
-            // handle simple generic metas
-            if let value = (meta as? SimpleGenericMeta<T>)?.value {
-                
-                // handle wrapped values
-                if let wrapper = wrappers[primitive] {
-                    switch wrapper {
-                    case .string:
-                        let string = value as! String
-                        switch primitive {
-                        case .bool:     return Bool(string) as? T
-                        case .float:    return Float(string) as? T
-                        case .double:   return Double(string) as? T
-                        case .int:      return Int(string) as? T
-                        case .uInt:     return UInt(string) as? T
-                        case .int8:     return Int8(string) as? T
-                        case .uInt8:    return UInt8(string) as? T
-                        case .int16:    return Int16(string) as? T
-                        case .uInt16:   return UInt16(string) as? T
-                        case .int32:    return Int32(string) as? T
-                        case .uInt32:   return UInt32(string) as? T
-                        case .int64:    return Int64(string) as? T
-                        case .uInt64:   return UInt64(string) as? T
-                        default: // this is .string and .nil (but nil is impossible), so just .string
-                            // thats ofcourse nonsence, but I decided to tolerate it
-                            return value
-                        }
-                    }
-                }
-                
-                // handle primitives
-                if primitives.contains(primitive) {
-                    return value
-                } else {
-                    // not a supported primitive type
-                    return nil
-                }
-                
+            // now meta needs to be a SimpleGenericMeta<T>
+            // if it is not, throw an error.
+            // It means that the requested type is wrong
+            
+            guard let value = (meta as? SimpleGenericMeta<T>)?.value else {
+                throw TranslatorError.typeMismatch
             }
             
-            // if meta isn't a simple generic one, we did not create it.
-            return nil
+            // handle wrapped values
+            if let wrapper = wrappers[primitive] {
+                switch wrapper {
+                case .string:
+                    let string = value as! String
+                    switch primitive {
+                    case .bool:     return Bool(string) as? T
+                    case .float:    return Float(string) as? T
+                    case .double:   return Double(string) as? T
+                    case .int:      return Int(string) as? T
+                    case .uInt:     return UInt(string) as? T
+                    case .int8:     return Int8(string) as? T
+                    case .uInt8:    return UInt8(string) as? T
+                    case .int16:    return Int16(string) as? T
+                    case .uInt16:   return UInt16(string) as? T
+                    case .int32:    return Int32(string) as? T
+                    case .uInt32:   return UInt32(string) as? T
+                    case .int64:    return Int64(string) as? T
+                    case .uInt64:   return UInt64(string) as? T
+                    default: // this is .string and .nil (but nil is impossible), so just .string
+                        // thats ofcourse nonsence, but I decided to tolerate it
+                        return value
+                    }
+                }
+            }
+            
+            // handle primitives
+            if primitives.contains(primitive) {
+                return value
+            } else {
+                // not a supported primitive type
+                return nil
+            }
             
         } else {
             // not a primitive type

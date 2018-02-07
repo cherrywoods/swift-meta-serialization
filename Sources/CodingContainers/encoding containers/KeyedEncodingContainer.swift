@@ -46,14 +46,11 @@ open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProto
         
         // the coding path needs to be extended, because wrap(value) may throw an error
         try reference.coder.stack.append(codingKey: key)
+        defer { try! reference.coder.stack.removeLastCodingKey() }
         
         let meta = try (self.reference.coder as! MetaEncoder).wrap(value)
         
         self.referencedMeta[key] = meta
-        
-        // do not use defer here, because a failure indicates corrupted data
-        // and that should be reported in a error
-        try reference.coder.stack.removeLastCodingKey()
         
     }
     

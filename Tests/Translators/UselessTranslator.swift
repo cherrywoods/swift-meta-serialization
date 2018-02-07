@@ -22,11 +22,16 @@ class UselessTranslator: Translator {
         
     }
     
-    func unwrap<T>(meta: Meta) -> T {
+    func unwrap<T>(meta: Meta) throws -> T {
         
         // meta will be initalized (get() will not return nil)
         // and the value should be of type T.
-        return meta.get() as! T
+        // if it is not throw typeMissmatch error
+        guard let value = meta.get()! as? T else {
+            throw TranslatorError.typeMismatch
+        }
+        
+        return value
         
     }
     

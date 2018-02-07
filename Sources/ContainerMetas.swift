@@ -40,8 +40,13 @@ public protocol KeyedContainerMeta: Meta {
  */
 public protocol UnkeyedContainerMeta: Meta {
     
-    /// the number of elements in the container, return 0, if no element is contained
-    var count: Int { get }
+    /**
+     The number of elements in the container, return 0, if no element is contained.
+     
+     Return nil, if the number is unknown.
+     You may not return nil during encoding.
+    */
+    var count: Int? { get }
     
     /**
      Returns the element at the given index
