@@ -12,6 +12,9 @@
 		637982BE1FC1B1A3008BD5D5 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7532D1FC1ACF9000A2319 /* Tree.swift */; };
 		637982BF1FC1B1A5008BD5D5 /* Tree+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753291FC1ACF9000A2319 /* Tree+Equatable.swift */; };
 		637F806F2028C0F900B7A040 /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637F806E2028C0F900B7A040 /* Thing.swift */; };
+		638FEC6B202BA6C100014C30 /* TestJSONEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638C637F202B4ADA00FC4907 /* TestJSONEncoder.swift */; };
+		638FEC6D202BAAA800014C30 /* ContainerTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FEC6C202BAAA800014C30 /* ContainerTranslator.swift */; };
+		638FEC6F202BAB3F00014C30 /* Container+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FEC6E202BAB3F00014C30 /* Container+Hashable.swift */; };
 		6393728C1FEC1CDA00840D11 /* Forest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6393728B1FEC1CDA00840D11 /* Forest.swift */; };
 		6393728E1FEC210A00840D11 /* SimpleSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6393728D1FEC210900840D11 /* SimpleSerialization.swift */; };
 		6393728F1FEC211A00840D11 /* SimpleSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6393728D1FEC210900840D11 /* SimpleSerialization.swift */; };
@@ -181,6 +184,9 @@
 		6324A03F20128114006DA7A1 /* BasicUsage.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = BasicUsage.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		637982B21FC1B190008BD5D5 /* MetaSerializationTests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MetaSerializationTests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		637F806E2028C0F900B7A040 /* Thing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thing.swift; sourceTree = "<group>"; };
+		638C637F202B4ADA00FC4907 /* TestJSONEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestJSONEncoder.swift; sourceTree = "<group>"; };
+		638FEC6C202BAAA800014C30 /* ContainerTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTranslator.swift; sourceTree = "<group>"; };
+		638FEC6E202BAB3F00014C30 /* Container+Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Hashable.swift"; sourceTree = "<group>"; };
 		6393728B1FEC1CDA00840D11 /* Forest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forest.swift; sourceTree = "<group>"; };
 		6393728D1FEC210900840D11 /* SimpleSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleSerialization.swift; sourceTree = "<group>"; };
 		63BC5BD21FC95A7E0035005D /* PrimitivesEnumTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimitivesEnumTranslator.swift; sourceTree = "<group>"; };
@@ -306,6 +312,8 @@
 			isa = PBXGroup;
 			children = (
 				63E7532A1FC1ACF9000A2319 /* UselessTranslator.swift */,
+				638FEC6C202BAAA800014C30 /* ContainerTranslator.swift */,
+				638FEC6E202BAB3F00014C30 /* Container+Hashable.swift */,
 			);
 			path = Translators;
 			sourceTree = "<group>";
@@ -357,6 +365,7 @@
 		63E753271FC1AC87000A2319 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				638C637F202B4ADA00FC4907 /* TestJSONEncoder.swift */,
 				63E7532C1FC1ACF9000A2319 /* BasicTesting.swift */,
 				63BD37CE202A2DBC00CD9533 /* TestThing.swift */,
 				63BD37D2202A2EDE00CD9533 /* SpecialTests.swift */,
@@ -387,11 +396,11 @@
 		63E753541FC1AD7A000A2319 /* meta default implementations */ = {
 			isa = PBXGroup;
 			children = (
+				63E753591FC1AD7A000A2319 /* SimpleGenericMeta.swift */,
 				63E753551FC1AD7A000A2319 /* ArrayUnkeyedContainerMeta.swift */,
 				63E753561FC1AD7A000A2319 /* DictionaryKeyedContainerMeta.swift */,
 				63E753571FC1AD7A000A2319 /* EmptyOnlyKeyedContainerMeta.swift */,
 				63E753581FC1AD7A000A2319 /* NilMeta.swift */,
-				63E753591FC1AD7A000A2319 /* SimpleGenericMeta.swift */,
 			);
 			path = "meta default implementations";
 			sourceTree = "<group>";
@@ -723,11 +732,14 @@
 			files = (
 				63B6AA441FE5C17100040FB8 /* UselessTranslator.swift in Sources */,
 				6393728C1FEC1CDA00840D11 /* Forest.swift in Sources */,
+				638FEC6B202BA6C100014C30 /* TestJSONEncoder.swift in Sources */,
+				638FEC6D202BAAA800014C30 /* ContainerTranslator.swift in Sources */,
 				63BD37D3202A2EDE00CD9533 /* SpecialTests.swift in Sources */,
 				63BD37D1202A2EB900CD9533 /* ContinueDecodingAfterError.swift in Sources */,
 				637982BD1FC1B1A0008BD5D5 /* BasicTesting.swift in Sources */,
 				63BD37CF202A2DBC00CD9533 /* TestThing.swift in Sources */,
 				637982BE1FC1B1A3008BD5D5 /* Tree.swift in Sources */,
+				638FEC6F202BAB3F00014C30 /* Container+Hashable.swift in Sources */,
 				637F806F2028C0F900B7A040 /* Thing.swift in Sources */,
 				637982BF1FC1B1A5008BD5D5 /* Tree+Equatable.swift in Sources */,
 			);

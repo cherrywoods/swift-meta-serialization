@@ -76,7 +76,7 @@ public protocol Translator {
     func encode<Raw>(_ meta: Meta) throws -> Raw
     
     /**
-     Decodes the given (raw) representation to a meta representation. Use a Meta extending NilMetaProtocol, to indicate that a value was nil.
+     Decodes the given (raw) representation to a meta representation. Use a Meta extending NilMetaProtocol (e.g. NilMeta.nil), to indicate that a value was nil.
      - Parameter Raw: the type from that a value will be passed to you. This parameter will be set by the frontend serialization implementeation you write. Therefor you may check for this type to be the one you expect and use the precondition function, to check whether your code works, or just cast using as!, but in these case you will get a uglier error message, if your code contains errors (mostly typos I guess).
      - Parameter raw: A (raw) representation value
      - Returns: The meta representation of the (raw) representation, if it was valid
