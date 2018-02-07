@@ -27,7 +27,9 @@ open class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
     
     open var count: Int {
         
-        return referencedMeta.count
+        // the metas were inserted
+        // the number needs to be known
+        return referencedMeta.count!
         
     }
     
@@ -50,14 +52,11 @@ open class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
         
         // the coding path needs to be extended, because wrap(value) may throw an error
         try reference.coder.stack.append(codingKey: IndexCodingKey(intValue: self.count)! )
+        defer{ try! reference.coder.stack.removeLastCodingKey() }
         
         let meta = try (self.reference.coder as! MetaEncoder).wrap(value)
         
         self.referencedMeta.append(element: meta)
-        
-        // do not use defer here, because a failure indicates corrupted data
-        // and that should be reported in a error
-        try reference.coder.stack.removeLastCodingKey()
         
     }
     

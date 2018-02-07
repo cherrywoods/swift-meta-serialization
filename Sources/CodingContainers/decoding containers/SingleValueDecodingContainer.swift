@@ -33,7 +33,16 @@ open class MetaSingleValueDecodingContainer: SingleValueDecodingContainer {
     
     open func decode<T>(_ type: T.Type) throws -> T where T : Decodable {
         
-        return try (self.reference.coder as! MetaDecoder).unwrap(self.reference.element)
+        // add coding key, so containers,
+        // that were requested as single value containers
+        // but are not directly supported by the translator
+        // can be pushed by wrap.
+        try self.reference.coder.stack.append(codingKey: SpecialCodingKey.singleValueDecodingContainer.rawValue)
+        defer{ try! reference.coder.stack.removeLastCodingKey() }
+        
+        let unwrapped =  try (self.reference.coder as! MetaDecoder).unwrap(reference.element) as T
+        
+        return unwrapped
         
     }
     

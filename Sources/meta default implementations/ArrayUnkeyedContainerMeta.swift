@@ -16,24 +16,16 @@ open class ArrayUnkeyedContainerMeta: UnkeyedContainerMeta, GenericMeta {
     }
     
     /**
-     The arry value of this container.
-     
-     Note that you may never set it to nil and that it never will be nil.
+     The array value of this container.
      */
-    open var value: [Meta]? = [] {
-        willSet {
-            // this precondition enables the save use of ! in the implementations below
-            precondition(newValue != nil,
-                         "The value property of an ArrayUnkeyedContainerMeta may never be nil. Do not set it to nil. If you wan't to delete all key-value-pairs, set it to [].")
-        }
-    }
+    open var value: [Meta]! = []
     
-    open var count: Int {
+    open var count: Int? {
         return value!.count
     }
     
     open func get(at index:Int) -> Meta? {
-        guard (0..<count).contains(index) else { // makes sure index is within its valid bounds (0 and count)
+        guard (0..<count!).contains(index) else { // makes sure index is within its valid bounds (0 and count)
             return nil
         }
         return value![index]
