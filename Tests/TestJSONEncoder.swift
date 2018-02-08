@@ -116,10 +116,10 @@ class TestMetaSerializationByJSONEncoderTests : XCTestCase {
     }
     
     func testEncodingTopLevelNullableType() {
-        // EnhancedBool is a type which encodes either as a Bool or as nil.
-        _testEncodeFailure(of: EnhancedBool.true)
-        _testEncodeFailure(of: EnhancedBool.false)
-        _testEncodeFailure(of: EnhancedBool.fileNotFound)
+        // encoding a top level nullable type is in general allowed
+        _testRoundTrip(of: EnhancedBool.true, expected: Container.bool(true))
+        _testRoundTrip(of: EnhancedBool.false, expected: Container.bool(false))
+        _testRoundTrip(of: EnhancedBool.fileNotFound, expected: Container.nil)
         
         _testRoundTrip(of: TopLevelWrapper(EnhancedBool.true), expected: Container.dictionary( ["value": Container.bool(true)] ) )
         _testRoundTrip(of: TopLevelWrapper(EnhancedBool.false), expected: Container.dictionary( ["value": Container.bool(false)] ) )
