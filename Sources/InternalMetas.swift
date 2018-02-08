@@ -3,6 +3,8 @@
 //  meta-serialization-iOS
 //
 //  Created by cherrywoods on 02.11.17.
+//  Licensed under Unlicense, https://unlicense.org
+//  See the LICENSE file in this project
 //
 
 import Foundation

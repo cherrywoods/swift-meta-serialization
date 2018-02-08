@@ -1,3 +1,9 @@
+//
+//  BasicUsage.playground
+//  meta-serialization
+//
+//  Copyright © 2017 cherrywoods. All rights reserved.
+//
 
 import Cocoa
 import MetaSerialization
