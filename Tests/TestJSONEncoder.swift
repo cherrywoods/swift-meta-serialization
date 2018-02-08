@@ -7,7 +7,8 @@
  This version is not the original version you can find at
  https://github.com/apple/swift/blob/1e110b8f63836734113cdb28970ebcea8fd383c2/test/stdlib/TestJSONEncoder.swift
  
- Large parts of the original content were modified.
+ Large parts of the original content were modified,
+ other parts removed.
  
  The original license is included in this repository
  in the file APACHE-LICENSE.txt.
@@ -132,7 +133,7 @@ class TestMetaSerializationByJSONEncoderTests : XCTestCase {
         do {
             let _ = try serialization.encode(NestedContainersTestType())
         } catch let error as NSError {
-            expectUnreachable("Caught error during encoding nested container types: \(error)")
+            XCTFail("Caught error during encoding nested container types: \(error)")
         }
     }
     
@@ -140,13 +141,17 @@ class TestMetaSerializationByJSONEncoderTests : XCTestCase {
         do {
             let _ = try serialization.encode(NestedContainersTestType(testSuperEncoder: true))
         } catch let error as NSError {
-            expectUnreachable("Caught error during encoding nested container types: \(error)")
+            XCTFail("Caught error during encoding nested container types: \(error)")
         }
     }
     
     // MARK: - Type coercion
     func testTypeCoercion() {
         _testRoundTripTypeCoercionFailure(of: [false, true], as: [Int].self)
+        // the following failures are actually other failures
+        // because our current translator does not support UInt, Int8, etc.
+        // This produces an error in unwrap of MetaDecoder.
+        // but to test this mechanism is good too.
         _testRoundTripTypeCoercionFailure(of: [false, true], as: [Int8].self)
         _testRoundTripTypeCoercionFailure(of: [false, true], as: [Int16].self)
         _testRoundTripTypeCoercionFailure(of: [false, true], as: [Int32].self)
@@ -158,7 +163,11 @@ class TestMetaSerializationByJSONEncoderTests : XCTestCase {
         _testRoundTripTypeCoercionFailure(of: [false, true], as: [UInt64].self)
         _testRoundTripTypeCoercionFailure(of: [false, true], as: [Float].self)
         _testRoundTripTypeCoercionFailure(of: [false, true], as: [Double].self)
+        // the following test is indeed a type coercion failure test
         _testRoundTripTypeCoercionFailure(of: [0, 1] as [Int], as: [Bool].self)
+        // those tests are tests of the error mechanism
+        // in MetaEncoders wrap function equal to
+        // the mechanism in MetaDecoders unwrap function
         _testRoundTripTypeCoercionFailure(of: [0, 1] as [Int8], as: [Bool].self)
         _testRoundTripTypeCoercionFailure(of: [0, 1] as [Int16], as: [Bool].self)
         _testRoundTripTypeCoercionFailure(of: [0, 1] as [Int32], as: [Bool].self)
@@ -168,18 +177,19 @@ class TestMetaSerializationByJSONEncoderTests : XCTestCase {
         _testRoundTripTypeCoercionFailure(of: [0, 1] as [UInt16], as: [Bool].self)
         _testRoundTripTypeCoercionFailure(of: [0, 1] as [UInt32], as: [Bool].self)
         _testRoundTripTypeCoercionFailure(of: [0, 1] as [UInt64], as: [Bool].self)
+        // those two tests are again type coercion tests
         _testRoundTripTypeCoercionFailure(of: [0.0, 1.0] as [Float], as: [Bool].self)
         _testRoundTripTypeCoercionFailure(of: [0.0, 1.0] as [Double], as: [Bool].self)
     }
     
     func testDecodingConcreteTypeParameter() {
         guard let encoded = try? serialization.encode(Employee.testValue) else {
-            expectUnreachable("Unable to encode Employee.")
+            XCTFail("Unable to encode Employee.")
             return
         }
         
         guard let decoded = try? serialization.decode(toType: Employee.self as Person.Type, from: encoded) else {
-            expectUnreachable("Failed to decode Employee as Person.")
+            XCTFail("Failed to decode Employee as Person.")
             return
         }
         
@@ -189,6 +199,9 @@ class TestMetaSerializationByJSONEncoderTests : XCTestCase {
     // MARK: - Encoder State
     // SR-6078
     func testEncoderStateThrowOnEncode() {
+        
+        
+        
         struct ReferencingEncoderWrapper<T : Encodable> : Encodable {
             let value: T
             init(_ value: T) { self.value = value }
@@ -233,7 +246,7 @@ class TestMetaSerializationByJSONEncoderTests : XCTestCase {
     private func _testEncodeFailure<T : Encodable>(of value: T) {
         do {
             let _ = try serialization.encode(value)
-            expectUnreachable("Encode of top-level \(T.self) was expected to fail.")
+            XCTFail("Encode of top-level \(T.self) was expected to fail.")
         } catch {}
     }
     
@@ -243,18 +256,18 @@ class TestMetaSerializationByJSONEncoderTests : XCTestCase {
         do {
             payload = try serialization.encode(value)
         } catch {
-            expectUnreachable("Failed to encode \(T.self): \(error)")
+            XCTFail("Failed to encode \(T.self): \(error)")
         }
         
         if expected != nil {
-            expectEqual(expected!, payload!, "Produced not identical to expected.")
+            XCTAssert(expected! == payload!, "Produced not identical to expected.")
         }
         
         do {
             let decoded = try serialization.decode(toType: T.self, from: payload)
-            expectEqual(decoded, value, "\(T.self) did not round-trip to an equal value.")
+            XCTAssert(decoded == value, "\(type(of:value)) did not round-trip to an equal value.")
         } catch {
-            expectUnreachable("Failed to decode \(T.self) from JSON: \(error)")
+            XCTFail("Failed to decode \(type(of:value)): \(error)")
         }
     }
     
@@ -262,7 +275,7 @@ class TestMetaSerializationByJSONEncoderTests : XCTestCase {
         do {
             let data = try serialization.encode(value)
             let _ = try serialization.decode(toType: U.self, from: data)
-            expectUnreachable("Coercion from \(T.self) to \(U.self) was expected to fail.")
+            XCTFail("Coercion from \(T.self) to \(U.self) was expected to fail.")
         } catch {}
     }
 }
@@ -271,7 +284,7 @@ class TestMetaSerializationByJSONEncoderTests : XCTestCase {
 func expectEqualPaths(_ lhs: [CodingKey], _ rhs: [CodingKey], _ prefix: String) {
     
     if lhs.count != rhs.count {
-        expectUnreachable("\(prefix) [CodingKey].count mismatch: \(lhs.count) != \(rhs.count)")
+        XCTFail("\(prefix) [CodingKey].count mismatch: \(lhs.count) != \(rhs.count)")
         return
     }
     
@@ -279,30 +292,22 @@ func expectEqualPaths(_ lhs: [CodingKey], _ rhs: [CodingKey], _ prefix: String) 
         switch (key1.intValue, key2.intValue) {
         case (.none, .none): break
         case (.some(let i1), .none):
-            expectUnreachable("\(prefix) CodingKey.intValue mismatch: \(type(of: key1))(\(i1)) != nil")
+            XCTFail("\(prefix) CodingKey.intValue mismatch: \(type(of: key1))(\(i1)) != nil")
             return
         case (.none, .some(let i2)):
-            expectUnreachable("\(prefix) CodingKey.intValue mismatch: nil != \(type(of: key2))(\(i2))")
+            XCTFail("\(prefix) CodingKey.intValue mismatch: nil != \(type(of: key2))(\(i2))")
             return
         case (.some(let i1), .some(let i2)):
             guard i1 == i2 else {
-                expectUnreachable("\(prefix) CodingKey.intValue mismatch: \(type(of: key1))(\(i1)) != \(type(of: key2))(\(i2))")
+                XCTFail("\(prefix) CodingKey.intValue mismatch: \(type(of: key1))(\(i1)) != \(type(of: key2))(\(i2))")
                 return
             }
             
             break
         }
         
-        expectEqual(key1.stringValue, key2.stringValue, "\(prefix) CodingKey.stringValue mismatch: \(type(of: key1))('\(key1.stringValue)') != \(type(of: key2))('\(key2.stringValue)')")
+        XCTAssert(key1.stringValue == key2.stringValue, "\(prefix) CodingKey.stringValue mismatch: \(type(of: key1))('\(key1.stringValue)') != \(type(of: key2))('\(key2.stringValue)')")
     }
-}
-
-fileprivate func expectEqual<T>(_ first: T, _ second: T, _ message: String = "") where T: Equatable {
-    XCTAssert(first == second, message)
-}
-
-fileprivate func expectUnreachable(_ message: String) {
-    XCTFail(message)
 }
 
 // MARK: - Test Types
@@ -701,7 +706,7 @@ struct NestedContainersTestType : Encodable {
 
 // MARK: - Helper Types
 /// A key type which can take on any string or integer value.
-/// This needs to mirror _JSONKey.
+/// This needs to mirror IndexCodingKey and SpecialCodingKey.
 fileprivate struct _TestKey : CodingKey {
     var stringValue: String
     var intValue: Int?
@@ -717,7 +722,7 @@ fileprivate struct _TestKey : CodingKey {
     }
     
     init(index: Int) {
-        self.stringValue = "Index \(index)"
+        self.stringValue = "Index: \(index)"
         self.intValue = index
     }
 }
@@ -760,48 +765,6 @@ fileprivate struct OptionalTopLevelWrapper<T> : Codable, Equatable where T : Cod
     
     static func ==(_ lhs: OptionalTopLevelWrapper<T>, _ rhs: OptionalTopLevelWrapper<T>) -> Bool {
         return lhs.value == rhs.value
-    }
-}
-
-fileprivate struct FloatNaNPlaceholder : Codable, Equatable {
-    init() {}
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        try container.encode(Float.nan)
-    }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        let float = try container.decode(Float.self)
-        if !float.isNaN {
-            throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Couldn't decode NaN."))
-        }
-    }
-    
-    static func ==(_ lhs: FloatNaNPlaceholder, _ rhs: FloatNaNPlaceholder) -> Bool {
-        return true
-    }
-}
-
-fileprivate struct DoubleNaNPlaceholder : Codable, Equatable {
-    init() {}
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        try container.encode(Double.nan)
-    }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        let double = try container.decode(Double.self)
-        if !double.isNaN {
-            throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Couldn't decode NaN."))
-        }
-    }
-    
-    static func ==(_ lhs: DoubleNaNPlaceholder, _ rhs: DoubleNaNPlaceholder) -> Bool {
-        return true
     }
 }
 
