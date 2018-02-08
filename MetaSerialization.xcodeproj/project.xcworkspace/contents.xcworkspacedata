@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "group:/Users/David/Documents/Programmierung/MetaSerialization/Tests"
+      name = "Tests">
+   </Group>
    <FileRef
-      location = "self:/Users/David/Documents/Programmierung/meta-serialization/MetaSerialization.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>
