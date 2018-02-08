@@ -58,20 +58,21 @@ class TestMetaSerializationByJSONEncoderTests : XCTestCase {
     
     // MARK: - Encoding Top-Level Single-Value Types
     func testEncodingTopLevelSingleValueEnum() {
-        _testEncodeFailure(of: Switch.off)
-        _testEncodeFailure(of: Switch.on)
+        // all those top level single value containers are allowed
+        _testRoundTrip(of: Switch.off)
+        _testRoundTrip(of: Switch.on)
         
         _testRoundTrip(of: TopLevelWrapper(Switch.off))
         _testRoundTrip(of: TopLevelWrapper(Switch.on))
     }
     
     func testEncodingTopLevelSingleValueStruct() {
-        _testEncodeFailure(of: Timestamp(3141592653))
+        _testRoundTrip(of: Timestamp(3141592653))
         _testRoundTrip(of: TopLevelWrapper(Timestamp(3141592653)))
     }
     
     func testEncodingTopLevelSingleValueClass() {
-        _testEncodeFailure(of: Counter())
+        _testRoundTrip(of: Counter())
         _testRoundTrip(of: TopLevelWrapper(Counter()))
     }
     
