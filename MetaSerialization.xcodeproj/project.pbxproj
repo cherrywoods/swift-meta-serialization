@@ -11,28 +11,15 @@
 		6374A5E5202C70F900F11F48 /* Foundation Primitive Codables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374A5E3202C70F900F11F48 /* Foundation Primitive Codables.swift */; };
 		6374A5E6202C70F900F11F48 /* Foundation Primitive Codables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374A5E3202C70F900F11F48 /* Foundation Primitive Codables.swift */; };
 		6374A5E7202C70F900F11F48 /* Foundation Primitive Codables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374A5E3202C70F900F11F48 /* Foundation Primitive Codables.swift */; };
-		637982B71FC1B190008BD5D5 /* MetaSerialization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E752FF1FC1A5A6000A2319 /* MetaSerialization.framework */; };
-		637982BD1FC1B1A0008BD5D5 /* BasicTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7532C1FC1ACF9000A2319 /* BasicTesting.swift */; };
-		637982BE1FC1B1A3008BD5D5 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7532D1FC1ACF9000A2319 /* Tree.swift */; };
-		637982BF1FC1B1A5008BD5D5 /* Tree+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753291FC1ACF9000A2319 /* Tree+Equatable.swift */; };
-		637F806F2028C0F900B7A040 /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637F806E2028C0F900B7A040 /* Thing.swift */; };
-		638FEC6B202BA6C100014C30 /* TestJSONEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638C637F202B4ADA00FC4907 /* TestJSONEncoder.swift */; };
-		638FEC6D202BAAA800014C30 /* ContainerTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FEC6C202BAAA800014C30 /* ContainerTranslator.swift */; };
-		638FEC6F202BAB3F00014C30 /* Container+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FEC6E202BAB3F00014C30 /* Container+Hashable.swift */; };
-		6393728C1FEC1CDA00840D11 /* Forest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6393728B1FEC1CDA00840D11 /* Forest.swift */; };
 		6393728E1FEC210A00840D11 /* SimpleSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6393728D1FEC210900840D11 /* SimpleSerialization.swift */; };
 		6393728F1FEC211A00840D11 /* SimpleSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6393728D1FEC210900840D11 /* SimpleSerialization.swift */; };
 		639372901FEC211A00840D11 /* SimpleSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6393728D1FEC210900840D11 /* SimpleSerialization.swift */; };
 		639372911FEC211A00840D11 /* SimpleSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6393728D1FEC210900840D11 /* SimpleSerialization.swift */; };
 		6393729F1FEC5B9E00840D11 /* MetaSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 63E752DA1FC1A557000A2319 /* MetaSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		63B6AA441FE5C17100040FB8 /* UselessTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7532A1FC1ACF9000A2319 /* UselessTranslator.swift */; };
 		63BC5BD31FC95A7E0035005D /* PrimitivesEnumTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BC5BD21FC95A7E0035005D /* PrimitivesEnumTranslator.swift */; };
 		63BC5BD41FC95A7E0035005D /* PrimitivesEnumTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BC5BD21FC95A7E0035005D /* PrimitivesEnumTranslator.swift */; };
 		63BC5BD51FC95A7E0035005D /* PrimitivesEnumTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BC5BD21FC95A7E0035005D /* PrimitivesEnumTranslator.swift */; };
 		63BC5BD61FC95A7E0035005D /* PrimitivesEnumTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BC5BD21FC95A7E0035005D /* PrimitivesEnumTranslator.swift */; };
-		63BD37CF202A2DBC00CD9533 /* TestThing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BD37CE202A2DBC00CD9533 /* TestThing.swift */; };
-		63BD37D1202A2EB900CD9533 /* ContinueDecodingAfterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BD37D0202A2EB900CD9533 /* ContinueDecodingAfterError.swift */; };
-		63BD37D3202A2EDE00CD9533 /* SpecialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BD37D2202A2EDE00CD9533 /* SpecialTests.swift */; };
 		63BD37D7202A419700CD9533 /* StrictCodingStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BD37D6202A419700CD9533 /* StrictCodingStack.swift */; };
 		63BD37D8202A419700CD9533 /* StrictCodingStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BD37D6202A419700CD9533 /* StrictCodingStack.swift */; };
 		63BD37D9202A419700CD9533 /* StrictCodingStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BD37D6202A419700CD9533 /* StrictCodingStack.swift */; };
@@ -174,30 +161,11 @@
 		63E754751FC1AD7C000A2319 /* GenericNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7537C1FC1AD7C000A2319 /* GenericNil.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		637982B81FC1B190008BD5D5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 63E752CC1FC19BF9000A2319 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 63E752FE1FC1A5A6000A2319;
-			remoteInfo = "MetaSerialization macOS";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		6324A03F20128114006DA7A1 /* BasicUsage.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = BasicUsage.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		6374A5E3202C70F900F11F48 /* Foundation Primitive Codables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation Primitive Codables.swift"; sourceTree = "<group>"; };
-		637982B21FC1B190008BD5D5 /* MetaSerializationTests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MetaSerializationTests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		637F806E2028C0F900B7A040 /* Thing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thing.swift; sourceTree = "<group>"; };
-		638C637F202B4ADA00FC4907 /* TestJSONEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestJSONEncoder.swift; sourceTree = "<group>"; };
-		638FEC6C202BAAA800014C30 /* ContainerTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTranslator.swift; sourceTree = "<group>"; };
-		638FEC6E202BAB3F00014C30 /* Container+Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Hashable.swift"; sourceTree = "<group>"; };
-		6393728B1FEC1CDA00840D11 /* Forest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forest.swift; sourceTree = "<group>"; };
 		6393728D1FEC210900840D11 /* SimpleSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleSerialization.swift; sourceTree = "<group>"; };
 		63BC5BD21FC95A7E0035005D /* PrimitivesEnumTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimitivesEnumTranslator.swift; sourceTree = "<group>"; };
-		63BD37CE202A2DBC00CD9533 /* TestThing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestThing.swift; sourceTree = "<group>"; };
-		63BD37D0202A2EB900CD9533 /* ContinueDecodingAfterError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinueDecodingAfterError.swift; sourceTree = "<group>"; };
-		63BD37D2202A2EDE00CD9533 /* SpecialTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialTests.swift; sourceTree = "<group>"; };
 		63BD37D6202A419700CD9533 /* StrictCodingStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrictCodingStack.swift; sourceTree = "<group>"; };
 		63E752D71FC1A557000A2319 /* MetaSerialization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MetaSerialization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63E752DA1FC1A557000A2319 /* MetaSerialization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetaSerialization.h; sourceTree = "<group>"; };
@@ -207,11 +175,6 @@
 		63E752FF1FC1A5A6000A2319 /* MetaSerialization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MetaSerialization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63E7530E1FC1ABB5000A2319 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		63E753131FC1ABBF000A2319 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		63E753201FC1AC83000A2319 /* Info-macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-macOS.plist"; sourceTree = "<group>"; };
-		63E753291FC1ACF9000A2319 /* Tree+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tree+Equatable.swift"; sourceTree = "<group>"; };
-		63E7532A1FC1ACF9000A2319 /* UselessTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UselessTranslator.swift; sourceTree = "<group>"; };
-		63E7532C1FC1ACF9000A2319 /* BasicTesting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTesting.swift; sourceTree = "<group>"; };
-		63E7532D1FC1ACF9000A2319 /* Tree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		63E7533A1FC1AD79000A2319 /* InternalMetas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalMetas.swift; sourceTree = "<group>"; };
 		63E7533B1FC1AD79000A2319 /* Translator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translator.swift; sourceTree = "<group>"; };
 		63E753431FC1AD79000A2319 /* MetaDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetaDecoder.swift; sourceTree = "<group>"; };
@@ -246,14 +209,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		637982AF1FC1B190008BD5D5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				637982B71FC1B190008BD5D5 /* MetaSerialization.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		63E752D31FC1A557000A2319 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -301,34 +256,12 @@
 			path = Supporting;
 			sourceTree = "<group>";
 		};
-		637F80702028C10700B7A040 /* Samples */ = {
-			isa = PBXGroup;
-			children = (
-				63E7532D1FC1ACF9000A2319 /* Tree.swift */,
-				63E753291FC1ACF9000A2319 /* Tree+Equatable.swift */,
-				6393728B1FEC1CDA00840D11 /* Forest.swift */,
-				637F806E2028C0F900B7A040 /* Thing.swift */,
-				63BD37D0202A2EB900CD9533 /* ContinueDecodingAfterError.swift */,
-			);
-			path = Samples;
-			sourceTree = "<group>";
-		};
 		63BC5BD11FC95A260035005D /* SimpleTranslator */ = {
 			isa = PBXGroup;
 			children = (
 				63BC5BD21FC95A7E0035005D /* PrimitivesEnumTranslator.swift */,
 			);
 			name = SimpleTranslator;
-			sourceTree = "<group>";
-		};
-		63BD37D4202A2F3E00CD9533 /* Translators */ = {
-			isa = PBXGroup;
-			children = (
-				63E7532A1FC1ACF9000A2319 /* UselessTranslator.swift */,
-				638FEC6C202BAAA800014C30 /* ContainerTranslator.swift */,
-				638FEC6E202BAB3F00014C30 /* Container+Hashable.swift */,
-			);
-			path = Translators;
 			sourceTree = "<group>";
 		};
 		63BD37D5202A417D00CD9533 /* Coding Stack Implementations */ = {
@@ -346,7 +279,6 @@
 				63E7530E1FC1ABB5000A2319 /* README.md */,
 				6324A03E201280DC006DA7A1 /* Examples */,
 				63E753071FC1A5B2000A2319 /* Sources */,
-				63E753271FC1AC87000A2319 /* Tests */,
 				63E752D81FC1A557000A2319 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -358,7 +290,6 @@
 				63E752E51FC1A56F000A2319 /* MetaSerialization.framework */,
 				63E752F21FC1A582000A2319 /* MetaSerialization.framework */,
 				63E752FF1FC1A5A6000A2319 /* MetaSerialization.framework */,
-				637982B21FC1B190008BD5D5 /* MetaSerializationTests macOS.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -373,20 +304,6 @@
 				63E752DB1FC1A557000A2319 /* Info.plist */,
 			);
 			path = Sources;
-			sourceTree = "<group>";
-		};
-		63E753271FC1AC87000A2319 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				638C637F202B4ADA00FC4907 /* TestJSONEncoder.swift */,
-				63E7532C1FC1ACF9000A2319 /* BasicTesting.swift */,
-				63BD37CE202A2DBC00CD9533 /* TestThing.swift */,
-				63BD37D2202A2EDE00CD9533 /* SpecialTests.swift */,
-				63BD37D4202A2F3E00CD9533 /* Translators */,
-				637F80702028C10700B7A040 /* Samples */,
-				63E753201FC1AC83000A2319 /* Info-macOS.plist */,
-			);
-			path = Tests;
 			sourceTree = "<group>";
 		};
 		63E753441FC1AD79000A2319 /* Representation */ = {
@@ -547,24 +464,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		637982B11FC1B190008BD5D5 /* MetaSerializationTests macOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 637982BA1FC1B190008BD5D5 /* Build configuration list for PBXNativeTarget "MetaSerializationTests macOS" */;
-			buildPhases = (
-				637982AE1FC1B190008BD5D5 /* Sources */,
-				637982AF1FC1B190008BD5D5 /* Frameworks */,
-				637982B01FC1B190008BD5D5 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				637982B91FC1B190008BD5D5 /* PBXTargetDependency */,
-			);
-			name = "MetaSerializationTests macOS";
-			productName = "MetaSerializationTests macOS";
-			productReference = 637982B21FC1B190008BD5D5 /* MetaSerializationTests macOS.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		63E752D61FC1A557000A2319 /* MetaSerialization iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63E752DD1FC1A557000A2319 /* Build configuration list for PBXNativeTarget "MetaSerialization iOS" */;
@@ -646,10 +545,6 @@
 				LastSwiftUpdateCheck = 0910;
 				LastUpgradeCheck = 0920;
 				TargetAttributes = {
-					637982B11FC1B190008BD5D5 = {
-						CreatedOnToolsVersion = 9.1;
-						ProvisioningStyle = Automatic;
-					};
 					63E752D61FC1A557000A2319 = {
 						CreatedOnToolsVersion = 9.1;
 						LastSwiftMigration = 0910;
@@ -688,19 +583,11 @@
 				63E752E41FC1A56F000A2319 /* MetaSerialization watchOS */,
 				63E752F11FC1A582000A2319 /* MetaSerialization tvOS */,
 				63E752FE1FC1A5A6000A2319 /* MetaSerialization macOS */,
-				637982B11FC1B190008BD5D5 /* MetaSerializationTests macOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		637982B01FC1B190008BD5D5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		63E752D51FC1A557000A2319 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -740,25 +627,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		637982AE1FC1B190008BD5D5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				63B6AA441FE5C17100040FB8 /* UselessTranslator.swift in Sources */,
-				6393728C1FEC1CDA00840D11 /* Forest.swift in Sources */,
-				638FEC6B202BA6C100014C30 /* TestJSONEncoder.swift in Sources */,
-				638FEC6D202BAAA800014C30 /* ContainerTranslator.swift in Sources */,
-				63BD37D3202A2EDE00CD9533 /* SpecialTests.swift in Sources */,
-				63BD37D1202A2EB900CD9533 /* ContinueDecodingAfterError.swift in Sources */,
-				637982BD1FC1B1A0008BD5D5 /* BasicTesting.swift in Sources */,
-				63BD37CF202A2DBC00CD9533 /* TestThing.swift in Sources */,
-				637982BE1FC1B1A3008BD5D5 /* Tree.swift in Sources */,
-				638FEC6F202BAB3F00014C30 /* Container+Hashable.swift in Sources */,
-				637F806F2028C0F900B7A040 /* Thing.swift in Sources */,
-				637982BF1FC1B1A5008BD5D5 /* Tree+Equatable.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		63E752D21FC1A557000A2319 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -929,135 +797,7 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		637982B91FC1B190008BD5D5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 63E752FE1FC1A5A6000A2319 /* MetaSerialization macOS */;
-			targetProxy = 637982B81FC1B190008BD5D5 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
-		637982BB1FC1B190008BD5D5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Tests/Info-macOS.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "cherrywoods.MetaSerializationTests-macOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-			};
-			name = Debug;
-		};
-		637982BC1FC1B190008BD5D5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Tests/Info-macOS.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "cherrywoods.MetaSerializationTests-macOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
-		};
 		63E752D01FC19BF9000A2319 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1688,15 +1428,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		637982BA1FC1B190008BD5D5 /* Build configuration list for PBXNativeTarget "MetaSerializationTests macOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				637982BB1FC1B190008BD5D5 /* Debug */,
-				637982BC1FC1B190008BD5D5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		63E752CF1FC19BF9000A2319 /* Build configuration list for PBXProject "MetaSerialization" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
