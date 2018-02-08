@@ -150,8 +150,8 @@ public class PrimitivesEnumTranslator: Translator {
     private let primitives: Set<Primitive>
     private let wrappers: [Primitive : Wrapper]
     
-    private let encodingClosure: (Any) throws -> Any
-    private let decodingClosure: (Any) throws -> Any
+    private let encodingClosure: (Any?) throws -> Any?
+    private let decodingClosure: (Any?) throws -> Any?
     
     // MARK: Translator implementation
     
@@ -273,11 +273,17 @@ public class PrimitivesEnumTranslator: Translator {
     public func encode<R>(_ meta: Meta) throws -> R {
         
         // Meta is garanteed to be a SimpleGenericMeta of one of the Primitive types
-        // or a DictionaryKeyedContainerMeta or ArrayUnkeyedContainerMeta
+        // or a NilMeta or a DictionaryKeyedContainerMeta or an ArrayUnkeyedContainerMeta
         // that are both GenericMetas
         
-        let value: Any
-        if meta is DictionaryKeyedContainerMeta {
+        // TODO: add nil
+        
+        let value: Any?
+        if meta is NilMeta {
+            
+            value = nil
+            
+        } else if meta is DictionaryKeyedContainerMeta {
             
             let d = (meta as! DictionaryKeyedContainerMeta).value!
             value = try d.mapValues { return try encode($0) as R }
