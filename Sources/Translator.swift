@@ -62,7 +62,7 @@ public protocol Translator {
      - Parameter meta: The meta, that contains the value in some meta encoded form, that you should cast to T.
      - Returns: A value of type T, that was contained in meta. Returns nil, if the requested type is not supported directly.
      */
-    func unwrap<T>(meta: Meta) throws -> T?
+    func unwrap<T>(meta: Meta, toType type: T.Type) throws -> T?
     
     // MARK: - coding
     

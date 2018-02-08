@@ -83,7 +83,7 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
         try reference.coder.stack.append(codingKey: IndexCodingKey(intValue: currentIndex)!)
         defer{ try! reference.coder.stack.removeLastCodingKey() }
         
-        let value: T = try (self.reference.coder as! MetaDecoder).unwrap(subMeta)
+        let value: T = try (self.reference.coder as! MetaDecoder).unwrap(subMeta, toType: type)
         
         // now we decoded a value with success,
         // therefor we can increment currentIndex
