@@ -40,7 +40,7 @@ open class MetaSingleValueDecodingContainer: SingleValueDecodingContainer {
         try self.reference.coder.stack.append(codingKey: SpecialCodingKey.singleValueDecodingContainer.rawValue)
         defer{ try! reference.coder.stack.removeLastCodingKey() }
         
-        let unwrapped =  try (self.reference.coder as! MetaDecoder).unwrap(reference.element) as T
+        let unwrapped =  try (self.reference.coder as! MetaDecoder).unwrap(reference.element, toType: type) as T
         
         return unwrapped
         
