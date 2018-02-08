@@ -61,7 +61,7 @@ open class MetaDecoder: Decoder, MetaCoder {
         }
         
         // and if it isn't directly supported, we call
-        return try D(from: self) // and let D decode itself
+        return try type.init(from: self) // and let D decode itself
         
     }
     
