@@ -3,7 +3,8 @@
 //  meta-serialization
 //
 //  Created by cherrywoods on 24.10.17.
-//  Copyright © 2017 cherrywoods. All rights reserved.
+//  Licensed under Unlicense, https://unlicense.org
+//  See the LICENSE file in this project
 //
 
 open class ArrayUnkeyedContainerMeta: UnkeyedContainerMeta, GenericMeta {
