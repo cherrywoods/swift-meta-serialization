@@ -18,8 +18,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "637982B11FC1B190008BD5D5"
-               BuildableName = "MetaSerializationTests macOS.xctest"
-               BlueprintName = "MetaSerializationTests macOS"
+               BuildableName = "MetaSerializationTestsMacOS.xctest"
+               BlueprintName = "MetaSerializationTestsMacOS"
                ReferencedContainer = "container:MetaSerialization.xcodeproj">
             </BuildableReference>
          </TestableReference>
