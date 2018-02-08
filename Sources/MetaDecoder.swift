@@ -56,12 +56,12 @@ open class MetaDecoder: Decoder, MetaCoder {
         // therefor we "manually" check whether translator
         // supportes meta directly
         
-        if let directlySupported = try translator.unwrap(meta: meta) as D? {
+        if let directlySupported = try translator.unwrap(meta: meta, toType: type) as D? {
             return directlySupported
         }
         
         // and if it isn't directly supported, we call
-        return try D(from: self) // and let D decode itself
+        return try type.init(from: self) // and let D decode itself
         
     }
     
@@ -70,26 +70,25 @@ open class MetaDecoder: Decoder, MetaCoder {
     /// The translator used to get and finally translate Metas
     open let translator: Translator
     
-    
     /**
      wraps a meta into a decodable value
      */
-    open func unwrap<T: Decodable>(_ meta: Meta) throws -> T {
+    open func unwrap<T: Decodable>(_ meta: Meta, toType type: T.Type) throws -> T {
         
         // single value containers can now decode more complex values
         // see MetaEncoder for more details
         
         do {
             
-            if let directlySupported = try translator.unwrap(meta: meta) as T? {
+            if let directlySupported = try translator.unwrap(meta: meta, toType: type) as T? {
                 return directlySupported
             }
             
         } catch TranslatorError.typeMismatch {
             
             // rethrow the the error with more context
-            let context = DecodingError.Context(codingPath: self.codingPath, debugDescription: "Requested wrong type: \(T.self)")
-            throw DecodingError.typeMismatch(T.self, context)
+            let context = DecodingError.Context(codingPath: self.codingPath, debugDescription: "Requested wrong type: \(type)")
+            throw DecodingError.typeMismatch(type, context)
             
         }
         
@@ -98,14 +97,14 @@ open class MetaDecoder: Decoder, MetaCoder {
         guard self.stack.mayPushNewMeta else {
             // this error is thrown, if an entitys type, that requested a single value container
             // was not supported natively by the translator
-            throw DecodingError.typeMismatch(T.self,
-                                             DecodingError.Context(codingPath: self.codingPath, debugDescription: "Type \(T.self) is not supported by this serialization framework."))
+            throw DecodingError.typeMismatch(type,
+                                             DecodingError.Context(codingPath: self.codingPath, debugDescription: "Type \(type) is not supported by this serialization framework."))
         }
         
         // now it is sure, that stack will accept a new meta
         try self.stack.push(meta: meta)
         defer{ _ = try! self.stack.pop() }
-        let value = try T(from: self)
+        let value = try type.init(from: self)
         
         return value
         

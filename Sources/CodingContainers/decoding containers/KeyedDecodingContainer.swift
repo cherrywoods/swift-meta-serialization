@@ -71,7 +71,7 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
         guard let subMeta = referencedMeta[key] else {
             
             let context = DecodingError.Context(codingPath: self.codingPath,
-                                                debugDescription: "No value for key \(key) (\"\(key.stringValue)\") contained.")
+                                                debugDescription: "No value for key: \(key) (\"\(key.stringValue)\") contained.")
             throw DecodingError.keyNotFound(key, context)
         }
         
@@ -79,7 +79,7 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
         try reference.coder.stack.append(codingKey: key)
         defer{ try! reference.coder.stack.removeLastCodingKey() }
         
-        let unwrapped = try (self.reference.coder as! MetaDecoder).unwrap(subMeta) as T
+        let unwrapped = try (self.reference.coder as! MetaDecoder).unwrap(subMeta, toType: type) as T
         
         return unwrapped
         

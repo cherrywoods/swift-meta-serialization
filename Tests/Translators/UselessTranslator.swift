@@ -22,7 +22,7 @@ class UselessTranslator: Translator {
         
     }
     
-    func unwrap<T>(meta: Meta) throws -> T {
+    func unwrap<T>(meta: Meta, toType: T.Type) throws -> T? {
         
         // meta will be initalized (get() will not return nil)
         // and the value should be of type T.
