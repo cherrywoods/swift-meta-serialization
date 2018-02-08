@@ -183,8 +183,7 @@ class TestMetaSerializationByJSONEncoderTests : XCTestCase {
             return
         }
         
-        // FIXME: fix this error
-        assert(decoded is Employee, "Expected decoded value to be of type Employee; got \(type(of: decoded)) instead.")
+        XCTAssert(decoded is Employee, "Expected decoded value to be of type Employee; got \(type(of: decoded)) instead.")
     }
     
     // MARK: - Encoder State
@@ -299,11 +298,11 @@ func expectEqualPaths(_ lhs: [CodingKey], _ rhs: [CodingKey], _ prefix: String) 
 }
 
 fileprivate func expectEqual<T>(_ first: T, _ second: T, _ message: String = "") where T: Equatable {
-    assert(first == second, message)
+    XCTAssert(first == second, message)
 }
 
 fileprivate func expectUnreachable(_ message: String) {
-    assertionFailure(message)
+    XCTFail(message)
 }
 
 // MARK: - Test Types
