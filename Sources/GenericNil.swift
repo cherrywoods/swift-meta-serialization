@@ -9,7 +9,7 @@
 import Foundation
 
 /// Represents a nil value
-public struct GenericNil: Codable {
+public struct GenericNil: DirectlyCodable {
     
     public static let instance: GenericNil = GenericNil()
     
