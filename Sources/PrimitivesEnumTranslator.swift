@@ -209,7 +209,7 @@ public class PrimitivesEnumTranslator: Translator {
         
     }
     
-    /**
+    /*
      
      Use the default implementations of keyedContainerMeta and unkeyedContainerMeta
      
