@@ -172,18 +172,17 @@ class TestMetaSerializationByJSONEncoderTests : XCTestCase {
     }
     
     func testDecodingConcreteTypeParameter() {
-        guard let json = try? serialization.encode(Employee.testValue) else {
+        guard let encoded = try? serialization.encode(Employee.testValue) else {
             expectUnreachable("Unable to encode Employee.")
             return
         }
         
-        guard let decoded = try? serialization.decode(toType: Employee.self as Person.Type, from: json) else {
-            expectUnreachable("Failed to decode Employee as Person from JSON.")
+        guard let decoded = try? serialization.decode(toType: Employee.self as Person.Type, from: encoded) else {
+            expectUnreachable("Failed to decode Employee as Person.")
             return
         }
         
         // FIXME: fix this error
-        // I don't quite know how to do this, respectively how JSONDecoder does it...
         assert(decoded is Employee, "Expected decoded value to be of type Employee; got \(type(of: decoded)) instead.")
     }
     
