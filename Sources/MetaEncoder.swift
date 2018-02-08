@@ -120,6 +120,35 @@ open class MetaEncoder: Encoder, MetaCoder {
         
         // ** now the value's type is not supported natively by translator **
         
+        /*
+         Need to throw an error, if value is an
+         Int, Int8, Int16, Int32, Int64,
+         UInt, UInt8, UInt16, UInt32, UInt64,
+         Float, Double,
+         Bool or
+         String
+         but isn't supported by the translator,
+         because if not an endless callback would be follow
+         see Foundation Primitive Codables.swift for more info.
+         
+         The same applies for DirectlyEncodable.
+         
+         We also need to throw an error, if value is an GenericNil
+         instance, because if we did not, nil values would encode
+         as empty containers.
+         
+         This all is archieved by checking if value is DirectlyEncodable.
+         All foundation" "primitive codables" (listed above) are extended
+         to implement DirectlyCodable and GenericNil does so to.
+         */
+        
+        if value is DirectlyEncodable {
+            let context = EncodingError.Context(codingPath: self.codingPath, debugDescription: "DirectlyEncodable type was not accepted by the Translator implementation: \(type(of: value))")
+            throw EncodingError.invalidValue(value, context)
+        }
+        
+        // ensure that a new meta can be pushed
+        
         guard self.stack.mayPushNewMeta else {
             // this error is thrown, if an entity, that requested a single value container
             // was not supported natively by the translator

@@ -77,6 +77,7 @@ open class MetaDecoder: Decoder, MetaCoder {
         
         // single value containers can now decode more complex values
         // see MetaEncoder for more details
+        // also see MetaEncoder in general for more comments
         
         do {
             
@@ -92,7 +93,20 @@ open class MetaDecoder: Decoder, MetaCoder {
             
         }
         
-        // translator does not support T natively, so it needs to decode itself
+        // ** translator does not support T natively, so it needs to decode itself **
+        
+        /*
+         Need to throw an error, if type implements DirectlyDecodable
+         see MetaEncoder.wrap for more information
+         */
+        
+        if type.self is DirectlyDecodable.Type {
+            let context = DecodingError.Context(codingPath: self.codingPath,
+                                                debugDescription: "DirectlyDecodable type was not accepted by the Translator implementation: \(type)")
+            throw DecodingError.typeMismatch(type, context)
+        }
+        
+        // ensure that a new meta can be pushed
         
         guard self.stack.mayPushNewMeta else {
             // this error is thrown, if an entitys type, that requested a single value container
@@ -101,8 +115,10 @@ open class MetaDecoder: Decoder, MetaCoder {
                                              DecodingError.Context(codingPath: self.codingPath, debugDescription: "Type \(type) is not supported by this serialization framework."))
         }
         
-        // now it is sure, that stack will accept a new meta
+        // ** now it is sure, that stack will accept a new meta **
+        
         try self.stack.push(meta: meta)
+        // defer pop to restore the Decoder stack if an error was thrown in type.init
         defer{ _ = try! self.stack.pop() }
         let value = try type.init(from: self)
         
