@@ -215,11 +215,11 @@ public class PrimitivesEnumTranslator: Translator {
      
      */
     
-    public func unwrap<T>(meta: Meta) throws -> T? {
+    public func unwrap<T>(meta: Meta, toType type: T.Type) throws -> T? {
         
         // NilMetas will not reach here
         
-        if let primitive = Primitive(fromSwiftType: T.self) {
+        if let primitive = Primitive(fromSwiftType: type) {
             
             // now meta needs to be a SimpleGenericMeta<T>
             // if it is not, throw an error.
