@@ -13,7 +13,7 @@
     <a title="Classes  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">MetaSerialization Docs</a> (66% documented)</p>
+        <p><a href="index.html">MetaSerialization Docs</a> (72% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -31,18 +31,6 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Classes/ArrayUnkeyedContainerMeta.html">ArrayUnkeyedContainerMeta</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/CodingStack.html">CodingStack</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/CodingStack/Status.html">– Status</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/CodingStack/Operation.html">– Operation</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/CodingStack/StackError.html">– StackError</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes/DictionaryKeyedContainerMeta.html">DictionaryKeyedContainerMeta</a>
@@ -92,11 +80,17 @@
               <li class="nav-group-task">
                 <a href="Classes/SimpleSerialization.html">SimpleSerialization</a>
               </li>
+              <li class="nav-group-task">
+                <a href="Classes/StrictCodingStack.html">StrictCodingStack</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
             <a href="Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/CodingStackStatus.html">CodingStackStatus</a>
+              </li>
               <li class="nav-group-task">
                 <a href="Enums/MetaEncodingError.html">MetaEncodingError</a>
               </li>
@@ -108,6 +102,9 @@
           <li class="nav-group-name">
             <a href="Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/CodingStack.html">CodingStack</a>
+              </li>
               <li class="nav-group-task">
                 <a href="Protocols/ContainerReference.html">ContainerReference</a>
               </li>
@@ -165,6 +162,9 @@
                 <a href="Structs/BoolWrappedToStringMeta.html">BoolWrappedToStringMeta</a>
               </li>
               <li class="nav-group-task">
+                <a href="Structs/DataWrappedToStringUsingBase64Meta.html">DataWrappedToStringUsingBase64Meta</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Structs/DirectReference.html">DirectReference</a>
               </li>
               <li class="nav-group-task">
@@ -205,6 +205,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Structs/NonRegualarCodingKey.html">NonRegualarCodingKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SimpleWrappingMeta.html">SimpleWrappingMeta</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/StackReference.html">StackReference</a>
@@ -276,7 +279,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">MetaEncoder</span><span class="p">:</span> <span class="kt">Encoder</span><span class="p">,</span> <span class="kt"><a href="Protocols/MetaCoder.html">MetaCoder</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MetaEncoder</span><span class="p">:</span> <span class="kt">Encoder</span><span class="p">,</span> <span class="kt"><a href="Protocols/MetaCoder.html">MetaCoder</a></span></code></pre>
 
                         </div>
                       </div>
@@ -304,7 +307,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">ReferencingMetaEncoder</span><span class="p">:</span> <span class="kt"><a href="Classes/MetaEncoder.html">MetaEncoder</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">ReferencingMetaEncoder</span><span class="p">:</span> <span class="kt"><a href="Classes/MetaEncoder.html">MetaEncoder</a></span></code></pre>
 
                         </div>
                       </div>
@@ -336,7 +339,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">PrimitivesEnumTranslator</span><span class="o">&lt;</span><span class="kt">Raw</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt"><a href="Protocols/Translator.html">Translator</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">PrimitivesEnumTranslator</span><span class="p">:</span> <span class="kt"><a href="Protocols/Translator.html">Translator</a></span></code></pre>
 
                         </div>
                       </div>
@@ -368,7 +371,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">SimpleGenericMeta</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt"><a href="Protocols/GenericMeta.html">GenericMeta</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">SimpleGenericMeta</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt"><a href="Protocols/GenericMeta.html">GenericMeta</a></span></code></pre>
 
                         </div>
                       </div>
@@ -402,7 +405,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">DictionaryKeyedContainerMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/KeyedContainerMeta.html">KeyedContainerMeta</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/GenericMeta.html">GenericMeta</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">DictionaryKeyedContainerMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/KeyedContainerMeta.html">KeyedContainerMeta</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/GenericMeta.html">GenericMeta</a></span></code></pre>
 
                         </div>
                       </div>
@@ -434,7 +437,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">MetaKeyedEncodingContainer</span><span class="o">&lt;</span><span class="kt">K</span><span class="p">:</span> <span class="kt">CodingKey</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">KeyedEncodingContainerProtocol</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MetaKeyedEncodingContainer</span><span class="o">&lt;</span><span class="kt">K</span><span class="p">:</span> <span class="kt">CodingKey</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">KeyedEncodingContainerProtocol</span></code></pre>
 
                         </div>
                       </div>
@@ -466,7 +469,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">MetaUnkeyedDecodingContainer</span><span class="p">:</span> <span class="kt">UnkeyedDecodingContainer</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MetaUnkeyedDecodingContainer</span><span class="p">:</span> <span class="kt">UnkeyedDecodingContainer</span></code></pre>
 
                         </div>
                       </div>
@@ -498,7 +501,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">MetaSingleValueDecodingContainer</span><span class="p">:</span> <span class="kt">SingleValueDecodingContainer</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MetaSingleValueDecodingContainer</span><span class="p">:</span> <span class="kt">SingleValueDecodingContainer</span></code></pre>
 
                         </div>
                       </div>
@@ -531,7 +534,7 @@ SimpleSerialization uses that translator for all objects it serializes.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">SimpleSerialization</span><span class="o">&lt;</span><span class="kt">R</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt"><a href="Typealiases.html#/s:17MetaSerialization0B0a">Serialization</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">SimpleSerialization</span><span class="o">&lt;</span><span class="kt">R</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt"><a href="Typealiases.html#/s:17MetaSerialization0B0a">Serialization</a></span></code></pre>
 
                         </div>
                       </div>
@@ -563,7 +566,7 @@ SimpleSerialization uses that translator for all objects it serializes.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">MetaKeyedDecodingContainer</span><span class="o">&lt;</span><span class="kt">K</span><span class="p">:</span> <span class="kt">CodingKey</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">KeyedDecodingContainerProtocol</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MetaKeyedDecodingContainer</span><span class="o">&lt;</span><span class="kt">K</span><span class="p">:</span> <span class="kt">CodingKey</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">KeyedDecodingContainerProtocol</span></code></pre>
 
                         </div>
                       </div>
@@ -595,7 +598,7 @@ SimpleSerialization uses that translator for all objects it serializes.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">MetaSingleValueEncodingContainer</span><span class="p">:</span> <span class="kt">SingleValueEncodingContainer</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MetaSingleValueEncodingContainer</span><span class="p">:</span> <span class="kt">SingleValueEncodingContainer</span></code></pre>
 
                         </div>
                       </div>
@@ -627,7 +630,41 @@ SimpleSerialization uses that translator for all objects it serializes.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">MetaUnkeyedEncodingContainer</span><span class="p">:</span> <span class="kt">UnkeyedEncodingContainer</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MetaUnkeyedEncodingContainer</span><span class="p">:</span> <span class="kt">UnkeyedEncodingContainer</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17MetaSerialization17StrictCodingStackC"></a>
+                    <a name="//apple_ref/swift/Class/StrictCodingStack" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization17StrictCodingStackC">StrictCodingStack</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>StrictCodingStack is the default implementation of CodingStack of MetaSerialization.</p>
+
+<p>StrictCodingStack allows exactly one meta per key and requires that the workflow of append-push-(nest same workflow)-pop-removeLastCodingKey is always followed.</p>
+
+                        <a href="Classes/StrictCodingStack.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">StrictCodingStack</span><span class="p">:</span> <span class="kt"><a href="Protocols/CodingStack.html">CodingStack</a></span></code></pre>
 
                         </div>
                       </div>
@@ -659,7 +696,7 @@ SimpleSerialization uses that translator for all objects it serializes.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">MetaDecoder</span><span class="p">:</span> <span class="kt">Decoder</span><span class="p">,</span> <span class="kt"><a href="Protocols/MetaCoder.html">MetaCoder</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MetaDecoder</span><span class="p">:</span> <span class="kt">Decoder</span><span class="p">,</span> <span class="kt"><a href="Protocols/MetaCoder.html">MetaCoder</a></span></code></pre>
 
                         </div>
                       </div>
@@ -679,7 +716,7 @@ SimpleSerialization uses that translator for all objects it serializes.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Used by superEncoder() in MetaKeyedEncodingContainer and MetaUnkeyedEncodingContainer</p>
+                        <p>Used by superDecoder() in MetaKeyedDecodingContainer and MetaUnkeyedDecodingContainer</p>
 
                         <a href="Classes/ReferencingMetaDecoder.html" class="slightly-smaller">See more</a>
                       </div>
@@ -687,7 +724,7 @@ SimpleSerialization uses that translator for all objects it serializes.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ReferencingMetaDecoder</span><span class="p">:</span> <span class="kt"><a href="Classes/MetaDecoder.html">MetaDecoder</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ReferencingMetaDecoder</span><span class="p">:</span> <span class="kt"><a href="Classes/MetaDecoder.html">MetaDecoder</a></span></code></pre>
 
                         </div>
                       </div>
@@ -719,50 +756,7 @@ SimpleSerialization uses that translator for all objects it serializes.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">ArrayUnkeyedContainerMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/UnkeyedContainerMeta.html">UnkeyedContainerMeta</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/GenericMeta.html">GenericMeta</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/TODO:%20extend%20documentation"></a>
-                <a name="//apple_ref/swift/Section/TODO: extend documentation" class="dashAnchor"></a>
-                <a href="#/TODO:%20extend%20documentation">
-                  <h3 class="section-name">TODO: extend documentation</h3>
-                </a>
-              </div>
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:17MetaSerialization11CodingStackC"></a>
-                    <a name="//apple_ref/swift/Class/CodingStack" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization11CodingStackC">CodingStack</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>CodingStack is a collection of metas and codingKeys with special adding and removing rules.
-It is a stack in that sence, that new elements may only be added on top and only be removed from top of the stack.
-However elements at a specific index can be read and exchanged, but not removed or added.
-Furthermore the stack checks, that every codingKey has also an associated meta, before a new CodingKey can be added (prevents entities encoding or decoding from requesting no container) and checks, that metas are only added, if a CodingKey was added for them ahead (prevents entities encoding or decoding from requesting more than one container).
-It does however not guarantee, that there is a meta for every CodingKey</p>
-
-                        <a href="Classes/CodingStack.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">CodingStack</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">ArrayUnkeyedContainerMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/UnkeyedContainerMeta.html">UnkeyedContainerMeta</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/GenericMeta.html">GenericMeta</a></span></code></pre>
 
                         </div>
                       </div>
@@ -774,8 +768,8 @@ It does however not guarantee, that there is a meta for every CodingKey</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/cherrywoods/swift-meta-serialization" target="_blank" rel="external">cherrywoods</a>. All rights reserved. (Last updated: 2018-01-18)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/cherrywoods/swift-meta-serialization" target="_blank" rel="external">cherrywoods</a>. All rights reserved. (Last updated: 2018-02-09)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
