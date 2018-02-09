@@ -16,7 +16,7 @@ public enum MetaEncodingError: Error {
 
 // MARK: - translator errors
 
-enum TranslatorError: Error {
+public enum TranslatorError: Error {
     
     /// throw this error during unwrap(meta:), if the encoded type does not match the requested type. MetaSerialization will convert this error to a DecodingError.
     case typeMismatch
