@@ -12,7 +12,7 @@ import Foundation
 /**
  A implementation of Translator, that gets Metas out of your way, so you will only have to work with Arrays, Dictionarys and the Primitive types you pass to it.
  */
-public class PrimitivesEnumTranslator: Translator {
+open class PrimitivesEnumTranslator: Translator {
     
     /**
      This enum contains cases for all primitive types this Translator can handle.
@@ -124,7 +124,7 @@ public class PrimitivesEnumTranslator: Translator {
     
     // MARK: Translator implementation
     
-    public func wrappingMeta<T>(for value: T) -> Meta? {
+    open func wrappingMeta<T>(for value: T) -> Meta? {
         
         // handle nil values first
         if T.self == GenericNil.self && primitives.contains(.nil) {
@@ -156,7 +156,7 @@ public class PrimitivesEnumTranslator: Translator {
      
      */
     
-    public func unwrap<T>(meta: Meta, toType type: T.Type) throws -> T? {
+    open func unwrap<T>(meta: Meta, toType type: T.Type) throws -> T? {
         
         // NilMetas will not reach here
         
@@ -185,7 +185,7 @@ public class PrimitivesEnumTranslator: Translator {
         
     }
     
-    public func encode<R>(_ meta: Meta) throws -> R {
+    open func encode<R>(_ meta: Meta) throws -> R {
         
         // Meta is garanteed to be a SimpleGenericMeta of one of the Primitive types
         // or a NilMeta or a DictionaryKeyedContainerMeta or an ArrayUnkeyedContainerMeta
@@ -265,7 +265,7 @@ public class PrimitivesEnumTranslator: Translator {
         
     }
     
-    public func decode<R>(_ raw: R) throws -> Meta {
+    open func decode<R>(_ raw: R) throws -> Meta {
         
         // decode and create Metas
         let value = try self.decodingClosure(raw)
