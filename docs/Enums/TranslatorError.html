@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>SpecialCodingKey Enumeration Reference</title>
+    <title>TranslatorError Enumeration Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Enum/SpecialCodingKey" class="dashAnchor"></a>
-    <a title="SpecialCodingKey Enumeration Reference"></a>
+    <a name="//apple_ref/swift/Enum/TranslatorError" class="dashAnchor"></a>
+    <a title="TranslatorError Enumeration Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">MetaSerialization Docs</a> (72% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">MetaSerialization Reference</a>
         <img id="carat" src="../img/carat.png" />
-        SpecialCodingKey Enumeration Reference
+        TranslatorError Enumeration Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -255,14 +255,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>SpecialCodingKey</h1>
+            <h1>TranslatorError</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">SpecialCodingKey</span><span class="p">:</span> <span class="kt"><a href="../Structs/NonRegualarCodingKey.html">NonRegualarCodingKey</a></span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">TranslatorError</span><span class="p">:</span> <span class="kt">Error</span></code></pre>
 
                 </div>
               </div>
-            <p>An enumeration of all special coding keys meta-serialization will use</p>
+            <p>Undocumented</p>
 
           </section>
           <section class="section task-group-section">
@@ -271,9 +271,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:17MetaSerialization16SpecialCodingKeyO5superA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/super" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization16SpecialCodingKeyO5superA2CmF">super</a>
+                    <a name="/s:17MetaSerialization15TranslatorErrorO12typeMismatchA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/typeMismatch" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization15TranslatorErrorO12typeMismatchA2CmF">typeMismatch</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -281,45 +281,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>used by the superEncoder() methods in MetaKeyed- Encoding- and Decoding- containers</p>
+                        <p>throw this error during unwrap(meta:), if the encoded type does not match the requested type. MetaSerialization will convert this error to a DecodingError.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="p">`</span><span class="nv">super</span><span class="p">`</span> <span class="o">=</span> <span class="s">"super"</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:17MetaSerialization16SpecialCodingKeyO28singleValueDecodingContainerA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/singleValueDecodingContainer" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization16SpecialCodingKeyO28singleValueDecodingContainerA2CmF">singleValueDecodingContainer</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>used by SingleValueDecodingContainer to decode containers that were requested as single value containers but are none</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">singleValueDecodingContainer</span> <span class="o">=</span> <span class="s">"singleValueDecodingContainer"</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">typeMismatch</span></code></pre>
 
                         </div>
                       </div>

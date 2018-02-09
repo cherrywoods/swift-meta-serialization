@@ -98,52 +98,17 @@ public class PrimitivesEnumTranslator: Translator {
     }
     
     /**
-     This enum contains cases for all swift types, to which PrimitivesEnumTranslator can wrapp other types.
-     You may for example tell PrimitivesEnumTranslator on init, to wrap bool, int, uint8 and float to string.
-     */
-    public enum Wrapper {
-        
-        /// stands for the swift String type
-        case string
-        
-        internal func primitiveType() -> PrimitivesEnumTranslator.Primitive {
-            
-            switch self {
-            case .string:
-                return .string
-            }
-            
-        }
-        
-    }
-    
-    /**
-     Create a new PrimitivesEnumTranslator
-     
-     primitives and wrappers.keys need to be disjoint (none of them may contain a element, the other also contains). Furthermore, wrappers.values needs to be fully contained in primitives.
+     Create a new PrimitivesEnumTranslator.
      If these conditions are violated, this initalizer will not return (crash).
      - Parameter primitives: A set of primitives types you can handle directly
-     - Parameter wrappers: A dictionary containing certain Primitive types and Wrapper types, to which the primitive types should be wrapped.
      - Parameter encode: Your encoding closure. You may expect the Any? parameter to be one of your primitive types (and non-nil, if you did not added .nil to the primitives you passed), an array of already encoded values or a dictionary of Strings and already encoded values (it isn't possible to avoid these strings per se). The arrays and dictionarys might indeed contain nested arrays and dictionarys.
      - Parameter decode: Your decoding closure. You need to return one of your primitive types, an array of your primitive types, or a dictionary of Strings and your primitive types (or with nested arrays and dictionarys).
      */
     public init( primitives: Set<Primitive>,
-                 wrappers: [Primitive : Wrapper] = [:],
                  encode: @escaping (Any?) throws -> Any?,
                  decode: @escaping (Any?) throws -> Any? ) {
         
-        // make sure wrappers.values is a subset of primitives
-        // if the wrappers would not be primitives, we could not wrap to them
-        precondition( primitives.isSuperset(of: wrappers.values.map() { $0.primitiveType() }),
-                      "wrappers.values need to be subset of primitives" )
-        
-        // make sure wrappers.keys does not intersect with primitives
-        // if a Primitive was contained in both, we had an ambiguity
-        precondition( primitives.isDisjoint(with: wrappers.keys),
-                      "wrappers.keys needs to be disjoint with primitives")
-        
         self.primitives = primitives
-        self.wrappers = wrappers
         
         self.encodingClosure = encode
         self.decodingClosure = decode
@@ -153,7 +118,6 @@ public class PrimitivesEnumTranslator: Translator {
     // MARK: properties
     
     private let primitives: Set<Primitive>
-    private let wrappers: [Primitive : Wrapper]
     
     private let encodingClosure: (Any?) throws -> Any?
     private let decodingClosure: (Any?) throws -> Any?
@@ -171,34 +135,6 @@ public class PrimitivesEnumTranslator: Translator {
         guard let primitive = Primitive(fromSwiftType: T.self) else {
             // not a primitive type
             return nil
-        }
-        
-        // wrap wrappers
-        if let wrapper = wrappers[primitive] {
-            
-            switch wrapper {
-            case .string: // Use WrapInStringMeta
-                switch primitive {
-                case .bool:     return BoolWrappedToStringMeta()
-                case .float:    return FloatWrappedToStringMeta()
-                case .double:   return DoubleWrappedToStringMeta()
-                case .int:      return IntWrappedToStringMeta()
-                case .uInt:     return UIntWrappedToStringMeta()
-                case .int8:     return Int8WrappedToStringMeta()
-                case .uInt8:    return UInt8WrappedToStringMeta()
-                case .int16:    return Int16WrappedToStringMeta()
-                case .uInt16:   return UInt16WrappedToStringMeta()
-                case .int32:    return Int32WrappedToStringMeta()
-                case .uInt32:   return UInt32WrappedToStringMeta()
-                case .int64:    return Int64WrappedToStringMeta()
-                case .uInt64:   return UInt64WrappedToStringMeta()
-                default: // this is .string and .nil (but nil is impossible), so just .string
-                    // well this is nonesence
-                    // but ok...
-                    return SimpleGenericMeta<T>()
-                }
-            }
-            
         }
         
         // return a SimpleGenericMeta for the supported primitive types
@@ -232,32 +168,6 @@ public class PrimitivesEnumTranslator: Translator {
             
             guard let value = (meta as? SimpleGenericMeta<T>)?.value else {
                 throw TranslatorError.typeMismatch
-            }
-            
-            // handle wrapped values
-            if let wrapper = wrappers[primitive] {
-                switch wrapper {
-                case .string:
-                    let string = value as! String
-                    switch primitive {
-                    case .bool:     return Bool(string) as? T
-                    case .float:    return Float(string) as? T
-                    case .double:   return Double(string) as? T
-                    case .int:      return Int(string) as? T
-                    case .uInt:     return UInt(string) as? T
-                    case .int8:     return Int8(string) as? T
-                    case .uInt8:    return UInt8(string) as? T
-                    case .int16:    return Int16(string) as? T
-                    case .uInt16:   return UInt16(string) as? T
-                    case .int32:    return Int32(string) as? T
-                    case .uInt32:   return UInt32(string) as? T
-                    case .int64:    return Int64(string) as? T
-                    case .uInt64:   return UInt64(string) as? T
-                    default: // this is .string and .nil (but nil is impossible), so just .string
-                        // thats ofcourse nonsence, but I decided to tolerate it
-                        return value
-                    }
-                }
             }
             
             // handle primitives
