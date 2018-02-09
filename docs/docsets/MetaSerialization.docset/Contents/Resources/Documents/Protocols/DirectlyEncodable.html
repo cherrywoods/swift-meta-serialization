@@ -14,7 +14,7 @@
     <a title="DirectlyEncodable Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">MetaSerialization Docs</a> (66% documented)</p>
+        <p><a href="../index.html">MetaSerialization Docs</a> (72% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -32,18 +32,6 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Classes/ArrayUnkeyedContainerMeta.html">ArrayUnkeyedContainerMeta</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/CodingStack.html">CodingStack</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/CodingStack/Status.html">– Status</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/CodingStack/Operation.html">– Operation</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/CodingStack/StackError.html">– StackError</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/DictionaryKeyedContainerMeta.html">DictionaryKeyedContainerMeta</a>
@@ -93,11 +81,17 @@
               <li class="nav-group-task">
                 <a href="../Classes/SimpleSerialization.html">SimpleSerialization</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Classes/StrictCodingStack.html">StrictCodingStack</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
             <a href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/CodingStackStatus.html">CodingStackStatus</a>
+              </li>
               <li class="nav-group-task">
                 <a href="../Enums/MetaEncodingError.html">MetaEncodingError</a>
               </li>
@@ -109,6 +103,9 @@
           <li class="nav-group-name">
             <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/CodingStack.html">CodingStack</a>
+              </li>
               <li class="nav-group-task">
                 <a href="../Protocols/ContainerReference.html">ContainerReference</a>
               </li>
@@ -166,6 +163,9 @@
                 <a href="../Structs/BoolWrappedToStringMeta.html">BoolWrappedToStringMeta</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/DataWrappedToStringUsingBase64Meta.html">DataWrappedToStringUsingBase64Meta</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/DirectReference.html">DirectReference</a>
               </li>
               <li class="nav-group-task">
@@ -206,6 +206,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/NonRegualarCodingKey.html">NonRegualarCodingKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SimpleWrappingMeta.html">SimpleWrappingMeta</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/StackReference.html">StackReference</a>
@@ -252,17 +255,14 @@
             <h1>DirectlyEncodable</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">DirectlyEncodable</span><span class="p">:</span> <span class="kt">Encodable</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">DirectlyEncodable</span><span class="p">:</span> <span class="kt">Encodable</span></code></pre>
 
                 </div>
               </div>
-            <p>implement this protocol if a type is supported directly by the Translator and you won&rsquo;t have to write any code for encoding.</p>
-<li>Implementation: requests a SingleValueContainer from the encoder in decode(to:) and encodes a value of the implementing type. Any Error thrown by encode() is rethrown.</li>
-<div class="aside aside-throws">
-    <p class="aside-title">Throws</p>
-    The same errors SingleValueEncodingContainer.encode(<implementing type>)
+            <p>Implement this protocol if a type is supported directly by the Translator.</p>
 
-</div>
+<p>MetaSerialization will throw an error, if a translator does not support your type directly.
+Therefor encode(to:) will never be called.</p>
 
           </section>
           <section class="section task-group-section">
@@ -290,7 +290,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">encode</span><span class="p">(</span><span class="n">to</span> <span class="nv">encoder</span><span class="p">:</span> <span class="kt">Encoder</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">encode</span><span class="p">(</span><span class="n">to</span> <span class="nv">encoder</span><span class="p">:</span> <span class="kt">Encoder</span><span class="p">)</span> <span class="k">throws</span></code></pre>
 
                         </div>
                       </div>
@@ -302,8 +302,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/cherrywoods/swift-meta-serialization" target="_blank" rel="external">cherrywoods</a>. All rights reserved. (Last updated: 2018-01-18)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/cherrywoods/swift-meta-serialization" target="_blank" rel="external">cherrywoods</a>. All rights reserved. (Last updated: 2018-02-09)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

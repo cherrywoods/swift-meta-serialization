@@ -2,497 +2,364 @@
   "warnings": [
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingContainers/decoding containers/KeyedDecodingContainer.swift",
-      "line": 20,
+      "line": 21,
       "symbol": "MetaKeyedDecodingContainer.reference",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingContainers/decoding containers/KeyedDecodingContainer.swift",
-      "line": 21,
+      "line": 22,
       "symbol": "MetaKeyedDecodingContainer.referencedMeta",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingContainers/decoding containers/KeyedDecodingContainer.swift",
-      "line": 34,
+      "line": 35,
       "symbol": "MetaKeyedDecodingContainer.init(referencing:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingContainers/decoding containers/SingleValueDecodingContainer.swift",
-      "line": 16,
+      "line": 17,
       "symbol": "MetaSingleValueDecodingContainer.reference",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingContainers/decoding containers/SingleValueDecodingContainer.swift",
-      "line": 22,
+      "line": 23,
       "symbol": "MetaSingleValueDecodingContainer.init(referencing:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingContainers/decoding containers/UnkeyedDecodingContainer.swift",
-      "line": 16,
+      "line": 17,
       "symbol": "MetaUnkeyedDecodingContainer.reference",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingContainers/decoding containers/UnkeyedDecodingContainer.swift",
-      "line": 17,
+      "line": 18,
       "symbol": "MetaUnkeyedDecodingContainer.referencedMeta",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingContainers/decoding containers/UnkeyedDecodingContainer.swift",
-      "line": 30,
+      "line": 31,
       "symbol": "MetaUnkeyedDecodingContainer.init(referencing:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingContainers/encoding containers/KeyedEncodingContainer.swift",
-      "line": 18,
+      "line": 19,
       "symbol": "MetaKeyedEncodingContainer.reference",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingContainers/encoding containers/KeyedEncodingContainer.swift",
-      "line": 19,
+      "line": 20,
       "symbol": "MetaKeyedEncodingContainer.referencedMeta",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingContainers/encoding containers/KeyedEncodingContainer.swift",
-      "line": 32,
+      "line": 33,
       "symbol": "MetaKeyedEncodingContainer.init(referencing:codingPath:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingContainers/encoding containers/SingleValueEncodingContainer.swift",
-      "line": 16,
+      "line": 17,
       "symbol": "MetaSingleValueEncodingContainer.reference",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingContainers/encoding containers/SingleValueEncodingContainer.swift",
-      "line": 22,
+      "line": 23,
       "symbol": "MetaSingleValueEncodingContainer.init(referencing:codingPath:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingContainers/encoding containers/UnkeyedEncodingContainer.swift",
-      "line": 16,
+      "line": 17,
       "symbol": "MetaUnkeyedEncodingContainer.reference",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingContainers/encoding containers/UnkeyedEncodingContainer.swift",
-      "line": 17,
+      "line": 18,
       "symbol": "MetaUnkeyedEncodingContainer.referencedMeta",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingContainers/encoding containers/UnkeyedEncodingContainer.swift",
-      "line": 36,
+      "line": 39,
       "symbol": "MetaUnkeyedEncodingContainer.init(referencing:codingPath:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 22,
-      "symbol": "CodingStack.codingPath",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 31,
-      "symbol": "CodingStack.lastOperation",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 33,
-      "symbol": "CodingStack.mayPushNewMeta",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 39,
-      "symbol": "CodingStack.mayPopMeta",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 42,
-      "symbol": "CodingStack.mayAppendNewCodingKey",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 45,
-      "symbol": "CodingStack.mayRemoveLastCodingKey",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 49,
-      "symbol": "CodingStack.Status",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 64,
-      "symbol": "CodingStack.Operation",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 65,
-      "symbol": "CodingStack.Operation.initalization",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 66,
-      "symbol": "CodingStack.Operation.pushed",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 67,
-      "symbol": "CodingStack.Operation.poped",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 68,
-      "symbol": "CodingStack.Operation.appended",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 69,
-      "symbol": "CodingStack.Operation.removedLast",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 72,
-      "symbol": "CodingStack.StackError",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 73,
-      "symbol": "CodingStack.StackError.statusMismatch",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/CodingStack.swift",
-      "line": 74,
-      "symbol": "CodingStack.StackError.emptyStack",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Encodable and Decodable/DirectlyCodable.swift",
-      "line": null,
-      "symbol": "DirectlyDecodable",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Encodable and Decodable/DirectlyCodable.swift",
-      "line": 18,
-      "symbol": "DirectlyDecodable",
+      "line": 35,
+      "symbol": "CodingStack",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Errors.swift",
-      "line": 11,
+      "line": 12,
       "symbol": "MetaEncodingError",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Errors.swift",
-      "line": 12,
-      "symbol": "MetaEncodingError.encodingProcessHasNotFinishedProperly",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/GenericNil.swift",
-      "line": 14,
+      "line": 15,
       "symbol": "GenericNil.instance",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/MetaCoder.swift",
-      "line": 14,
+      "line": 15,
       "symbol": "MetaCoder.codingPath",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/MetaCoder.swift",
-      "line": 16,
+      "line": 17,
       "symbol": "MetaCoder.stack",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/MetaCoder.swift",
-      "line": 17,
+      "line": 18,
       "symbol": "MetaCoder.translator",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/MetaDecoder.swift",
-      "line": 14,
+      "line": 15,
       "symbol": "MetaDecoder",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/MetaEncoder.swift",
-      "line": 51,
+      "line": 52,
       "symbol": "MetaEncoder.representationOfEncodedValue()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Metas.swift",
-      "line": 40,
+      "line": 41,
       "symbol": "GenericMeta.value",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/PrimitivesEnumTranslator.swift",
-      "line": 51,
-      "symbol": "PrimitivesEnumTranslator.Primitive.all",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Reference.swift",
-      "line": 9,
+      "line": 10,
       "symbol": "Reference",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Reference.swift",
-      "line": 11,
+      "line": 12,
       "symbol": "Reference.coder",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Reference.swift",
-      "line": 12,
+      "line": 13,
       "symbol": "Reference.element",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Reference.swift",
-      "line": 16,
+      "line": 17,
       "symbol": "StackReference",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Reference.swift",
-      "line": 18,
+      "line": 19,
       "symbol": "StackReference.coder",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Reference.swift",
-      "line": 21,
+      "line": 22,
       "symbol": "StackReference.init(coder:at:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Reference.swift",
-      "line": 26,
+      "line": 27,
       "symbol": "StackReference.element",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Reference.swift",
-      "line": 37,
+      "line": 38,
       "symbol": "DirectReference",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Reference.swift",
-      "line": 39,
+      "line": 40,
       "symbol": "DirectReference.coder",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Reference.swift",
-      "line": 40,
+      "line": 41,
       "symbol": "DirectReference.element",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Reference.swift",
-      "line": 43,
+      "line": 44,
       "symbol": "DirectReference.init(coder:element:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Reference.swift",
-      "line": 50,
+      "line": 51,
       "symbol": "ContainerReference",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Reference.swift",
-      "line": 51,
+      "line": 52,
       "symbol": "ContainerReference.codingKey",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Reference.swift",
-      "line": 52,
+      "line": 53,
       "symbol": "ContainerReference.insert(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Reference.swift",
-      "line": 55,
+      "line": 56,
       "symbol": "KeyedContainerReference",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Reference.swift",
-      "line": 57,
+      "line": 58,
       "symbol": "KeyedContainerReference.coder",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Reference.swift",
-      "line": 58,
+      "line": 59,
       "symbol": "KeyedContainerReference.element",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Reference.swift",
-      "line": 70,
+      "line": 71,
       "symbol": "KeyedContainerReference.codingKey",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Reference.swift",
-      "line": 72,
+      "line": 73,
       "symbol": "KeyedContainerReference.init(coder:element:at:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Reference.swift",
-      "line": 78,
+      "line": 79,
       "symbol": "KeyedContainerReference.insert(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Reference.swift",
-      "line": 86,
+      "line": 87,
       "symbol": "UnkeyedContainerReference",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Reference.swift",
-      "line": 88,
+      "line": 89,
       "symbol": "UnkeyedContainerReference.coder",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Reference.swift",
-      "line": 89,
+      "line": 90,
       "symbol": "UnkeyedContainerReference.element",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Reference.swift",
-      "line": 103,
+      "line": 104,
       "symbol": "UnkeyedContainerReference.init(coder:element:index:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Reference.swift",
-      "line": 112,
+      "line": 113,
       "symbol": "UnkeyedContainerReference.codingKey",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Reference.swift",
-      "line": 116,
+      "line": 117,
       "symbol": "UnkeyedContainerReference.insert(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Serialization/SimpleSerialization.swift",
-      "line": 20,
+      "line": 22,
       "symbol": "SimpleSerialization.init(translator:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -506,260 +373,288 @@
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Translator.swift",
-      "line": 11,
+      "line": 12,
       "symbol": "Translator",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/meta default implementations/ArrayUnkeyedContainerMeta.swift",
-      "line": 9,
+      "line": 10,
       "symbol": "ArrayUnkeyedContainerMeta",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/meta default implementations/ArrayUnkeyedContainerMeta.swift",
-      "line": 14,
+      "line": 15,
       "symbol": "ArrayUnkeyedContainerMeta.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/meta default implementations/DictionaryKeyedContainerMeta.swift",
-      "line": 23,
+      "line": 24,
       "symbol": "DictionaryKeyedContainerMeta.SwiftValueType",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/meta default implementations/DictionaryKeyedContainerMeta.swift",
-      "line": 25,
+      "line": 26,
       "symbol": "DictionaryKeyedContainerMeta.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/meta default implementations/NilMeta.swift",
-      "line": 17,
+      "line": 18,
       "symbol": "NilMeta.nil",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/meta default implementations/SimpleGenericMeta.swift",
-      "line": 9,
+      "line": 10,
       "symbol": "SimpleGenericMeta",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/meta default implementations/SimpleGenericMeta.swift",
-      "line": 13,
+      "line": 14,
       "symbol": "SimpleGenericMeta.value",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/meta default implementations/SimpleGenericMeta.swift",
-      "line": 15,
+      "line": 16,
       "symbol": "SimpleGenericMeta.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/meta default implementations/SimpleGenericMeta.swift",
-      "line": 17,
+      "line": 18,
       "symbol": "SimpleGenericMeta.init(value:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
+      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/SimpleWrappingMeta.swift",
+      "line": 12,
+      "symbol": "SimpleWrappingMeta",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/SimpleWrappingMeta.swift",
+      "line": 20,
+      "symbol": "SimpleWrappingMeta.init(convertToWrapperType:convertFromWrapperType:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/SimpleWrappingMeta.swift",
+      "line": 28,
+      "symbol": "SimpleWrappingMeta.wrappedValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/WrappingMeta.swift",
-      "line": 21,
+      "line": 22,
       "symbol": "WrappingMeta.wrappedValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/string/StringWrapperStandardTypes.swift",
-      "line": 13,
+      "line": 14,
       "symbol": "BoolWrappedToStringMeta",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/string/StringWrapperStandardTypes.swift",
-      "line": 16,
+      "line": 17,
       "symbol": "BoolWrappedToStringMeta.wrappedValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/string/StringWrapperStandardTypes.swift",
-      "line": 21,
+      "line": 22,
       "symbol": "IntWrappedToStringMeta",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/string/StringWrapperStandardTypes.swift",
-      "line": 24,
+      "line": 25,
       "symbol": "IntWrappedToStringMeta.wrappedValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/string/StringWrapperStandardTypes.swift",
-      "line": 27,
+      "line": 28,
       "symbol": "Int8WrappedToStringMeta",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/string/StringWrapperStandardTypes.swift",
-      "line": 30,
+      "line": 31,
       "symbol": "Int8WrappedToStringMeta.wrappedValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/string/StringWrapperStandardTypes.swift",
-      "line": 33,
+      "line": 34,
       "symbol": "Int16WrappedToStringMeta",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/string/StringWrapperStandardTypes.swift",
-      "line": 36,
+      "line": 37,
       "symbol": "Int16WrappedToStringMeta.wrappedValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/string/StringWrapperStandardTypes.swift",
-      "line": 39,
+      "line": 40,
       "symbol": "Int32WrappedToStringMeta",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/string/StringWrapperStandardTypes.swift",
-      "line": 42,
+      "line": 43,
       "symbol": "Int32WrappedToStringMeta.wrappedValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/string/StringWrapperStandardTypes.swift",
-      "line": 45,
+      "line": 46,
       "symbol": "Int64WrappedToStringMeta",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/string/StringWrapperStandardTypes.swift",
-      "line": 48,
+      "line": 49,
       "symbol": "Int64WrappedToStringMeta.wrappedValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/string/StringWrapperStandardTypes.swift",
-      "line": 53,
+      "line": 54,
       "symbol": "UIntWrappedToStringMeta",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/string/StringWrapperStandardTypes.swift",
-      "line": 56,
+      "line": 57,
       "symbol": "UIntWrappedToStringMeta.wrappedValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/string/StringWrapperStandardTypes.swift",
-      "line": 59,
+      "line": 60,
       "symbol": "UInt8WrappedToStringMeta",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/string/StringWrapperStandardTypes.swift",
-      "line": 62,
+      "line": 63,
       "symbol": "UInt8WrappedToStringMeta.wrappedValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/string/StringWrapperStandardTypes.swift",
-      "line": 65,
+      "line": 66,
       "symbol": "UInt16WrappedToStringMeta",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/string/StringWrapperStandardTypes.swift",
-      "line": 68,
+      "line": 69,
       "symbol": "UInt16WrappedToStringMeta.wrappedValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/string/StringWrapperStandardTypes.swift",
-      "line": 71,
+      "line": 72,
       "symbol": "UInt32WrappedToStringMeta",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/string/StringWrapperStandardTypes.swift",
-      "line": 74,
+      "line": 75,
       "symbol": "UInt32WrappedToStringMeta.wrappedValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/string/StringWrapperStandardTypes.swift",
-      "line": 77,
+      "line": 78,
       "symbol": "UInt64WrappedToStringMeta",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/string/StringWrapperStandardTypes.swift",
-      "line": 80,
+      "line": 81,
       "symbol": "UInt64WrappedToStringMeta.wrappedValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/string/StringWrapperStandardTypes.swift",
-      "line": 85,
+      "line": 86,
       "symbol": "FloatWrappedToStringMeta",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/string/StringWrapperStandardTypes.swift",
-      "line": 88,
+      "line": 89,
       "symbol": "FloatWrappedToStringMeta.wrappedValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/string/StringWrapperStandardTypes.swift",
-      "line": 91,
+      "line": 92,
       "symbol": "DoubleWrappedToStringMeta",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/string/StringWrapperStandardTypes.swift",
-      "line": 94,
+      "line": 95,
       "symbol": "DoubleWrappedToStringMeta.wrappedValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/wrapping metas/string/StringWrapperStandardTypes.swift",
+      "line": 106,
+      "symbol": "DataWrappedToStringUsingBase64Meta.wrappedValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     }
