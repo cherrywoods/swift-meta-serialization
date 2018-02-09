@@ -3,6 +3,8 @@
 //  MetaSerialization
 //
 //  Created by cherrywoods on 25.11.17.
+//  Licensed under Unlicense, https://unlicense.org
+//  See the LICENSE file in this project
 //
 
 import Foundation
@@ -17,6 +19,7 @@ public class PrimitivesEnumTranslator: Translator {
      The provided cases correspond to the types from the standard library, that have no mode of serializing themselves to another type (rely on a SingleValue(Encoding/Decoding)Container).
      */
     public enum Primitive: Hashable {
+        
         /// stands for the swift String type
         case string
         /// stands for the swift Bool type
@@ -48,42 +51,43 @@ public class PrimitivesEnumTranslator: Translator {
         /// stands for a nil value
         case `nil`
         
+        /// lists all Primitive cases
         public static var all: Set<Primitive> {
-            return Set<Primitive>(arrayLiteral: Primitive.string, .bool, .float, .double, .int, .uInt, .int8, .uInt8, .int16, .uInt16, .int32, .uInt32, .int64, .uInt64, .nil )
+            return Set<Primitive>(arrayLiteral: .string, .bool, .float, .double, .int, .uInt, .int8, .uInt8, .int16, .uInt16, .int32, .uInt32, .int64, .uInt64, .nil )
         }
         
         /**
          Creates a new Primitive for the given swift type, if it is supported.
          */
-        public init?<T>(fromSwiftType: T.Type) {
+        public init?<T>(fromSwiftType type: T.Type) {
             
-            if          T.self == String.self {
+            if          type.self is String.Type {
                 self = .string
-            } else if   T.self == Bool.self {
+            } else if   type.self is Bool.Type {
                 self = .bool
-            } else if   T.self == Float.self {
+            } else if   type.self is Float.Type {
                 self = .float
-            } else if   T.self == Double.self {
+            } else if   type.self is Double.Type {
                 self = .double
-            } else if   T.self == Int.self {
+            } else if   type.self is Int.Type {
                 self = .int
-            } else if   T.self == UInt.self {
+            } else if   type.self is UInt.Type {
                 self = .uInt
-            } else if   T.self == Int8.self {
+            } else if   type.self is Int8.Type {
                 self = .int8
-            } else if   T.self == UInt8.self {
+            } else if   type.self is UInt8.Type {
                 self = .uInt8
-            } else if   T.self == Int16.self {
+            } else if   type.self is Int16.Type {
                 self = .int16
-            } else if   T.self == UInt16.self {
+            } else if   type.self is UInt16.Type {
                 self = .uInt16
-            } else if   T.self == Int32.self {
+            } else if   type.self is Int32.Type {
                 self = .int32
-            } else if   T.self == UInt32.self {
+            } else if   type.self is UInt32.Type {
                 self = .uInt32
-            } else if   T.self == Int64.self {
+            } else if   type.self is Int64.Type {
                 self = .int64
-            } else if   T.self == UInt64.self {
+            } else if   type.self is UInt64.Type {
                 self = .uInt64
             } else {
                 return nil
@@ -98,6 +102,7 @@ public class PrimitivesEnumTranslator: Translator {
      You may for example tell PrimitivesEnumTranslator on init, to wrap bool, int, uint8 and float to string.
      */
     public enum Wrapper {
+        
         /// stands for the swift String type
         case string
         
@@ -122,10 +127,10 @@ public class PrimitivesEnumTranslator: Translator {
      - Parameter encode: Your encoding closure. You may expect the Any? parameter to be one of your primitive types (and non-nil, if you did not added .nil to the primitives you passed), an array of already encoded values or a dictionary of Strings and already encoded values (it isn't possible to avoid these strings per se). The arrays and dictionarys might indeed contain nested arrays and dictionarys.
      - Parameter decode: Your decoding closure. You need to return one of your primitive types, an array of your primitive types, or a dictionary of Strings and your primitive types (or with nested arrays and dictionarys).
      */
-    public init(primitives: Set<Primitive>,
-         wrappers: [Primitive : Wrapper] = [:],
-         encode: @escaping (Any?) throws -> Any?,
-         decode: @escaping (Any?) throws -> Any? ) {
+    public init( primitives: Set<Primitive>,
+                 wrappers: [Primitive : Wrapper] = [:],
+                 encode: @escaping (Any?) throws -> Any?,
+                 decode: @escaping (Any?) throws -> Any? ) {
         
         // make sure wrappers.values is a subset of primitives
         // if the wrappers would not be primitives, we could not wrap to them
