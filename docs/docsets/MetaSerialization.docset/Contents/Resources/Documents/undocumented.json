@@ -127,6 +127,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Errors.swift",
+      "line": 19,
+      "symbol": "TranslatorError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/GenericNil.swift",
       "line": 15,
       "symbol": "GenericNil.instance",
