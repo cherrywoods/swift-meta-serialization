@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>DirectReference Structure Reference</title>
+    <title>TranslatorError Enumeration Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Struct/DirectReference" class="dashAnchor"></a>
-    <a title="DirectReference Structure Reference"></a>
+    <a name="//apple_ref/swift/Enum/TranslatorError" class="dashAnchor"></a>
+    <a title="TranslatorError Enumeration Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">MetaSerialization Docs</a> (78% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">MetaSerialization Reference</a>
         <img id="carat" src="../img/carat.png" />
-        DirectReference Structure Reference
+        TranslatorError Enumeration Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -204,10 +204,10 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>DirectReference</h1>
+            <h1>TranslatorError</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">DirectReference</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Reference.html">Reference</a></span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">TranslatorError</span><span class="p">:</span> <span class="kt">Error</span></code></pre>
 
                 </div>
               </div>
@@ -220,9 +220,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:17MetaSerialization15DirectReferenceV5coderAA0A5Coder_pv"></a>
-                    <a name="//apple_ref/swift/Property/coder" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization15DirectReferenceV5coderAA0A5Coder_pv">coder</a>
+                    <a name="/s:17MetaSerialization15TranslatorErrorO12typeMismatchA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/typeMismatch" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization15TranslatorErrorO12typeMismatchA2CmF">typeMismatch</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -230,68 +230,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>throw this error during unwrap(meta:), if the encoded type does not match the requested type. MetaSerialization will convert this error to a DecodingError.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">coder</span><span class="p">:</span> <span class="kt"><a href="../Protocols/MetaCoder.html">MetaCoder</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:17MetaSerialization15DirectReferenceV7elementAA0A0_pv"></a>
-                    <a name="//apple_ref/swift/Property/element" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization15DirectReferenceV7elementAA0A0_pv">element</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">element</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Meta.html">Meta</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:17MetaSerialization15DirectReferenceVAcA0A5Coder_p5coder_AA0A0_p7elementtcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(coder:element:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization15DirectReferenceVAcA0A5Coder_p5coder_AA0A0_p7elementtcfc">init(coder:element:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">coder</span><span class="p">:</span> <span class="kt"><a href="../Protocols/MetaCoder.html">MetaCoder</a></span><span class="p">,</span> <span class="nv">element</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Meta.html">Meta</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">typeMismatch</span></code></pre>
 
                         </div>
                       </div>
