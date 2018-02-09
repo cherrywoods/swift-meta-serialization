@@ -13,7 +13,7 @@
     <a title="Structures  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">MetaSerialization Docs</a> (66% documented)</p>
+        <p><a href="index.html">MetaSerialization Docs</a> (72% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -31,18 +31,6 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Classes/ArrayUnkeyedContainerMeta.html">ArrayUnkeyedContainerMeta</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/CodingStack.html">CodingStack</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/CodingStack/Status.html">– Status</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/CodingStack/Operation.html">– Operation</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/CodingStack/StackError.html">– StackError</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes/DictionaryKeyedContainerMeta.html">DictionaryKeyedContainerMeta</a>
@@ -92,11 +80,17 @@
               <li class="nav-group-task">
                 <a href="Classes/SimpleSerialization.html">SimpleSerialization</a>
               </li>
+              <li class="nav-group-task">
+                <a href="Classes/StrictCodingStack.html">StrictCodingStack</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
             <a href="Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/CodingStackStatus.html">CodingStackStatus</a>
+              </li>
               <li class="nav-group-task">
                 <a href="Enums/MetaEncodingError.html">MetaEncodingError</a>
               </li>
@@ -108,6 +102,9 @@
           <li class="nav-group-name">
             <a href="Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/CodingStack.html">CodingStack</a>
+              </li>
               <li class="nav-group-task">
                 <a href="Protocols/ContainerReference.html">ContainerReference</a>
               </li>
@@ -165,6 +162,9 @@
                 <a href="Structs/BoolWrappedToStringMeta.html">BoolWrappedToStringMeta</a>
               </li>
               <li class="nav-group-task">
+                <a href="Structs/DataWrappedToStringUsingBase64Meta.html">DataWrappedToStringUsingBase64Meta</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Structs/DirectReference.html">DirectReference</a>
               </li>
               <li class="nav-group-task">
@@ -205,6 +205,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Structs/NonRegualarCodingKey.html">NonRegualarCodingKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SimpleWrappingMeta.html">SimpleWrappingMeta</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/StackReference.html">StackReference</a>
@@ -283,7 +286,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">BoolWrappedToStringMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">BoolWrappedToStringMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
 
                         </div>
                       </div>
@@ -322,7 +325,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">IntWrappedToStringMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">IntWrappedToStringMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
 
                         </div>
                       </div>
@@ -350,7 +353,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Int8WrappedToStringMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Int8WrappedToStringMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
 
                         </div>
                       </div>
@@ -378,7 +381,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Int16WrappedToStringMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Int16WrappedToStringMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
 
                         </div>
                       </div>
@@ -406,7 +409,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Int32WrappedToStringMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Int32WrappedToStringMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
 
                         </div>
                       </div>
@@ -434,7 +437,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Int64WrappedToStringMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Int64WrappedToStringMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
 
                         </div>
                       </div>
@@ -473,7 +476,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">UIntWrappedToStringMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">UIntWrappedToStringMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
 
                         </div>
                       </div>
@@ -501,7 +504,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">UInt8WrappedToStringMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">UInt8WrappedToStringMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
 
                         </div>
                       </div>
@@ -529,7 +532,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">UInt16WrappedToStringMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">UInt16WrappedToStringMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
 
                         </div>
                       </div>
@@ -557,7 +560,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">UInt32WrappedToStringMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">UInt32WrappedToStringMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
 
                         </div>
                       </div>
@@ -585,7 +588,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">UInt64WrappedToStringMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">UInt64WrappedToStringMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
 
                         </div>
                       </div>
@@ -596,10 +599,10 @@
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/foating%20point%20values"></a>
-                <a name="//apple_ref/swift/Section/foating point values" class="dashAnchor"></a>
-                <a href="#/foating%20point%20values">
-                  <h3 class="section-name">foating point values</h3>
+                <a name="/floating%20point%20values"></a>
+                <a name="//apple_ref/swift/Section/floating point values" class="dashAnchor"></a>
+                <a href="#/floating%20point%20values">
+                  <h3 class="section-name">floating point values</h3>
                 </a>
               </div>
               <ul>
@@ -624,7 +627,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">FloatWrappedToStringMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">FloatWrappedToStringMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
 
                         </div>
                       </div>
@@ -652,7 +655,46 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">DoubleWrappedToStringMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">DoubleWrappedToStringMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Base%2064%20Data%20wrapper"></a>
+                <a name="//apple_ref/swift/Section/Base 64 Data wrapper" class="dashAnchor"></a>
+                <a href="#/Base%2064%20Data%20wrapper">
+                  <h3 class="section-name">Base 64 Data wrapper</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17MetaSerialization030DataWrappedToStringUsingBase64A0V"></a>
+                    <a name="//apple_ref/swift/Struct/DataWrappedToStringUsingBase64Meta" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization030DataWrappedToStringUsingBase64A0V">DataWrappedToStringUsingBase64Meta</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Wrapps data values to base64 strings, using the default Base64EncodingOptions and Base64DecodingOptions.</p>
+
+                        <a href="Structs/DataWrappedToStringUsingBase64Meta.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">DataWrappedToStringUsingBase64Meta</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
 
                         </div>
                       </div>
@@ -685,7 +727,7 @@ get will return NSNull(), set will stay lazy and do nothing</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">NilMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:17MetaSerialization03NilA8ProtocolP">NilMetaProtocol</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">NilMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:17MetaSerialization03NilA8ProtocolP">NilMetaProtocol</a></span></code></pre>
 
                         </div>
                       </div>
@@ -717,7 +759,7 @@ get will return NSNull(), set will stay lazy and do nothing</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">EmptyOnlyKeyedContainerMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/KeyedContainerMeta.html">KeyedContainerMeta</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">EmptyOnlyKeyedContainerMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/KeyedContainerMeta.html">KeyedContainerMeta</a></span></code></pre>
 
                         </div>
                       </div>
@@ -749,7 +791,7 @@ get will return NSNull(), set will stay lazy and do nothing</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">IndexCodingKey</span><span class="p">:</span> <span class="kt">CodingKey</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">IndexCodingKey</span><span class="p">:</span> <span class="kt">CodingKey</span></code></pre>
 
                         </div>
                       </div>
@@ -777,7 +819,7 @@ get will return NSNull(), set will stay lazy and do nothing</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">NonRegualarCodingKey</span><span class="p">:</span> <span class="kt">CodingKey</span><span class="p">,</span> <span class="kt">ExpressibleByStringLiteral</span><span class="p">,</span> <span class="kt">Equatable</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">NonRegualarCodingKey</span><span class="p">:</span> <span class="kt">CodingKey</span><span class="p">,</span> <span class="kt">ExpressibleByStringLiteral</span><span class="p">,</span> <span class="kt">Equatable</span></code></pre>
 
                         </div>
                       </div>
@@ -809,7 +851,39 @@ get will return NSNull(), set will stay lazy and do nothing</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">GenericNil</span><span class="p">:</span> <span class="kt">Codable</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">GenericNil</span><span class="p">:</span> <span class="kt"><a href="Typealiases.html#/s:17MetaSerialization15DirectlyCodablea">DirectlyCodable</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17MetaSerialization014SimpleWrappingA0V"></a>
+                    <a name="//apple_ref/swift/Struct/SimpleWrappingMeta" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization014SimpleWrappingA0V">SimpleWrappingMeta</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Structs/SimpleWrappingMeta.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">SimpleWrappingMeta</span><span class="o">&lt;</span><span class="kt">Wrapper</span><span class="p">,</span> <span class="kt">Wrapped</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt"><a href="Protocols/WrappingMeta.html">WrappingMeta</a></span></code></pre>
 
                         </div>
                       </div>
@@ -841,7 +915,7 @@ get will return NSNull(), set will stay lazy and do nothing</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">StackReference</span><span class="p">:</span> <span class="kt"><a href="Protocols/Reference.html">Reference</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">StackReference</span><span class="p">:</span> <span class="kt"><a href="Protocols/Reference.html">Reference</a></span></code></pre>
 
                         </div>
                       </div>
@@ -869,7 +943,7 @@ get will return NSNull(), set will stay lazy and do nothing</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">DirectReference</span><span class="p">:</span> <span class="kt"><a href="Protocols/Reference.html">Reference</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">DirectReference</span><span class="p">:</span> <span class="kt"><a href="Protocols/Reference.html">Reference</a></span></code></pre>
 
                         </div>
                       </div>
@@ -897,7 +971,7 @@ get will return NSNull(), set will stay lazy and do nothing</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">KeyedContainerReference</span><span class="p">:</span> <span class="kt"><a href="Protocols/ContainerReference.html">ContainerReference</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">KeyedContainerReference</span><span class="p">:</span> <span class="kt"><a href="Protocols/ContainerReference.html">ContainerReference</a></span></code></pre>
 
                         </div>
                       </div>
@@ -925,7 +999,7 @@ get will return NSNull(), set will stay lazy and do nothing</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">UnkeyedContainerReference</span><span class="p">:</span> <span class="kt"><a href="Protocols/ContainerReference.html">ContainerReference</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">UnkeyedContainerReference</span><span class="p">:</span> <span class="kt"><a href="Protocols/ContainerReference.html">ContainerReference</a></span></code></pre>
 
                         </div>
                       </div>
@@ -937,8 +1011,8 @@ get will return NSNull(), set will stay lazy and do nothing</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/cherrywoods/swift-meta-serialization" target="_blank" rel="external">cherrywoods</a>. All rights reserved. (Last updated: 2018-01-18)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/cherrywoods/swift-meta-serialization" target="_blank" rel="external">cherrywoods</a>. All rights reserved. (Last updated: 2018-02-09)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
