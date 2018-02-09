@@ -3,6 +3,8 @@
 //  MetaSerialization
 //
 //  Created by cherrywoods on 08.02.18.
+//  Licensed under Unlicense, https://unlicense.org
+//  See the LICENSE file in this project
 //
 
 import Foundation

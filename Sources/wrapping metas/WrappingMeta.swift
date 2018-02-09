@@ -3,7 +3,8 @@
 //  meta-serialization
 //
 //  Created by cherrywoods on 26.10.17.
-//  Copyright © 2017 cherrywoods. All rights reserved.
+//  Licensed under Unlicense, https://unlicense.org
+//  See the LICENSE file in this project
 //
 
 /**
@@ -16,21 +17,21 @@ public protocol WrappingMeta: Meta {
     /// the swift type, that shawl be wrapped into WrappingType
     associatedtype WrappedType
     /// the type that is used in raw representations
-    associatedtype WrappingType
+    associatedtype WrapperType
     
     var wrappedValue: WrappedType! { get set }
     
     /**
-     Convert the wrapped type into a WrappingType representation, that will convert back to the same wrapped value, if it is passed to convert(wrapping:).
+     Convert the wrapped type into a WrapperType representation, that will convert back to the same wrapped value, if it is passed to convert(wrapper:).
      Therefor return a representation, that identifies the wrapped value.
      */
-    func convert(wrapped: WrappedType) -> WrappingType
+    func convert(wrapped: WrappedType) -> WrapperType
     
     /**
-     Convert a wrapping type representation into the corresponding wrapped type.
-     You may assume, that wrapping is a valid representation you yourself created
+     Convert a wrapper type representation into the corresponding wrapped type.
+     You may assume, that wrapper is a valid representation you yourself created.
      */
-    func convert(wrapping: WrappingType) -> WrappedType?
+    func convert(wrapper: WrapperType) -> WrappedType?
     
 }
 
@@ -39,11 +40,14 @@ public extension WrappingMeta {
     public func get() -> Any? {
         
         return wrappedValue == nil ? nil : convert(wrapped: wrappedValue!)
+        
     }
     
     public mutating func set(value: Any) {
-        precondition(value is WrappingType, "Incorrect usage of WrappingMeta. set(value:) was called with unexpected type. (expected type: \(WrappingType.self)")
-        self.wrappedValue = convert(wrapping: value as! WrappingType)
+        
+        precondition(value is WrapperType, "Incorrect usage of WrappingMeta. set(value:) was called with unexpected type. (expected type: \(WrapperType.self)")
+        self.wrappedValue = convert(wrapper: value as! WrapperType)
+        
     }
     
 }
