@@ -14,7 +14,7 @@
     <a title="EncodingRepresentation Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">MetaSerialization Docs</a> (66% documented)</p>
+        <p><a href="../index.html">MetaSerialization Docs</a> (72% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -32,18 +32,6 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Classes/ArrayUnkeyedContainerMeta.html">ArrayUnkeyedContainerMeta</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/CodingStack.html">CodingStack</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/CodingStack/Status.html">– Status</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/CodingStack/Operation.html">– Operation</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/CodingStack/StackError.html">– StackError</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/DictionaryKeyedContainerMeta.html">DictionaryKeyedContainerMeta</a>
@@ -93,11 +81,17 @@
               <li class="nav-group-task">
                 <a href="../Classes/SimpleSerialization.html">SimpleSerialization</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Classes/StrictCodingStack.html">StrictCodingStack</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
             <a href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/CodingStackStatus.html">CodingStackStatus</a>
+              </li>
               <li class="nav-group-task">
                 <a href="../Enums/MetaEncodingError.html">MetaEncodingError</a>
               </li>
@@ -109,6 +103,9 @@
           <li class="nav-group-name">
             <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/CodingStack.html">CodingStack</a>
+              </li>
               <li class="nav-group-task">
                 <a href="../Protocols/ContainerReference.html">ContainerReference</a>
               </li>
@@ -166,6 +163,9 @@
                 <a href="../Structs/BoolWrappedToStringMeta.html">BoolWrappedToStringMeta</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/DataWrappedToStringUsingBase64Meta.html">DataWrappedToStringUsingBase64Meta</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/DirectReference.html">DirectReference</a>
               </li>
               <li class="nav-group-task">
@@ -206,6 +206,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/NonRegualarCodingKey.html">NonRegualarCodingKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SimpleWrappingMeta.html">SimpleWrappingMeta</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/StackReference.html">StackReference</a>
@@ -252,7 +255,7 @@
             <h1>EncodingRepresentation</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">EncodingRepresentation</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">EncodingRepresentation</span></code></pre>
 
                 </div>
               </div>
@@ -294,41 +297,7 @@ For example you may provide a userInfo dictionary or an initial codingPath.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">init</span><span class="o">&lt;</span><span class="kt">E</span><span class="p">:</span> <span class="kt">Encodable</span><span class="o">&gt;</span><span class="p">(</span><span class="n">encoding</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">E</span><span class="p">)</span> <span class="k">throws</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:17MetaSerialization22EncodingRepresentationP6encodeyqd__Ks9EncodableRd__lF"></a>
-                    <a name="//apple_ref/swift/Method/encode(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization22EncodingRepresentationP6encodeyqd__Ks9EncodableRd__lF">encode(_:)</a>
-                    </code>
-                      <span class="declaration-note">
-                        Default implementation
-                      </span>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Encodes the given value into this EncodingRepresentation</p>
-
-                      </div>
-                      <h4>Default Implementation</h4>
-                      <div class="default_impl abstract">
-                        
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">mutating</span> <span class="kd">func</span> <span class="n">encode</span><span class="o">&lt;</span><span class="kt">E</span><span class="p">:</span> <span class="kt">Encodable</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">E</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">init</span><span class="o">&lt;</span><span class="kt">E</span><span class="p">:</span> <span class="kt">Encodable</span><span class="o">&gt;</span><span class="p">(</span><span class="n">encoding</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">E</span><span class="p">)</span> <span class="k">throws</span></code></pre>
 
                         </div>
                       </div>
@@ -355,7 +324,7 @@ For example you may provide a userInfo dictionary or an initial codingPath.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">provideNewEncoder</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/MetaEncoder.html">MetaEncoder</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">provideNewEncoder</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/MetaEncoder.html">MetaEncoder</a></span></code></pre>
 
                         </div>
                       </div>
@@ -367,8 +336,8 @@ For example you may provide a userInfo dictionary or an initial codingPath.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/cherrywoods/swift-meta-serialization" target="_blank" rel="external">cherrywoods</a>. All rights reserved. (Last updated: 2018-01-18)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/cherrywoods/swift-meta-serialization" target="_blank" rel="external">cherrywoods</a>. All rights reserved. (Last updated: 2018-02-09)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

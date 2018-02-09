@@ -13,7 +13,7 @@
     <a title="Protocols  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">MetaSerialization Docs</a> (66% documented)</p>
+        <p><a href="index.html">MetaSerialization Docs</a> (72% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -31,18 +31,6 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Classes/ArrayUnkeyedContainerMeta.html">ArrayUnkeyedContainerMeta</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/CodingStack.html">CodingStack</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/CodingStack/Status.html">– Status</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/CodingStack/Operation.html">– Operation</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/CodingStack/StackError.html">– StackError</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes/DictionaryKeyedContainerMeta.html">DictionaryKeyedContainerMeta</a>
@@ -92,11 +80,17 @@
               <li class="nav-group-task">
                 <a href="Classes/SimpleSerialization.html">SimpleSerialization</a>
               </li>
+              <li class="nav-group-task">
+                <a href="Classes/StrictCodingStack.html">StrictCodingStack</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
             <a href="Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/CodingStackStatus.html">CodingStackStatus</a>
+              </li>
               <li class="nav-group-task">
                 <a href="Enums/MetaEncodingError.html">MetaEncodingError</a>
               </li>
@@ -108,6 +102,9 @@
           <li class="nav-group-name">
             <a href="Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/CodingStack.html">CodingStack</a>
+              </li>
               <li class="nav-group-task">
                 <a href="Protocols/ContainerReference.html">ContainerReference</a>
               </li>
@@ -165,6 +162,9 @@
                 <a href="Structs/BoolWrappedToStringMeta.html">BoolWrappedToStringMeta</a>
               </li>
               <li class="nav-group-task">
+                <a href="Structs/DataWrappedToStringUsingBase64Meta.html">DataWrappedToStringUsingBase64Meta</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Structs/DirectReference.html">DirectReference</a>
               </li>
               <li class="nav-group-task">
@@ -205,6 +205,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Structs/NonRegualarCodingKey.html">NonRegualarCodingKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SimpleWrappingMeta.html">SimpleWrappingMeta</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/StackReference.html">StackReference</a>
@@ -281,7 +284,7 @@ For example you may provide a userInfo dictionary or an initial codingPath.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">EncodingRepresentation</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">EncodingRepresentation</span></code></pre>
 
                         </div>
                       </div>
@@ -314,7 +317,7 @@ For example you may provide a userInfo dictionary or an initial codingPath.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">DecodingRepresentation</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">DecodingRepresentation</span></code></pre>
 
                         </div>
                       </div>
@@ -347,7 +350,7 @@ This container is used at the meta- or in between stage of coding, the meta-seri
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Meta</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Meta</span></code></pre>
 
                         </div>
                       </div>
@@ -375,7 +378,7 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">NilMetaProtocol</span><span class="p">:</span> <span class="kt"><a href="Protocols/Meta.html">Meta</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">NilMetaProtocol</span><span class="p">:</span> <span class="kt"><a href="Protocols/Meta.html">Meta</a></span></code></pre>
 
                         </div>
                       </div>
@@ -405,7 +408,7 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">GenericMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/Meta.html">Meta</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">GenericMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/Meta.html">Meta</a></span></code></pre>
 
                         </div>
                       </div>
@@ -437,7 +440,7 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IntermediateEncoder</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IntermediateEncoder</span></code></pre>
 
                         </div>
                       </div>
@@ -465,7 +468,7 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IntermediateDecoder</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IntermediateDecoder</span></code></pre>
 
                         </div>
                       </div>
@@ -499,7 +502,7 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">WrappingMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/Meta.html">Meta</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">WrappingMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/Meta.html">Meta</a></span></code></pre>
 
                         </div>
                       </div>
@@ -531,7 +534,7 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">MetaCoder</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">MetaCoder</span></code></pre>
 
                         </div>
                       </div>
@@ -565,7 +568,7 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">KeyedContainerMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/Meta.html">Meta</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">KeyedContainerMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/Meta.html">Meta</a></span></code></pre>
 
                         </div>
                       </div>
@@ -597,7 +600,7 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">UnkeyedContainerMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/Meta.html">Meta</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">UnkeyedContainerMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/Meta.html">Meta</a></span></code></pre>
 
                         </div>
                       </div>
@@ -629,7 +632,39 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Translator</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Translator</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17MetaSerialization11CodingStackP"></a>
+                    <a name="//apple_ref/swift/Protocol/CodingStack" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization11CodingStackP">CodingStack</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Protocols/CodingStack.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CodingStack</span></code></pre>
 
                         </div>
                       </div>
@@ -661,7 +696,7 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Reference</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Reference</span></code></pre>
 
                         </div>
                       </div>
@@ -689,7 +724,7 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ContainerReference</span><span class="p">:</span> <span class="kt"><a href="Protocols/Reference.html">Reference</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ContainerReference</span><span class="p">:</span> <span class="kt"><a href="Protocols/Reference.html">Reference</a></span></code></pre>
 
                         </div>
                       </div>
@@ -713,7 +748,10 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Implement this protocol if a type is supported directly by the Translator.</p>
+
+<p>MetaSerialization will throw an error, if a translator does not support your type directly.
+Therefor init(from:) will never be called.</p>
 
                         <a href="Protocols/DirectlyDecodable.html" class="slightly-smaller">See more</a>
                       </div>
@@ -721,7 +759,7 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">DirectlyDecodable</span><span class="p">:</span> <span class="kt">Decodable</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">DirectlyDecodable</span><span class="p">:</span> <span class="kt">Decodable</span></code></pre>
 
                         </div>
                       </div>
@@ -741,13 +779,10 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>implement this protocol if a type is supported directly by the Translator and you won&rsquo;t have to write any code for encoding.</p>
-<li>Implementation: requests a SingleValueContainer from the encoder in decode(to:) and encodes a value of the implementing type. Any Error thrown by encode() is rethrown.</li>
-<div class="aside aside-throws">
-    <p class="aside-title">Throws</p>
-    The same errors SingleValueEncodingContainer.encode(<implementing type>)
+                        <p>Implement this protocol if a type is supported directly by the Translator.</p>
 
-</div>
+<p>MetaSerialization will throw an error, if a translator does not support your type directly.
+Therefor encode(to:) will never be called.</p>
 
                         <a href="Protocols/DirectlyEncodable.html" class="slightly-smaller">See more</a>
                       </div>
@@ -755,7 +790,7 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">DirectlyEncodable</span><span class="p">:</span> <span class="kt">Encodable</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">DirectlyEncodable</span><span class="p">:</span> <span class="kt">Encodable</span></code></pre>
 
                         </div>
                       </div>
@@ -767,8 +802,8 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/cherrywoods/swift-meta-serialization" target="_blank" rel="external">cherrywoods</a>. All rights reserved. (Last updated: 2018-01-18)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/cherrywoods/swift-meta-serialization" target="_blank" rel="external">cherrywoods</a>. All rights reserved. (Last updated: 2018-02-09)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
