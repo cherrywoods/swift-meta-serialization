@@ -15,7 +15,7 @@ import Foundation
  To use this protocol extend your raw data type to conform to this protocol.
  All you have to do then is implementing provideNewEncoder() and provideNewDecoder(). Just return a new MetaEncoder/MetaDecoder there.
  
- After extending your raw type, you can use the init(from: Decoder) and encode(to: Encoder) methods of your Decodable and Encodable swift types directly.
+ After extending your raw type, use init(encoding: ) to encode and decode(type: ) to decode.
  
  It is usefull to write a subprotocol of Representation before you extend your raw data type.
  For example, if you want to write another library for parsing JSON,
