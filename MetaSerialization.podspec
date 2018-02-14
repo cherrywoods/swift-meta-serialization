@@ -6,7 +6,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "MetaSerialization"
-  s.version      = "0.1.0"
+  s.version      = "1.0"
   s.summary      = "A framework to simplify the creation of new serialisation-frameworks for the swift standard library serialization environment"
 
   s.homepage     = "https://github.com/cherrywoods/swift-meta-serialization"
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = "10.9"
   s.watchos.deployment_target = "2.0"
   s.tvos.deployment_target = "9.0"
-  s.source       = { :git => "https://github.com/cherrywoods/swift-meta-serialization.git", :tag => 'v0.1.0' }
+  s.source       = { :git => "https://github.com/cherrywoods/swift-meta-serialization.git", :tag => 'v1.0' }
 
   s.source_files  = "Sources/**/*.swift"
 
