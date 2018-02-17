@@ -22,7 +22,7 @@ public typealias DirectlyCodable = DirectlyDecodable & DirectlyEncodable
  MetaSerialization will throw an error, if a translator does not support your type directly.
  Therefor init(from:) will never be called.
  */
-public protocol DirectlyDecodable: Decodable {  }
+public protocol DirectlyDecodable: Decodable {}
 
 public extension DirectlyDecodable {
     
@@ -38,7 +38,7 @@ public extension DirectlyDecodable {
  MetaSerialization will throw an error, if a translator does not support your type directly.
  Therefor encode(to:) will never be called.
  */
-public protocol DirectlyEncodable: Encodable {  }
+public protocol DirectlyEncodable: Encodable {}
 
 public extension DirectlyEncodable {
     
