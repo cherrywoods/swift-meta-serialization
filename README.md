@@ -89,7 +89,7 @@ You can find a example [here](https://github.com/cherrywoods/swift-meta-serializ
 
 Finally [swift-msgpack-serialization](https://github.com/cherrywoods/swift-msgpack-serialization) is a real implementation for the [msgpack serialization format](msgpack.org), that deploys further features of MetaSerialization.
 
-There is also a [fork, here](https://github.com/cherrywoods/MessagePack.swift/tree/master/Codable%20Support), that shows how simple it can be to add `Codable` support to an existing framework with `MetaSerialization`.
+There is also a [fork, here](https://github.com/cherrywoods/MessagePack.swift/tree/master/Codable%20Support), that shows how simple it can be to add `Codable` support to an existing framework with MetaSerialization.
 
 The Wiki tab of this repository also contains some pages about what MetaSerilaization does. Hopefully you will find help there. If not, open an issue.
 
