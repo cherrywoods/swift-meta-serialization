@@ -2,14 +2,14 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Build Status](https://travis-ci.org/cherrywoods/swift-meta-serialization.svg?branch=testing)](https://travis-ci.org/cherrywoods/swift-meta-serialization)
 
-meta-serialization is a framework to simplify writing new serialisation libraries for the swift standard library environment (Encodable, Decodable, etc.)
+MetaSerialization is a framework to simplify the creation of new serialisation libraries for the swift standard library environment (Encodable, Decodable, Codable, etc.)
 It's aim is to let anyone create a serialization library that works with the swift serialization framework by nearly just writing the real serialization code.
 
 ## What it does
-meta-serialization provides a layer inbetween your serialization framework and the swift standard library interface 
+MetaSerialization provides a layer inbetween your serialization framework and the swift standard library interface 
 (mainly Encoder and Decoder) and implements most of the overhead Encoder and Decoder require.
 ### What it does in many words
-meta-serialization provides a MetaEncoder and MetaDecoder, that depend on a so-called Translator. 
+MetaSerialization provides a MetaEncoder and MetaDecoder, that depend on a so-called Translator. 
 
 MetaDecoder and MetaEncoder create a representation of the serialized data in a meta format. 
 This format is created in a way, that in the end the *meta tree* (as I call the in-between format) will only contain values, 
