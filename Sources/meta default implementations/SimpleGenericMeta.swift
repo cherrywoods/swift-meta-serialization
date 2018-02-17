@@ -13,7 +13,7 @@ open class SimpleGenericMeta<T>: GenericMeta {
     
     public var value: T!
     
-    public init() {  }
+    public init() {}
     
     public convenience init(value: T) {
         self.init()
