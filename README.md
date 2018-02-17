@@ -18,6 +18,31 @@ This enables you to serialize any swift class or struct or enum you write,
 plus any array, dictionary, tuple, Int, String, and so on to an external (I call it raw) representation that only supports, 
 say, Numbers, String and some kind of Dictionarys and Arrays by mainly writing the code to convert a swift Int to your representation of a number, a swift String to your representation of a String, a swift Array of exclusively your supported types (Number, String, Dictionary, Array in this example) to your representation of a *unkeyed container* or Array and  a swift Dictionary (of exclusively your supported types) to your representation of a *keyed container* or Dictionary (or Map).
 
+Ok, this should like a lot of work and pretty complicated, but this, I guess, is what you would have to do anyway to implement the serialization process.
+
+If you liked to serialize to JSON (yes, there are all ready frameworks for this and Foundation also contains an implementation, but lets pretend you want to have your own), for example, you will somehow have to implement things like this:
+
+* convert `Dictionary<String, Any>` to `{ ... }` in JSON,
+* convert `Array<Any>` to `[ ... ]`,
+* set quotation marks around Strings
+
+and much more. But how will you handle any type that someone using your framework created? For example my special car type
+``` swift
+class Car: Codable {
+    let color: String
+    let maxSpeed: Int
+    var currentSpeed: Int
+    ...
+}
+```
+I would like to store and transmit using JSON. You can' consider this type in your implementation, because you don't even know it.
+
+Luckyly Swift automatically provides me with implementations for `encode(to:)` and `init(from:)`, because `Car` conforms to `Codable`. But those implementations need `Decoder` and `Encoder` implementations. If you look at the [JSONEncoder.swift file](https://github.com/apple/swift/blob/5.0-dont-hardcode-numbers-in-objc-block-sil/stdlib/public/SDK/Foundation/JSONEncoder.swift) you can see, that there is a lot of code that needs to be written to implement a custom `Decoder` or `Encoder`. You may also see, that you might copy verry large parts of this file for most serialization formats. In total: There's a lot of overhead.
+
+Now do you really want to copy this code? It will take you some time to read and understand it and if this implementation changed you would need to have to change your code too (ok if you have just one serialization framework, but already pretty anoying if you have two).
+
+This is what MetaSerialization is for. It is here to TODO: 
+
 ## Installation
 Install MetaSerialization via Cartage, CocoaPods or swift package manager.
 ### Carthage
