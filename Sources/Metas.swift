@@ -29,7 +29,7 @@ public protocol Meta {
  Protocol for metas indicating null/nil or no value contained
  Please note that there's a implementation `NilMeta` procided the by meta-serialization framework.
  */
-public protocol NilMetaProtocol: Meta {  }
+public protocol NilMetaProtocol: Meta {}
 
 /**
  A subprotocol of Meta, enabeling you to rely on a specfic type, so you don't need to check for this type all the time
@@ -42,6 +42,7 @@ public protocol GenericMeta: Meta {
 }
 
 public extension GenericMeta {
+    
     /// sets this GenericMetas value, if value has the required type (otherwise it will crash the programm, respectively produce an error during unit testing)
     mutating public func set(value: Any) {
         precondition(value is SwiftValueType, "Called set(value:) with invalid type")
@@ -51,4 +52,5 @@ public extension GenericMeta {
     public func get() -> Any? {
         return value as Any?
     }
+    
 }

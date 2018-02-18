@@ -14,10 +14,13 @@ import Foundation
  it may never reach Translator or any other type outside the framwork in any form!!!
  */
 internal struct PlaceholderMeta: Meta {
+    
     func set(value: Any) {
         // do nothing
     }
+    
     func get() -> Any? {
         return NSNull()
     }
+    
 }

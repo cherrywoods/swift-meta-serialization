@@ -205,7 +205,7 @@ open class MetaEncoder: Encoder, MetaCoder {
         // otherwise crash the program
         do {
             try stack.push(meta: translator.keyedContainerMeta() )
-        } catch /*StackError.statusMismatch .push trows no other errors*/ {
+        } catch /* StackError.statusMismatch .push trows no other errors */ {
             
             // check wether the last meta is a KeyedContainerMeta
             guard stack.last is KeyedContainerMeta else {
@@ -227,7 +227,7 @@ open class MetaEncoder: Encoder, MetaCoder {
         // otherwise crash the program
         do {
             try stack.push(meta: translator.unkeyedContainerMeta() )
-        } catch /*StackError.statusMismatch .push throws no other errors*/ {
+        } catch /* StackError.statusMismatch .push throws no other errors */ {
             
             // check wether the last meta is a KeyedContainerMeta
             guard stack.last is UnkeyedContainerMeta else {
