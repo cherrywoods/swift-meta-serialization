@@ -64,19 +64,19 @@ Install MetaSerialization via Cartage, CocoaPods or use the swift package manage
 ### Carthage
 Add the following line to your projects Cartfile:
 ```ogdl
-github "cherrywoods/swift-meta-serialization"
+github "cherrywoods/swift-meta-serialization" ~> 1.0
 ```
 For more information about cartage and it's usage, please consult [carthage's github repository](https://github.com/Carthage/Carthage "https://github.com/Carthage/Carthage").
 ### CocoaPods
 Add the following line to your Podfile:
 ```ruby
-pod 'MetaSerialization', '~> 0.1.0'
+pod 'MetaSerialization', '~> 1.0'
 ```
 For more information about Cocoapods, consult [cocoapods.org](https://cocoapods.org)
 ### Swift Package Manager
 Insert the following code into your Package.swift file, into the dependencies array of your Package.
 ```swift
-.package(url: "https://github.com/cherrywoods/swift-meta-serialization.git", from: "0.0.4"),
+.package(url: "https://github.com/cherrywoods/swift-meta-serialization.git", from: "1.0.0"),
 ```
 Please note, that I never tested whether this will work, please open a pull request if it doesn't. Carthage should work.
 
