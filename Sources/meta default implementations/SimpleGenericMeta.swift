@@ -11,12 +11,9 @@ open class SimpleGenericMeta<T>: GenericMeta {
     
     public typealias SwiftValueType = T
     
-    public var value: T!
+    public var value: T
     
-    public init() {}
-    
-    public convenience init(value: T) {
-        self.init()
+    public init(value: T) {
         self.value = value
     }
     

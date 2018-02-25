@@ -25,21 +25,11 @@ public struct EmptyOnlyKeyedContainerMeta: KeyedContainerMeta {
     /// will return a NilMeta on get and do nothing on set.
     public subscript(key: CodingKey) -> Meta? {
         get {
-            return NilMeta.nil
+            return nil
         }
         set {
             // Just do nothing
         }
-    }
-    
-    /// will do nothing
-    public func set(value: Any) {
-        // nada
-    }
-    
-    /// will return a NilMeta
-    public func get() -> Any? {
-        return NilMeta.nil
     }
     
 }

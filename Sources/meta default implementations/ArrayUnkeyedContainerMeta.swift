@@ -19,25 +19,25 @@ open class ArrayUnkeyedContainerMeta: UnkeyedContainerMeta, GenericMeta {
     /**
      The array value of this container.
      */
-    open var value: [Meta]! = []
+    open var value: [Meta] = []
     
     open var count: Int? {
-        return value!.count
+        return value.count
     }
     
     open func get(at index:Int) -> Meta? {
         guard (0..<count!).contains(index) else { // makes sure index is within its valid bounds (0 and count)
             return nil
         }
-        return value![index]
+        return value[index]
     }
     
     open func insert(element: Meta, at index: Int) {
-        value!.insert(element, at: index)
+        value.insert(element, at: index)
     }
     
     open func append(element: Meta) {
-        value!.append(element)
+        value.append(element)
     }
     
 }
