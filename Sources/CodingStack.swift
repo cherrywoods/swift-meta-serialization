@@ -9,7 +9,7 @@
 
 import Foundation
 
-/// The possible statuses of a CodingStack.
+/// All possible stati of a coding stack
 public enum CodingStackStatus {
     /**
      First status of a new CodingStack.
@@ -23,15 +23,35 @@ public enum CodingStackStatus {
      This status expresses some validity of the stack, respectively that it is not waiting for a meta to be pushed.
      */
     case pathFilled
+    
 }
 
-/// An Error that may occur when working with a CodingStack
+public enum CodingStackOperation {
+    case initalized
+    case appended
+    case pushed
+    case poped
+    case removed
+}
+
+/// Errors that may occur when working with a CodingStack. One of this errors typically indicates invalid encoding/decoding code (e.g. encoding twice to a single value container).
 enum CodingStackError: Error {
     /// thrown if the stack is in the wrong status
     case statusMismatch(expected: CodingStackStatus, current: CodingStackStatus)
     case emptyStack
 }
 
+/**
+ CodingStack is the central validity checking unit of encoding as wall as decoding.
+ By the way CodingStack also holds Meta's that are currently needed and the coding path.
+ 
+ The optimal workflow of a coding stack is:
+    append -> push -> this workflow nested -> pop -> remove
+ 
+ However there are some edge conditions, like requesting new containers through single value containers.
+ MetaSerialization conserves the workflow in this case and is build to be used with the contained impmenentation (StrictCondingStack),
+ but you can override the used implementation if you need to.
+ */
 public protocol CodingStack {
     
     /**
@@ -58,9 +78,9 @@ public protocol CodingStack {
     
     /**
      Inits a new CodingStack at the given codingPath.
-     By default, `at` should be an empty array and `with` should be .pathMissesMeta
+     By default, `at` is an empty array.
      */
-    init(at codingPath: [CodingKey], with status: CodingStackStatus )
+    init(at codingPath: [CodingKey], with initialStatus: CodingStackStatus )
     
     // MARK: - stack methods
     

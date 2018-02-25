@@ -167,7 +167,9 @@ open class PrimitivesEnumTranslator: Translator {
             // It means that the requested type is wrong
             
             guard let value = (meta as? SimpleGenericMeta<T>)?.value else {
-                throw TranslatorError.typeMismatch
+                // MetaDecoder will replace coding path
+                throw DecodingError.typeMismatch(type,
+                                                 DecodingError.Context(codingPath: [], debugDescription: "Decoded value did not match requested type"))
             }
             
             // handle primitives
@@ -190,8 +192,6 @@ open class PrimitivesEnumTranslator: Translator {
         // Meta is garanteed to be a SimpleGenericMeta of one of the Primitive types
         // or a NilMeta or a DictionaryKeyedContainerMeta or an ArrayUnkeyedContainerMeta
         // that are both GenericMetas
-        
-        // TODO: add nil
         
         let value: Any?
         if meta is NilMeta {

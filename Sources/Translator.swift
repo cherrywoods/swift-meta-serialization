@@ -41,26 +41,27 @@ public protocol Translator {
     // MARK: wrapper
     
     /**
-     Creates and returns a new empty Meta for the given value, or nil, if the given value is not supported, respectively can not be translated by this translator.
+     Creates, sets and returns a new empty Meta with the given value, or returns nil, if the value is not supported, respectively can not be translated by this translator.
+     
      This method will be called very frequently.
-     This method will be asked to return an Meta for an instance of the type GenericNil from this framework for any nil value that is requested to be encoded or decoded. Return nil, if you don't support nil values. If you support Nil values, you are invited to use NilMeta from meta-serialization, but however the Meta you return needs to conform to NilMetaProtocol.
-     - Parameter for: The value for which a wrapping Meta should be returned.
-     - Returns: A Meta that will wrap value.
+     
+     This method will be asked to return a Meta for an instance of the type GenericNil from this framework for any nil value that is requested to be encoded. Return nil, if you don't support nil values. If you support nil values, you are invited to use NilMeta from MetaSerialization, but you may use any implementation here.
+     - Parameter value: The value for which a wrapping Meta should be returned.
+     - Returns: Nil or a Meta which was set to value.
      */
     func wrappingMeta<T>(for value: T) -> Meta?
     
     /**
-     Extract the swift value from a meta, you initalized during decode(). If you don't support the requested type directly, return nil. If you decoded to a Meta conforming to NilMetaProtocol, that Meta will not reach your method.
+     Extracts a swift value of type T from a meta you created during decode.
+     If you don't support the requested type directly (can't convert meta's value to T), return nil.
+     If you decoded to a Meta conforming to NilMetaProtocol, that Meta will not reach your method.
      
      In difference from the call of decode(), now the final type is known.
      
-     It is important that you do not return nil, if the given type does not match the expected type.
-     Throw a TranslatorError.typeMismatch error instead.
-     
      This method will be called for every meta you created.
-     - Throws: If meta does not match the type you expect, throw a TranslatorError.typeMismatch error.
-     - Parameter T: The type from swift you should cast to.
-     - Parameter meta: The meta, that contains the value in some meta encoded form, that you should cast to T.
+     - Throws: If you throw a `DecodingError` in this method, MetaDecoder will replace the coding path of the `DecodingError.Context` with the actual coding path. You may therefor just use `[]` as coding path.
+     - Parameter T: The type you should cast to.
+     - Parameter meta: The meta whose value you should cast to T. This meta was created by you during decode.
      - Returns: A value of type T, that was contained in meta. Returns nil, if the requested type is not supported directly.
      */
     func unwrap<T>(meta: Meta, toType type: T.Type) throws -> T?
@@ -69,19 +70,19 @@ public protocol Translator {
     
     /**
      Encodes the given meta representation of any encodable type to your (raw) representation type.
-     - Parameter Raw: the type that you will return. This parameter will be set by the frontend serialization implementeation you write. Therefor you may check for this type to be the one you expect and use the precondition function, to check whether your code works, or just might cast directly using as!, but in these case you will get an uglier error message, if your code contains errors (mostly typos I guess).
+     - Parameter Raw: the type that you will return. This parameter will be set by the frontend serialization implementeation you write. Therefor you may check for this type to be the one you expect and use the precondition function, to check whether your code works, or just cast directly using as!, but in these case you will get an uglier error message, if your code is faulted.
      - Parameter meta: The meta representation of any encodable swift value
      - Returns: The (raw) representation of the meta representation
-     - Throws: Throw an EncodingError, if the meta representation is invalid and can not be encoded by this translator
+     - Throws: Any error you throw will be directly propagated.
      */
     func encode<Raw>(_ meta: Meta) throws -> Raw
     
     /**
-     Decodes the given (raw) representation to a meta representation. Use a Meta extending NilMetaProtocol, to indicate that a value was nil.
-     - Parameter Raw: the type from that a value will be passed to you. This parameter will be set by the frontend serialization implementeation you write. Therefor you may check for this type to be the one you expect and use the precondition function, to check whether your code works, or just cast using as!, but in these case you will get a uglier error message, if your code contains errors (mostly typos I guess).
+     Decodes the given (raw) representation to a meta representation. You need to use a Meta extending NilMetaProtocol, to indicate that a value was nil (You're invited to use NilMeta from MetaSerialization).
+     - Parameter Raw: the type from that a value will be passed to you. This parameter will be set by the frontend serialization implementeation you write. Therefor you may check for this type to be the one you expect and use the precondition function, to check whether your code works, or just cast using as!, but in these case you will get a uglier error message, if your code is faulted.
      - Parameter raw: A (raw) representation value
      - Returns: The meta representation of the (raw) representation, if it was valid
-     - Throws: Throw an DecodingError, if the (raw) representation is invalid and can not be decoded by this translator
+     - Throws: Any error you throw will be directly propagated.
      */
     func decode<Raw>(_ raw: Raw) throws -> Meta
     
@@ -90,6 +91,8 @@ public protocol Translator {
 // MARK: default implementations for containers
 
 public extension Translator {
+    
+    // TODO: upgrade when these containers are rewritten. Also update documenation above.
     
     public func keyedContainerMeta() -> KeyedContainerMeta {
         return DictionaryKeyedContainerMeta()

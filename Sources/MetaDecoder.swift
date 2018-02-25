@@ -86,44 +86,64 @@ open class MetaDecoder: Decoder, MetaCoder {
                 return directlySupported
             }
             
-        } catch TranslatorError.typeMismatch {
+        } catch {
             
-            // rethrow the the error with more context
-            let context = DecodingError.Context(codingPath: self.codingPath, debugDescription: "Requested wrong type: \(type)")
-            throw DecodingError.typeMismatch(type, context)
+            if let decodingError = error as? DecodingError {
+                
+                // provide more context for DecodingErrors
+                throw exchangeDecodingErrorsContexts(decodingError)
+                
+            } else {
+                
+                // rethrow all other errors
+                throw error
+                
+            }
             
         }
         
         // ** translator does not support T natively, so it needs to decode itself **
         
         /*
-         Need to throw an error, if type implements DirectlyDecodable
+         It is important to throw an error if type implements DirectlyDecodable
          see MetaEncoder.wrap for more information
          */
-        
-        if type.self is DirectlyDecodable.Type {
+        guard !(type.self is DirectlyCodable.Type) else {
             let context = DecodingError.Context(codingPath: self.codingPath,
-                                                debugDescription: "DirectlyDecodable type was not accepted by the Translator implementation: \(type)")
+                                                debugDescription: "Type \(type) does not match the decoded type")
             throw DecodingError.typeMismatch(type, context)
         }
-        
-        // ensure that a new meta can be pushed
-        
-        guard self.stack.mayPushNewMeta else {
-            // this error is thrown, if an entitys type, that requested a single value container
-            // was not supported natively by the translator
-            throw DecodingError.typeMismatch(type,
-                                             DecodingError.Context(codingPath: self.codingPath, debugDescription: "Type \(type) is not supported by this serialization framework."))
-        }
-        
-        // ** now it is sure, that stack will accept a new meta **
         
         try self.stack.push(meta: meta)
         // defer pop to restore the Decoder stack if an error was thrown in type.init
         defer{ _ = try! self.stack.pop() }
+        
         let value = try type.init(from: self)
         
         return value
+        
+    }
+    
+    private func exchangeDecodingErrorsContexts(_ decodingError: DecodingError) -> Error {
+        
+        // replace context's coding path
+        switch decodingError {
+        case .dataCorrupted(let context):
+            return DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath,
+                                                                    debugDescription: context.debugDescription, underlyingError: context.underlyingError))
+        case .keyNotFound(let key, let context):
+            return DecodingError.keyNotFound(key,
+                                            DecodingError.Context(codingPath: self.codingPath,
+                                                                  debugDescription: context.debugDescription, underlyingError: context.underlyingError))
+        case .typeMismatch(let type, let context):
+            return DecodingError.typeMismatch(type,
+                                             DecodingError.Context(codingPath: self.codingPath,
+                                                                   debugDescription: context.debugDescription, underlyingError: context.underlyingError))
+        case .valueNotFound(let type, let context):
+            return DecodingError.valueNotFound(type,
+                                              DecodingError.Context(codingPath: self.codingPath,
+                                                                    debugDescription: context.debugDescription, underlyingError: context.underlyingError))
+        }
         
     }
     
@@ -132,7 +152,7 @@ open class MetaDecoder: Decoder, MetaCoder {
     /**
      Initalizes a new MetaDecoder with the given values.
      
-     This initalizer will fail, if the first step decoding of raw by translator produces an error.
+     This initalizer decodes raw and will throw an error if decoding fails
      - Parameter at: The coding path this decoder will start at
      - Parameter withUserInfo: additional inforamtion for the user
      - Parameter translator: The translator the encoder will use to translate Metas.
