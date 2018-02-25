@@ -17,14 +17,4 @@ public struct NilMeta: NilMetaProtocol {
     
     public static let `nil`: NilMeta = NilMeta()
     
-    /// does nothing
-    public func set(value: Any) {
-        // do nothing
-    }
-    
-    /// will allways return NSNull()
-    public func get() -> Any? {
-        return NSNull()
-    }
-    
 }

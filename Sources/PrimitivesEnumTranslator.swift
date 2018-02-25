@@ -140,7 +140,7 @@ open class PrimitivesEnumTranslator: Translator {
         // return a SimpleGenericMeta for the supported primitive types
         if primitives.contains(primitive) {
             
-            return SimpleGenericMeta<T>()
+            return SimpleGenericMeta<T>(value: value)
             
         } else {
             // not a supported primitive type
@@ -150,11 +150,7 @@ open class PrimitivesEnumTranslator: Translator {
         
     }
     
-    /*
-     
-     Use the default implementations of keyedContainerMeta and unkeyedContainerMeta
-     
-     */
+    // Use the default implementations of keyedContainerMeta and unkeyedContainerMeta
     
     open func unwrap<T>(meta: Meta, toType type: T.Type) throws -> T? {
         
@@ -200,57 +196,57 @@ open class PrimitivesEnumTranslator: Translator {
             
         } else if meta is DictionaryKeyedContainerMeta {
             
-            let d = (meta as! DictionaryKeyedContainerMeta).value!
+            let d = (meta as! DictionaryKeyedContainerMeta).value
             value = try d.mapValues { return try encode($0) as R }
             
         } else if meta is ArrayUnkeyedContainerMeta {
             
-            let a = (meta as! ArrayUnkeyedContainerMeta).value!
+            let a = (meta as! ArrayUnkeyedContainerMeta).value
             value = try a.map { return try encode($0) as R }
             
         } else {
             
             if meta is SimpleGenericMeta<String> {
-                value = (meta as! SimpleGenericMeta<String>).value!
+                value = (meta as! SimpleGenericMeta<String>).value
                 
             } else if meta is SimpleGenericMeta<Bool> {
-                value = (meta as! SimpleGenericMeta<Bool>).value!
+                value = (meta as! SimpleGenericMeta<Bool>).value
                 
             } else if meta is SimpleGenericMeta<Float> {
-                value = (meta as! SimpleGenericMeta<Float>).value!
+                value = (meta as! SimpleGenericMeta<Float>).value
                 
             } else if meta is SimpleGenericMeta<Double> {
-                value = (meta as! SimpleGenericMeta<Double>).value!
+                value = (meta as! SimpleGenericMeta<Double>).value
                 
             } else if meta is SimpleGenericMeta<Int> {
-                value = (meta as! SimpleGenericMeta<Int>).value!
+                value = (meta as! SimpleGenericMeta<Int>).value
                 
             } else if meta is SimpleGenericMeta<UInt> {
-                value = (meta as! SimpleGenericMeta<UInt>).value!
+                value = (meta as! SimpleGenericMeta<UInt>).value
                 
             } else if meta is SimpleGenericMeta<Int8> {
-                value = (meta as! SimpleGenericMeta<Int8>).value!
+                value = (meta as! SimpleGenericMeta<Int8>).value
                 
             } else if meta is SimpleGenericMeta<UInt8> {
-                value = (meta as! SimpleGenericMeta<UInt8>).value!
+                value = (meta as! SimpleGenericMeta<UInt8>).value
                 
             } else if meta is SimpleGenericMeta<Int16> {
-                value = (meta as! SimpleGenericMeta<Int16>).value!
+                value = (meta as! SimpleGenericMeta<Int16>).value
                 
             } else if meta is SimpleGenericMeta<UInt16> {
-                value = (meta as! SimpleGenericMeta<UInt16>).value!
+                value = (meta as! SimpleGenericMeta<UInt16>).value
                 
             } else if meta is SimpleGenericMeta<Int32> {
-                value = (meta as! SimpleGenericMeta<Int32>).value!
+                value = (meta as! SimpleGenericMeta<Int32>).value
                 
             } else if meta is SimpleGenericMeta<UInt32> {
-                value = (meta as! SimpleGenericMeta<UInt32>).value!
+                value = (meta as! SimpleGenericMeta<UInt32>).value
                 
             } else if meta is SimpleGenericMeta<Int64> {
-                value = (meta as! SimpleGenericMeta<Int64>).value!
+                value = (meta as! SimpleGenericMeta<Int64>).value
                 
             } else if meta is SimpleGenericMeta<UInt64> {
-               value = (meta as! SimpleGenericMeta<UInt64>).value!
+               value = (meta as! SimpleGenericMeta<UInt64>).value
                 
             } else {
                 preconditionFailure("Unknown Meta")

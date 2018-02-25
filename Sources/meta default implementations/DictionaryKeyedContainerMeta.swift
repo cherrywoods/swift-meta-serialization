@@ -14,6 +14,7 @@
  */
 open class DictionaryKeyedContainerMeta: KeyedContainerMeta, GenericMeta {
     
+    
     /*
      I assume, that all CodingKeys are fully identified by theire stringValues,
      although I cloudn't find any documentation about this topic.
@@ -30,7 +31,7 @@ open class DictionaryKeyedContainerMeta: KeyedContainerMeta, GenericMeta {
     /**
      The dictionary value of this container.
      */
-    open var value: Dictionary<String, Meta>! = [:]
+    open var value: Dictionary<String, Meta> = [:]
     
     /**
      Set the value for a certain string key.
@@ -38,11 +39,11 @@ open class DictionaryKeyedContainerMeta: KeyedContainerMeta, GenericMeta {
     open subscript(stringKey: String) -> Meta? {
         
         get {
-            return value![stringKey]
+            return value[stringKey]
         }
         
         set {
-            self.value![stringKey] = newValue
+            self.value[stringKey] = newValue
         }
         
     }
@@ -50,21 +51,21 @@ open class DictionaryKeyedContainerMeta: KeyedContainerMeta, GenericMeta {
     open subscript(key: CodingKey) -> Meta? {
         
         get {
-            return value![key.stringValue]
+            return value[key.stringValue]
         }
         
         set {
-            self.value![key.stringValue] = newValue
+            self.value[key.stringValue] = newValue
         }
         
     }
     
     open func allKeys<Key: CodingKey>() -> [Key] {
-        return value!.keys.flatMap { Key(stringValue: $0) }
+        return value.keys.flatMap { Key(stringValue: $0) }
     }
     
     open func contains(key: CodingKey) -> Bool {
-        return value!.contains(where: { (stringValue, _) in return key.stringValue == stringValue })
+        return value.contains(where: { (stringValue, _) in return key.stringValue == stringValue })
     }
     
 }
