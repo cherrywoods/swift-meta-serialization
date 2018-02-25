@@ -110,11 +110,10 @@ open class MetaEncoder: Encoder, MetaCoder {
         // This is the same behavior as JSONEncoder from
         // Foundation shows.
         
-        // check whether translator supports the value's type directly
-        if var newMeta = self.translator.wrappingMeta(for: value) {
+        // check whether translator supports value directly
+        if let newMeta = self.translator.wrappingMeta(for: value) {
             
-            // if that is the case, set the value of newMeta and return it without ever using stack
-            try newMeta.set(value: value)
+            // meta's value should be already set by translator
             return newMeta
             
         }
@@ -122,14 +121,9 @@ open class MetaEncoder: Encoder, MetaCoder {
         // ** now the value's type is not supported natively by translator **
         
         /*
-         Need to throw an error, if value is an
-         Int, Int8, Int16, Int32, Int64,
-         UInt, UInt8, UInt16, UInt32, UInt64,
-         Float, Double,
-         Bool or
-         String
+         Need to throw an error, if value is an Int, Int8, Int16, Int32, Int64, UInt, UInt8, UInt16, UInt32, UInt64, Float, Double, Bool or String
          but isn't supported by the translator,
-         because if not an endless callback would be follow
+         because if not, an endless callback would be follow
          see Foundation Primitive Codables.swift for more info.
          
          The same applies for DirectlyEncodable.
@@ -139,32 +133,20 @@ open class MetaEncoder: Encoder, MetaCoder {
          as empty containers.
          
          This all is archieved by checking if value is DirectlyEncodable.
-         All foundation" "primitive codables" (listed above) are extended
-         to implement DirectlyCodable and GenericNil does so to.
+         All foundation's "primitive codables" (listed above) and GenericNil too are extended
+         to implement DirectlyCodable.
          */
         
         if value is DirectlyEncodable {
-            let context = EncodingError.Context(codingPath: self.codingPath, debugDescription: "DirectlyEncodable type was not accepted by the Translator implementation: \(type(of: value))")
+            let context = EncodingError.Context(codingPath: self.codingPath, debugDescription: "DirectlyEncodable value \(String(describing: value)) was not accepted by the Translator implementation.")
             throw EncodingError.invalidValue(value, context)
         }
-        
-        // ensure that a new meta can be pushed
-        
-        guard self.stack.mayPushNewMeta else {
-            // this error is thrown, if an entity, that requested a single value container
-            // was not supported natively by the translator
-            throw EncodingError.invalidValue(value, EncodingError.Context.init(codingPath: self.codingPath, debugDescription: "Can not encode another value. Path is filled."))
-        }
-        
-        // ** now it is sure, that stack will accept a new meta **
         
         // let value encode itself to this encoder
         try value.encode(to: self)
         
         // check whether encode really pushed a meta
         // in theory also removeLastCodingKey() could be called.
-        // This can't be prevented without a 'protected' visibility modifier
-        // as far as I can see.
         if self.stack.mayPopMeta {
             
             // in this case, value requested a container
