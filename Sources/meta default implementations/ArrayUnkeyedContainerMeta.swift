@@ -11,7 +11,7 @@ open class ArrayUnkeyedContainerMeta: UnkeyedContainerMeta, GenericMeta {
     
     public typealias SwiftValueType = [Meta]
     
-    // this init exists, because somehow otherweise no initalizer would be publicly visible
+    // this init exists, because somehow otherwise no initalizer would be publicly visible
     public init() {
         // init with default value
     }
