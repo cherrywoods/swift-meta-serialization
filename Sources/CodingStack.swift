@@ -26,14 +26,6 @@ public enum CodingStackStatus {
     
 }
 
-public enum CodingStackOperation {
-    case initalized
-    case appended
-    case pushed
-    case poped
-    case removed
-}
-
 /// Errors that may occur when working with a CodingStack. One of this errors typically indicates invalid encoding/decoding code (e.g. encoding twice to a single value container).
 enum CodingStackError: Error {
     /// thrown if the stack is in the wrong status
@@ -62,17 +54,10 @@ public protocol CodingStack {
     
     // MARK: - stack validation
     
-    /// the current status of the CodingStack
-    var status: CodingStackStatus { get }
-    
     /// indicates whether push(meta: ) can curretly be called without throwing an error.
     var mayPushNewMeta: Bool { get }
     /// indicates whether pop() can curretly be called without throwing an error.
     var mayPopMeta: Bool { get }
-    /// indicates whether append(codingKey: ) can curretly be called without throwing an error.
-    var mayAppendNewCodingKey: Bool { get }
-    /// indicates whether removeLastCodingKey() can curretly be called without throwing an error.
-    var mayRemoveLastCodingKey: Bool { get }
     
     // MARK: - init
     
@@ -86,8 +71,6 @@ public protocol CodingStack {
     
     // MARK: metas
     
-    /// whether the meta stack is empty
-    var isEmpty: Bool { get }
     /// the number of metas added to this stack
     var count: Int { get }
     
