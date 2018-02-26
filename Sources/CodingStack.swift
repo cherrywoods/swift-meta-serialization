@@ -46,7 +46,7 @@ enum CodingStackError: Error {
  By the way CodingStack also holds Meta's that are currently needed and the coding path.
  
  The optimal workflow of a coding stack is:
-    append -> push -> this workflow nested -> pop -> remove
+    append -> push -> this workflow nested -> this workflow nested -> ... -> this workflow nested -> pop -> remove
  
  However there are some edge conditions, like requesting new containers through single value containers.
  MetaSerialization conserves the workflow in this case and is build to be used with the contained impmenentation (StrictCondingStack),
@@ -112,9 +112,9 @@ public protocol CodingStack {
     /**
      pops a meta from the top of the stack
      
-     - Throws:
+     Throws:
      - StackError.emptyStack if the meta stack is empty
-     - StackError.statusMismatch: if status != .pathMissesMeta
+     - StackError.statusMismatch: if status != .pathFilled
      */
     func pop() throws -> Meta
     

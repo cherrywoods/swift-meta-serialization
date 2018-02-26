@@ -7,7 +7,7 @@
 //  See the LICENSE file in this project
 //
 
-open class ArrayUnkeyedContainerMeta: SimpleGenericMeta<[Meta]>, UnkeyedContainerMeta {
+open class ArrayUnkeyedContainerMeta: UnkeyedContainerMeta, GenericMeta {
     
     public typealias SwiftValueType = [Meta]
     
