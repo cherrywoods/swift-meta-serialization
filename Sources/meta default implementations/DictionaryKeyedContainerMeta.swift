@@ -12,8 +12,7 @@
  
  This implementation uses the stringValue of each CodingKey as key. The intValues are ignored.
  */
-open class DictionaryKeyedContainerMeta: KeyedContainerMeta, GenericMeta {
-    
+open class DictionaryKeyedContainerMeta: SimpleGenericMeta<Dictionary<String, Meta>>, KeyedContainerMeta {
     
     /*
      I assume, that all CodingKeys are fully identified by theire stringValues,
