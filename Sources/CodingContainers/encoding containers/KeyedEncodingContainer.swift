@@ -17,16 +17,23 @@ open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProto
     public typealias Key = K
     
     private(set) open var reference: Reference
-    open var referencedMeta: KeyedContainerMeta {
+    
+    private var referencedMeta: KeyedContainerMeta {
         get {
             return reference.element as! KeyedContainerMeta
         }
-        set (newValue) {
+        set {
             reference.element = newValue
         }
     }
     
-    open var codingPath: [CodingKey]
+    public var encoder: MetaEncoder {
+        
+        return reference.coder as! MetaEncoder
+        
+    }
+    
+    open let codingPath: [CodingKey]
     
     // MARK: - initalization
     
@@ -40,53 +47,47 @@ open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProto
     // MARK: - encode
     
     open func encodeNil(forKey key: Key) throws {
+        
         try encode(GenericNil.instance, forKey: key)
+        
     }
     
     open func encode<T: Encodable>(_ value: T, forKey key: Key) throws {
         
-        // the coding path needs to be extended, because wrap(value) may throw an error
-        try reference.coder.stack.append(codingKey: key)
-        defer { try! reference.coder.stack.removeLastCodingKey() }
-        
-        let meta = try (self.reference.coder as! MetaEncoder).wrap(value)
-        
-        self.referencedMeta[key] = meta
+        self.referencedMeta[key] = try encoder.wrap(value, at: key)
         
     }
     
     // MARK: - nested container
     open func nestedContainer<NestedKey>(keyedBy keyType: NestedKey.Type, forKey key: K) -> KeyedEncodingContainer<NestedKey> where NestedKey : CodingKey {
         
-        let nestedMeta = self.reference.coder.translator.keyedContainerMeta()
+        let nestedMeta = encoder.translator.keyedContainerMeta()
         
         self.referencedMeta[key] = nestedMeta
         
-        let nestedReference = DirectReference(coder: self.reference.coder, element: nestedMeta)
+        let nestedReference = DirectReference(coder: encoder, element: nestedMeta)
         
-        // key needs to be added, because it is passed to the new MetaKeyedEncodingContainer
-        self.codingPath.append(key)
-        defer { self.codingPath.removeLast() }
+        // create the path of the new keyed container
+        let path = self.codingPath + [key]
         
         return KeyedEncodingContainer(
-            MetaKeyedEncodingContainer<NestedKey>(referencing: nestedReference, codingPath: self.codingPath)
+            MetaKeyedEncodingContainer<NestedKey>(referencing: nestedReference, codingPath: path)
         )
         
     }
     
     open func nestedUnkeyedContainer(forKey key: K) -> UnkeyedEncodingContainer {
         
-        let nestedMeta = self.reference.coder.translator.unkeyedContainerMeta()
+        let nestedMeta = encoder.translator.unkeyedContainerMeta()
         
         self.referencedMeta[key] = nestedMeta
         
-        let nestedReference = DirectReference(coder: self.reference.coder, element: nestedMeta)
+        let nestedReference = DirectReference(coder: encoder, element: nestedMeta)
         
-        // key needs to be added, because it is passed to the new MetaKeyedEncodingContainer
-        self.codingPath.append(key)
-        defer { self.codingPath.removeLast() }
+        // create the path of the new keyed container
+        let path = self.codingPath + [key]
         
-        return MetaUnkeyedEncodingContainer(referencing: nestedReference, codingPath: self.codingPath)
+        return MetaUnkeyedEncodingContainer(referencing: nestedReference, codingPath: path)
         
     }
     
@@ -102,8 +103,7 @@ open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProto
     
     private func superEncoderImpl(forKey key: CodingKey) -> Encoder {
         
-        let referenceToOwnMeta = KeyedContainerReference(coder: self.reference.coder, element: self.referencedMeta, at: key)
-        
+        let referenceToOwnMeta = KeyedContainerReference(coder: encoder, element: self.referencedMeta, at: key)
         return ReferencingMetaEncoder(referencing: referenceToOwnMeta)
         
     }

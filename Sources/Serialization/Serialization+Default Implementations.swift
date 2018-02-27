@@ -25,11 +25,11 @@ public extension IntermediateDecoder {
     /// decodes a value of the given type from a raw representation
     func decode<D: Decodable>(toType type: D.Type, from raw: Raw) throws -> D {
         
-        let decoder = try self.provideNewDecoder(raw: raw)
+        let decoder = self.provideNewDecoder()
         
         // force unwrap,
         // because decoder was freshly initalized
-        return (try decoder.decode(type: type))!
+        return try decoder.decode(type: type, from: raw)
         
     }
     

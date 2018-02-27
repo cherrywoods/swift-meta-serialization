@@ -16,20 +16,27 @@ open class MetaSingleValueDecodingContainer: SingleValueDecodingContainer {
     
     private(set) open var reference: Reference
     
-    open var codingPath: [CodingKey]
+    public var decoder: MetaDecoder {
+        
+        return reference.coder as! MetaDecoder
+        
+    }
+    
+    open let codingPath: [CodingKey]
     
     // MARK: - initalization
     
-    public init(referencing reference: Reference) {
+    public init(referencing reference: Reference, codingPath: [CodingKey]) {
         
         self.reference = reference
-        self.codingPath = reference.coder.codingPath
+        self.codingPath = codingPath
         
     }
     
     open func decodeNil() -> Bool {
-        // we rely on the implementation of or Translator here to handle null values correctly
+        
         return reference.element is NilMetaProtocol
+        
     }
     
     open func decode<T>(_ type: T.Type) throws -> T where T : Decodable {
@@ -37,13 +44,11 @@ open class MetaSingleValueDecodingContainer: SingleValueDecodingContainer {
         // add coding key, so containers,
         // that were requested as single value containers
         // but are not directly supported by the translator
-        // can be pushed by wrap.
-        try self.reference.coder.stack.append(codingKey: SpecialCodingKey.singleValueDecodingContainer.rawValue)
-        defer{ try! reference.coder.stack.removeLastCodingKey() }
+        // can be pushed by unwrap.
         
-        let unwrapped =  try (self.reference.coder as! MetaDecoder).unwrap(reference.element, toType: type) as T
+        // TODO: test this
         
-        return unwrapped
+        return try decoder.unwrap(reference.element, toType: type)
         
     }
     

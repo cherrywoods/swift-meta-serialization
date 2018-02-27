@@ -23,7 +23,7 @@ public extension DecodingRepresentation {
     
     func decode<D: Decodable>(type: D.Type) throws -> D {
         
-        return (try provideNewDecoder().decode(type: type))!
+        return try provideNewDecoder().decode(type: type, from: self)
         
     }
     

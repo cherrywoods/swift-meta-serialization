@@ -19,7 +19,8 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
     public typealias Key = K
     
     private(set) open var reference: Reference
-    open var referencedMeta: KeyedContainerMeta {
+    
+    private var referencedMeta: KeyedContainerMeta {
         get {
             return reference.element as! KeyedContainerMeta
         }
@@ -28,26 +29,35 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
         }
     }
     
-    open var codingPath: [CodingKey]
+    public var decoder: MetaDecoder {
+        
+        return reference.coder as! MetaDecoder
+        
+    }
+    
+    open let codingPath: [CodingKey]
     
     // MARK: - initalization
     
-    public init(referencing reference: Reference) {
+    public init(referencing reference: Reference, codingPath: [CodingKey]) {
         
         self.reference = reference
-        self.codingPath = reference.coder.codingPath
+        self.codingPath = codingPath
         
     }
     
     // MARK: - container methods
     
     open var allKeys: [K] {
-        // because only this class should access reference, all keys should be K
+        
         return referencedMeta.allKeys() as [K]
+        
     }
     
     open func contains(_ key: K) -> Bool {
+        
         return referencedMeta.contains(key: key)
+        
     }
     
     // MARK: - decoding
@@ -57,9 +67,10 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
         // if subscript returns nil, there's no value contained
         guard let subMeta = referencedMeta[key] else {
             
-            let context = DecodingError.Context(codingPath: self.codingPath,
+            let context = DecodingError.Context(codingPath: codingPath,
                                                 debugDescription: "No value for key \(key) (\"\(key.stringValue)\") contained.")
             throw DecodingError.keyNotFound(key, context)
+            
         }
         
         return subMeta is NilMetaProtocol
@@ -71,16 +82,13 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
         // if subscript returns nil, there's no value contained
         guard let subMeta = referencedMeta[key] else {
             
-            let context = DecodingError.Context(codingPath: self.codingPath,
+            let context = DecodingError.Context(codingPath: codingPath,
                                                 debugDescription: "No value for key: \(key) (\"\(key.stringValue)\") contained.")
             throw DecodingError.keyNotFound(key, context)
+            
         }
         
-        // the coding path needs to be extended, because unwrap(meta) may throw an error
-        try reference.coder.stack.append(codingKey: key)
-        defer{ try! reference.coder.stack.removeLastCodingKey() }
-        
-        let unwrapped = try (self.reference.coder as! MetaDecoder).unwrap(subMeta, toType: type) as T
+        let unwrapped = try decoder.unwrap(subMeta, toType: type, for: key)
         
         return unwrapped
         
@@ -90,17 +98,13 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
     
     open func nestedContainer<NestedKey>(keyedBy type: NestedKey.Type, forKey key: K) throws -> KeyedDecodingContainer<NestedKey> where NestedKey : CodingKey {
         
-        // need to extend coding path in decoder, because decoding might result in an error thrown
-        // and furthermore the new container gets the codingPath from decoder
-        try reference.coder.stack.append(codingKey: key)
-        defer{ try! reference.coder.stack.removeLastCodingKey() }
-        
         // first check whether there's a meta at all for the key
-        guard let subMeta = self.referencedMeta[key] else {
+        guard let subMeta = referencedMeta[key] else {
             
             let context = DecodingError.Context(codingPath: self.codingPath,
                                                 debugDescription: "No container for key \(key) (\"\(key.stringValue)\") contained.")
             throw DecodingError.keyNotFound(key, context)
+            
         }
         
         // check, wheter subMeta is a KeyedContainerMeta
@@ -111,25 +115,19 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
             throw DecodingError.typeMismatch(KeyedDecodingContainer<NestedKey>.self, context)
         }
         
-        let nestedReference = DirectReference(coder: self.reference.coder, element: keyedSubMeta)
+        let nestedReference = DirectReference(coder: decoder, element: keyedSubMeta)
+        let path = codingPath + [key]
         
-        return KeyedDecodingContainer(
-            MetaKeyedDecodingContainer<NestedKey>(referencing: nestedReference)
-        )
+        return KeyedDecodingContainer( MetaKeyedDecodingContainer<NestedKey>(referencing: nestedReference, codingPath: path) )
         
     }
     
     open func nestedUnkeyedContainer(forKey key: K) throws -> UnkeyedDecodingContainer {
         
-        // need to extend coding path in decoder, because decoding might result in an error thrown
-        // and furthermore the new container gets the codingPath from decoder
-        try reference.coder.stack.append(codingKey: key)
-        defer{ try! reference.coder.stack.removeLastCodingKey() }
-        
         // first check whether there's a meta at all for the key
-        guard let subMeta = self.referencedMeta[key] else {
+        guard let subMeta = referencedMeta[key] else {
             
-            let context = DecodingError.Context(codingPath: self.codingPath,
+            let context = DecodingError.Context(codingPath: codingPath,
                                                 debugDescription: "No container for key \(key) (\"\(key.stringValue)\") contained.")
             throw DecodingError.keyNotFound(key, context)
         }
@@ -137,14 +135,15 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
         // check, wheter subMeta is a UnkeyedContainerMeta
         guard let unkeyedSubMeta = subMeta as? UnkeyedContainerMeta else {
             
-            let context = DecodingError.Context(codingPath: self.codingPath,
+            let context = DecodingError.Context(codingPath: codingPath,
                                                 debugDescription: "Encoded and expected type did not match")
             throw DecodingError.typeMismatch(UnkeyedDecodingContainer.self, context)
         }
         
-        let nestedReference = DirectReference(coder: self.reference.coder, element: unkeyedSubMeta)
+        let nestedReference = DirectReference(coder: decoder, element: unkeyedSubMeta)
+        let path = codingPath + [key]
         
-        return MetaUnkeyedDecodingContainer(referencing: nestedReference)
+        return MetaUnkeyedDecodingContainer(referencing: nestedReference, codingPath: path)
         
     }
     
@@ -160,15 +159,16 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
     
     func superDecoderImpl(forKey key: CodingKey) throws -> Decoder {
         
-        // need to extend coding path in decoder, because decoding might result in an error thrown
-        try reference.coder.stack.append(codingKey: key)
-        defer{ try! reference.coder.stack.removeLastCodingKey() }
+        guard let subMeta = referencedMeta[key] else {
+            
+            let context = DecodingError.Context(codingPath: codingPath,
+                                                debugDescription: "No container for key \(key) (\"\(key.stringValue)\") contained.")
+            throw DecodingError.keyNotFound(key, context)
+        }
         
-        let subMeta = self.referencedMeta[key] ?? NilMeta()
-        let referenceToOwnMeta = KeyedContainerReference(coder: self.reference.coder, element: self.referencedMeta, at: key)
-        let decoder = ReferencingMetaDecoder(referencing: referenceToOwnMeta, meta: subMeta)
+        let referenceToOwnMeta = KeyedContainerReference(coder: decoder, element: referencedMeta, at: key)
+        return ReferencingMetaDecoder(referencing: referenceToOwnMeta, meta: subMeta)
         
-        return decoder
         
     }
     

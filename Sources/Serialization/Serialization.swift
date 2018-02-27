@@ -44,6 +44,6 @@ public protocol IntermediateDecoder {
     func decode<D: Decodable>(toType type: D.Type, from raw: Raw) throws -> D
     
     /// returns a new MetaDecoder
-    func provideNewDecoder(raw: Raw) throws -> MetaDecoder
+    func provideNewDecoder() -> MetaDecoder
     
 }

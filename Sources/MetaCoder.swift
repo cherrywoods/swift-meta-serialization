@@ -12,9 +12,10 @@ import Foundation
 /// common interface for encoder and decoder
 public protocol MetaCoder {
     
+    var userInfo: [CodingUserInfoKey : Any] { get }
     var codingPath: [CodingKey] { get }
     
-    var stack: CodingStack { get set }
+    var storage: CodingStorage { get set }
     var translator: Translator { get }
     
 }

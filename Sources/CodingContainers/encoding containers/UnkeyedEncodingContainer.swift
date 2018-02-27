@@ -15,7 +15,8 @@ import Foundation
 open class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
     
     private(set) open var reference: Reference
-    open var referencedMeta: UnkeyedContainerMeta {
+    
+    private var referencedMeta: UnkeyedContainerMeta {
         get {
             return reference.element as! UnkeyedContainerMeta
         }
@@ -24,13 +25,24 @@ open class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
         }
     }
     
-    open var codingPath: [CodingKey]
+    public var encoder: MetaEncoder {
+        
+        return reference.coder as! MetaEncoder
+        
+    }
+    
+    open let codingPath: [CodingKey]
     
     open var count: Int {
         
-        // the metas were inserted
-        // the number needs to be known
+        // during encoding this value needs to be known
         return referencedMeta.count!
+        
+    }
+    
+    private var lastCodingKey: CodingKey {
+        
+        return IndexCodingKey(intValue: self.count)!
         
     }
     
@@ -46,55 +58,45 @@ open class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
     // MARK: - encode
     
     open func encodeNil() throws {
+        
         try encode(GenericNil.instance)
+        
     }
     
     open func encode<T: Encodable>(_ value: T) throws {
         
-        // the coding path needs to be extended, because wrap(value) may throw an error
-        try reference.coder.stack.append(codingKey: IndexCodingKey(intValue: self.count)! )
-        defer{ try! reference.coder.stack.removeLastCodingKey() }
-        
-        let meta = try (self.reference.coder as! MetaEncoder).wrap(value)
-        
-        self.referencedMeta.append(element: meta)
+        self.referencedMeta.append(element: try encoder.wrap(value, at: lastCodingKey ) )
         
     }
     
     // MARK: - nested container
     open func nestedContainer<NestedKey>(keyedBy keyType: NestedKey.Type) -> KeyedEncodingContainer<NestedKey> where NestedKey : CodingKey {
         
-        // key needs to be added, because it is passed to the new MetaKeyedEncodingContainer
+        // create path for nested container
         // at this point, count is the index at which nestedMeta will be inserted
-        self.codingPath.append( IndexCodingKey(intValue: self.count)! )
-        defer { self.codingPath.removeLast() }
+        let path = codingPath + [ lastCodingKey ]
         
-        let nestedMeta = self.reference.coder.translator.keyedContainerMeta()
+        let nestedMeta = encoder.translator.keyedContainerMeta()
         
         self.referencedMeta.append(element: nestedMeta)
         
-        let nestedReference = DirectReference(coder: self.reference.coder, element: nestedMeta)
+        let nestedReference = DirectReference(coder: encoder, element: nestedMeta)
         
-        return KeyedEncodingContainer(
-            MetaKeyedEncodingContainer<NestedKey>(referencing: nestedReference, codingPath: self.codingPath)
-        )
+        return KeyedEncodingContainer( MetaKeyedEncodingContainer<NestedKey>(referencing: nestedReference, codingPath: path) )
         
     }
     
     open func nestedUnkeyedContainer() -> UnkeyedEncodingContainer {
         
-        // key needs to be added, because it is passed to the new MetaKeyedEncodingContainer
-        // at this point, count is the index at which nestedMeta will be inserted
-        self.codingPath.append( IndexCodingKey(intValue: self.count)! )
-        defer { self.codingPath.removeLast() }
+        let path = codingPath + [ lastCodingKey ]
         
         let nestedMeta = self.reference.coder.translator.unkeyedContainerMeta()
         
         self.referencedMeta.append(element: nestedMeta)
         
-        let nestedReference = DirectReference(coder: self.reference.coder, element: nestedMeta)
+        let nestedReference = DirectReference(coder: encoder, element: nestedMeta)
         
-        return MetaUnkeyedEncodingContainer(referencing: nestedReference, codingPath: self.codingPath)
+        return MetaUnkeyedEncodingContainer(referencing: nestedReference, codingPath: path)
         
     }
     
@@ -102,7 +104,7 @@ open class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
     
     open func superEncoder() -> Encoder {
         
-        let reference = UnkeyedContainerReference(coder: self.reference.coder, element: self.referencedMeta, index: self.count)
+        let reference = UnkeyedContainerReference(coder: encoder, element: referencedMeta, index: count)
         return ReferencingMetaEncoder(referencing: reference)
         
     }
