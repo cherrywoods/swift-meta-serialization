@@ -15,7 +15,8 @@ import Foundation
 open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     
     private(set) open var reference: Reference
-    open var referencedMeta: UnkeyedContainerMeta {
+    
+    private var referencedMeta: UnkeyedContainerMeta {
         get {
             return reference.element as! UnkeyedContainerMeta
         }
@@ -24,17 +25,23 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
         }
     }
 
-    open var codingPath: [CodingKey]
+    public var decoder: MetaDecoder {
+        
+        return reference.coder as! MetaDecoder
+        
+    }
+    
+    open let codingPath: [CodingKey]
 
     // MARK: - initalization
 
-    public init(referencing reference: Reference) {
-
+    public init(referencing reference: Reference, codingPath: [CodingKey]) {
+        
         self.reference = reference
-        self.codingPath = reference.coder.codingPath
-
+        self.codingPath = codingPath
+        
     }
-
+    
     // MARK: - container methods
 
     open var count: Int? {
@@ -43,13 +50,19 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
 
     open var isAtEnd: Bool {
         // if the number of elements is unknown
-        // one can't say, if there are still more elements...
+        // no one can say, if there are still more elements...
         return self.count != nil && self.currentIndex >= self.count!
     }
 
     // UnkeyedContainerMeta is required to start at 0 and end at count-1
     public var currentIndex: Int = 0
 
+    private var currentCodingKey: CodingKey {
+        
+        return IndexCodingKey(intValue: self.currentIndex)!
+        
+    }
+    
     // MARK: - decoding
 
     open func decodeNil() throws -> Bool {
@@ -80,11 +93,7 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
             throw DecodingError.valueNotFound(type, context)
         }
 
-        // the coding path needs to be extended, because unwrap(meta) may throw an error
-        try reference.coder.stack.append(codingKey: IndexCodingKey(intValue: currentIndex)!)
-        defer{ try! reference.coder.stack.removeLastCodingKey() }
-
-        let value: T = try (self.reference.coder as! MetaDecoder).unwrap(subMeta, toType: type)
+        let value: T = try decoder.unwrap(subMeta, toType: type, for: currentCodingKey)
 
         // now we decoded a value with success,
         // therefor we can increment currentIndex
@@ -97,11 +106,6 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     // MARK: - nested container
 
     open func nestedContainer<NestedKey>(keyedBy type: NestedKey.Type) throws -> KeyedDecodingContainer<NestedKey> where NestedKey : CodingKey {
-
-        // need to extend coding path in decoder, because decoding might result in an error thrown
-        // and furthermore the new container gets the codingPath from decoder
-        try reference.coder.stack.append(codingKey: IndexCodingKey(intValue: self.currentIndex)!)
-        defer{ try! reference.coder.stack.removeLastCodingKey() }
 
         // first check whether the container still has an element
         guard let subMeta = self.referencedMeta.get(at: currentIndex) else {
@@ -119,22 +123,17 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
             throw DecodingError.typeMismatch(KeyedDecodingContainer<NestedKey>.self, context)
         }
 
+        let path = codingPath + [currentCodingKey]
+        let nestedReference = DirectReference(coder: decoder, element: keyedSubMeta)
+        
         // now all errors, that might have happend, have not been thrown, and currentIndex can be incremented
         currentIndex += 1
-        let nestedReference = DirectReference(coder: self.reference.coder, element: keyedSubMeta)
 
-        return KeyedDecodingContainer(
-            MetaKeyedDecodingContainer<NestedKey>(referencing: nestedReference)
-        )
+        return KeyedDecodingContainer( MetaKeyedDecodingContainer<NestedKey>(referencing: nestedReference, codingPath: path) )
 
     }
 
     open func nestedUnkeyedContainer() throws -> UnkeyedDecodingContainer {
-
-        // need to extend coding path in decoder, because decoding might result in an error thrown
-        // and furthermore the new container gets the codingPath from decoder
-        try reference.coder.stack.append(codingKey: IndexCodingKey(intValue: self.currentIndex)!)
-        defer{ try! reference.coder.stack.removeLastCodingKey() }
 
         // first check whether the container still has an element
         guard let subMeta = self.referencedMeta.get(at: currentIndex) else {
@@ -152,21 +151,19 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
             throw DecodingError.typeMismatch(UnkeyedDecodingContainer.self, context)
         }
 
+        let path = codingPath + [currentCodingKey]
+        let nestedReference = DirectReference(coder: decoder, element: unkeyedSubMeta)
+        
         // now all errors, that might have happend, have not been thrown, and currentIndex can be incremented
         currentIndex += 1
-        let nestedReference = DirectReference(coder: self.reference.coder, element: unkeyedSubMeta)
 
-        return  MetaUnkeyedDecodingContainer(referencing: nestedReference)
+        return  MetaUnkeyedDecodingContainer(referencing: nestedReference, codingPath: path)
 
     }
 
     // MARK: - super encoder
 
     open func superDecoder() throws -> Decoder {
-
-        // need to extend coding path in decoder, because decoding might result in an error thrown
-        try reference.coder.stack.append(codingKey: IndexCodingKey(intValue: self.currentIndex)!)
-        defer{ try! reference.coder.stack.removeLastCodingKey() }
 
         // first check whether the container still has an element
         guard let subMeta = self.referencedMeta.get(at: currentIndex) else {
@@ -176,7 +173,7 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
             throw DecodingError.valueNotFound(Decoder.self, context)
         }
 
-        let referenceToOwnMeta = UnkeyedContainerReference(coder: self.reference.coder, element: self.referencedMeta, index: currentIndex)
+        let referenceToOwnMeta: UnkeyedContainerReference = UnkeyedContainerReference(coder: self.decoder, element: referencedMeta, index: currentIndex)
         let decoder = ReferencingMetaDecoder(referencing: referenceToOwnMeta, meta: subMeta)
 
         self.currentIndex += 1

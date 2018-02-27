@@ -44,6 +44,7 @@ class TestThing: XCTestCase {
             // decode
             
             do {
+                
                 let decodedThing = try serialization.decode(toType: Thing.self, from: encodedThing)
                 let decodedNamedThing = try serialization.decode(toType: NamedThing.self, from: encodedNamedThing)
                 

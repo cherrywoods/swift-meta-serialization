@@ -31,9 +31,9 @@ public class SimpleSerialization<R>: Serialization {
         
     }
     
-    public func provideNewDecoder(raw: R) -> MetaDecoder {
+    public func provideNewDecoder() -> MetaDecoder {
         
-        return try! MetaDecoder(translator: translator, raw: raw)
+        return MetaDecoder(translator: translator)
         
     }
     

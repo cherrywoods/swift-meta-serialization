@@ -16,7 +16,13 @@ open class MetaSingleValueEncodingContainer: SingleValueEncodingContainer {
     
     private(set) open var reference: Reference
     
-    open var codingPath: [CodingKey]
+    open let codingPath: [CodingKey]
+    
+    public var encoder: MetaEncoder {
+        
+        return reference.coder as! MetaEncoder
+        
+    }
     
     // MARK: - initalization
     
@@ -28,25 +34,24 @@ open class MetaSingleValueEncodingContainer: SingleValueEncodingContainer {
     }
     
     open func encodeNil() throws {
+        
         try self.encode(GenericNil.instance)
+        
     }
     
     open func encode<T>(_ value: T) throws where T : Encodable {
         
-        // if the referenced element is a PlacholderMeta,
-        // there was no value encoded in this single value container
-        // (MetaEncoder inserts this kind of meta in it's singleValueContainer method)
-        // otherwise there's already a real meta and someone already encoded at the correspondig coding path
-        // that's basically the same as requesting two containers from encoder (and therefor not allowed)
-        // note that no custom Translator can use PlaceholderMeta -
-        // for other purposes than this one or any purpose -
-        // because it is declared project-private/internal
+        // MetaEncoder stores a placeholder when singleValueContainer is called
+        // if there is now another meta stored at this path, another meta
+        // has already been encoded.
         
-        guard self.reference.element is PlaceholderMeta else {
-            preconditionFailure("Tried to encode a second value at the same coding path: \(codingPath)")
+        guard !encoder.storage.isMetaStored(at: codingPath) else {
+            
+            preconditionFailure("Tried to encode a second value at a previously used coding path.")
+            
         }
         
-        self.reference.element = try (self.reference.coder as! MetaEncoder).wrap(value)
+        self.reference.element = try encoder.wrap(value, at: SpecialCodingKey.singleValueContainer.rawValue)
         
     }
     

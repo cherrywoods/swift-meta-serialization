@@ -14,23 +14,26 @@ public protocol Reference {
     
 }
 
-public struct StackReference: Reference {
+public struct StorageReference: Reference {
     
     public var coder: MetaCoder
-    private let index: Int
+    private let codingPath: [CodingKey]
     
-    public init(coder: MetaCoder, at index: Int) {
+    public init(coder: MetaCoder, at codingPath: [CodingKey]) {
         self.coder = coder
-        self.index = index
+        self.codingPath = codingPath
     }
     
     public var element: Meta {
+        
         get {
-            return coder.stack[index]
+            return coder.storage[codingPath]
         }
+        
         set {
-            coder.stack[index] = newValue
+            coder.storage[codingPath] = newValue
         }
+        
     }
     
 }
@@ -40,7 +43,6 @@ public struct DirectReference: Reference {
     public var coder: MetaCoder
     public var element: Meta
     
-    // default initalizer
     public init(coder: MetaCoder, element: Meta) {
         self.coder = coder
         self.element = element
@@ -49,8 +51,10 @@ public struct DirectReference: Reference {
 }
 
 public protocol ContainerReference: Reference {
+    
     var codingKey: CodingKey { get }
     mutating func insert(_: Meta)
+    
 }
 
 public struct KeyedContainerReference: ContainerReference {
