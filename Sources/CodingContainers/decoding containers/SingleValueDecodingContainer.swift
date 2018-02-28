@@ -14,7 +14,7 @@ import Foundation
  */
 open class MetaSingleValueDecodingContainer: SingleValueDecodingContainer {
     
-    private(set) open var reference: Reference
+    private(set) open var reference: ReferenceProtocol
     
     public var decoder: MetaDecoder {
         
@@ -26,7 +26,7 @@ open class MetaSingleValueDecodingContainer: SingleValueDecodingContainer {
     
     // MARK: - initalization
     
-    public init(referencing reference: Reference, codingPath: [CodingKey]) {
+    public init(referencing reference: ReferenceProtocol, codingPath: [CodingKey]) {
         
         self.reference = reference
         self.codingPath = codingPath
@@ -44,11 +44,9 @@ open class MetaSingleValueDecodingContainer: SingleValueDecodingContainer {
         // add coding key, so containers,
         // that were requested as single value containers
         // but are not directly supported by the translator
-        // can be pushed by unwrap.
+        // can be stored by unwrap.
         
-        // TODO: test this
-        
-        return try decoder.unwrap(reference.element, toType: type)
+        return try decoder.unwrap(reference.element, toType: type, for: SpecialCodingKey.decodingThroughSingleValueContainer.rawValue)
         
     }
     

@@ -59,8 +59,8 @@ public enum SpecialCodingKey: NonRegualarCodingKey {
     /// used by the superEncoder() methods in MetaKeyed- Encoding- and Decoding- containers
     case `super` = "super"
     
-    /// used by SingleValueEncodingContainer to decode containers that were requested as single value containers but are none
-    case singleValueContainer = "codingThroughSingleValueContainer"
+    /// used by SingleValueDecodingContainer to decode containers that were requested as single value containers but are none
+    case decodingThroughSingleValueContainer = "decodingThroughSingleValueContainer"
     
 }
 

@@ -11,7 +11,7 @@ import Foundation
 /// Used by superDecoder() in MetaKeyedDecodingContainer and MetaUnkeyedDecodingContainer
 open class ReferencingMetaDecoder: MetaDecoder {
     
-    private var reference: ContainerReference
+    private var reference: ContainerReferenceProtocol
     
     // MARK: initalization
     
@@ -22,13 +22,17 @@ open class ReferencingMetaDecoder: MetaDecoder {
      - Parameter referening: A ContainerReference to the (encoding or decoding) container this referencing encoder will reference
      - Parameter meta: The meta that should be decoded by this decoder
      */
-    public init(referencing reference: ContainerReference, meta: Meta) {
+    public init(referencing reference: ContainerReferenceProtocol, meta: Meta) {
         
         self.reference = reference
-        super.init(at: reference.coder.codingPath,
+        
+        let codingPath = reference.coder.codingPath + [reference.codingKey]
+        
+        super.init(at: codingPath,
                    with: reference.coder.userInfo,
                    translator: reference.coder.translator,
-                   storage: reference.coder.storage.fork())
+                   // new storage should tolerate coding paths longer than reference.coder's coding path
+                   storage: reference.coder.storage.fork(at: codingPath))
         
     }
     

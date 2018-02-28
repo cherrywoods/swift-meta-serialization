@@ -20,19 +20,29 @@ open class LinearCodingStack: CodingStorage {
     /// simply projects paths to their length
     private func convertToIndex(codingPath: [CodingKey]) -> Int {
         
-        return codingPath.count
+        return codingPath.count - tolerationDepth
         
     }
     
-    public required init() {
+    /// coding paths do not need to be contained in the stack up to this depth. Beyond it they need to.
+    private let tolerationDepth: Int
+    
+    public required convenience init() {
         
-        stack = Array<(Meta, Bool)>()
+        self.init(tolerating: 0)
+        
+    }
+    
+    private init(tolerating depth: Int) {
+        
+        self.stack = Array<(Meta, Bool)>()
+        self.tolerationDepth = depth
         
     }
     
     public var hasMultipleMetasInStorage: Bool {
         
-        return stack.count == 1
+        return stack.count > 1
         
     }
     
@@ -46,13 +56,27 @@ open class LinearCodingStack: CodingStorage {
         
         set {
             
-            stack[ convertToIndex(codingPath: codingPath) ] = (newValue, false)
+            let index = convertToIndex(codingPath: codingPath)
+            
+            if index < stack.endIndex {
+                
+                stack[ convertToIndex(codingPath: codingPath) ] = (newValue, false)
+                
+            } else if index == stack.endIndex {
+                
+                stack.append( (newValue, false) )
+                
+            } else {
+                
+                preconditionFailure("Storage not filled up to requested path.")
+                
+            }
             
         }
         
     }
     
-    public func isMetaStored(at codingPath: [CodingKey]) -> Bool {
+    public func storesMeta(at codingPath: [CodingKey]) -> Bool {
         
         let index = convertToIndex(codingPath: codingPath)
         
@@ -159,10 +183,10 @@ open class LinearCodingStack: CodingStorage {
         
     }
     
-    public func fork() -> CodingStorage {
+    public func fork(at codingPath: [CodingKey]) -> CodingStorage {
         
         // return a new coding stack
-        return LinearCodingStack()
+        return LinearCodingStack(tolerating: codingPath.count)
         
     }
     

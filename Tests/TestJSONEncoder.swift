@@ -252,7 +252,7 @@ class TestMetaSerializationByJSONEncoderTests : XCTestCase {
     
     private func _testRoundTrip<T>(of value: T,
                                    expected: Container? = nil) where T : Codable, T : Equatable {
-        var payload: Container! = nil
+        var payload: Container? = nil
         do {
             payload = try serialization.encode(value)
         } catch {
@@ -263,12 +263,17 @@ class TestMetaSerializationByJSONEncoderTests : XCTestCase {
             XCTAssert(expected! == payload!, "Produced not identical to expected.")
         }
         
-        do {
-            let decoded = try serialization.decode(toType: T.self, from: payload)
-            XCTAssert(decoded == value, "\(type(of:value)) did not round-trip to an equal value.")
-        } catch {
-            XCTFail("Failed to decode \(type(of:value)): \(error)")
+        if payload != nil {
+            
+            do {
+                let decoded = try serialization.decode(toType: T.self, from: payload!)
+                XCTAssert(decoded == value, "\(type(of:value)) did not round-trip to an equal value.")
+            } catch {
+                XCTFail("Failed to decode \(type(of:value)): \(error)")
+            }
+            
         }
+        
     }
     
     private func _testRoundTripTypeCoercionFailure<T,U>(of value: T, as type: U.Type) where T : Codable, U : Codable {

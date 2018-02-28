@@ -17,8 +17,11 @@ import Foundation
 public protocol KeyedContainerMeta: Meta {
     
     /**
-     access the value inside this container for key
-     return nil, if there's no value contained for this key
+     Access the value inside this container for key.
+     
+     Return nil, if there's no value contained for this key.
+     
+     You may not return nil, if contains returned true for the key.
      */
     subscript(key: CodingKey) -> Meta? { get set }
     
@@ -54,13 +57,14 @@ public protocol UnkeyedContainerMeta: Meta {
      Returns the element at the given index
      or nil, if the index is smaller than 0 or bigger or equal than count.
      */
-    func get(at index:Int) -> Meta?
+    func get(at index: Int) -> Meta?
     
-    /// this function should have the same behavior as Array.insert
+    /**
+     Inserts or appends the given meta at index.
+     Index may be equals count (in this case you should append), but not larger.
+     */
     func insert(element: Meta, at: Int)
     
-    /// this function should have the same behavior as Array.append
-    func append(element: Meta)
     
 }
 
