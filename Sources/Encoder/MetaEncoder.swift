@@ -1,22 +1,23 @@
 //
 //  MetaCoder.swift
-//  meta-serialization
+//  MetaSerialization
 //
-//  Created by cherrywoods on 15.10.17.
-//  Licensed under Unlicense, https://unlicense.org
-//  See the LICENSE file in this project
+//  Available at the terms of the LICENSE file included in this project.
+//  If none is included, available at the terms of the unlicense, see www.unlicense.org
 //
 
 import Foundation
 
 // encoder will create a meta object
 
-/// An Encoder that constucts a Meta entity insted of encoding directly to the desired format
+/// An Encoder that constucts a Meta format insted of encoding directly to the desired format
 open class MetaEncoder: Encoder, MetaCoder {
     
     // MARK: - properties
     
     open var userInfo: [CodingUserInfoKey : Any]
+    
+    // TODO: make storage private and provide ways to access it over coding paths (better for lock and unlock)
     
     /// the CodingStack of this encoder
     open var storage: CodingStorage
@@ -26,32 +27,7 @@ open class MetaEncoder: Encoder, MetaCoder {
     /// The translator used to get and finally translate Metas
     open let translator: Translator
     
-    // MARK: - front end
-    
-    /**
-     Encodes the given value.
-     
-     Use this method rather than directly calling encode(to:).
-     encode(to:) will not detect types in the first place
-     that are directly supported by the translator.
-     
-     Example: If data is a Data instance and the translator supportes
-     Data objects directly. Then calling data.encode(to:) will not fall back
-     to that support, it will be encoded the way Data encodes itself.
-     */
-    open func encode<E, Raw>(_ value: E) throws -> Raw where E: Encodable {
-        
-        // encode over wrap function
-        // this will keep E from encoding itself,
-        // if it is supported by translator
-        
-        // if value didn't encode an empty keyed container meta should be used
-        // (according to the documentation of Encodable)
-        let meta = try wrap(value)
-        
-        return try translator.encode(meta)
-        
-    }
+    // MARK: initalizers
     
     /**
      Initalizes a new MetaEncoder with the given values.
@@ -129,7 +105,7 @@ open class MetaEncoder: Encoder, MetaCoder {
         
         try storage.storePlaceholder(at: path)
         // TODO: check whether this enables the same error behavior as decoder
-        // defer { _ = try? storage.remove(at: path) }
+        defer { _ = try? storage.remove(at: path) }
         
         try storage.lock(codingPath: path)
         
@@ -144,61 +120,53 @@ open class MetaEncoder: Encoder, MetaCoder {
         
     }
     
-    // MARK: - container methods
+    // MARK: container(referencing:) methods
     
-    open func container<Key>(keyedBy keyType: Key.Type) -> KeyedEncodingContainer<Key> where Key : CodingKey {
+    /**
+     Creates a new keyed container meta, sets reference.meta to this new meta and then returns a new MetaKeyedEncodingContainer referencing reference.
+     */
+    open func container<Key: CodingKey>(keyedBy keyType: Key.Type, referencing reference: Reference, at codingPath: [CodingKey]) -> KeyedEncodingContainer<Key> {
         
-        // if there's no container at the current codingPath, let translator create a new one and store it
-        // if there is one and it isn't a KeyedContainerMeta, throw an error
+        var reference = reference
+        reference.meta = translator.keyedContainerMeta()
         
-        if storage.isMetaStored(at: codingPath) {
-            
-            guard storage[codingPath] is KeyedContainerMeta else {
-                preconditionFailure("Requested a second container at a previously used coding path.")
-            }
-            
-        } else {
-            
-            // there is no container. Store a new one
-            try! storage.store(meta: translator.keyedContainerMeta(), at: codingPath)
-            
-        }
-        
-        let reference = StorageReference(coder: self, at: codingPath)
-        return KeyedEncodingContainer( MetaKeyedEncodingContainer<Key>(referencing: reference, codingPath: codingPath) )
+        return KeyedEncodingContainer( MetaKeyedEncodingContainer<Key>(referencing: reference,
+                                                                       at: codingPath,
+                                                                       encoder: self) )
         
     }
     
-    open func unkeyedContainer() -> UnkeyedEncodingContainer {
+    /**
+     Creates a new unkeyed container meta, sets reference.meta to this new meta and then returns a new MetaKeyedEncodingContainer referencing reference.
+     */
+    open func unkeyedContainer(referencing reference: Reference, at codingPath: [CodingKey]) -> UnkeyedEncodingContainer {
         
-        if storage.isMetaStored(at: codingPath) {
-            
-            guard storage[codingPath] is UnkeyedContainerMeta else {
-                preconditionFailure("Requested a second container at a previously used coding path.")
-            }
-            
-        } else {
-            
-            // there is no container. Store a new one
-            try! storage.store(meta: translator.unkeyedContainerMeta(), at: codingPath)
-            
-        }
+        var reference = reference
+        reference.meta = translator.unkeyedContainerMeta()
         
-        let reference = StorageReference(coder: self, at: codingPath)
-        return MetaUnkeyedEncodingContainer(referencing: reference, codingPath: codingPath)
+        return MetaUnkeyedEncodingContainer(referencing: reference,
+                                            at: codingPath,
+                                            encoder: self)
         
     }
     
-    open func singleValueContainer() -> SingleValueEncodingContainer {
+    open func singleValueContainer(referencing reference: Reference, at codingPath: [CodingKey]) -> SingleValueEncodingContainer {
         
-        // A little bit strangely but not easily preventable,
-        // a entity can request a keyed or unkeyed container
-        // and then request a SingleValueContainer reffering to the meta of the keyed or unkeyed container.
+        return MetaSingleValueEncodingContainer(referencing: reference,
+                                                at: codingPath,
+                                                encoder: self)
         
-        // if an entity tried to encode twice at the same path, the single value container will fail, but this function will succeed
+    }
+    
+    // MARK: superEncoder
+    
+    open func superEncoder(referencing reference: Reference, at codingPath: [CodingKey]) -> MetaEncoder {
         
-        let reference = StorageReference(coder: self, at: codingPath)
-        return MetaSingleValueEncodingContainer(referencing: reference, codingPath: codingPath)
+        return ReferencingMetaEncoder(referencing: reference,
+                                      at: codingPath,
+                                      with: userInfo,
+                                      translator: translator,
+                                      storage: storage.fork(at: codingPath))
         
     }
     

@@ -14,22 +14,22 @@ import Foundation
  */
 open class MetaSingleValueEncodingContainer: SingleValueEncodingContainer {
     
-    private(set) open var reference: Reference
+    // MARK: properties
+    
+    // TODO: doc
+    open var reference: Reference
+    
+    open let encoder: MetaEncoder
     
     open let codingPath: [CodingKey]
     
-    public var encoder: MetaEncoder {
-        
-        return reference.coder as! MetaEncoder
-        
-    }
-    
     // MARK: - initalization
     
-    public init(referencing reference: Reference, codingPath: [CodingKey]) {
+    public init(referencing reference: Reference, at codingPath: [CodingKey], encoder: MetaEncoder) {
         
         self.reference = reference
         self.codingPath = codingPath
+        self.encoder = encoder
         
     }
     
@@ -39,19 +39,19 @@ open class MetaSingleValueEncodingContainer: SingleValueEncodingContainer {
         
     }
     
-    open func encode<T>(_ value: T) throws where T : Encodable {
+    public func encode<T>(_ value: T) throws where T : Encodable {
         
         // MetaEncoder stores a placeholder when singleValueContainer is called
         // if there is now another meta stored at this path, another meta
         // has already been encoded.
         
-        guard !encoder.storage.isMetaStored(at: codingPath) else {
+        guard !encoder.storage.storesMeta(at: codingPath) else {
             
             preconditionFailure("Tried to encode a second value at a previously used coding path.")
             
         }
         
-        self.reference.element = try encoder.wrap(value, at: SpecialCodingKey.singleValueContainer.rawValue)
+        reference.meta = try encoder.wrap(value)
         
     }
     

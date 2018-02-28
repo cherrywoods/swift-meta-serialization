@@ -49,7 +49,7 @@ open class CodingHeap: CodingStorage {
     
     public var hasMultipleMetasInStorage: Bool {
         
-        return heap.count == 1
+        return heap.count > 1
         
     }
     
@@ -69,7 +69,7 @@ open class CodingHeap: CodingStorage {
         
     }
     
-    public func isMetaStored(at codingPath: [CodingKey]) -> Bool {
+    public func storesMeta(at codingPath: [CodingKey]) -> Bool {
         
         let converted = concatCodingPath(codingPath)
         let meta = heap[converted]
@@ -153,7 +153,8 @@ open class CodingHeap: CodingStorage {
     }
     
     // no need to create a new storage in this implementation
-    public func fork() -> CodingStorage {
+    public func fork(at codingPath: [CodingKey]) -> CodingStorage {
+        
         return self
     }
     

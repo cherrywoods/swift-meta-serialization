@@ -16,31 +16,42 @@ open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProto
     
     public typealias Key = K
     
-    private(set) open var reference: Reference
+    // MARK: properties
     
-    private var referencedMeta: KeyedContainerMeta {
-        get {
-            return reference.element as! KeyedContainerMeta
-        }
-        set {
-            reference.element = newValue
-        }
-    }
+    // TODO: doc
+    open var reference: Reference
     
-    public var encoder: MetaEncoder {
-        
-        return reference.coder as! MetaEncoder
-        
-    }
+    open let encoder: MetaEncoder
     
     open let codingPath: [CodingKey]
     
+    // MARK: utilities
+    
+    private var referencedMeta: KeyedContainerMeta {
+        
+        get {
+            
+            return reference.meta as! KeyedContainerMeta
+            
+        }
+        
+        set {
+            
+            reference.meta = newValue
+            
+        }
+        
+    }
+    
     // MARK: - initalization
     
-    public init(referencing reference: Reference, codingPath: [CodingKey]) {
+    public init(referencing reference: Reference, at codingPath: [CodingKey], encoder: MetaEncoder) {
+        
+        precondition(reference.meta is KeyedContainerMeta, "reference.meta needs to conform to KeyedContainerMeta")
         
         self.reference = reference
         self.codingPath = codingPath
+        self.encoder = encoder
         
     }
     
@@ -52,59 +63,61 @@ open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProto
         
     }
     
-    open func encode<T: Encodable>(_ value: T, forKey key: Key) throws {
+    public func encode<T: Encodable>(_ value: T, forKey key: Key) throws {
         
         self.referencedMeta[key] = try encoder.wrap(value, at: key)
         
     }
     
     // MARK: - nested container
-    open func nestedContainer<NestedKey>(keyedBy keyType: NestedKey.Type, forKey key: K) -> KeyedEncodingContainer<NestedKey> where NestedKey : CodingKey {
+    
+    public func nestedContainer<NestedKey: CodingKey>(keyedBy keyType: NestedKey.Type, forKey key: K) -> KeyedEncodingContainer<NestedKey> {
         
-        let nestedMeta = encoder.translator.keyedContainerMeta()
-        
-        self.referencedMeta[key] = nestedMeta
-        
-        let nestedReference = DirectReference(coder: encoder, element: nestedMeta)
-        
-        // create the path of the new keyed container
-        let path = self.codingPath + [key]
-        
-        return KeyedEncodingContainer(
-            MetaKeyedEncodingContainer<NestedKey>(referencing: nestedReference, codingPath: path)
-        )
+        return encoder.container(keyedBy: keyType,
+                                 referencing: createElementReference(for: key),
+                                 at: codingPath + [key])
         
     }
     
-    open func nestedUnkeyedContainer(forKey key: K) -> UnkeyedEncodingContainer {
+    public func nestedUnkeyedContainer(forKey key: K) -> UnkeyedEncodingContainer {
         
-        let nestedMeta = encoder.translator.unkeyedContainerMeta()
-        
-        self.referencedMeta[key] = nestedMeta
-        
-        let nestedReference = DirectReference(coder: encoder, element: nestedMeta)
-        
-        // create the path of the new keyed container
-        let path = self.codingPath + [key]
-        
-        return MetaUnkeyedEncodingContainer(referencing: nestedReference, codingPath: path)
+        return encoder.unkeyedContainer(referencing: createElementReference(for: key),
+                                        at: codingPath + [key])
         
     }
     
     // MARK: - super encoder
     
-    open func superEncoder() -> Encoder {
+    public func superEncoder() -> Encoder {
+        
         return superEncoderImpl(forKey: SpecialCodingKey.super.rawValue)
+        
     }
     
-    open func superEncoder(forKey key: K) -> Encoder {
+    public func superEncoder(forKey key: K) -> Encoder {
+        
         return superEncoderImpl(forKey: key)
+        
     }
     
     private func superEncoderImpl(forKey key: CodingKey) -> Encoder {
         
-        let referenceToOwnMeta = KeyedContainerReference(coder: encoder, element: self.referencedMeta, at: key)
-        return ReferencingMetaEncoder(referencing: referenceToOwnMeta)
+        return encoder.superEncoder(referencing: createElementReference(for: key),
+                                    at: codingPath + [key])
+        
+    }
+    
+    // MARK: - overridable methods
+    
+    /**
+     Create a new reference for the element at the given coding key.
+     
+     nestedContainer, nestedUnkeyedContainer and superEncoder use this method to create element references.
+     */
+    open func createElementReference(for key: CodingKey) -> Reference {
+        
+        let elementRef = KeyedContainerElementReference(referencing: reference, at: key)
+        return Reference.containerElement( elementRef )
         
     }
     

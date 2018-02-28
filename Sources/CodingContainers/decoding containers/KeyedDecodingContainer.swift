@@ -18,7 +18,7 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
     
     public typealias Key = K
     
-    private(set) open var reference: Reference
+    private(set) open var reference: ReferenceProtocol
     
     private var referencedMeta: KeyedContainerMeta {
         get {
@@ -39,7 +39,7 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
     
     // MARK: - initalization
     
-    public init(referencing reference: Reference, codingPath: [CodingKey]) {
+    public init(referencing reference: ReferenceProtocol, codingPath: [CodingKey]) {
         
         self.reference = reference
         self.codingPath = codingPath

@@ -58,7 +58,8 @@ public protocol CodingStorage {
     /**
      Accesses the meta at the given coding path.
      
-     You may expect that you already store a meta at codingPath
+     You may not expect that you already stored a meta at codingPath.
+     However you may expect, that the path up to codingPath[0..<codingPath.endIndex-1].
      */
     subscript (codingPath: [CodingKey]) -> Meta { get set }
     
@@ -69,7 +70,7 @@ public protocol CodingStorage {
      
      If this function returns true for a certain path, it must be safe to subscript to this path.
      */
-    func isMetaStored(at codingPath: [CodingKey]) -> Bool
+    func storesMeta(at codingPath: [CodingKey]) -> Bool
     
     /**
      Stores a new meta at the coding path.
@@ -138,7 +139,14 @@ public protocol CodingStorage {
     
     /**
      Return a CodingStoreage an new (super) encoder/decoder can work on.
+     
+     This new storage needs to be able to coop with coding paths for which values are stored in the
+     storage fork is called on, but not in them teirselves.
+     
+     This means, that it is legitimate to call store(... at: [a, b, c]) on the storage returned by this function,
+     if [a, b] was passed to fork, although there are not metas for [], [a] and [a, b] in the returned stroage.
+     Accessing paths below the given coding path may fail.
      */
-    func fork() -> CodingStorage
+    func fork(at codingPath: [CodingKey]) -> CodingStorage
     
 }

@@ -14,7 +14,7 @@ import Foundation
  */
 open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     
-    private(set) open var reference: Reference
+    private(set) open var reference: ReferenceProtocol
     
     private var referencedMeta: UnkeyedContainerMeta {
         get {
@@ -35,7 +35,7 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
 
     // MARK: - initalization
 
-    public init(referencing reference: Reference, codingPath: [CodingKey]) {
+    public init(referencing reference: ReferenceProtocol, codingPath: [CodingKey]) {
         
         self.reference = reference
         self.codingPath = codingPath
