@@ -8,27 +8,30 @@
 
 import Foundation
 
-// decoder does pretty much the same as encoder but reversed
-// it will start with a meta on stack and then will unwind this meta into an swift object
-
+/// An Decoder that decodes from a Meta format created by a translator.
 open class MetaDecoder: Decoder {
     
-    // MARK: - properties
+    // MARK: - general properties
     
     open var userInfo: [CodingUserInfoKey : Any]
     
-    /// the CodingStorage of this decoder
-    open var storage: CodingStorage
-    
-    /// the path of coding keys this decoder currently works on
     open var codingPath: [CodingKey]
+    
+    // MARK: - translator
     
     /// The translator used to get and finally translate Metas
     open let translator: Translator
     
-    // MARK: initalization
+    // MARK: - storage
     
-    // TODO: chose a good default implementation for storage (also in Encoder)
+    // use StorageAccessor construction to give lock and unlock some sence
+    
+    /// A StorageAccessor to this decoder's private storage
+    private(set) open var storage: StorageAcessor
+    
+    // MARK: - initalization
+    
+    // TODO: remove default value of storage. Provide a default in Representation or Serialization
     
     /**
      Initalizes a new MetaDecoder with the given values.
@@ -46,29 +49,7 @@ open class MetaDecoder: Decoder {
         self.codingPath = codingPath
         self.userInfo = userInfo
         self.translator = translator
-        self.storage = storage
-        
-    }
-    
-    // MARK: - frontend
-    
-    /**
-     Decodes a value of type D from the given raw value.
-     
-     Use this method rather than directly calling Decodable.init(from:).
-     init(from:) will not detect types that are directly supported by the translator.
-     
-     If this decoder wasn't freshly initalized, it may throw CodingStorageErrors.
-     */
-    open func decode<D, Raw>(type: D.Type, from raw: Raw) throws -> D where D: Decodable {
-        
-        let meta = try translator.decode(raw)
-        
-        // will store the decoded meta at the current path
-        // if it isn't directly supported by the translator
-        // this current path should be the root path [],
-        // but in principle it is also possible to call this somewhere else
-        return try unwrap(meta, toType: type)
+        self.storage = StorageAcessor(with: storage)
         
     }
     
@@ -100,9 +81,9 @@ open class MetaDecoder: Decoder {
             
         } catch {
             
+            // provide more context for DecodingErrors
             if let decodingError = error as? DecodingError {
                 
-                // provide more context for DecodingErrors
                 throw exchangeDecodingErrorsContexts(decodingError)
                 
             } else {
@@ -144,56 +125,89 @@ open class MetaDecoder: Decoder {
         // replace context's coding path
         switch decodingError {
         case .dataCorrupted(let context):
-            return DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath,
+            return DecodingError.dataCorrupted(DecodingError.Context(codingPath: codingPath,
                                                                      debugDescription: context.debugDescription, underlyingError: context.underlyingError))
         case .keyNotFound(let key, let context):
             return DecodingError.keyNotFound(key,
-                                             DecodingError.Context(codingPath: self.codingPath,
+                                             DecodingError.Context(codingPath: codingPath,
                                                                    debugDescription: context.debugDescription, underlyingError: context.underlyingError))
         case .typeMismatch(let type, let context):
             return DecodingError.typeMismatch(type,
-                                              DecodingError.Context(codingPath: self.codingPath,
+                                              DecodingError.Context(codingPath: codingPath,
                                                                     debugDescription: context.debugDescription, underlyingError: context.underlyingError))
         case .valueNotFound(let type, let context):
             return DecodingError.valueNotFound(type,
-                                               DecodingError.Context(codingPath: self.codingPath,
+                                               DecodingError.Context(codingPath: codingPath,
                                                                      debugDescription: context.debugDescription, underlyingError: context.underlyingError))
         }
         
     }
     
-    // MARK: - container methods
+    // MARK: - container(for: meta) methods
     
-    open func container<Key>(keyedBy keyType: Key.Type) throws -> KeyedDecodingContainer<Key> where Key : CodingKey {
+    /**
+     Create a new KeyedDecodingContainer for the given meta, if it is a KeyedContainerMeta.
+     
+     If it is not, throw DecodingError.typeMissmatch.
+     */
+    open func container<Key: CodingKey>(keyedBy keyType: Key.Type, for meta: Meta, at codingPath: [CodingKey]) throws -> KeyedDecodingContainer<Key> {
         
-        guard self.storage[self.codingPath] is KeyedContainerMeta else {
+        guard let keyedMeta = meta as? KeyedContainerMeta else {
             
-            let context = DecodingError.Context(codingPath: self.codingPath, debugDescription: "Decoded value does not match the expected type.")
+            let context = DecodingError.Context(codingPath: codingPath, debugDescription: "Decoded value does not match the expected type.")
             throw DecodingError.typeMismatch(KeyedDecodingContainer<Key>.self, context)
             
         }
         
-        let reference = StorageReference(coder: self, at: self.codingPath)
-        return KeyedDecodingContainer( MetaKeyedDecodingContainer<Key>(referencing: reference, codingPath: codingPath) )
+        return KeyedDecodingContainer( MetaKeyedDecodingContainer<Key>(for: keyedMeta, at: codingPath, decoder: self) )
         
     }
     
-    open func unkeyedContainer() throws -> UnkeyedDecodingContainer {
+    /**
+     Create a new UnkeyedDecodingContainer for the given meta, if it is a UnkeyedContainerMeta.
+     
+     If it is not, throw DecodingError.typeMissmatch.
+     */
+    open func unkeyedContainer(for meta: Meta, at codingPath: [CodingKey]) throws -> UnkeyedDecodingContainer {
         
-        guard self.storage[self.codingPath] is UnkeyedContainerMeta else {
-            let context = DecodingError.Context(codingPath: self.codingPath, debugDescription: "Encoded type does not match with expected type.")
+        guard let unkeyedMeta = meta as? UnkeyedContainerMeta else {
+            
+            let context = DecodingError.Context(codingPath: codingPath, debugDescription: "Decoded value does not match the expected type.")
             throw DecodingError.typeMismatch(UnkeyedDecodingContainer.self, context)
+            
         }
         
-        let reference = StorageReference(coder: self, at: self.codingPath)
-        return MetaUnkeyedDecodingContainer(referencing: reference, codingPath: codingPath)
+        return MetaUnkeyedDecodingContainer(for: unkeyedMeta, at: codingPath, decoder: self)
         
     }
     
-    open func singleValueContainer() -> SingleValueDecodingContainer {
+    /**
+     Create a new SingleValueDecodingContainer for the given meta.
+     */
+    open func singleValueContainer(for meta: Meta, at codingPath: [CodingKey]) throws -> SingleValueDecodingContainer {
         
-        let reference = StorageReference(coder: self, at: self.codingPath)
-        return MetaSingleValueDecodingContainer(referencing: reference, codingPath: codingPath)
+        return MetaSingleValueDecodingContainer(for: meta, at: codingPath, decoder: self)
+        
+    }
+    
+    // MARK: - super decoder
+    
+    // TODO: implement without ReferencingDecoder. Use regular MetaDecoder. Add new constructor.
+    
+    /**
+     Creates a new decoder that decodes the given meta. This decoder can for example be used as super decoder.
+     */
+    open func decoder(for meta: Meta, at codingPath: [CodingKey]) throws -> Decoder {
+        
+        let newStorage = storage.fork(at: codingPath)
+        
+        // store meta, so it can be decoded
+        try newStorage.store(meta: meta, at: codingPath)
+        
+        return MetaDecoder(at: codingPath,
+                           with: userInfo,
+                           translator: translator,
+                           storage: newStorage)
         
     }
     

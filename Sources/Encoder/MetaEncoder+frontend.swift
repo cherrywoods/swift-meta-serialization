@@ -21,6 +21,8 @@ public extension MetaEncoder {
      Example: If data is a Data instance and the translator supportes
      Data objects directly. Then calling data.encode(to:) will not fall back
      to that support, it will be encoded the way Data encodes itself.
+     
+     - Throws: Aside from any errors that are thrown of translator.encode and any `EncodingError` that has been thrown by another entitly, this function will throw  MetaEncoder.Errors.encodingHasNotSucceeded if the encoding could not succeed. This may happen due to illegal encoding behaviors, as requesting two diffrent containers at the same coding path, or a bug in MetaEncoder itself (or the used subclass, if used).
      */
     public func encode<E, Raw>(_ value: E) throws -> Raw where E: Encodable {
         
@@ -28,11 +30,34 @@ public extension MetaEncoder {
         // this will keep E from encoding itself,
         // if it is supported by translator
         
-        // if value didn't encode an empty keyed container meta should be used
-        // (according to the documentation of Encodable)
-        let meta = try wrap(value)
+        do {
+            
+            let meta = try wrap(value)
+            return try translator.encode(meta)
+            
+        } catch let storageError as CodingStorageError {
+            
+            switch (storageError.reason) {
+            case .alreadyStoringValueAtThisCodingPath: assertionFailure("Illegal encode: Double store at coding path: \(storageError.path)")
+            case .pathNotFilled: assertionFailure("Misuse of CodingStorage: path not filled: \(storageError.path)")
+            case .noMetaStoredAtThisCodingPath: assertionFailure("Misuse of CodingStorage: expected stored meta at path: \(storageError.path)")
+            case .pathIsLocked: assertionFailure("Misuse of CodingStack: path is locked: \(storageError.path)")
+            }
+            
+            throw Errors.encodingHasNotSucceeded
+            
+        } catch {
+            
+            throw error
+            
+        }
         
-        return try translator.encode(meta)
+    }
+    
+    public enum Errors: Error {
+        
+        /// Thrown if the encoding process hasn't succeeded.
+        case encodingHasNotSucceeded
         
     }
     

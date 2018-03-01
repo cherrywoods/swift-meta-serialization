@@ -8,7 +8,11 @@
 
 import Foundation
 
-// TODO: doc
+/**
+ A `CodingStorage` that stores it's metas on a stack.
+ 
+ This coding stack requires a strictly sequential (de|en)coding process.
+ */
 open class LinearCodingStack: CodingStorage {
     
     /**
@@ -32,28 +36,17 @@ open class LinearCodingStack: CodingStorage {
     // MARK: initalization
     
     /// Inits a new empty LinearCodingStack
-    public required convenience init() {
+    public init(root: [CodingKey] = []) {
         
-        self.init(tolerating: 0)
-        
-    }
-    
-    private init(tolerating depth: Int) {
-        
-        self.stack = Array<(Meta, Bool)>()
-        self.tolerationDepth = depth
+        // unconditionally store a placeholder at the root path.
+        self.stack = [ (PlaceholderMeta.instance, false) ]
+        self.tolerationDepth = root.count
         
     }
     
     // MARK: CodingStorage implementation
     
-    public var hasMultipleMetasInStorage: Bool {
-        
-        return stack.count > 1
-        
-    }
-    
-    public subscript(codingPath: [CodingKey]) -> Meta {
+    open subscript(codingPath: [CodingKey]) -> Meta {
         
         get {
             
@@ -83,7 +76,7 @@ open class LinearCodingStack: CodingStorage {
         
     }
     
-    public func storesMeta(at codingPath: [CodingKey]) -> Bool {
+    open func storesMeta(at codingPath: [CodingKey]) -> Bool {
         
         let index = convertToIndex(codingPath: codingPath)
         
@@ -101,7 +94,7 @@ open class LinearCodingStack: CodingStorage {
         
     }
     
-    public func store(meta: Meta, at codingPath: [CodingKey]) throws {
+    open func store(meta: Meta, at codingPath: [CodingKey]) throws {
         
         let index = convertToIndex(codingPath: codingPath)
         
@@ -109,11 +102,11 @@ open class LinearCodingStack: CodingStorage {
             
             // index needs to be the last used index
             guard index >= stack.endIndex-1 else {
-                throw CodingStorageError.alreadyStoringValueAtThisCodingPath
+                throw CodingStorageError(reason: .alreadyStoringValueAtThisCodingPath, path: codingPath)
             }
             
             guard index == stack.endIndex-1 else {
-                throw CodingStorageError.pathNotFilled
+                throw CodingStorageError(reason: .pathNotFilled, path: codingPath)
             }
             
             stack[index] = (meta, false)
@@ -122,11 +115,11 @@ open class LinearCodingStack: CodingStorage {
             
             // index needs to be the first past the end index
             guard index >= stack.endIndex else {
-                throw CodingStorageError.alreadyStoringValueAtThisCodingPath
+                throw CodingStorageError(reason: .alreadyStoringValueAtThisCodingPath, path: codingPath)
             }
             
             guard index == stack.endIndex else {
-                throw CodingStorageError.pathNotFilled
+                throw CodingStorageError(reason: .pathNotFilled, path: codingPath)
             }
             
             stack.append( (meta, false) )
@@ -135,28 +128,28 @@ open class LinearCodingStack: CodingStorage {
         
     }
     
-    public func storePlaceholder(at codingPath: [CodingKey]) throws {
+    open func storePlaceholder(at codingPath: [CodingKey]) throws {
         
         try store(meta: PlaceholderMeta.instance, at: codingPath)
         
     }
     
-    public func remove(at codingPath: [CodingKey]) throws -> Meta? {
+    open func remove(at codingPath: [CodingKey]) throws -> Meta? {
         
         let index = convertToIndex(codingPath: codingPath)
         
         // index needs to be the last used index
         guard index == stack.endIndex-1 else {
-            throw CodingStorageError.noMetaStoredAtThisCodingPath
+            throw CodingStorageError(reason: .noMetaStoredAtThisCodingPath, path: codingPath)
         }
         
         guard let last = stack.last else {
-            throw CodingStorageError.noMetaStoredAtThisCodingPath
+            throw CodingStorageError(reason: .noMetaStoredAtThisCodingPath, path: codingPath)
         }
         
         // check that the meta isn't locked
         guard !last.1 else {
-            throw CodingStorageError.pathIsLocked
+            throw CodingStorageError(reason: .pathIsLocked, path: codingPath)
         }
         
         let value = stack.removeLast().0
@@ -165,19 +158,19 @@ open class LinearCodingStack: CodingStorage {
         
     }
     
-    public func lock(codingPath: [CodingKey]) throws {
+    open func lock(codingPath: [CodingKey]) throws {
         
         let index = convertToIndex(codingPath: codingPath)
         
         guard index < stack.endIndex else {
-            throw CodingStorageError.noMetaStoredAtThisCodingPath
+            throw CodingStorageError(reason: .noMetaStoredAtThisCodingPath, path: codingPath)
         }
         
         stack[index].1 = true
         
     }
     
-    public func unlock(codingPath: [CodingKey]) {
+    open func unlock(codingPath: [CodingKey]) {
         
         let index = convertToIndex(codingPath: codingPath)
         
@@ -190,10 +183,9 @@ open class LinearCodingStack: CodingStorage {
         
     }
     
-    public func fork(at codingPath: [CodingKey]) -> CodingStorage {
+    open func fork(at codingPath: [CodingKey]) -> CodingStorage {
         
-        // return a new coding stack
-        return LinearCodingStack(tolerating: codingPath.count)
+        return LinearCodingStack(root: codingPath)
         
     }
     

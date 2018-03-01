@@ -29,7 +29,7 @@ public extension MetaEncoder {
             
         }
         
-        let reference = Reference.direct(storage, path)
+        let reference = Reference.direct(storage.storage, path)
         return self.container(keyedBy: keyType, referencing: reference, at: path)
         
     }
@@ -46,7 +46,7 @@ public extension MetaEncoder {
             
         }
         
-        let reference = Reference.direct(storage, path)
+        let reference = Reference.direct(storage.storage, path)
         return self.unkeyedContainer(referencing: reference, at: path)
         
     }
@@ -61,7 +61,7 @@ public extension MetaEncoder {
         
         let path = self.codingPath
         
-        let reference = Reference.direct(storage, path)
+        let reference = Reference.direct(storage.storage, path)
         return self.singleValueContainer(referencing: reference, at: path)
         
     }

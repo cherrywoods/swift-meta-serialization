@@ -16,9 +16,16 @@ open class MetaSingleValueEncodingContainer: SingleValueEncodingContainer {
     
     // MARK: properties
     
-    // TODO: doc
+    /**
+     A reference to this containers underlying `Meta`
+     */
     open var reference: Reference
     
+    /**
+     The encoder that created this container.
+     
+     Encoding is delegated to it.
+     */
     open let encoder: MetaEncoder
     
     open let codingPath: [CodingKey]

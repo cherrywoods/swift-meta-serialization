@@ -14,28 +14,35 @@ import Foundation
  */
 open class MetaSingleValueDecodingContainer: SingleValueDecodingContainer {
     
-    private(set) open var reference: ReferenceProtocol
+    /**
+     This MetaSingleValueDecodingContainer's meta.
+     */
+    open let meta: Meta
     
-    public var decoder: MetaDecoder {
-        
-        return reference.coder as! MetaDecoder
-        
-    }
+    /**
+     The decoder that created this container.
+     
+     Decoding is delegated to it.
+     */
+    open let decoder: MetaDecoder
     
     open let codingPath: [CodingKey]
     
     // MARK: - initalization
     
-    public init(referencing reference: ReferenceProtocol, codingPath: [CodingKey]) {
+    public init(for meta: Meta, at codingPath: [CodingKey], decoder: MetaDecoder) {
         
-        self.reference = reference
+        self.meta = meta
         self.codingPath = codingPath
+        self.decoder = decoder
         
     }
     
+    // MARK: decoding
+    
     open func decodeNil() -> Bool {
         
-        return reference.element is NilMetaProtocol
+        return meta is NilMetaProtocol
         
     }
     
@@ -46,7 +53,7 @@ open class MetaSingleValueDecodingContainer: SingleValueDecodingContainer {
         // but are not directly supported by the translator
         // can be stored by unwrap.
         
-        return try decoder.unwrap(reference.element, toType: type, for: SpecialCodingKey.decodingThroughSingleValueContainer.rawValue)
+        return try decoder.unwrap(meta, toType: type, for: SpecialCodingKey.decodingThroughSingleValueContainer.rawValue)
         
     }
     

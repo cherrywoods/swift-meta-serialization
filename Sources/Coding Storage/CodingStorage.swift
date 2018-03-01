@@ -8,20 +8,31 @@
 
 import Foundation
 
-public enum CodingStorageError: Error {
+public struct CodingStorageError: Error {
     
-    /// Thrown if there's already a value stored a the given path.
-    case alreadyStoringValueAtThisCodingPath
+    public enum Reason {
+        
+        /// Thrown if there's already a value stored a the given path.
+        case alreadyStoringValueAtThisCodingPath
+        
+        /// Thrown if a meta was tried to be inserted for a coding path with more than one new key.
+        case pathNotFilled
+        
+        /// Thrown if no meta is stored at the requested coding path.
+        case noMetaStoredAtThisCodingPath
+        
+        /// Thrown if a meta can not be removed, because the path is locked.
+        case pathIsLocked
+        
+    }
     
-    /// Thrown if a meta was tried to be inserted for a coding path with more than one new key.
-    case pathNotFilled
+    public let reason: Reason
+    public let path: [CodingKey]
     
-    /// Thrown if no meta is stored at the requested coding path.
-    case noMetaStoredAtThisCodingPath
-    
-    /// Thrown if a meta can not be removed, because the path is locked.
-    case pathIsLocked
-    
+    public init(reason: Reason, path: [CodingKey]) {
+        self.reason = reason
+        self.path = path
+    }
     
 }
 
@@ -43,14 +54,6 @@ public enum CodingStorageError: Error {
  All new encoders/decoders will call fork and use the storage returned by it.
  */
 public protocol CodingStorage {
-    
-    /**
-     Returns whether the the storage 'is tidied up'.
-     This is the case, if storage holds exactly one meta.
-     
-     A state like this typically indicated sucessfull encoding (and is used to check exactly this).
-     */
-    var hasMultipleMetasInStorage: Bool { get }
     
     /**
      Accesses the meta at the given coding path.
@@ -141,9 +144,9 @@ public protocol CodingStorage {
      storage fork is called on, but not in them teirselves.
      
      This means, that it is legitimate to call store(... at: [a, b, c]) on the storage returned by this function,
-     if [a, b] was passed to fork, although there are not metas for [], [a] and [a, b] in the returned stroage.
+     if [a, b, c] was passed to fork, although there are no metas stored for [], [a] and [a, b] in the returned stroage.
      Accessing paths below the given coding path may fail.
-     */
+      */
     func fork(at codingPath: [CodingKey]) -> CodingStorage
     
 }
