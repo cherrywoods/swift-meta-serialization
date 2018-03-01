@@ -162,11 +162,14 @@ open class MetaEncoder: Encoder, MetaCoder {
     
     open func superEncoder(referencing reference: Reference, at codingPath: [CodingKey]) -> MetaEncoder {
         
-        return ReferencingMetaEncoder(referencing: reference,
-                                      at: codingPath,
-                                      with: userInfo,
-                                      translator: translator,
-                                      storage: storage.fork(at: codingPath))
+        let referencingStorage = ReferencingCodingStorage(referencing: reference,
+                                                          delegatingTo: storage.fork(at: codingPath),
+                                                          at: codingPath)
+        
+        return MetaEncoder(at: codingPath,
+                           with: userInfo,
+                           translator: translator,
+                           storage: referencingStorage)
         
     }
     
