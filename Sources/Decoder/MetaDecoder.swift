@@ -11,7 +11,7 @@ import Foundation
 // decoder does pretty much the same as encoder but reversed
 // it will start with a meta on stack and then will unwind this meta into an swift object
 
-open class MetaDecoder: Decoder, MetaCoder {
+open class MetaDecoder: Decoder {
     
     // MARK: - properties
     
