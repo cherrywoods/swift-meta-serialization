@@ -8,8 +8,6 @@
 
 import Foundation
 
-// encoder will create a meta object
-
 /// An Encoder that constucts a Meta format insted of encoding directly to the desired format
 open class MetaEncoder: Encoder {
     
@@ -26,139 +24,12 @@ open class MetaEncoder: Encoder {
     
     // MARK: - storage
     
-    // use this StorageAccessor construction to give lock and unlock some sence
+    // use StorageAccessor construction to give lock and unlock some sence
     
-    /// A StorageAccessor to this encoder's storage
+    /// A StorageAccessor to this encoder's private storage
     private(set) open var storage: StorageAcessor
     
-    /**
-     StorageAccessor makes the storage of an encoder accessable up to some limit.
-     */
-    public struct StorageAcessor {
-        
-        private var storage: CodingStorage
-        
-        // MARK: - publicly accessable methods and subscripts
-        
-        /**
-         Accesses the meta at the given coding path.
-         
-         You may not expect that you already stored a meta at codingPath.
-         However you may expect, that the path up to codingPath[0..<codingPath.endIndex-1].
-         */
-        subscript (codingPath: [CodingKey]) -> Meta {
-            
-            get {
-                
-                return storage[codingPath]
-                
-            }
-            
-            set {
-                
-                storage[codingPath] = newValue
-                
-            }
-            
-        }
-        
-        /**
-         Returns whether a meta is stored at the coding path.
-         
-         If this function returns true for a certain path, it is safe to subscript to this path.
-         */
-        public func storesMeta(at codingPath: [CodingKey]) -> Bool {
-            
-            return storage.storesMeta(at: codingPath)
-            
-        }
-        
-        /**
-         Store a placeholder at the coding path.
-         
-         If there's currently a placeholder stored at the given path, replaces the placeholder.
-         
-         Throw CodingStorageErrors:
-         - `.alreadyStoringValueAtThisCodingPath` if the storage already stores a meta at the given coding path
-         - `.pathNotFilled` if there is no meta present for codingPath[0..<lastIndex-1]
-         
-         - Throws: `CodingStorageError`
-         */
-        func storePlaceholder(at codingPath: [CodingKey]) throws {
-            
-            try storage.storePlaceholder(at: codingPath)
-            
-        }
-        
-        /**
-         Stores a new meta at the coding path.
-         
-         Throws CodingStorageErrors:
-         - `.alreadyStoringValueAtThisCodingPath` if the storage already stores a meta at the given coding path
-         - `.pathNotFilled` if there is no meta present for codingPath[0..<lastIndex-1]
-         
-         - Throws: `CodingStorageError`
-         */
-        public func store(meta: Meta, at codingPath: [CodingKey]) throws {
-            
-            try storage.store(meta: meta, at: codingPath)
-            
-        }
-        
-        /**
-         Remove the meta at the given coding path.
-         
-         Returns nil, if a placeholder is stored at the path.
-         
-         Throws CodingStorageErrors:
-         - `.noMetaStoredAtThisCodingPath` if no meta is stored at this coding path.
-         - `.pathIsLocked` if you can not remove the meta at this coding path, because it is locked.
-         
-         - Throws: `CodingStorageError`
-         */
-        public func remove(at codingPath: [CodingKey]) throws -> Meta? {
-            
-            return try storage.remove(at: codingPath)
-            
-        }
-        
-        /**
-         Returns a CodingStoreage an new (super) encoder/decoder can work on.
-         
-         This new storage will be able to store at paths beyond the passed codingPath.
-         Accessing paths below the given coding path may fail.
-         */
-        func fork(at codingPath: [CodingKey]) -> CodingStorage {
-            
-            return storage.fork(at: codingPath)
-            
-        }
-        
-        // MARK: fileprivates
-        
-        fileprivate init(with storage: CodingStorage) {
-            
-            self.storage = storage
-            
-        }
-        
-        /// locks the given coding path
-        fileprivate func lock(codingPath: [CodingKey]) throws {
-            
-            try storage.lock(codingPath: codingPath)
-            
-        }
-        
-        /// unlocks the given coding path
-        fileprivate func unlock(codingPath: [CodingKey]) {
-            
-            storage.unlock(codingPath: codingPath)
-            
-        }
-        
-    }
-    
-    // MARK: initalizers
+    // MARK: - initalizers
     
     /**
      Initalizes a new MetaEncoder with the given values.
@@ -190,7 +61,7 @@ open class MetaEncoder: Encoder {
         // PlaceholderMeta.
         
         // This makes requesting a single value container
-        // and then encoding a "single value" like an array
+        // and then encoding a "single value" like an array possible
         // which failed in the old versions.
         // This is the same behavior as JSONEncoder from
         // Foundation shows.
@@ -238,6 +109,8 @@ open class MetaEncoder: Encoder {
         // TODO: check whether this enables the same error behavior as decoder
         defer { _ = try? storage.remove(at: path) }
         
+        // lock the coding path, so the meta stored there can not be removed,
+        // until path is unlocked
         try storage.lock(codingPath: path)
         
         // let value encode itself to this encoder
@@ -251,7 +124,7 @@ open class MetaEncoder: Encoder {
         
     }
     
-    // MARK: container(referencing:) methods
+    // MARK: - container(referencing:) methods
     
     /**
      Creates a new keyed container meta, sets reference.meta to this new meta and then returns a new MetaKeyedEncodingContainer referencing reference.
@@ -292,7 +165,7 @@ open class MetaEncoder: Encoder {
         
     }
     
-    // MARK: superEncoder
+    // MARK: - superEncoder
     
     /**
      Creates a new encoder that encodes to the given reference. This encoder can for example be used as super encoder.

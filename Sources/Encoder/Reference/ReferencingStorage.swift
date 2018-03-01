@@ -43,13 +43,7 @@ open class ReferencingCodingStorage: CodingStorage {
     
     // MARK: coding storage functionality
     
-    public var hasMultipleMetasInStorage: Bool {
-        
-        return delegate.hasMultipleMetasInStorage
-        
-    }
-    
-    public subscript(codingPath: [CodingKey]) -> Meta {
+    open subscript(codingPath: [CodingKey]) -> Meta {
         
         get {
             
@@ -73,13 +67,13 @@ open class ReferencingCodingStorage: CodingStorage {
         
     }
     
-    public func storesMeta(at codingPath: [CodingKey]) -> Bool {
+    open func storesMeta(at codingPath: [CodingKey]) -> Bool {
         
         return delegate.storesMeta(at: codingPath)
         
     }
     
-    public func store(meta: Meta, at codingPath: [CodingKey]) throws {
+    open func store(meta: Meta, at codingPath: [CodingKey]) throws {
         
         try delegate.store(meta: meta, at: codingPath)
         
@@ -92,13 +86,13 @@ open class ReferencingCodingStorage: CodingStorage {
         
     }
     
-    public func storePlaceholder(at codingPath: [CodingKey]) throws {
+    open func storePlaceholder(at codingPath: [CodingKey]) throws {
         
         try delegate.storePlaceholder(at: codingPath)
         
     }
     
-    public func remove(at codingPath: [CodingKey]) throws -> Meta? {
+    open func remove(at codingPath: [CodingKey]) throws -> Meta? {
         
         // because we locked the base path in the costructor,
         // base path not not be removed
@@ -106,19 +100,19 @@ open class ReferencingCodingStorage: CodingStorage {
         
     }
     
-    public func lock(codingPath: [CodingKey]) throws {
+    open func lock(codingPath: [CodingKey]) throws {
         
         try delegate.lock(codingPath: codingPath)
         
     }
     
-    public func unlock(codingPath: [CodingKey]) {
+    open func unlock(codingPath: [CodingKey]) {
         
         delegate.unlock(codingPath: codingPath)
         
     }
     
-    public func fork(at codingPath: [CodingKey]) -> CodingStorage {
+    open func fork(at codingPath: [CodingKey]) -> CodingStorage {
         
         let delegatesFork = delegate.fork(at: codingPath)
         

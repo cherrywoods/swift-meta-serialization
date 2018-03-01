@@ -16,9 +16,16 @@ open class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
     
     // MARK: properties
     
-    // TODO: doc
+    /**
+     A reference to this containers underlying `UnkeyedContainerMeta`
+     */
     open var reference: Reference
     
+    /**
+     The encoder that created this container.
+     
+     Encoding, creating new containers and creating super encoders is delegated to it.
+     */
     open let encoder: MetaEncoder
     
     open let codingPath: [CodingKey]
