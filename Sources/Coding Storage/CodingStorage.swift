@@ -72,7 +72,7 @@ public protocol CodingStorage {
     /**
      Stores a new meta at the coding path.
      
-     If there's currently a placeholder at the given path, replace the placeholder.
+     If there's currently a placeholder stored at the given path, replace the placeholder.
      
      The added coding path is by default unlocked.
      

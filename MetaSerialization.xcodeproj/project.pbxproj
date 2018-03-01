@@ -80,14 +80,6 @@
 		63E752DC1FC1A557000A2319 /* MetaSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 63E752DA1FC1A557000A2319 /* MetaSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		63E753081FC1A7E7000A2319 /* MetaSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 63E752DA1FC1A557000A2319 /* MetaSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		63E753091FC1A7E7000A2319 /* MetaSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 63E752DA1FC1A557000A2319 /* MetaSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		63E7530F1FC1ABB5000A2319 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 63E7530E1FC1ABB5000A2319 /* README.md */; };
-		63E753101FC1ABB5000A2319 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 63E7530E1FC1ABB5000A2319 /* README.md */; };
-		63E753111FC1ABB5000A2319 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 63E7530E1FC1ABB5000A2319 /* README.md */; };
-		63E753121FC1ABB5000A2319 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 63E7530E1FC1ABB5000A2319 /* README.md */; };
-		63E753141FC1ABBF000A2319 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 63E753131FC1ABBF000A2319 /* LICENSE */; };
-		63E753151FC1ABBF000A2319 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 63E753131FC1ABBF000A2319 /* LICENSE */; };
-		63E753161FC1ABBF000A2319 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 63E753131FC1ABBF000A2319 /* LICENSE */; };
-		63E753171FC1ABBF000A2319 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 63E753131FC1ABBF000A2319 /* LICENSE */; };
 		63E753961FC1AD7C000A2319 /* InternalMetas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7533A1FC1AD79000A2319 /* InternalMetas.swift */; };
 		63E753971FC1AD7C000A2319 /* InternalMetas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7533A1FC1AD79000A2319 /* InternalMetas.swift */; };
 		63E753981FC1AD7C000A2319 /* InternalMetas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7533A1FC1AD79000A2319 /* InternalMetas.swift */; };
@@ -116,10 +108,6 @@
 		63E753CF1FC1AD7C000A2319 /* MetaEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7534A1FC1AD79000A2319 /* MetaEncoder.swift */; };
 		63E753D01FC1AD7C000A2319 /* MetaEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7534A1FC1AD79000A2319 /* MetaEncoder.swift */; };
 		63E753D11FC1AD7C000A2319 /* MetaEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7534A1FC1AD79000A2319 /* MetaEncoder.swift */; };
-		63E753DA1FC1AD7C000A2319 /* MetaCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7534D1FC1AD79000A2319 /* MetaCoder.swift */; };
-		63E753DB1FC1AD7C000A2319 /* MetaCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7534D1FC1AD79000A2319 /* MetaCoder.swift */; };
-		63E753DC1FC1AD7C000A2319 /* MetaCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7534D1FC1AD79000A2319 /* MetaCoder.swift */; };
-		63E753DD1FC1AD7C000A2319 /* MetaCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7534D1FC1AD79000A2319 /* MetaCoder.swift */; };
 		63E753DE1FC1AD7C000A2319 /* DirectlyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7534F1FC1AD7A000A2319 /* DirectlyCodable.swift */; };
 		63E753DF1FC1AD7C000A2319 /* DirectlyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7534F1FC1AD7A000A2319 /* DirectlyCodable.swift */; };
 		63E753E01FC1AD7C000A2319 /* DirectlyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7534F1FC1AD7A000A2319 /* DirectlyCodable.swift */; };
@@ -232,6 +220,7 @@
 
 /* Begin PBXFileReference section */
 		6318C9B02047EC08009402B7 /* ReferencingStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferencingStorage.swift; sourceTree = "<group>"; };
+		6318C9BC2047FB79009402B7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6324A03F20128114006DA7A1 /* BasicUsage.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = BasicUsage.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		636B760120470EFA0048DEDD /* MetaEncoder+containerMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MetaEncoder+containerMethods.swift"; sourceTree = "<group>"; };
 		636B760620470F820048DEDD /* MetaEncoder+frontend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MetaEncoder+frontend.swift"; sourceTree = "<group>"; };
@@ -270,7 +259,6 @@
 		63E753461FC1AD79000A2319 /* Representation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Representation.swift; sourceTree = "<group>"; };
 		63E753471FC1AD79000A2319 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		63E7534A1FC1AD79000A2319 /* MetaEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetaEncoder.swift; sourceTree = "<group>"; };
-		63E7534D1FC1AD79000A2319 /* MetaCoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetaCoder.swift; sourceTree = "<group>"; };
 		63E7534F1FC1AD7A000A2319 /* DirectlyCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectlyCodable.swift; sourceTree = "<group>"; };
 		63E753551FC1AD7A000A2319 /* ArrayUnkeyedContainerMeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayUnkeyedContainerMeta.swift; sourceTree = "<group>"; };
 		63E753561FC1AD7A000A2319 /* DictionaryKeyedContainerMeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryKeyedContainerMeta.swift; sourceTree = "<group>"; };
@@ -350,6 +338,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6318C9BB2047FB04009402B7 /* Encoder */ = {
+			isa = PBXGroup;
+			children = (
+				6318C9BC2047FB79009402B7 /* README.md */,
+				63E7534A1FC1AD79000A2319 /* MetaEncoder.swift */,
+				636B760120470EFA0048DEDD /* MetaEncoder+containerMethods.swift */,
+				636B760620470F820048DEDD /* MetaEncoder+frontend.swift */,
+				6318C9B02047EC08009402B7 /* ReferencingStorage.swift */,
+				63E753741FC1AD7B000A2319 /* Containers */,
+			);
+			path = Encoder;
+			sourceTree = "<group>";
+		};
 		6324A03E201280DC006DA7A1 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
@@ -448,6 +449,8 @@
 		63E753071FC1A5B2000A2319 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				63B7825A204487DC005C278E /* Coding Storage */,
+				6318C9BB2047FB04009402B7 /* Encoder */,
 				63E7547A1FC1ADB5000A2319 /* Basic Coding */,
 				63BC5BD11FC95A260035005D /* SimpleTranslator */,
 				63E7547B1FC1AEBC000A2319 /* Usage */,
@@ -501,7 +504,6 @@
 			children = (
 				63E7536F1FC1AD7B000A2319 /* CodingKeys.swift */,
 				63E753701FC1AD7B000A2319 /* decoding containers */,
-				63E753741FC1AD7B000A2319 /* encoding containers */,
 			);
 			path = CodingContainers;
 			sourceTree = "<group>";
@@ -516,23 +518,20 @@
 			path = "decoding containers";
 			sourceTree = "<group>";
 		};
-		63E753741FC1AD7B000A2319 /* encoding containers */ = {
+		63E753741FC1AD7B000A2319 /* Containers */ = {
 			isa = PBXGroup;
 			children = (
 				63E753751FC1AD7B000A2319 /* KeyedEncodingContainer.swift */,
 				63E753771FC1AD7B000A2319 /* UnkeyedEncodingContainer.swift */,
 				63E753761FC1AD7B000A2319 /* SingleValueEncodingContainer.swift */,
 			);
-			path = "encoding containers";
+			path = Containers;
 			sourceTree = "<group>";
 		};
 		63E7547A1FC1ADB5000A2319 /* Basic Coding */ = {
 			isa = PBXGroup;
 			children = (
-				63E7534D1FC1AD79000A2319 /* MetaCoder.swift */,
 				63F0022D20455A02009E1CA7 /* Decoder */,
-				63F0023320455A76009E1CA7 /* Encoder */,
-				63B7825A204487DC005C278E /* Coding Storage */,
 				63E7535D1FC1AD7A000A2319 /* Reference.swift */,
 				63E753471FC1AD79000A2319 /* Errors.swift */,
 				63E7536E1FC1AD7B000A2319 /* CodingContainers */,
@@ -564,17 +563,6 @@
 				63F0023E20455FA8009E1CA7 /* ReferencingMetaDecoder.swift */,
 			);
 			path = Decoder;
-			sourceTree = "<group>";
-		};
-		63F0023320455A76009E1CA7 /* Encoder */ = {
-			isa = PBXGroup;
-			children = (
-				63E7534A1FC1AD79000A2319 /* MetaEncoder.swift */,
-				636B760120470EFA0048DEDD /* MetaEncoder+containerMethods.swift */,
-				636B760620470F820048DEDD /* MetaEncoder+frontend.swift */,
-				6318C9B02047EC08009402B7 /* ReferencingStorage.swift */,
-			);
-			path = Encoder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -833,8 +821,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63E753141FC1ABBF000A2319 /* LICENSE in Resources */,
-				63E7530F1FC1ABB5000A2319 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -842,8 +828,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63E753151FC1ABBF000A2319 /* LICENSE in Resources */,
-				63E753101FC1ABB5000A2319 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -851,8 +835,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63E753161FC1ABBF000A2319 /* LICENSE in Resources */,
-				63E753111FC1ABB5000A2319 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -860,8 +842,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63E753171FC1ABBF000A2319 /* LICENSE in Resources */,
-				63E753121FC1ABB5000A2319 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -934,7 +914,6 @@
 				636B760220470EFA0048DEDD /* MetaEncoder+containerMethods.swift in Sources */,
 				63E753F21FC1AD7C000A2319 /* DictionaryKeyedContainerMeta.swift in Sources */,
 				63E753BA1FC1AD7C000A2319 /* Representation+Default Implementations.swift in Sources */,
-				63E753DA1FC1AD7C000A2319 /* MetaCoder.swift in Sources */,
 				63E754561FC1AD7C000A2319 /* KeyedEncodingContainer.swift in Sources */,
 				63E754521FC1AD7C000A2319 /* UnkeyedDecodingContainer.swift in Sources */,
 				63E7544E1FC1AD7C000A2319 /* SingleValueDecodingContainer.swift in Sources */,
@@ -979,7 +958,6 @@
 				636B760320470EFA0048DEDD /* MetaEncoder+containerMethods.swift in Sources */,
 				63E753F31FC1AD7C000A2319 /* DictionaryKeyedContainerMeta.swift in Sources */,
 				63E753BB1FC1AD7C000A2319 /* Representation+Default Implementations.swift in Sources */,
-				63E753DB1FC1AD7C000A2319 /* MetaCoder.swift in Sources */,
 				63E754571FC1AD7C000A2319 /* KeyedEncodingContainer.swift in Sources */,
 				63E754531FC1AD7C000A2319 /* UnkeyedDecodingContainer.swift in Sources */,
 				63E7544F1FC1AD7C000A2319 /* SingleValueDecodingContainer.swift in Sources */,
@@ -1024,7 +1002,6 @@
 				636B760420470EFA0048DEDD /* MetaEncoder+containerMethods.swift in Sources */,
 				63E753F41FC1AD7C000A2319 /* DictionaryKeyedContainerMeta.swift in Sources */,
 				63E753BC1FC1AD7C000A2319 /* Representation+Default Implementations.swift in Sources */,
-				63E753DC1FC1AD7C000A2319 /* MetaCoder.swift in Sources */,
 				63E754581FC1AD7C000A2319 /* KeyedEncodingContainer.swift in Sources */,
 				63E754541FC1AD7C000A2319 /* UnkeyedDecodingContainer.swift in Sources */,
 				63E754501FC1AD7C000A2319 /* SingleValueDecodingContainer.swift in Sources */,
@@ -1069,7 +1046,6 @@
 				636B760520470EFA0048DEDD /* MetaEncoder+containerMethods.swift in Sources */,
 				63E753F51FC1AD7C000A2319 /* DictionaryKeyedContainerMeta.swift in Sources */,
 				63E753BD1FC1AD7C000A2319 /* Representation+Default Implementations.swift in Sources */,
-				63E753DD1FC1AD7C000A2319 /* MetaCoder.swift in Sources */,
 				63E754591FC1AD7C000A2319 /* KeyedEncodingContainer.swift in Sources */,
 				63E754551FC1AD7C000A2319 /* UnkeyedDecodingContainer.swift in Sources */,
 				63E754511FC1AD7C000A2319 /* SingleValueDecodingContainer.swift in Sources */,

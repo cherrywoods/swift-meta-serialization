@@ -101,7 +101,7 @@ open class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
     
     public func superEncoder() -> Encoder {
         
-        return encoder.superEncoder(referencing: createElementReference(for: count),
+        return encoder.encoder(referencing: createElementReference(for: count),
                                     at: codingPath + [lastCodingKey])
         
     }
