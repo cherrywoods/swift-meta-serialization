@@ -44,9 +44,6 @@ public enum CodingStorageError: Error {
  */
 public protocol CodingStorage {
     
-    /// Inits a new empty CodingStorage
-    init()
-    
     /**
      Returns whether the the storage 'is tidied up'.
      This is the case, if storage holds exactly one meta.

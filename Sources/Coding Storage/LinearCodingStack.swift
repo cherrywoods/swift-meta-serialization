@@ -12,10 +12,12 @@ import Foundation
 open class LinearCodingStack: CodingStorage {
     
     /**
-     stores the metas and whether they are locked or not
-     metas are unlocked by default
+     Stores the metas and whether they are locked or not.
+     Metas are unlocked by default.
      */
     private var stack: [(Meta, Bool)]
+    
+    // MARK: working with coding paths
     
     /// simply projects paths to their length
     private func convertToIndex(codingPath: [CodingKey]) -> Int {
@@ -27,6 +29,9 @@ open class LinearCodingStack: CodingStorage {
     /// coding paths do not need to be contained in the stack up to this depth. Beyond it they need to.
     private let tolerationDepth: Int
     
+    // MARK: initalization
+    
+    /// Inits a new empty LinearCodingStack
     public required convenience init() {
         
         self.init(tolerating: 0)
@@ -39,6 +44,8 @@ open class LinearCodingStack: CodingStorage {
         self.tolerationDepth = depth
         
     }
+    
+    // MARK: CodingStorage implementation
     
     public var hasMultipleMetasInStorage: Bool {
         

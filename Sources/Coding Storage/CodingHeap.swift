@@ -17,6 +17,8 @@ open class CodingHeap: CodingStorage {
     /// stores the locked coding paths
     private var locks: Set<String>
     
+    // MARK: coding path utilities
+    
     /// converts a coding path to the internally used format
     private func concatCodingPath(_ path: Array<CodingKey>) -> String {
         
@@ -40,12 +42,17 @@ open class CodingHeap: CodingStorage {
         
     }
     
+    // MARK: initalization
+    
+    /// Initalizes a new empty CodingHeap.
     public required init() {
         
         heap = [:]
         locks = Set<String>()
         
     }
+    
+    // MARK: CodingStorage implementation
     
     public var hasMultipleMetasInStorage: Bool {
         
