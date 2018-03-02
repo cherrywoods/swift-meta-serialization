@@ -2,8 +2,8 @@
 //  Tree.swift
 //  meta-serializationTests
 //
-//  Created by cherrywoods on 26.10.17.
-//  Copyright © 2017 cherrywoods. All rights reserved.
+//  Available at the terms of the LICENSE file included in this project.
+//  If none is included, available at the terms of the unlicense, see www.unlicense.org
 //
 
 import Foundation

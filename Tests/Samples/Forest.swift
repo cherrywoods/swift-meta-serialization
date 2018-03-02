@@ -2,7 +2,8 @@
 //  Forest.swift
 //  MetaSerializationTests macOS
 //
-//  Created by cherrywoods on 21.12.17.
+//  Available at the terms of the LICENSE file included in this project.
+//  If none is included, available at the terms of the unlicense, see www.unlicense.org
 //
 
 import Foundation

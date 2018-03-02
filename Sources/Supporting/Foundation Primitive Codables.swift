@@ -2,9 +2,8 @@
 //  Foundation Primitive Codables.swift
 //  MetaSerialization
 //
-//  Created by cherrywoods on 08.02.18.
-//  Licensed under Unlicense, https://unlicense.org
-//  See the LICENSE file in this project
+//  Available at the terms of the LICENSE file included in this project.
+//  If none is included, available at the terms of the unlicense, see www.unlicense.org
 //
 
 import Foundation
