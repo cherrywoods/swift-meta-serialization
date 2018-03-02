@@ -138,4 +138,27 @@ struct TestUtilities {
         
     }
     
+    // MARK: - ErrornousTranslator
+    
+    /// This encoder will produce errors at some point (it is possible to encode empty classes and structs with it)
+    class ErrornousTranslator: Translator {
+        
+        func wrappingMeta<T>(for value: T) -> Meta? {
+            return nil
+        }
+        
+        func unwrap<T>(meta: Meta, toType type: T.Type) throws -> T? {
+            return nil
+        }
+        
+        func encode<Raw>(_ meta: Meta) throws -> Raw {
+            return meta as! Raw
+        }
+        
+        func decode<Raw>(_ raw: Raw) throws -> Meta {
+            return raw as! Meta
+        }
+        
+    }
+    
 }
