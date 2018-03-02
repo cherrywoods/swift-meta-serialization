@@ -22,9 +22,7 @@ public extension MetaEncoder {
         if alreadyStoringContainer {
             
             guard storage[codingPath] is KeyedContainerMeta else {
-                
                 preconditionFailure("Requested a diffrent container type at a previously used coding path.")
-                
             }
             
         }
