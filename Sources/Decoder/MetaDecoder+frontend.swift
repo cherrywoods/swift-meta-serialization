@@ -21,13 +21,39 @@ public extension MetaDecoder {
      */
     public func decode<D, Raw>(type: D.Type, from raw: Raw) throws -> D where D: Decodable {
         
-        let meta = try translator.decode(raw)
+        do {
+            
+            let meta = try translator.decode(raw)
+            
+            // will store the decoded meta at the current path
+            // if it isn't directly supported by the translator
+            // this current path should be the root path [],
+            // but in principle it is also possible to call this somewhere else
+            return try unwrap(meta, toType: type)
+            
+        } catch let storageError as CodingStorageError {
+            
+            switch (storageError.reason) {
+            case .alreadyStoringValueAtThisCodingPath: assertionFailure("Illegal decode: Double store at coding path: \(storageError.path)")
+            case .pathNotFilled: assertionFailure("Misuse of CodingStorage: path not filled: \(storageError.path)")
+            case .noMetaStoredAtThisCodingPath: assertionFailure("Misuse of CodingStorage: expected stored meta at path: \(storageError.path)")
+            case .pathIsLocked: assertionFailure("Misuse of CodingStack: path is locked: \(storageError.path)")
+            }
+            
+            throw Errors.decodingHasNotSucceeded
+            
+        } catch {
+            
+            throw error
+            
+        }
         
-        // will store the decoded meta at the current path
-        // if it isn't directly supported by the translator
-        // this current path should be the root path [],
-        // but in principle it is also possible to call this somewhere else
-        return try unwrap(meta, toType: type)
+    }
+    
+    public enum Errors: Error {
+        
+        /// Thrown if the decoding process hasn't succeeded.
+        case decodingHasNotSucceeded
         
     }
     
