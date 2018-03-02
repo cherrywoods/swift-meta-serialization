@@ -13,13 +13,13 @@ public extension MetaEncoder {
     
     public func container<Key>(keyedBy keyType: Key.Type) -> KeyedEncodingContainer<Key> where Key : CodingKey {
         
-        let path = self.codingPath
+        let path = codingPath
         
         // there needs to be a placeholder or a real meta stored at the path
-        
         // if there is a meta stored at path and it isn't a KeyedContainerMeta, crash
         
-        if storage.storesMeta(at: path) {
+        let alreadyStoringContainer = storage.storesMeta(at: path)
+        if alreadyStoringContainer {
             
             guard storage[codingPath] is KeyedContainerMeta else {
                 
@@ -30,15 +30,17 @@ public extension MetaEncoder {
         }
         
         let reference = Reference.direct(storage.storage, path)
-        return self.container(keyedBy: keyType, referencing: reference, at: path)
+        // only create a new container, if there isn't already one
+        return container(keyedBy: keyType, referencing: reference, at: path, createNewContainer: !alreadyStoringContainer)
         
     }
     
     public func unkeyedContainer() -> UnkeyedEncodingContainer {
         
-        let path = self.codingPath
+        let path = codingPath
         
-        if storage.storesMeta(at: codingPath) {
+        let alreadyStoringContainer = storage.storesMeta(at: path)
+        if alreadyStoringContainer {
             
             guard storage[codingPath] is UnkeyedContainerMeta else {
                 preconditionFailure("Requested a second container at a previously used coding path.")
@@ -47,7 +49,7 @@ public extension MetaEncoder {
         }
         
         let reference = Reference.direct(storage.storage, path)
-        return self.unkeyedContainer(referencing: reference, at: path)
+        return unkeyedContainer(referencing: reference, at: path, createNewContainer: !alreadyStoringContainer)
         
     }
     
@@ -57,12 +59,10 @@ public extension MetaEncoder {
         // a entity can request a keyed or unkeyed container
         // and then request a SingleValueContainer reffering to the meta of the keyed or unkeyed container.
         
-        // if an entity tries to encode twice at the same path, the single value container will fail, but this function will succeed
-        
-        let path = self.codingPath
-        
+        let path = codingPath
         let reference = Reference.direct(storage.storage, path)
-        return self.singleValueContainer(referencing: reference, at: path)
+        
+        return singleValueContainer(referencing: reference, at: path)
         
     }
     

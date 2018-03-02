@@ -53,24 +53,23 @@ open class MetaEncoder: Encoder {
     
     // MARK: - wrap
     
-    /// wraps an encodable value into a meta requested from translator.
+    /**
+     Wraps a value to a meta using translator.wrappingMeta and calling value.encode if translator.wrappingMeta returned nil.
+     
+     If value conforms to DirectlyEncdable, or is an Int, Int8, Int16, Int32, Int64, UInt, UInt8, UInt16, UInt32, UInt64, Float, Double, Bool or String and
+     not supported directly by translator (this means translator.wrappingMeta(for: value) returns nil, this method throws EncodingError.invalidValue. This is required, because otherwise, these types would endlessly try to encode themselves into single value containers.
+     
+     - Parameter value: The value to wrap
+     - Parameter key: The key at which vaue should be encoded. This decoders coding path is extended with this key.
+     - Throws: EncodingError and CodingStorageError
+     */
     open func wrap<E>(_ value: E, at key: CodingKey? = nil) throws -> Meta where E: Encodable {
-        
-        // In difference to the old version, now stack
-        // can also push a new meta, if the last meta is a
-        // PlaceholderMeta.
-        
-        // This makes requesting a single value container
-        // and then encoding a "single value" like an array possible
-        // which failed in the old versions.
-        // This is the same behavior as JSONEncoder from
-        // Foundation shows.
         
         if key != nil { codingPath.append(key!) }
         defer{ if key != nil { codingPath.removeLast() } }
         
         // check whether translator supports value directly
-        if let newMeta = self.translator.wrappingMeta(for: value) {
+        if let newMeta = translator.wrappingMeta(for: value) {
             
             // meta's value should be already set by translator
             return newMeta
@@ -98,12 +97,12 @@ open class MetaEncoder: Encoder {
         
         guard !(value is DirectlyEncodable) else {
             
-            let context = EncodingError.Context(codingPath: self.codingPath, debugDescription: "DirectlyEncodable value \(String(describing: value)) was not accepted by the Translator implementation.")
+            let context = EncodingError.Context(codingPath: codingPath, debugDescription: "DirectlyEncodable value \(String(describing: value)) was not accepted by the Translator implementation.")
             throw EncodingError.invalidValue(value, context)
             
         }
         
-        let path = self.codingPath
+        let path = codingPath
         
         try storage.storePlaceholder(at: path)
         // TODO: check whether this enables the same error behavior as decoder
@@ -127,12 +126,18 @@ open class MetaEncoder: Encoder {
     // MARK: - container(referencing:) methods
     
     /**
-     Creates a new keyed container meta, sets reference.meta to this new meta and then returns a new MetaKeyedEncodingContainer referencing reference.
+     Returns a new KeyedEncodingContainer referencing reference.
+     
+     - Parameter createNewContainer: Whether to create a new contaienr and set reference.meta to it.
      */
-    open func container<Key: CodingKey>(keyedBy keyType: Key.Type, referencing reference: Reference, at codingPath: [CodingKey]) -> KeyedEncodingContainer<Key> {
+    open func container<Key: CodingKey>(keyedBy keyType: Key.Type, referencing reference: Reference, at codingPath: [CodingKey], createNewContainer: Bool = true) -> KeyedEncodingContainer<Key> {
         
-        var reference = reference
-        reference.meta = translator.keyedContainerMeta()
+        if createNewContainer {
+            
+            var reference = reference
+            reference.meta = translator.keyedContainerMeta()
+            
+        }
         
         return KeyedEncodingContainer( MetaKeyedEncodingContainer<Key>(referencing: reference,
                                                                        at: codingPath,
@@ -141,12 +146,18 @@ open class MetaEncoder: Encoder {
     }
     
     /**
-     Creates a new unkeyed container meta, sets reference.meta to this new meta and then returns a new MetaKeyedEncodingContainer referencing reference.
+     Returns a new UnkeyedEncodingContainer referencing reference.
+     
+     - Parameter createNewContainer: Whether to create a new contaienr and set reference.meta to it.
      */
-    open func unkeyedContainer(referencing reference: Reference, at codingPath: [CodingKey]) -> UnkeyedEncodingContainer {
+    open func unkeyedContainer(referencing reference: Reference, at codingPath: [CodingKey], createNewContainer: Bool = true) -> UnkeyedEncodingContainer {
         
-        var reference = reference
-        reference.meta = translator.unkeyedContainerMeta()
+        if createNewContainer {
+            
+            var reference = reference
+            reference.meta = translator.unkeyedContainerMeta()
+            
+        }
         
         return MetaUnkeyedEncodingContainer(referencing: reference,
                                             at: codingPath,
@@ -155,7 +166,7 @@ open class MetaEncoder: Encoder {
     }
     
     /**
-     Creates a new single value container meta, sets reference.meta to this new meta and then returns a new MetaKeyedEncodingContainer referencing reference.
+     Returns a new MetaKeyedEncodingContainer referencing reference.
      */
     open func singleValueContainer(referencing reference: Reference, at codingPath: [CodingKey]) -> SingleValueEncodingContainer {
         

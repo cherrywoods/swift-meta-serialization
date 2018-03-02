@@ -48,12 +48,8 @@ open class MetaSingleValueDecodingContainer: SingleValueDecodingContainer {
     
     open func decode<T>(_ type: T.Type) throws -> T where T : Decodable {
         
-        // add coding key, so containers,
-        // that were requested as single value containers
-        // but are not directly supported by the translator
-        // can be stored by unwrap.
-        
-        return try decoder.unwrap(meta, toType: type, for: SpecialCodingKey.decodingThroughSingleValueContainer.rawValue)
+        // decode the meta stored at decoders codingPath
+        return try decoder.unwrap(toType: type)
         
     }
     
