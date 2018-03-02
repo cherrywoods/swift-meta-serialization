@@ -455,6 +455,16 @@
 			name = SimpleTranslator;
 			sourceTree = "<group>";
 		};
+		63CC7C1020495B6500334454 /* Meta */ = {
+			isa = PBXGroup;
+			children = (
+				63E7537A1FC1AD7B000A2319 /* Metas.swift */,
+				63E753691FC1AD7B000A2319 /* ContainerMetas.swift */,
+				63E753541FC1AD7A000A2319 /* meta default implementations */,
+			);
+			path = Meta;
+			sourceTree = "<group>";
+		};
 		63E752CB1FC19BF9000A2319 = {
 			isa = PBXGroup;
 			children = (
@@ -489,7 +499,7 @@
 				6318C9BB2047FB04009402B7 /* Encoder */,
 				6326868820486A3C00E2CDBB /* Decoder */,
 				6374A5E8202C77EA00F11F48 /* Supporting */,
-				63E7547A1FC1ADB5000A2319 /* Basic Coding */,
+				63CC7C1020495B6500334454 /* Meta */,
 				63BC5BD11FC95A260035005D /* SimpleTranslator */,
 				63E7547B1FC1AEBC000A2319 /* Usage */,
 				63E752DA1FC1A557000A2319 /* MetaSerialization.h */,
@@ -545,16 +555,6 @@
 				63E753761FC1AD7B000A2319 /* SingleValueEncodingContainer.swift */,
 			);
 			path = Containers;
-			sourceTree = "<group>";
-		};
-		63E7547A1FC1ADB5000A2319 /* Basic Coding */ = {
-			isa = PBXGroup;
-			children = (
-				63E7537A1FC1AD7B000A2319 /* Metas.swift */,
-				63E753691FC1AD7B000A2319 /* ContainerMetas.swift */,
-				63E753541FC1AD7A000A2319 /* meta default implementations */,
-			);
-			name = "Basic Coding";
 			sourceTree = "<group>";
 		};
 		63E7547B1FC1AEBC000A2319 /* Usage */ = {

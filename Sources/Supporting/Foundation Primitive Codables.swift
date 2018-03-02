@@ -31,6 +31,8 @@ import Foundation
  
  */
 
+// TODO: does it make sence to make these extension public?
+
 extension String: DirectlyCodable {}
 
 extension Bool: DirectlyCodable {}
