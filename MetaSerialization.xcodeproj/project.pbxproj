@@ -53,17 +53,14 @@
 		6374A685202CC10100F11F48 /* ContainerTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374A647202CBFE200F11F48 /* ContainerTranslator.swift */; };
 		6374A687202CC10200F11F48 /* Container+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374A646202CBFE200F11F48 /* Container+Hashable.swift */; };
 		6374A688202CC10200F11F48 /* ContainerTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374A647202CBFE200F11F48 /* ContainerTranslator.swift */; };
-		6374A68A202CC10E00F11F48 /* ContinueDecodingAfterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374A63D202CBFE200F11F48 /* ContinueDecodingAfterError.swift */; };
 		6374A68B202CC10E00F11F48 /* Forest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374A63E202CBFE200F11F48 /* Forest.swift */; };
 		6374A68C202CC10E00F11F48 /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374A63F202CBFE200F11F48 /* Thing.swift */; };
 		6374A68D202CC10E00F11F48 /* Tree+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374A640202CBFE200F11F48 /* Tree+Equatable.swift */; };
 		6374A68E202CC10E00F11F48 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374A641202CBFE200F11F48 /* Tree.swift */; };
-		6374A68F202CC10E00F11F48 /* ContinueDecodingAfterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374A63D202CBFE200F11F48 /* ContinueDecodingAfterError.swift */; };
 		6374A690202CC10E00F11F48 /* Forest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374A63E202CBFE200F11F48 /* Forest.swift */; };
 		6374A691202CC10E00F11F48 /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374A63F202CBFE200F11F48 /* Thing.swift */; };
 		6374A692202CC10E00F11F48 /* Tree+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374A640202CBFE200F11F48 /* Tree+Equatable.swift */; };
 		6374A693202CC10E00F11F48 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374A641202CBFE200F11F48 /* Tree.swift */; };
-		6374A694202CC10E00F11F48 /* ContinueDecodingAfterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374A63D202CBFE200F11F48 /* ContinueDecodingAfterError.swift */; };
 		6374A695202CC10E00F11F48 /* Forest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374A63E202CBFE200F11F48 /* Forest.swift */; };
 		6374A696202CC10E00F11F48 /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374A63F202CBFE200F11F48 /* Thing.swift */; };
 		6374A697202CC10E00F11F48 /* Tree+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374A640202CBFE200F11F48 /* Tree+Equatable.swift */; };
@@ -89,6 +86,12 @@
 		63BC5BD41FC95A7E0035005D /* PrimitivesEnumTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BC5BD21FC95A7E0035005D /* PrimitivesEnumTranslator.swift */; };
 		63BC5BD51FC95A7E0035005D /* PrimitivesEnumTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BC5BD21FC95A7E0035005D /* PrimitivesEnumTranslator.swift */; };
 		63BC5BD61FC95A7E0035005D /* PrimitivesEnumTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BC5BD21FC95A7E0035005D /* PrimitivesEnumTranslator.swift */; };
+		63CC7C1A204968B300334454 /* MultipleContainerRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CC7C19204968B300334454 /* MultipleContainerRequests.swift */; };
+		63CC7C1B204968B300334454 /* MultipleContainerRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CC7C19204968B300334454 /* MultipleContainerRequests.swift */; };
+		63CC7C1C204968B300334454 /* MultipleContainerRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CC7C19204968B300334454 /* MultipleContainerRequests.swift */; };
+		63CC7C1E2049694600334454 /* TestUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CC7C1D2049694600334454 /* TestUtilities.swift */; };
+		63CC7C1F2049694600334454 /* TestUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CC7C1D2049694600334454 /* TestUtilities.swift */; };
+		63CC7C202049694600334454 /* TestUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CC7C1D2049694600334454 /* TestUtilities.swift */; };
 		63E752DC1FC1A557000A2319 /* MetaSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 63E752DA1FC1A557000A2319 /* MetaSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		63E753081FC1A7E7000A2319 /* MetaSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 63E752DA1FC1A557000A2319 /* MetaSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		63E753091FC1A7E7000A2319 /* MetaSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 63E752DA1FC1A557000A2319 /* MetaSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -234,7 +237,6 @@
 		6374A61A202CBEAC00F11F48 /* MetaSerializationTests-tvOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MetaSerializationTests-tvOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6374A63A202CBFE200F11F48 /* BasicTesting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTesting.swift; sourceTree = "<group>"; };
 		6374A63B202CBFE200F11F48 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6374A63D202CBFE200F11F48 /* ContinueDecodingAfterError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContinueDecodingAfterError.swift; sourceTree = "<group>"; };
 		6374A63E202CBFE200F11F48 /* Forest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Forest.swift; sourceTree = "<group>"; };
 		6374A63F202CBFE200F11F48 /* Thing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thing.swift; sourceTree = "<group>"; };
 		6374A640202CBFE200F11F48 /* Tree+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tree+Equatable.swift"; sourceTree = "<group>"; };
@@ -248,6 +250,8 @@
 		63B7825B204487F3005C278E /* CodingDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodingDictionary.swift; sourceTree = "<group>"; };
 		63B78288204498B1005C278E /* LinearCodingStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearCodingStack.swift; sourceTree = "<group>"; };
 		63BC5BD21FC95A7E0035005D /* PrimitivesEnumTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimitivesEnumTranslator.swift; sourceTree = "<group>"; };
+		63CC7C19204968B300334454 /* MultipleContainerRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleContainerRequests.swift; sourceTree = "<group>"; };
+		63CC7C1D2049694600334454 /* TestUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtilities.swift; sourceTree = "<group>"; };
 		63E752D71FC1A557000A2319 /* MetaSerialization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MetaSerialization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63E752DA1FC1A557000A2319 /* MetaSerialization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetaSerialization.h; sourceTree = "<group>"; };
 		63E752DB1FC1A557000A2319 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -405,25 +409,26 @@
 			isa = PBXGroup;
 			children = (
 				6374A643202CBFE200F11F48 /* TestJSONEncoder.swift */,
+				63CC7C19204968B300334454 /* MultipleContainerRequests.swift */,
 				6374A63A202CBFE200F11F48 /* BasicTesting.swift */,
 				6374A644202CBFE200F11F48 /* TestThing.swift */,
+				63CC7C1D2049694600334454 /* TestUtilities.swift */,
 				6374A645202CBFE200F11F48 /* Translators */,
-				6374A63C202CBFE200F11F48 /* Samples */,
+				6374A63C202CBFE200F11F48 /* Sample structs */,
 				6374A63B202CBFE200F11F48 /* Info.plist */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		6374A63C202CBFE200F11F48 /* Samples */ = {
+		6374A63C202CBFE200F11F48 /* Sample structs */ = {
 			isa = PBXGroup;
 			children = (
-				6374A63D202CBFE200F11F48 /* ContinueDecodingAfterError.swift */,
 				6374A63E202CBFE200F11F48 /* Forest.swift */,
 				6374A63F202CBFE200F11F48 /* Thing.swift */,
 				6374A640202CBFE200F11F48 /* Tree+Equatable.swift */,
 				6374A641202CBFE200F11F48 /* Tree.swift */,
 			);
-			path = Samples;
+			path = "Sample structs";
 			sourceTree = "<group>";
 		};
 		6374A645202CBFE200F11F48 /* Translators */ = {
@@ -855,9 +860,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6374A680202CC0FB00F11F48 /* TestThing.swift in Sources */,
-				6374A694202CC10E00F11F48 /* ContinueDecodingAfterError.swift in Sources */,
 				6374A67D202CC0FB00F11F48 /* TestJSONEncoder.swift in Sources */,
 				6374A697202CC10E00F11F48 /* Tree+Equatable.swift in Sources */,
+				63CC7C1C204968B300334454 /* MultipleContainerRequests.swift in Sources */,
+				63CC7C202049694600334454 /* TestUtilities.swift in Sources */,
 				6374A688202CC10200F11F48 /* ContainerTranslator.swift in Sources */,
 				6374A695202CC10E00F11F48 /* Forest.swift in Sources */,
 				6374A687202CC10200F11F48 /* Container+Hashable.swift in Sources */,
@@ -872,9 +878,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6374A678202CC0FA00F11F48 /* TestThing.swift in Sources */,
-				6374A68A202CC10E00F11F48 /* ContinueDecodingAfterError.swift in Sources */,
 				6374A675202CC0FA00F11F48 /* TestJSONEncoder.swift in Sources */,
 				6374A68D202CC10E00F11F48 /* Tree+Equatable.swift in Sources */,
+				63CC7C1A204968B300334454 /* MultipleContainerRequests.swift in Sources */,
+				63CC7C1E2049694600334454 /* TestUtilities.swift in Sources */,
 				6374A682202CC10100F11F48 /* ContainerTranslator.swift in Sources */,
 				6374A68B202CC10E00F11F48 /* Forest.swift in Sources */,
 				6374A681202CC10100F11F48 /* Container+Hashable.swift in Sources */,
@@ -889,9 +896,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6374A67C202CC0FB00F11F48 /* TestThing.swift in Sources */,
-				6374A68F202CC10E00F11F48 /* ContinueDecodingAfterError.swift in Sources */,
 				6374A679202CC0FB00F11F48 /* TestJSONEncoder.swift in Sources */,
 				6374A692202CC10E00F11F48 /* Tree+Equatable.swift in Sources */,
+				63CC7C1B204968B300334454 /* MultipleContainerRequests.swift in Sources */,
+				63CC7C1F2049694600334454 /* TestUtilities.swift in Sources */,
 				6374A685202CC10100F11F48 /* ContainerTranslator.swift in Sources */,
 				6374A690202CC10E00F11F48 /* Forest.swift in Sources */,
 				6374A684202CC10100F11F48 /* Container+Hashable.swift in Sources */,

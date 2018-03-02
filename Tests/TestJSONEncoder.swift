@@ -35,13 +35,7 @@ import XCTest
 
 class TestMetaSerializationByJSONEncoderTests : XCTestCase {
     
-    let translator = PrimitivesEnumTranslator(primitives: [ .nil, .bool, .string, .int, .double ],
-                                              encode: encodeToContainer,
-                                              decode: decodeFromContainer)
-    
-    lazy var serialization: SimpleSerialization<Container> = {
-        return SimpleSerialization<Container>(translator: translator)
-    }()
+    let serialization = TestUtilities.containerSerialization()
     
     // MARK: - Encoding Top-Level Empty Types
     
@@ -241,7 +235,7 @@ class TestMetaSerializationByJSONEncoderTests : XCTestCase {
         let _ = try! serialization.decode(toType: EitherDecodable<[String], [Int]>.self, from: container)
     }
     
-    // MARK: Helper Private Functions
+    // MARK: - Helper Private Functions
     
     private func _testEncodeFailure<T : Encodable>(of value: T) {
         do {
@@ -252,27 +246,8 @@ class TestMetaSerializationByJSONEncoderTests : XCTestCase {
     
     private func _testRoundTrip<T>(of value: T,
                                    expected: Container? = nil) where T : Codable, T : Equatable {
-        var payload: Container? = nil
-        do {
-            payload = try serialization.encode(value)
-        } catch {
-            XCTFail("Failed to encode \(T.self): \(error)")
-        }
         
-        if expected != nil {
-            XCTAssert(expected! == payload!, "Produced not identical to expected.")
-        }
-        
-        if payload != nil {
-            
-            do {
-                let decoded = try serialization.decode(toType: T.self, from: payload!)
-                XCTAssert(decoded == value, "\(type(of:value)) did not round-trip to an equal value.")
-            } catch {
-                XCTFail("Failed to decode \(type(of:value)): \(error)")
-            }
-            
-        }
+        TestUtilities.testRoundTrip(of: value, using: serialization, expected: expected)
         
     }
     
