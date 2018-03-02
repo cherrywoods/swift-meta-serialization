@@ -101,6 +101,12 @@ MetaSerialization can only do it's work properly, if you do not use the function
 
 Furthermore you may not do anything in your encoding and decoding code. There are some limitations beyond swifts limitations, when you are using MetaSerialization (or using a framework using MetaSerialization). [Here's a list](https://github.com/cherrywoods/swift-meta-serialization/wiki/Illegal-Encoding-or-Decoding-Behaviours) of code snippets, for which MetaSerialization will give you the "go directly into the prision" card/crash.
 
+## Licensing
+This project's code could be seen in part as derivate work of JSONEncoder from Foundation, licensed under the Apache v2 license.
+Because I'm no layer I can say if realy is a such. Due to this, the Apache license file is included in this repository.
+
+This should only apply for version 1 and before. Version 2 should not be seen a derivate.
+
 ## Testing
 This project is tested against the tests of JSONEncoder from Foundation.
 
