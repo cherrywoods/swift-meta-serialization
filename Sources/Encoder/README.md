@@ -8,7 +8,7 @@ MetaEncoder is the `Encoder` implementation of MetaSerialization.
 | * userInfo: [CodingUserInfoKey : Any]                    |
 | * codingPath: [CodingKey]                                |
 | * translator: Translator                                 |
-| * (get only) storage: StorageAccessor                    |
+| * (read only) storage: StorageAccessor                   |
 +----------------------------------------------------------+
 | + init(at: [CodingKey] = [],                             |
 |        with: [CodingUserInfoKey : Any] = [:],            |
@@ -34,11 +34,13 @@ MetaEncoder is the `Encoder` implementation of MetaSerialization.
 | * encoder(referencing: Reference,                        |
 |           at: [CodingKey])                               |
 |           -> Encoder                                     |
++----------------------------------------------------------+
 | + container<Key>(keyedBy: Key.Type)                      |
 |                  -> KeyedEncodingContainer               |
 |                  where Key: CodingKey                    |
 | + unkeyedContainer() -> UnkeyedEncodingContainer         |
 | + singleValueContainer() -> SingleValueEncodingContainer |
++----------------------------------------------------------+
 | + encode<E, Raw>(_: E)                                   |
 |                  -> Raw                                  |
 |                  where E: Encodable                      |
@@ -46,7 +48,13 @@ MetaEncoder is the `Encoder` implementation of MetaSerialization.
 (*: open, +: public)
 ```
 
-An encoding process ideally starts with the call of encode on a MetaEncoder (not on the value that should be encoded itself!), after the MetaEncoder has been initialized with a translator implementation. This will lead to a call of `wrap`. Wrap will call `translator.wrappingMeta` and if it returned a value (not nil), wrap will return this meta. If nil was returned, wrap will call `encode` on the value passed to it. before this it will lock the current coding path of the encoder and store a placeholder at that path. It will also check, that value does not implement `DirectlyEncodable` (String, Bool, Float, Int, etc, do, see below). The call of `encode` on value may lead to a call of one of the container methods of the encoder (`container(keyedBy:)`, `unkeyedContainer` or `singleValueContainer`). Following up to this maybe `encode` or `encodeNil` are called on the returned container. These method will again call `wrap`, and the cycle restarts. At some point an encoding entity will have no further values to encode. At this point the coding storage contains metas for all the entities visited up to this point. This "meta tree" will then be "collapsed", e.g. metas will be removed from the stack again by wrap and the encode method in the various containers will add this meta to their referenced meta container (or eventually back to the storage too). After the call stack has been unwinded back to the call of `encode` on the encoder, translator.encode and the result returned. wrap created the meta for the value that should be encode and `translator.encode` converted this meta to the desired format.
+## Encoding
+
+An encoding process ideally starts with the call of `encode` on a MetaEncoder (not on the value that should be encoded itself!), after the MetaEncoder has been initialized with a translator implementation. This will lead to a call of `wrap`. Wrap will call `translator.wrappingMeta` and if it returned a value (not nil), wrap will return this meta. If nil was returned, wrap will call `encode` on the value passed to it. before this it will lock the current coding path of the encoder and store a placeholder at that path. It will also check, that value does not implement `DirectlyEncodable` (String, Bool, Float, Int, etc, do, see below). The call of `encode` on value may lead to a call of one of the container methods of the encoder (`container(keyedBy:)`, `unkeyedContainer` or `singleValueContainer`). Following up to this maybe `encode` or `encodeNil` are called on the returned container. These method will again call `wrap`, and the cycle restarts. At some point an encoding entity will have no further values to encode. At this point the coding storage contains metas for all the entities visited up to this point. This "meta tree" will then be "collapsed", e.g. metas will be removed from the stack again by wrap and the encode method in the various containers will add this meta to their referenced meta container (or eventually back to the storage too). After the call stack has been unwinded back to the call of `encode` on the encoder, translator.encode and the result returned. wrap created the meta for the value that should be encode and `translator.encode` converted this meta to the desired format.
+
+A MetaEncoder can be used multiple times, if the first encoding process has finished (if `encode` has returned). It's storage will be cleaned up again, and as long as the translator has no state, the encoder will be in the same state, as if it has been freshly initialized. It is also possible to call `encode` during encoding (e.g. inside a implementation of `Encodable`s `encode` method).
+
+MetaEncoder is itself not thread safe or suited for parallel encoding.
 
 ## Overriding
 MetaEncoder has several methods that are overridable, but not all methods are.
@@ -70,5 +78,9 @@ The following methods can be overwritten:
  ```
 
 ## Feature Change Log
+### v2.0:
+ * Centralized methods for container and further encoder creation.
+ * Now using `CodingStorage`
+ * Simplified implementation
 ### v1.0:
  * In difference to the old version storage can also store a new meta if the last meta is a placeholder. This makes requesting a single value container and then encoding a "single value" like an array possible which failed in the old versions. This is the same behavior as JSONEncoder from Foundation shows.
