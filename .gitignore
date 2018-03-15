@@ -7,3 +7,5 @@ xcuserdata/
 *.dSYM
 .build/
 *.framework.zip
+
+Test/
