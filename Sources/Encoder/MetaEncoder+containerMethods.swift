@@ -27,7 +27,7 @@ public extension MetaEncoder {
 
         }
 
-        let reference = Reference.direct(storage.storage, path)
+        let reference = Reference.direct(storage, path)
         // only create a new container, if there isn't already one
         return container(keyedBy: keyType, referencing: reference, at: path, createNewContainer: !alreadyStoringContainer)
 
@@ -46,7 +46,7 @@ public extension MetaEncoder {
 
         }
 
-        let reference = Reference.direct(storage.storage, path)
+        let reference = Reference.direct(storage, path)
         return unkeyedContainer(referencing: reference, at: path, createNewContainer: !alreadyStoringContainer)
 
     }
@@ -58,7 +58,7 @@ public extension MetaEncoder {
         // and then request a SingleValueContainer reffering to the meta of the keyed or unkeyed container.
 
         let path = codingPath
-        let reference = Reference.direct(storage.storage, path)
+        let reference = Reference.direct(storage, path)
 
         return singleValueContainer(referencing: reference, at: path)
 

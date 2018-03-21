@@ -24,10 +24,8 @@ open class MetaDecoder: Decoder {
 
     // MARK: - storage
 
-    // use StorageAccessor construction to give lock and unlock some sence
-
     /// A StorageAccessor to this decoder's private storage
-    private(set) open var storage: StorageAcessor
+    open var storage: CodingStorage
 
     // MARK: - initalization
 
@@ -49,7 +47,7 @@ open class MetaDecoder: Decoder {
         self.codingPath = codingPath
         self.userInfo = userInfo
         self.translator = translator
-        self.storage = StorageAcessor(with: storage)
+        self.storage = storage
 
     }
 

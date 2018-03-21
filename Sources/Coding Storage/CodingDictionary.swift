@@ -19,9 +19,6 @@ open class CodingDictionary: CodingStorage {
     /// stores metas for concatenations of string values of coding keys
     private var heap: Dictionary<String, Meta>
     
-    /// stores the locked coding paths
-    private var locks: Set<String>
-    
     // MARK: utilities
     
     /// converts a coding path to the internally used format
@@ -55,7 +52,6 @@ open class CodingDictionary: CodingStorage {
         // unconditionally store a placeholder at the root path
         // so new metas can be stored
         heap = [ CodingDictionary.concatCodingPath(root) : PlaceholderMeta.instance ]
-        locks = Set<String>()
         
     }
     
@@ -127,33 +123,11 @@ open class CodingDictionary: CodingStorage {
         
         let converted = CodingDictionary.concatCodingPath(codingPath)
         
-        guard !locks.contains(converted) else {
-            throw CodingStorageError(reason: .pathIsLocked, path: codingPath)
-        }
-        
         guard let value = heap.removeValue(forKey: converted) else {
             throw CodingStorageError(reason: .noMetaStoredAtThisCodingPath, path: codingPath)
         }
         
         return value is PlaceholderMeta ? nil : value
-        
-    }
-    
-    open func lock(codingPath: [CodingKey]) throws {
-        
-        let converted = CodingDictionary.concatCodingPath(codingPath)
-        
-        guard heap[converted] != nil else {
-            throw CodingStorageError(reason: .noMetaStoredAtThisCodingPath, path: codingPath)
-        }
-        
-        locks.insert(converted)
-        
-    }
-    
-    open func unlock(codingPath: [CodingKey]) {
-        
-        locks.remove( CodingDictionary.concatCodingPath(codingPath) )
         
     }
     

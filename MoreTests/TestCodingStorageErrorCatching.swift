@@ -13,7 +13,7 @@
 import XCTest
 import MetaSerialization
 
-/// Tests that no CodingStorageErrors reach to the end user
+/// Tests that no CodingStorageErrors reaches to the end user
 class TestCodingStorageErrorCatching: XCTestCase {
     
     func testEncodingError() {
@@ -34,7 +34,7 @@ class TestCodingStorageErrorCatching: XCTestCase {
             
         } catch {
             
-            // if another error is thrown, the test isn't designed well
+            // if another error is thrown, this test isn't designed well
             XCTFail("error: \(error)")
             
         }
@@ -124,10 +124,6 @@ fileprivate class ThrowingStorage: CodingStorage {
     func remove(at codingPath: [CodingKey]) throws -> Meta? {
         throw CodingStorageError.init(reason: .pathNotFilled, path: [])
     }
-    
-    func lock(codingPath: [CodingKey]) throws {}
-    
-    func unlock(codingPath: [CodingKey]) {}
     
     func fork(at codingPath: [CodingKey]) -> CodingStorage {
         return self

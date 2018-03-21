@@ -21,9 +21,6 @@ public struct CodingStorageError: Error {
         /// Thrown if no meta is stored at the requested coding path.
         case noMetaStoredAtThisCodingPath
 
-        /// Thrown if a meta can not be removed, because the path is locked.
-        case pathIsLocked
-
     }
 
     public let reason: Reason
@@ -46,9 +43,8 @@ public struct CodingStorageError: Error {
  In general, a single MetaEncoder or MetaDecoder will store and remove metas in a strictly linear manner.
  This means that this workflow is followed:
 
- store -> (lock) -> this workflow nested -> this workflow nested -> ... -> this workflow nested -> (unlock) -> remove
+ store -> this workflow nested -> this workflow nested -> ... -> this workflow nested -> remove
 
- Lock and unlock are optional and may not aloways be performed.
  However multiple encoders/decoders can work on a single storage.
  This also depends on your implementation.
  All new encoders/decoders will call fork and use the storage returned by it.
@@ -77,11 +73,9 @@ public protocol CodingStorage {
 
      If there's currently a placeholder stored at the given path, replace the placeholder.
 
-     The added coding path is by default unlocked.
-
      Throw CodingStorageErrors:
-      - `.alreadyStoringValueAtThisCodingPath` if the storage already stores a meta at the given coding path
-      - `.pathNotFilled` if there is no meta present for codingPath[0..<lastIndex-1]
+      - alreadyStoringValueAtThisCodingPath if the storage already stores a meta at the given coding path
+      - pathNotFilled if there is no meta present for codingPath[0..<lastIndex-1]
 
      - Throws: `CodingStorageError`
      */
@@ -91,8 +85,8 @@ public protocol CodingStorage {
      Store a placeholder at the coding path.
 
      Throw CodingStorageErrors:
-     - `.alreadyStoringValueAtThisCodingPath` if the storage already stores a meta at the given coding path
-     - `.pathNotFilled` if there is no meta present for codingPath[0..<lastIndex-1]
+     - alreadyStoringValueAtThisCodingPath if the storage already stores a meta at the given coding path
+     - pathNotFilled if there is no meta present for codingPath[0..<lastIndex-1]
 
      - Throws: `CodingStorageError`
      */
@@ -104,38 +98,11 @@ public protocol CodingStorage {
      Return nil, if a placeholder is stored at the path.
 
      Throw CodingStorageErrors:
-     - `.noMetaStoredAtThisCodingPath` if no meta is stored at this coding path.
-     - `.pathIsLocked` if you can not remove the meta at this coding path, because it is locked.
+     - noMetaStoredAtThisCodingPath if no meta is stored at this coding path.
 
      - Throws: `CodingStorageError`
      */
     func remove(at codingPath: [CodingKey]) throws -> Meta?
-
-    /**
-     Lock the given coding path.
-
-     This means that the meta associated with the given coding path may not be removed. It may still be set.
-     You do not need to lock the whole coding path up to the given path, just exactly this coding path.
-
-     Placeholders at this path may still be replaced.
-
-     If path is already locked, do nothing.
-
-     Throw CodingStorageErrors:
-     - `.noMetaStoredAtThisCodingPath` if no meta is stored at this coding path.
-
-     - Throws: `CodingStorageError`
-     */
-    func lock(codingPath: [CodingKey]) throws
-
-    /**
-     Unlock the given coding path.
-
-     This means that after the call of this method the meta associated with the given coding path can be removed again.
-
-     If you do not store a value at the given path, don't do anything.
-     */
-    func unlock(codingPath: [CodingKey])
 
     /**
      Return a CodingStoreage an new (super) encoder/decoder can work on.

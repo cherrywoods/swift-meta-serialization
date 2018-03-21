@@ -44,9 +44,9 @@ struct TestUtilities {
         
     }
     
-    static func testContaienrDecoding<T: Decodable&Equatable>(from raw: Container,
+    static func testContainerDecoding<T: Decodable&Equatable>(from raw: Container,
                                                               to type: T.Type,
-                                                              using serialization: SimpleSerialization<Container>,
+                                                              using serialization: SimpleSerialization<Container> = serialization,
                                                               expected: T? = nil) -> T? {
         
         return testDecoding(from: raw, to: type, using: serialization)
