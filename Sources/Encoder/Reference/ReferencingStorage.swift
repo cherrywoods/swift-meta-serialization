@@ -35,9 +35,7 @@ open class ReferencingCodingStorage: CodingStorage {
         self.basePath = basePath
         self.delegate = storage
         
-        // store placeholder and lock, so metas at base path can not be removed
         try! delegate.storePlaceholder(at: basePath)
-        try! delegate.lock(codingPath: basePath)
         
     }
     
@@ -94,21 +92,8 @@ open class ReferencingCodingStorage: CodingStorage {
     
     open func remove(at codingPath: [CodingKey]) throws -> Meta? {
         
-        // because we locked the base path in the costructor,
-        // base path not not be removed
+        precondition(codingPath != basePath, "Removing meta at base path of referencing storage isn't allowed.")        
         return try delegate.remove(at: codingPath)
-        
-    }
-    
-    open func lock(codingPath: [CodingKey]) throws {
-        
-        try delegate.lock(codingPath: codingPath)
-        
-    }
-    
-    open func unlock(codingPath: [CodingKey]) {
-        
-        delegate.unlock(codingPath: codingPath)
         
     }
     
@@ -132,7 +117,7 @@ open class ReferencingCodingStorage: CodingStorage {
 }
 
 /**
- Provide a == operator for coding paths
+ Provide == operator for coding paths
  */
 fileprivate extension Array where Element == CodingKey {
     
@@ -162,6 +147,10 @@ fileprivate extension Array where Element == CodingKey {
         // if all keys matched (by string values) paths are seen as equal
         return true
         
+    }
+    
+    static func !=(lhs: [CodingKey], rhs: [CodingKey]) -> Bool {
+        return !(lhs == rhs)
     }
     
 }

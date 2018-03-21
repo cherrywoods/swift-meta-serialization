@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "63E752D61FC1A557000A2319"
+               BlueprintIdentifier = "633D4D0C206264A500ADFF91"
                BuildableName = "MetaSerialization.framework"
-               BlueprintName = "MetaSerialization iOS"
+               BlueprintName = "MetaSerialization tvOS"
                ReferencedContainer = "container:MetaSerialization.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,9 +47,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "63E752D61FC1A557000A2319"
+            BlueprintIdentifier = "633D4D0C206264A500ADFF91"
             BuildableName = "MetaSerialization.framework"
-            BlueprintName = "MetaSerialization iOS"
+            BlueprintName = "MetaSerialization tvOS"
             ReferencedContainer = "container:MetaSerialization.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,9 +65,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "63E752D61FC1A557000A2319"
+            BlueprintIdentifier = "633D4D0C206264A500ADFF91"
             BuildableName = "MetaSerialization.framework"
-            BlueprintName = "MetaSerialization iOS"
+            BlueprintName = "MetaSerialization tvOS"
             ReferencedContainer = "container:MetaSerialization.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -24,10 +24,8 @@ open class MetaEncoder: Encoder {
 
     // MARK: - storage
 
-    // use StorageAccessor construction to give lock and unlock some sence
-
-    /// A StorageAccessor to this encoder's private storage
-    private(set) open var storage: StorageAcessor
+    /// This encoder's storage
+    open var storage: CodingStorage
 
     // MARK: - initalizers
 
@@ -47,7 +45,7 @@ open class MetaEncoder: Encoder {
         self.codingPath = codingPath
         self.userInfo = userInfo
         self.translator = translator
-        self.storage = StorageAcessor(with: storage)
+        self.storage = storage
 
     }
 
@@ -105,17 +103,21 @@ open class MetaEncoder: Encoder {
         let path = codingPath
 
         try storage.storePlaceholder(at: path)
-        // TODO: check whether this enables the same error behavior as decoder
-        defer { _ = try? storage.remove(at: path) }
 
-        // lock the coding path, so the meta stored there can not be removed,
-        // until path is unlocked
-        try storage.lock(codingPath: path)
-
-        // let value encode itself to this encoder
-        try value.encode(to: self)
-
-        storage.unlock(codingPath: path)
+        do {
+            
+            // let value encode itself to this encoder
+            try value.encode(to: self)
+            
+        } catch {
+            
+            // remove the placeholder that was stored at the path
+            // (or any incomplete metas)
+            // this makes it possible to encode another value, if an error was thrown
+            _ = try? storage.remove(at: path)
+            throw error
+            
+        }
 
         // if value requests no container,
         // we are promted by the documention of Encodable to encode an empty keyed container
@@ -130,7 +132,7 @@ open class MetaEncoder: Encoder {
 
      - Parameter keyType: The key type of the KeyedEncodingContainer that should be returned.
      - Parameter reference: A reference to which the returned container should point to.
-     - Parameter codingPath: The coding path for the returned container should have.
+     - Parameter codingPath: The coding path the returned container should have.
      - Parameter createNewContainer: Whether to create a new contaienr and set reference.meta to it, or not. Default is yes.
      */
     open func container<Key: CodingKey>(keyedBy keyType: Key.Type, referencing reference: Reference, at codingPath: [CodingKey], createNewContainer: Bool = true) -> KeyedEncodingContainer<Key> {
@@ -152,7 +154,7 @@ open class MetaEncoder: Encoder {
      Returns a new UnkeyedEncodingContainer referencing reference.
 
      - Parameter reference: A reference to which the returned container should point to.
-     - Parameter codingPath: The coding path for the returned container should have.
+     - Parameter codingPath: The coding path the returned container should have.
      - Parameter createNewContainer: Whether to create a new contaienr and set reference.meta to it. Default is true.
      */
     open func unkeyedContainer(referencing reference: Reference, at codingPath: [CodingKey], createNewContainer: Bool = true) -> UnkeyedEncodingContainer {
@@ -174,7 +176,7 @@ open class MetaEncoder: Encoder {
      Returns a new MetaKeyedEncodingContainer referencing reference.
 
      - Parameter reference: A reference to which the returned container should point to.
-     - Parameter codingPath: The coding path for the returned container should have.
+     - Parameter codingPath: The coding path the returned container should have.
      */
     open func singleValueContainer(referencing reference: Reference, at codingPath: [CodingKey]) -> SingleValueEncodingContainer {
 
