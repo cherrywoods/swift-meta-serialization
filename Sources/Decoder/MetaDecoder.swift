@@ -8,19 +8,19 @@
 
 import Foundation
 
-/// An Decoder that decodes from a Meta format created by a translator.
+/// A `Decoder` that decodes from a `Meta` instead from a concrete format.
 open class MetaDecoder: Decoder {
 
     // MARK: - general properties
 
-    open var userInfo: [CodingUserInfoKey : Any]
+    open let userInfo: [CodingUserInfoKey : Any]
 
     open var codingPath: [CodingKey]
 
     // MARK: - translator
 
-    /// The translator used to get and finally translate Metas
-    open let translator: Translator
+    /// The `Unwrapper` used to unwrap metas
+    open let unwrapper: Unwrapper
 
     // MARK: - storage
 
@@ -28,25 +28,23 @@ open class MetaDecoder: Decoder {
     open var storage: CodingStorage
 
     // MARK: - initalization
-
-    // TODO: remove default value of storage. Provide a default in Representation or Serialization
-
+    
     /**
      Initalizes a new MetaDecoder with the given values.
 
-     - Parameter codingPath: The coding path this decoder will start at
-     - Parameter userInfo: additional information to provide context during decoding
-     - Parameter translator: The translator the decoder will use to translate Metas.
+     - Parameter codingPath: The coding path this decoder will start at.
+     - Parameter userInfo: additional information to provide context during decoding.
+     - Parameter unwrapper: The `Unwrapper` the decoder will use to unwrap metas.
      - Parameter storage: A empty CodingStorage that should be used to store metas.
      */
     public init(at codingPath: [CodingKey] = [],
                 with userInfo: [CodingUserInfoKey : Any] = [:],
-                translator: Translator,
-                storage: CodingStorage = LinearCodingStack() ) {
+                unwrapper: Unwrapper,
+                storage: CodingStorage) {
 
         self.codingPath = codingPath
         self.userInfo = userInfo
-        self.translator = translator
+        self.unwrapper = unwrapper
         self.storage = storage
 
     }
@@ -69,6 +67,7 @@ open class MetaDecoder: Decoder {
 
         if key != nil { codingPath.append(key!) }
         defer { if key != nil { codingPath.removeLast() } }
+        let path = codingPath
 
         // only store meta, if it isn't nil,
         // because if it is nil, we use a meta that is already stored
@@ -76,28 +75,10 @@ open class MetaDecoder: Decoder {
         let meta = meta ?? storage[codingPath]
 
         // ask translator to unwrap meta to type
-        do {
-
-            if let directlySupported = try translator.unwrap(meta: meta, toType: type) {
-
-                return directlySupported
-
-            }
-
-        } catch {
-
-            // provide more context for DecodingErrors
-            if let decodingError = error as? DecodingError {
-
-                throw exchangeDecodingErrorsContexts(decodingError)
-
-            } else {
-
-                // rethrow all other errors
-                throw error
-
-            }
-
+        if let directlySupported = try unwrapper.unwrap(meta: meta, toType: type, at: path) {
+            
+            return directlySupported
+            
         }
 
         // ** translator does not support type natively, so it needs to decode itself **
@@ -115,36 +96,12 @@ open class MetaDecoder: Decoder {
         }
 
         // do only store and remove a meta, if storeMeta is true
-        let path = codingPath
         if storeMeta { try storage.store(meta: meta, at: path) }
-        // defer removal to restore the Decoder storage if an error was thrown in type.init
+        // defer removal to restore the decoder storage if an error was thrown in type.init
         defer { if storeMeta { _ = try! storage.remove(at:path) } }
 
         let value = try type.init(from: self)
         return value
-
-    }
-
-    private func exchangeDecodingErrorsContexts(_ decodingError: DecodingError) -> Error {
-
-        // replace context's coding path
-        switch decodingError {
-        case .dataCorrupted(let context):
-            return DecodingError.dataCorrupted(DecodingError.Context(codingPath: codingPath,
-                                                                     debugDescription: context.debugDescription, underlyingError: context.underlyingError))
-        case .keyNotFound(let key, let context):
-            return DecodingError.keyNotFound(key,
-                                             DecodingError.Context(codingPath: codingPath,
-                                                                   debugDescription: context.debugDescription, underlyingError: context.underlyingError))
-        case .typeMismatch(let type, let context):
-            return DecodingError.typeMismatch(type,
-                                              DecodingError.Context(codingPath: codingPath,
-                                                                    debugDescription: context.debugDescription, underlyingError: context.underlyingError))
-        case .valueNotFound(let type, let context):
-            return DecodingError.valueNotFound(type,
-                                               DecodingError.Context(codingPath: codingPath,
-                                                                     debugDescription: context.debugDescription, underlyingError: context.underlyingError))
-        }
 
     }
 
@@ -209,7 +166,7 @@ open class MetaDecoder: Decoder {
 
         return MetaDecoder(at: codingPath,
                            with: userInfo,
-                           translator: translator,
+                           unwrapper: unwrapper,
                            storage: newStorage)
 
     }

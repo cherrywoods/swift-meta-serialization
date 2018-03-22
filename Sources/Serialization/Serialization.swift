@@ -16,7 +16,7 @@ import Foundation
 public typealias Serialization = IntermediateEncoder & IntermediateDecoder
 
 /**
- This protocol provides a blueprint for an intermediate encoder, that does simply delegate the task of encoding to a Encoder.
+ This protocol provides a blueprint for an intermediate encoder, that does simply delegate the task of encoding to a `Encoder`.
  */
 public protocol IntermediateEncoder {
     
@@ -28,6 +28,7 @@ public protocol IntermediateEncoder {
     
     /// returns a new MetaEncoder
     func provideNewEncoder() -> MetaEncoder
+    func convert(meta: Meta) throws -> Raw
     
 }
 
@@ -44,5 +45,6 @@ public protocol IntermediateDecoder {
     
     /// returns a new MetaDecoder
     func provideNewDecoder() -> MetaDecoder
+    func convert(raw: Raw) throws -> Meta
     
 }

@@ -8,19 +8,19 @@
 
 import Foundation
 
-/// An Encoder that constucts a Meta format insted of encoding directly to the desired format
+/// An `Encoder` that constucts a `Meta` instead of encoding to a concrete format.
 open class MetaEncoder: Encoder {
 
     // MARK: - general properties
 
-    open var userInfo: [CodingUserInfoKey : Any]
+    open let userInfo: [CodingUserInfoKey : Any]
 
     open var codingPath: [CodingKey]
 
     // MARK: - translator
 
     /// The translator used to get and finally translate Metas
-    open let translator: Translator
+    open let metaSupplier: MetaSupplier
 
     // MARK: - storage
 
@@ -39,12 +39,12 @@ open class MetaEncoder: Encoder {
      */
     public init(at codingPath: [CodingKey] = [],
                 with userInfo: [CodingUserInfoKey : Any] = [:],
-                translator: Translator,
+                metaSupplier: MetaSupplier,
                 storage: CodingStorage = LinearCodingStack() ) {
 
         self.codingPath = codingPath
         self.userInfo = userInfo
-        self.translator = translator
+        self.metaSupplier = metaSupplier
         self.storage = storage
 
     }
@@ -65,9 +65,10 @@ open class MetaEncoder: Encoder {
 
         if key != nil { codingPath.append(key!) }
         defer{ if key != nil { codingPath.removeLast() } }
+        let path = codingPath
 
         // check whether translator supports value directly
-        if let newMeta = translator.wrappingMeta(for: value) {
+        if let newMeta = try metaSupplier.wrap(for: value, at: path) {
 
             // meta's value should be already set by translator
             return newMeta
@@ -100,8 +101,6 @@ open class MetaEncoder: Encoder {
 
         }
 
-        let path = codingPath
-
         try storage.storePlaceholder(at: path)
 
         do {
@@ -121,7 +120,7 @@ open class MetaEncoder: Encoder {
 
         // if value requests no container,
         // we are promted by the documention of Encodable to encode an empty keyed container
-        return try storage.remove(at: path) ?? translator.keyedContainerMeta()
+        return try storage.remove(at: path) ?? metaSupplier.keyedContainerMeta()
 
     }
 
@@ -140,7 +139,7 @@ open class MetaEncoder: Encoder {
         if createNewContainer {
 
             var reference = reference
-            reference.meta = translator.keyedContainerMeta()
+            reference.meta = metaSupplier.keyedContainerMeta()
 
         }
 
@@ -162,7 +161,7 @@ open class MetaEncoder: Encoder {
         if createNewContainer {
 
             var reference = reference
-            reference.meta = translator.unkeyedContainerMeta()
+            reference.meta = metaSupplier.unkeyedContainerMeta()
 
         }
 
@@ -199,7 +198,7 @@ open class MetaEncoder: Encoder {
 
         return MetaEncoder(at: codingPath,
                            with: userInfo,
-                           translator: translator,
+                           metaSupplier: metaSupplier,
                            storage: referencingStorage)
 
     }

@@ -22,7 +22,9 @@ struct TestUtilities {
                                                          encode: encodeToContainer,
                                                          decode: decodeFromContainer)
         
-        return SimpleSerialization<Container>(translator: translator)
+        return SimpleSerialization<Container>(translator, unwrapper: translator,
+                                              encodeFromMeta: translator.encode,
+                                              decodeToMeta: translator.decode)
         
     }
     
@@ -141,13 +143,13 @@ struct TestUtilities {
     // MARK: - ErrornousTranslator
     
     /// This encoder will produce errors at some point (it is possible to encode empty classes and structs with it)
-    class ErrornousTranslator: Translator {
+    class ErrornousTranslator: MetaSupplier, Unwrapper {
         
-        func wrappingMeta<T>(for value: T) -> Meta? {
+        func wrap<T>(for value: T, at path: [CodingKey]) -> Meta? {
             return nil
         }
         
-        func unwrap<T>(meta: Meta, toType type: T.Type) throws -> T? {
+        func unwrap<T>(meta: Meta, toType type: T.Type, at path: [CodingKey]) throws -> T? {
             return nil
         }
         

@@ -12,22 +12,20 @@ import Foundation
 public extension MetaDecoder {
     
     /**
-     Decodes a value of type D from the given raw value.
+     Decodes a value of type D from the given meta tree.
      
      Use this method rather than directly calling Decodable.init(from:).
-     init(from:) will not detect types that are directly supported by the translator.
+     init(from:) will not detect types that are directly supported by the unwrapper.
      
-     If this decoder wasn't freshly initalized, it may throw CodingStorageErrors.
+     - Throws: Aside from any errors that are thrown of unwrapper.unwrap and any `DecodingError` that has been thrown by another entity, this function will throw `MetaDecoder.Errors.decodingHasNotSucceeded` if the decoding could not succeed. In general, this error will never be thrown in code running unter the debug (and not the release) configuration. Instead the call will fail with an assertion failure.
      */
-    public func decode<D, Raw>(type: D.Type, from raw: Raw) throws -> D where D: Decodable {
+    public func decode<D: Decodable>(type: D.Type, from meta: Meta) throws -> D {
         
         do {
             
-            let meta = try translator.decode(raw)
-            
             // will store the decoded meta at the current path
             // if it isn't directly supported by the translator
-            // this current path should be the root path [],
+            // this current path should be the root path of decoder,
             // but in principle it is also possible to call this somewhere else
             return try unwrap(meta, toType: type)
             

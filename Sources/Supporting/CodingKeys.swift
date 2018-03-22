@@ -30,9 +30,9 @@ public struct IndexCodingKey: CodingKey {
     
     // MARK: casting to and from strings
     
-    /// will return "Index: " followed by the index
+    /// will return the index as string value
     public var stringValue: String {
-        return "Index: \(intValue!)"
+        return "\(intValue!)"
     }
     
     /**
@@ -55,11 +55,8 @@ public struct IndexCodingKey: CodingKey {
 /// An enumeration of all special coding keys meta-serialization will use
 public enum SpecialCodingKey: NonRegualarCodingKey {
     
-    /// used by the superEncoder() methods in MetaKeyed- Encoding- and Decoding- containers
+    /// used by the superEncoder() methods in MetaKeyed(Encoding|Decoding)Containers
     case `super` = "super"
-    
-    /// used by SingleValueDecodingContainer to decode containers that were requested as single value containers but are none
-    case decodingThroughSingleValueContainer = "decodingThroughSingleValueContainer"
     
 }
 
@@ -74,7 +71,7 @@ public struct NonRegualarCodingKey: CodingKey, ExpressibleByStringLiteral, Equat
         self.stringValue = string
     }
     
-    // MARK: - equatable
+    // MARK: - Equatable
     
     public static func ==(lhs: NonRegualarCodingKey, rhs: NonRegualarCodingKey) -> Bool {
         return lhs.stringValue == rhs.stringValue
@@ -110,7 +107,9 @@ public struct NonRegualarCodingKey: CodingKey, ExpressibleByStringLiteral, Equat
     }
     
     public init?(intValue: Int) {
+        
         self.init(stringValue: "\(intValue)")
+        
     }
     
 }

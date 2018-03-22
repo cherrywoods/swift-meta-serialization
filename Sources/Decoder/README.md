@@ -15,12 +15,12 @@ Therefor there is no need to implement write back behavior or references. It is 
 +----------------------------------------------------------+
 | * userInfo: [CodingUserInfoKey : Any]                    |
 | * codingPath: [CodingKey]                                |
-| * translator: Translator                                 |
-| * (read only) storage: StorageAccessor                   |
+| * unwrapper: Unwrapper                                   |
+| * storage: CodingStorage                                 |
 +----------------------------------------------------------+
 | + init(at: [CodingKey] = [],                             |
 |        with: [CodingUserInfoKey : Any] = [:],            |
-|        translator: Translator,                           |
+|        unwrapper: Unwrapper,                             |
 |        storage: CodingStorage)                           |
 | * unwrap<D>(_: Meta? = nil,                              |
 |             toType: D.Type                               |
@@ -48,16 +48,16 @@ Therefor there is no need to implement write back behavior or references. It is 
 | + unkeyedContainer() -> UnkeyedDecodingContainer         |
 | + singleValueContainer() -> SingleValueDecodingContainer |
 +----------------------------------------------------------+
-| + decode<D, Raw>(type: D.Type, from: Raw)                |
-|                  -> D                                    |
-|                  where D: Decodable                      |
+| + decode<D>(type: D.Type, from: Meta)                    |
+|            -> D                                          |
+|            where D: Decodable                            |
 +----------------------------------------------------------+
 (*: open, +: public)
 ```
 
 ## Decoding
 
-The decoding process works like the encoding process. `translator.decode` is called before `unwrap`.
+The decoding process works like the encoding process. The user needs to construct the meta tree before calling `decode`.
 
 As MetaEncoder, MetaDecoder can be used mulitiple types, but is not suited for parallel decoding.
 
@@ -65,10 +65,9 @@ As MetaEncoder, MetaDecoder can be used mulitiple types, but is not suited for p
 
 MetaDecoder has some open methods that are very similar to MetaEncoder's open methods. You can do the same with these methods, as you can with MetaEncoder's methods. However, there is a little difference: In the container and unkeyed container methods you need to check, that the passed meta conforms to the expected protocol (`KeyedContainerMeta` or `UnkeyedContainerMeta`). The other implementations are shaped by this expectation.
 
-As in MetaEncoder, the storage managing part is not overridable.
-
 ## Feature Change Log
 ### v2.0:
+* No longer decoding from a concrete format in decode
  * Centralized methods for container and further encoder creation.
  * Now using `CodingStorage`
  * Simplified implementation

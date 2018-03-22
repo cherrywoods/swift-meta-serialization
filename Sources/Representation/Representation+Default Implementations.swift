@@ -12,7 +12,8 @@ public extension EncodingRepresentation {
     
     init<E: Encodable>(encoding value: E) throws {
         
-        self = try Self.provideNewEncoder().encode(value)
+        let meta = try Self.provideNewEncoder().encode(value)
+        try self.init(meta: meta)
         
     }
     
@@ -22,7 +23,8 @@ public extension DecodingRepresentation {
     
     func decode<D: Decodable>(type: D.Type) throws -> D {
         
-        return try provideNewDecoder().decode(type: type, from: self)
+        let meta = try self.convert()
+        return try provideNewDecoder().decode(type: type, from: meta)
         
     }
     

@@ -46,7 +46,7 @@ class TestEncoderStateRestoringAfterThrow: XCTestCase {
     
 }
 
-fileprivate struct ThrowingOnEncode: Encodable {
+struct ThrowingOnEncode: Encodable {
     
     func encode(to encoder: Encoder) throws {
         

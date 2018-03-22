@@ -54,7 +54,6 @@ class TestMetaSerializationByJSONEncoderTests : XCTestCase {
 
     // MARK: - Encoding Top-Level Single-Value Types
     func testEncodingTopLevelSingleValueEnum() {
-        // all those top level single value containers are allowed
         _testRoundTrip(of: Switch.off)
         _testRoundTrip(of: Switch.on)
 
@@ -195,7 +194,7 @@ class TestMetaSerializationByJSONEncoderTests : XCTestCase {
     // SR-6078
     func testEncoderStateThrowOnEncode() {
 
-        // TODO: need to change this test, it has no value for meta serialization
+        // NOTE: this test has actually no background in MetaSerialization because it does not use a referencing encoder
 
         struct ReferencingEncoderWrapper<T : Encodable> : Encodable {
             let value: T
@@ -222,7 +221,7 @@ class TestMetaSerializationByJSONEncoderTests : XCTestCase {
         //
         // The issue at hand reproduces when you have a referencing encoder (superEncoder() creates one) that has a container on the stack (unkeyedContainer() adds one) that encodes a value going through box_() (Array does that) that encodes something which throws (Float.infinity does that).
         // When reproducing, this will cause a test failure via fatalError().
-        _ = try? serialization.encode(ReferencingEncoderWrapper([Double.infinity]))
+        _ = try? serialization.encode(ReferencingEncoderWrapper([ThrowingOnEncode()]))
     }
 
     // MARK: - Decoder State
