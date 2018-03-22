@@ -12,7 +12,7 @@ import Foundation
 // TODO: in swift 5, after PrimitivesProtocolTranslator has been implemented, use that one with custom protocol Primitives: Meta and filter in wrap and unwrap as done right now.
 
 /**
- A implementation of `MetaSupplier` and `Unwrapper`, that gets Metas out of your way, so you will only have to work with Arrays, Dictionarys and the Primitive types you pass to it.
+ A implementation of `MetaSupplier` and `Unwrapper`, that gets Metas out of your way, so you will only have to work with Arrays, Dictionarys and the Primitive types you pass to it. Call encode and decode to transfer from the meta tree MetaEncoder creates and MetaDecoder needs to your format.
  */
 open class PrimitivesEnumTranslator: MetaSupplier, Unwrapper {
     

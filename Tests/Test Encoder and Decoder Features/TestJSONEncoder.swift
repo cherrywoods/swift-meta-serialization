@@ -702,7 +702,7 @@ fileprivate struct _TestKey : CodingKey {
     }
 
     init(index: Int) {
-        self.stringValue = "Index: \(index)"
+        self.stringValue = "\(index)"
         self.intValue = index
     }
 }

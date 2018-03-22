@@ -19,8 +19,8 @@ struct TestUtilities {
     static func containerSerialization() -> SimpleSerialization<Container> {
         
         let translator = PrimitivesEnumTranslator(primitives: [ .nil, .bool, .string, .int, .double ],
-                                                         encode: encodeToContainer,
-                                                         decode: decodeFromContainer)
+                                                  encode: encodeToContainer,
+                                                  decode: decodeFromContainer)
         
         return SimpleSerialization<Container>(translator, unwrapper: translator,
                                               encodeFromMeta: translator.encode,
