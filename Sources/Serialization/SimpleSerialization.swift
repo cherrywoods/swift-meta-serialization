@@ -16,23 +16,43 @@ public class SimpleSerialization<R>: Serialization {
     
     public typealias Raw = R
     
-    let translator: Translator
+    private let metaSupplier: MetaSupplier
+    private let unwrapper: Unwrapper
     
-    public init(translator: Translator) {
+    private let encode: (Meta) -> R
+    private let decode: (R) -> Meta
+    
+    public init(_ metaSupplier: MetaSupplier, unwrapper: Unwrapper, encodeFromMeta: @escaping (Meta) -> R, decodeToMeta: @escaping (R) -> Meta) {
         
-        self.translator = translator
+        self.metaSupplier = metaSupplier
+        self.unwrapper = unwrapper
+        self.encode = encodeFromMeta
+        self.decode = decodeToMeta
         
     }
     
     public func provideNewEncoder() -> MetaEncoder {
         
-        return MetaEncoder(translator: translator)
+        // TODO: check for best default with some speed tests
+        return MetaEncoder(metaSupplier: metaSupplier, storage: LinearCodingStack())
         
     }
     
     public func provideNewDecoder() -> MetaDecoder {
         
-        return MetaDecoder(translator: translator)
+        return MetaDecoder(unwrapper: unwrapper, storage: LinearCodingStack())
+        
+    }
+    
+    public func convert(raw: R) throws -> Meta {
+        
+        return decode(raw)
+        
+    }
+    
+    public func convert(meta: Meta) throws -> R {
+        
+        return encode(meta)
         
     }
     

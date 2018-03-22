@@ -12,8 +12,8 @@ public extension IntermediateEncoder {
     func encode<E: Encodable>(_ value: E) throws -> Raw {
         
         let encoder = self.provideNewEncoder()
-        
-        return try encoder.encode(value) as Raw
+        let meta = try encoder.encode(value)
+        return try convert(meta: meta)
         
     }
     
@@ -25,10 +25,8 @@ public extension IntermediateDecoder {
     func decode<D: Decodable>(toType type: D.Type, from raw: Raw) throws -> D {
         
         let decoder = self.provideNewDecoder()
-        
-        // force unwrap,
-        // because decoder was freshly initalized
-        return try decoder.decode(type: type, from: raw)
+        let meta = try convert(raw: raw)
+        return try decoder.decode(type: type, from: meta)
         
     }
     

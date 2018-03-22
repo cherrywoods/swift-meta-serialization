@@ -8,8 +8,7 @@
 import Foundation
 
 /**
- A Meta for representing nil
- get will return NSNull(), set will stay lazy and do nothing
+ A Meta for representing nil.
  */
 public struct NilMeta: NilMetaProtocol {
     

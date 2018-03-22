@@ -8,10 +8,13 @@
 
 import Foundation
 
+// TODO: change encode and decode
+// TODO: in swift 5, after PrimitivesProtocolTranslator has been implemented, use that one with custom protocol Primitives: Meta and filter in wrap and unwrap as done right now.
+
 /**
- A implementation of Translator, that gets Metas out of your way, so you will only have to work with Arrays, Dictionarys and the Primitive types you pass to it.
+ A implementation of `MetaSupplier` and `Unwrapper`, that gets Metas out of your way, so you will only have to work with Arrays, Dictionarys and the Primitive types you pass to it.
  */
-open class PrimitivesEnumTranslator: Translator {
+open class PrimitivesEnumTranslator: MetaSupplier, Unwrapper {
     
     /**
      This enum contains cases for all primitive types this Translator can handle.
@@ -123,7 +126,7 @@ open class PrimitivesEnumTranslator: Translator {
     
     // MARK: Translator implementation
     
-    open func wrappingMeta<T>(for value: T) -> Meta? {
+    open func wrap<T>(for value: T, at codingPath: [CodingKey]) -> Meta? {
         
         // handle nil values first
         if T.self == GenericNil.self && primitives.contains(.nil) {
@@ -151,25 +154,27 @@ open class PrimitivesEnumTranslator: Translator {
     
     // Use the default implementations of keyedContainerMeta and unkeyedContainerMeta
     
-    open func unwrap<T>(meta: Meta, toType type: T.Type) throws -> T? {
+    open func unwrap<T>(meta: Meta, toType type: T.Type, at codingPath: [CodingKey]) throws -> T? {
         
         // NilMetas will not reach here
         
         if let primitive = Primitive(fromSwiftType: type) {
             
-            // now meta needs to be a SimpleGenericMeta<T>
-            // if it is not, throw an error.
-            // It means that the requested type is wrong
-            
-            guard let value = (meta as? SimpleGenericMeta<T>)?.value else {
-                // MetaDecoder will replace coding path
-                throw DecodingError.typeMismatch(type,
-                                                 DecodingError.Context(codingPath: [], debugDescription: "Decoded value did not match requested type"))
-            }
-            
             // handle primitives
             if primitives.contains(primitive) {
+                
+                // now meta needs to be a SimpleGenericMeta<T>
+                // if it is not, throw an error.
+                // It means that the requested type is wrong
+                
+                guard let value = (meta as? SimpleGenericMeta<T>)?.value else {
+                    let context = DecodingError.Context(codingPath: codingPath,
+                                                        debugDescription: "Decoded value did not match requested type")
+                    throw DecodingError.typeMismatch(type, context)
+                }
+                
                 return value
+                
             } else {
                 // not a supported primitive type
                 return nil

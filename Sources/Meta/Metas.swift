@@ -9,14 +9,14 @@
 import Foundation
 
 /**
- A container wraping a certain value
- This container is used at the meta- or in between stage of coding, the meta-serialization framework performs
+ A container wrapping a certain value.
+ This container is used at the meta or in between stage of encoding and decoding that MetaSerialization performs.
  */
 public protocol Meta {}
 
 /**
  Protocol for metas indicating null/nil or no value contained
- Please note that there's a implementation `NilMeta` procided the by meta-serialization framework.
+ Please note that there's a default implementation (`NilMeta`) procided the by MetaSerialization.
  */
 public protocol NilMetaProtocol: Meta {}
 
@@ -26,6 +26,6 @@ public protocol NilMetaProtocol: Meta {}
 public protocol GenericMeta: Meta {
     
     associatedtype SwiftValueType
-    var value: SwiftValueType { get set }
+    var value: SwiftValueType { get }
     
 }

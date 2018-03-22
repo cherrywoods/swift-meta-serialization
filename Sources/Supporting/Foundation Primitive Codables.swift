@@ -10,27 +10,17 @@ import Foundation
 
 /*
 
- In this file,
- String, Bool, Float, Double,
- Int, Int8, Int16, Int32, Int64,
- UInt, UInt8, UInt16, UInt32, UInt64
+ In this file String, Bool, Float, Double, Int, Int8, Int16, Int32, Int64, UInt, UInt8, UInt16, UInt32 and UInt64
  are extended to conform to DirectlyCodable.
 
- This is done to prevent endless callbacks
- if a translator does not support one of these types.
+ This is done to prevent endless callbacks if a format (expressed by a MetaSupplier or an Unwrapper) does not support one of these types.
 
- Because if wrappingMeta returns nil
- for e.g. a String value,
- wrap will then call encode(to:)
- on this string again,
- it will request a single value container
- and call encode on this container,
- this leads to another call of encode(to:)
- on the string, and so on, and so on.
+ Because if wrappingMeta returns nil for e.g. a String value,
+ wrap will then call encode(to:) on this string again,
+ it will request a single value container and call encode on this container,
+ this leads to another call of encode(to:) on the string, and so on, and so on.
 
  */
-
-// TODO: does it make sence to make these extension public?
 
 extension String: DirectlyCodable {}
 

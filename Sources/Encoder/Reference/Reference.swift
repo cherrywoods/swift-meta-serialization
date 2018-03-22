@@ -102,7 +102,9 @@ public struct KeyedContainerElementReference: ContainerElementReference {
     
     public mutating func insert(_ meta: Meta) {
         
-        container[key] = meta
+        var copy = self
+        copy.container[key] = meta
+        self = copy
         
     }
     
