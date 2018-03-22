@@ -19,10 +19,10 @@ public class SimpleSerialization<R>: Serialization {
     private let metaSupplier: MetaSupplier
     private let unwrapper: Unwrapper
     
-    private let encode: (Meta) -> R
-    private let decode: (R) -> Meta
+    private let encode: (Meta) throws -> R
+    private let decode: (R) throws -> Meta
     
-    public init(_ metaSupplier: MetaSupplier, unwrapper: Unwrapper, encodeFromMeta: @escaping (Meta) -> R, decodeToMeta: @escaping (R) -> Meta) {
+    public init(_ metaSupplier: MetaSupplier, unwrapper: Unwrapper, encodeFromMeta: @escaping (Meta) throws -> R, decodeToMeta: @escaping (R) throws -> Meta) {
         
         self.metaSupplier = metaSupplier
         self.unwrapper = unwrapper
@@ -46,13 +46,13 @@ public class SimpleSerialization<R>: Serialization {
     
     public func convert(raw: R) throws -> Meta {
         
-        return decode(raw)
+        return try decode(raw)
         
     }
     
     public func convert(meta: Meta) throws -> R {
         
-        return encode(meta)
+        return try encode(meta)
         
     }
     
