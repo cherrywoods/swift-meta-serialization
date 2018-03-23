@@ -1,6 +1,6 @@
 //
-//  Representation+Default Implementations.swift
-//  MetaSerialization
+//  GenericNil.swift
+//  meta-serialization
 //
 //  Copyright 2018 cherrywoods
 //
@@ -19,24 +19,11 @@
 
 import Foundation
 
-public extension EncodingRepresentation {
+/// Represents a nil value
+public struct GenericNil: DirectlyCodable {
     
-    init<E: Encodable>(encoding value: E) throws {
-        
-        let meta = try Self.provideNewEncoder().encode(value)
-        try self.init(meta: meta)
-        
-    }
+    public static let instance: GenericNil = GenericNil()
     
-}
-
-public extension DecodingRepresentation {
-    
-    func decode<D: Decodable>(type: D.Type) throws -> D {
-        
-        let meta = try self.convert()
-        return try provideNewDecoder().decode(type: type, from: meta)
-        
-    }
+    private init() {  }
     
 }

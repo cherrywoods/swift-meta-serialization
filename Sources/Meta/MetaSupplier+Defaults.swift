@@ -1,5 +1,5 @@
 //
-//  Representation+Default Implementations.swift
+//  MetaSupplier+Defaults.swift
 //  MetaSerialization
 //
 //  Copyright 2018 cherrywoods
@@ -19,24 +19,16 @@
 
 import Foundation
 
-public extension EncodingRepresentation {
+public extension MetaSupplier {
     
-    init<E: Encodable>(encoding value: E) throws {
-        
-        let meta = try Self.provideNewEncoder().encode(value)
-        try self.init(meta: meta)
-        
+    // TODO: update when these containers are rewritten. Also update documenation.
+    
+    public func keyedContainerMeta() -> KeyedContainerMeta {
+        return DictionaryKeyedContainerMeta()
     }
     
-}
-
-public extension DecodingRepresentation {
-    
-    func decode<D: Decodable>(type: D.Type) throws -> D {
-        
-        let meta = try self.convert()
-        return try provideNewDecoder().decode(type: type, from: meta)
-        
+    public func unkeyedContainerMeta() -> UnkeyedContainerMeta {
+        return ArrayUnkeyedContainerMeta()
     }
     
 }

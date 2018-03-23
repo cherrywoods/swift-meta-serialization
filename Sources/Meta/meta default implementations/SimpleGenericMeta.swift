@@ -1,5 +1,5 @@
 //
-//  Representation+Default Implementations.swift
+//  SimpleGenericMeta.swift
 //  MetaSerialization
 //
 //  Copyright 2018 cherrywoods
@@ -17,26 +17,23 @@
 //  limitations under the License.
 //
 
-import Foundation
-
-public extension EncodingRepresentation {
+/**
+ A simple default implementation for metas that do only wrap another value.
+ */
+public struct SimpleGenericMeta<T>: GenericMeta {
     
-    init<E: Encodable>(encoding value: E) throws {
-        
-        let meta = try Self.provideNewEncoder().encode(value)
-        try self.init(meta: meta)
-        
-    }
+    public typealias SwiftValueType = T
     
-}
-
-public extension DecodingRepresentation {
+    /**
+     The value this meta is wrapping.
+     */
+    public let value: T
     
-    func decode<D: Decodable>(type: D.Type) throws -> D {
-        
-        let meta = try self.convert()
-        return try provideNewDecoder().decode(type: type, from: meta)
-        
+    /**
+     Init a new SimpleGenericMeta with the given value
+     */
+    public init(value: T) {
+        self.value = value
     }
     
 }

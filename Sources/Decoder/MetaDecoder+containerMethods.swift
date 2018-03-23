@@ -1,5 +1,5 @@
 //
-//  Serialization+Default Implementations.swift
+//  MetaDecoder+containerMethods.swift
 //  MetaSerialization
 //
 //  Copyright 2018 cherrywoods
@@ -17,27 +17,28 @@
 //  limitations under the License.
 //
 
-public extension IntermediateEncoder {
+import Foundation
+
+public extension MetaDecoder {
     
-    /// encodes the given value into a raw representation
-    func encode<E: Encodable>(_ value: E) throws -> Raw {
+    public func container<Key: CodingKey>(keyedBy keyType: Key.Type) throws -> KeyedDecodingContainer<Key> {
         
-        let encoder = self.provideNewEncoder()
-        let meta = try encoder.encode(value)
-        return try convert(meta: meta)
+        let path = codingPath
+        return try container(keyedBy: keyType, for: storage[path], at: path)
         
     }
     
-}
-
-public extension IntermediateDecoder {
-    
-    /// decodes a value of the given type from a raw representation
-    func decode<D: Decodable>(toType type: D.Type, from raw: Raw) throws -> D {
+    public func unkeyedContainer() throws -> UnkeyedDecodingContainer {
         
-        let decoder = self.provideNewDecoder()
-        let meta = try convert(raw: raw)
-        return try decoder.decode(type: type, from: meta)
+        let path = codingPath
+        return try unkeyedContainer(for: storage[path], at: path)
+        
+    }
+    
+    public func singleValueContainer() throws -> SingleValueDecodingContainer {
+        
+        let path = codingPath
+        return try singleValueContainer(for: storage[path], at: path)
         
     }
     

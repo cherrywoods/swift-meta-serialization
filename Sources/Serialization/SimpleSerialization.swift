@@ -2,9 +2,19 @@
 //  SimpleSerialization.swift
 //  MetaSerialization
 //
-//  Created by cherrywoods on 26.11.17.
-//  Licensed under Unlicense, https://unlicense.org
-//  See the LICENSE file in this project
+//  Copyright 2018 cherrywoods
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//  http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 import Foundation
@@ -17,23 +27,41 @@ public class SimpleSerialization<R>: Serialization {
     
     public typealias Raw = R
     
-    let translator: Translator
+    private let translator: MetaSupplier&Unwrapper
     
-    public init(translator: Translator) {
+    private let encode: (Meta) throws -> R
+    private let decode: (R) throws -> Meta
+    
+    public init(translator: MetaSupplier&Unwrapper, encodeFromMeta: @escaping (Meta) throws -> R, decodeToMeta: @escaping (R) throws -> Meta) {
         
         self.translator = translator
+        self.encode = encodeFromMeta
+        self.decode = decodeToMeta
         
     }
     
     public func provideNewEncoder() -> MetaEncoder {
         
-        return MetaEncoder(translator: translator)
+        // TODO: check for best default with some speed tests
+        return MetaEncoder(metaSupplier: translator, storage: LinearCodingStack())
         
     }
     
-    public func provideNewDecoder(raw: R) -> MetaDecoder {
+    public func provideNewDecoder() -> MetaDecoder {
         
-        return try! MetaDecoder(translator: translator, raw: raw)
+        return MetaDecoder(unwrapper: translator, storage: LinearCodingStack())
+        
+    }
+    
+    public func convert(raw: R) throws -> Meta {
+        
+        return try decode(raw)
+        
+    }
+    
+    public func convert(meta: Meta) throws -> R {
+        
+        return try encode(meta)
         
     }
     

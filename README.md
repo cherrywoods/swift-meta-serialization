@@ -110,8 +110,8 @@ This should only apply for version 1 and before. Version 2 should not be seen a 
 ## Testing
 This project is tested against the tests of JSONEncoder from Foundation.
 
-Those tests aren't contained on the master branch.
-Testing is done on the testing branch. This branch contains code licensed under the Apache License from [the swift standard library](https://github.com/apple/swift).
+## Licensing
+This framework is licensed at the Apache Version 2.0 License with Runtime Library Exception, the same license swift is licensed at.
 
 ## Spelling and grammar errors
 The project documentation and source code will contain spelling and grammar mistakes. If they obscure the meaning, please open an issue.

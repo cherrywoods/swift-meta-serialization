@@ -1,10 +1,20 @@
 //
 //  Serialization.swift
-//  meta-serialization
+//  MetaSerialization
 //
-//  Created by cherrywoods on 24.10.17.
-//  Licensed under Unlicense, https://unlicense.org
-//  See the LICENSE file in this project
+//  Copyright 2018 cherrywoods
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//  http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 import Foundation
@@ -17,7 +27,7 @@ import Foundation
 public typealias Serialization = IntermediateEncoder & IntermediateDecoder
 
 /**
- This protocol provides a blueprint for an intermediate encoder, that does simply delegate the task of encoding to a Encoder.
+ This protocol provides a blueprint for an intermediate encoder, that does simply delegate the task of encoding to a `Encoder`.
  */
 public protocol IntermediateEncoder {
     
@@ -29,6 +39,7 @@ public protocol IntermediateEncoder {
     
     /// returns a new MetaEncoder
     func provideNewEncoder() -> MetaEncoder
+    func convert(meta: Meta) throws -> Raw
     
 }
 
@@ -44,6 +55,7 @@ public protocol IntermediateDecoder {
     func decode<D: Decodable>(toType type: D.Type, from raw: Raw) throws -> D
     
     /// returns a new MetaDecoder
-    func provideNewDecoder(raw: Raw) throws -> MetaDecoder
+    func provideNewDecoder() -> MetaDecoder
+    func convert(raw: Raw) throws -> Meta
     
 }
