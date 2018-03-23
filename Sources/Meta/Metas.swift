@@ -1,5 +1,5 @@
 //
-//  Representation+Default Implementations.swift
+//  MetaContainers.swift
 //  MetaSerialization
 //
 //  Copyright 2018 cherrywoods
@@ -19,24 +19,24 @@
 
 import Foundation
 
-public extension EncodingRepresentation {
-    
-    init<E: Encodable>(encoding value: E) throws {
-        
-        let meta = try Self.provideNewEncoder().encode(value)
-        try self.init(meta: meta)
-        
-    }
-    
-}
+/**
+ A container wrapping a certain value.
+ This container is used at the meta or in between stage of encoding and decoding that MetaSerialization performs.
+ */
+public protocol Meta {}
 
-public extension DecodingRepresentation {
+/**
+ Protocol for metas indicating null/nil or no value contained
+ Please note that there's a default implementation (`NilMeta`) procided the by MetaSerialization.
+ */
+public protocol NilMetaProtocol: Meta {}
+
+/**
+ A subprotocol of Meta with a specific value and value type. 
+ */
+public protocol GenericMeta: Meta {
     
-    func decode<D: Decodable>(type: D.Type) throws -> D {
-        
-        let meta = try self.convert()
-        return try provideNewDecoder().decode(type: type, from: meta)
-        
-    }
+    associatedtype SwiftValueType
+    var value: SwiftValueType { get }
     
 }

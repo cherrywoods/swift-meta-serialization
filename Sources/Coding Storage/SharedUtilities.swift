@@ -1,5 +1,5 @@
 //
-//  Representation+Default Implementations.swift
+//  SharedUtilities.swift
 //  MetaSerialization
 //
 //  Copyright 2018 cherrywoods
@@ -19,24 +19,9 @@
 
 import Foundation
 
-public extension EncodingRepresentation {
+internal struct PlaceholderMeta: Meta {
     
-    init<E: Encodable>(encoding value: E) throws {
-        
-        let meta = try Self.provideNewEncoder().encode(value)
-        try self.init(meta: meta)
-        
-    }
+    static let instance = PlaceholderMeta()
     
 }
 
-public extension DecodingRepresentation {
-    
-    func decode<D: Decodable>(type: D.Type) throws -> D {
-        
-        let meta = try self.convert()
-        return try provideNewDecoder().decode(type: type, from: meta)
-        
-    }
-    
-}

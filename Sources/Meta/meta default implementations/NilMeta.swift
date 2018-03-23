@@ -1,5 +1,5 @@
 //
-//  Representation+Default Implementations.swift
+//  NilMeta.swift
 //  MetaSerialization
 //
 //  Copyright 2018 cherrywoods
@@ -19,24 +19,11 @@
 
 import Foundation
 
-public extension EncodingRepresentation {
+/**
+ A Meta for representing nil.
+ */
+public struct NilMeta: NilMetaProtocol {
     
-    init<E: Encodable>(encoding value: E) throws {
-        
-        let meta = try Self.provideNewEncoder().encode(value)
-        try self.init(meta: meta)
-        
-    }
-    
-}
-
-public extension DecodingRepresentation {
-    
-    func decode<D: Decodable>(type: D.Type) throws -> D {
-        
-        let meta = try self.convert()
-        return try provideNewDecoder().decode(type: type, from: meta)
-        
-    }
+    public static let `nil`: NilMeta = NilMeta()
     
 }
