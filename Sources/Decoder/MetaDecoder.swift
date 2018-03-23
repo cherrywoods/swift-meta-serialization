@@ -51,7 +51,7 @@ open class MetaDecoder: Decoder {
     public init(at codingPath: [CodingKey] = [],
                 with userInfo: [CodingUserInfoKey : Any] = [:],
                 unwrapper: Unwrapper,
-                storage: CodingStorage) {
+                storage: CodingStorage = LinearCodingStack()) {
 
         self.codingPath = codingPath
         self.userInfo = userInfo
