@@ -95,8 +95,21 @@ open class CodingDictionary: CodingStorage {
     
     open func store(meta: Meta, at codingPath: [CodingKey]) throws {
         
-        let lastPath = codingPath.endIndex >= 1 ?  CodingDictionary.concatCodingPath( codingPath[0..<codingPath.endIndex-1] ) : ""
-        let convertedPath = lastPath + CodingDictionary.convert(codingKey: codingPath.last!)
+        let lastPath: String
+        let convertedPath: String
+        
+        if codingPath.count == 0 {
+            
+            // if path is [], set lastPath and convertedPath both to ""
+            lastPath = ""
+            convertedPath = ""
+            
+        } else {
+            
+            lastPath = CodingDictionary.concatCodingPath( codingPath[codingPath.startIndex..<codingPath.endIndex-1] )
+            convertedPath = lastPath + CodingDictionary.convert(codingKey: codingPath.last!)
+            
+        }
         
         if let old = heap[convertedPath] {
             
