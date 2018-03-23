@@ -22,7 +22,7 @@ struct TestUtilities {
                                                   encode: encodeToContainer,
                                                   decode: decodeFromContainer)
         
-        return SimpleSerialization<Container>(translator, unwrapper: translator,
+        return SimpleSerialization<Container>(translator: translator,
                                               encodeFromMeta: translator.encode,
                                               decodeToMeta: translator.decode)
         
