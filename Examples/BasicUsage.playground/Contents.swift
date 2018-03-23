@@ -29,8 +29,7 @@ import MetaSerialization
  that converts (certain) swift objects
  to some kind of simple json format.
  
- For that Translator a Representation
- and a Serialization object will be created and used.
+ For that Translator a Serialization instance will be created and used.
  
  */
 
@@ -141,24 +140,9 @@ let translator = PrimitivesEnumTranslator(primitives: [.string, .int],
 // and thats basically all of the code that is needed to encode
 // arbitrary swift objects implementing Encodable
 
-// MARK: - frontends
-// MARK: Serialization
-
-let serialization = SimpleSerialization<String>(translator: translator)
-
-// MARK: Representation
-
-extension String: Representation {
-    
-    public func provideNewDecoder() throws -> MetaDecoder {
-        return try MetaDecoder(translator: translator, raw: self)
-    }
-    
-    public static func provideNewEncoder() -> MetaEncoder {
-        return MetaEncoder(translator: translator)
-    }
-    
-}
+let serialization = SimpleSerialization<String>(translator: translator,
+                                                encodeFromMeta: translator.encode,
+                                                decodeToMeta: translator.decode)
 
 // MARK: - serialization
 
@@ -177,20 +161,12 @@ let dictionary = [ "triangle" : 3, "square" : 4, "hexagon" : 6 ]
 
 // MARK: encoding
 
-// this is how to use a serialization instance
 let encodedTriagle = try! serialization.encode(triange)
-
-// this is the way to use Representation
-let encodedArray = try! String(encoding: array)
-
+let encodedArray = try! serialization.encode(array)
 let encodedDictionary = try! serialization.encode(dictionary)
 
 // MARK: decoding
 
 try! serialization.decode(toType: Shape.self, from: encodedTriagle)
-try! encodedArray.decode(type: [String].self)
-try! encodedDictionary.decode(type: [String:Int].self)
-
-// And that's it.
-// 179 lines it is already possible to encode and decode arrays,
-// dictionarys and custom Encodable instances
+try! serialization.decode(toType: [String].self, from: encodedArray)
+try! serialization.decode(toType: [String:Int].self, from: encodedDictionary)

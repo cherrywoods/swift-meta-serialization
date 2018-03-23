@@ -104,6 +104,9 @@ Furthermore you may not do anything in your encoding and decoding code. There ar
 ## Testing
 This project is tested against the tests of JSONEncoder from Foundation.
 
+## Licensing
+This framework is licensed at the Apache Version 2.0 License with Runtime Library Exception, the same license swift is licensed at.
+
 ## Spelling and grammar errors
 The project documentation and source code will contain spelling and grammar mistakes. If they obscure the meaning, please open an issue.
 
