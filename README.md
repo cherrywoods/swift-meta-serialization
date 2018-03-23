@@ -104,9 +104,6 @@ Furthermore you may not do anything in your encoding and decoding code. There ar
 ## Testing
 This project is tested against the tests of JSONEncoder from Foundation.
 
-Those tests aren't contained on the master branch.
-Testing is done on the testing branch. This branch contains code licensed under the Apache License from [the swift standard library](https://github.com/apple/swift).
-
 ## Spelling and grammar errors
 The project documentation and source code will contain spelling and grammar mistakes. If they obscure the meaning, please open an issue.
 

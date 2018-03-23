@@ -7,3 +7,4 @@ xcuserdata/
 *.dSYM
 .build/
 *.framework.zip
+IDETemplateMacros.plist
