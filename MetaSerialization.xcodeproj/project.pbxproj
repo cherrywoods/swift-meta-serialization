@@ -240,7 +240,6 @@
 		633D4D7C206264EB00ADFF91 /* MetaSerializationTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MetaSerializationTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		633D4D8B206264ED00ADFF91 /* MetaSerializationTests-tvOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MetaSerializationTests-tvOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		633D4D9D206264EF00ADFF91 /* MetaSerializationTests-macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MetaSerializationTests-macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		634E2D002064FDD40099DDE2 /* IDETemplateMacros.plist.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = IDETemplateMacros.plist.plist; sourceTree = SOURCE_ROOT; };
 		636B760120470EFA0048DEDD /* MetaEncoder+containerMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MetaEncoder+containerMethods.swift"; sourceTree = "<group>"; };
 		636B760620470F820048DEDD /* MetaEncoder+frontend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MetaEncoder+frontend.swift"; sourceTree = "<group>"; };
 		6374A5E3202C70F900F11F48 /* Foundation Primitive Codables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation Primitive Codables.swift"; sourceTree = "<group>"; };
@@ -499,7 +498,6 @@
 			children = (
 				63E7530E1FC1ABB5000A2319 /* README.md */,
 				63E753131FC1ABBF000A2319 /* LICENSE */,
-				634E2D002064FDD40099DDE2 /* IDETemplateMacros.plist.plist */,
 				6324A03E201280DC006DA7A1 /* Examples */,
 				63E753071FC1A5B2000A2319 /* Sources */,
 				633D4CD82062628300ADFF91 /* Tests */,
