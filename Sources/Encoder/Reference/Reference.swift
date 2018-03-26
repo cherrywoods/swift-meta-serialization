@@ -30,7 +30,7 @@ public enum Reference {
     case containerElement( ContainerElementReference )
     
     /// The referenced meta.
-    var meta: Meta {
+    public var meta: Meta {
         
         get {
             
