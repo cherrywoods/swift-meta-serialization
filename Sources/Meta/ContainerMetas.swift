@@ -49,9 +49,7 @@ public protocol KeyedContainerMeta: Meta {
 /**
  A meta for a unkeyed collection of metas.
  
- The indexiation starts at 0 and ends at count-1, with steps of size 1 (if you have 4 elements, they have to be indexed 0,1,2,3).
- 
- You may not use custom indexes, if you liked meta-serialization to work properly.
+ The indexation starts at 0 and ends at count-1, with steps of size 1 (if you have 4 elements, they have to be indexed 0,1,2,3).
  */
 public protocol UnkeyedContainerMeta: Meta {
     
