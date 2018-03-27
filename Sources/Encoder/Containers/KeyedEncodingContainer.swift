@@ -120,7 +120,7 @@ open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProto
     private func superEncoderImpl(forKey key: CodingKey) -> Encoder {
         
         return encoder.encoder(referencing: createElementReference(for: key),
-                                    at: codingPath + [key])
+                               at: codingPath + [key])
         
     }
     

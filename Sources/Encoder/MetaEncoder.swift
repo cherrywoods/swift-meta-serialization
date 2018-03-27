@@ -63,13 +63,13 @@ open class MetaEncoder: Encoder {
     // MARK: - wrap
 
     /**
-     Wraps a value to a meta using translator.wrappingMeta and calling value.encode if translator.wrappingMeta returned nil.
+     Wraps a value to a meta using translator.wrap and calling value.encode if translator.wrapreturned nil.
 
      If value conforms to DirectlyEncdable, or is an Int, Int8, Int16, Int32, Int64, UInt, UInt8, UInt16, UInt32, UInt64, Float, Double, Bool or String and
      not supported directly by translator (this means translator.wrappingMeta(for: value) returns nil, this method throws EncodingError.invalidValue. This is required, because otherwise, these types would endlessly try to encode themselves into single value containers.
 
      - Parameter value: The value to wrap
-     - Parameter key: The key at which vaue should be encoded. This decoders coding path is extended with this key.
+     - Parameter key: The key at which vaue should be encoded. This encoders coding path is extended with this key. If key is nil, the coding path isn't extended.
      - Throws: EncodingError and CodingStorageError
      */
     open func wrap<E>(_ value: E, at key: CodingKey? = nil) throws -> Meta where E: Encodable {
@@ -139,49 +139,78 @@ open class MetaEncoder: Encoder {
 
     /**
      Returns a new KeyedEncodingContainer referencing reference.
-
+     
      - Parameter keyType: The key type of the KeyedEncodingContainer that should be returned.
      - Parameter reference: A reference to which the returned container should point to.
      - Parameter codingPath: The coding path the returned container should have.
      - Parameter createNewContainer: Whether to create a new contaienr and set reference.meta to it, or not. Default is yes.
      */
-    open func container<Key: CodingKey>(keyedBy keyType: Key.Type, referencing reference: Reference, at codingPath: [CodingKey], createNewContainer: Bool = true) -> KeyedEncodingContainer<Key> {
-
+    public func container<Key: CodingKey>(keyedBy keyType: Key.Type, referencing reference: Reference, at codingPath: [CodingKey], createNewContainer: Bool = true) -> KeyedEncodingContainer<Key> {
+        
         if createNewContainer {
-
+            
             var reference = reference
             reference.meta = metaSupplier.keyedContainerMeta()
-
+            
         }
-
+        
+        return encodingContainer(keyedBy: keyType, referencing: reference, at: codingPath)
+        
+    }
+    
+    /**
+     Returns a new KeyedEncodingContainer referencing reference.
+     
+     This method serves as delegate for container(keyedBy:, referencing, at:, createNewContainer).
+     
+     - Parameter keyType: The key type of the KeyedEncodingContainer that should be returned.
+     - Parameter reference: A reference to which the returned container should point to.
+     - Parameter codingPath: The coding path the returned container should have.
+     */
+    open func encodingContainer<Key: CodingKey>(keyedBy keyType: Key.Type, referencing reference: Reference, at codingPath: [CodingKey]) -> KeyedEncodingContainer<Key> {
+        
         return KeyedEncodingContainer( MetaKeyedEncodingContainer<Key>(referencing: reference,
                                                                        at: codingPath,
                                                                        encoder: self) )
 
     }
-
+    
     /**
      Returns a new UnkeyedEncodingContainer referencing reference.
-
+     
      - Parameter reference: A reference to which the returned container should point to.
      - Parameter codingPath: The coding path the returned container should have.
      - Parameter createNewContainer: Whether to create a new contaienr and set reference.meta to it. Default is true.
      */
-    open func unkeyedContainer(referencing reference: Reference, at codingPath: [CodingKey], createNewContainer: Bool = true) -> UnkeyedEncodingContainer {
-
+    public func unkeyedContainer(referencing reference: Reference, at codingPath: [CodingKey], createNewContainer: Bool = true) -> UnkeyedEncodingContainer {
+        
         if createNewContainer {
-
+            
             var reference = reference
             reference.meta = metaSupplier.unkeyedContainerMeta()
-
+            
         }
+        
+        return unkeyedEncodingContainer(referencing: reference, at: codingPath)
+        
+    }
 
+    /**
+     Returns a new UnkeyedEncodingContainer referencing reference.
+     
+     This method serves as delegate for container(keyedBy:, referencing, at:, createNewContainer).
+     
+     - Parameter reference: A reference to which the returned container should point to.
+     - Parameter codingPath: The coding path the returned container should have.
+     */
+    open func unkeyedEncodingContainer(referencing reference: Reference, at codingPath: [CodingKey]) -> UnkeyedEncodingContainer {
+        
         return MetaUnkeyedEncodingContainer(referencing: reference,
                                             at: codingPath,
                                             encoder: self)
 
     }
-
+    
     /**
      Returns a new MetaKeyedEncodingContainer referencing reference.
 
@@ -207,11 +236,22 @@ open class MetaEncoder: Encoder {
                                                           delegatingTo: storage.fork(at: codingPath),
                                                           at: codingPath)
 
+        return encoderImplementation(storage: referencingStorage, at: codingPath)
+        
+    }
+
+    /**
+     Creates a new encoder with the given storage.
+     
+     This method serves as delegate for encoder(referencing:, at:)'s default implementation.
+     */
+    open func encoderImplementation(storage: CodingStorage, at codingPath: [CodingKey] ) -> Encoder {
+        
         return MetaEncoder(at: codingPath,
                            with: userInfo,
                            metaSupplier: metaSupplier,
-                           storage: referencingStorage)
+                           storage: storage)
 
     }
-
+    
 }
