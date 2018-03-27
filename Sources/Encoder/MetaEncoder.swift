@@ -79,7 +79,7 @@ open class MetaEncoder: Encoder {
         let path = codingPath
 
         // check whether translator supports value directly
-        if let newMeta = try metaSupplier.wrap(for: value, at: path) {
+        if let newMeta = try metaSupplier.wrap(value, for: self) {
 
             // meta's value should be already set by translator
             return newMeta
