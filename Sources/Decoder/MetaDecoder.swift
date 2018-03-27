@@ -86,7 +86,7 @@ open class MetaDecoder: Decoder {
         let meta = meta ?? storage[codingPath]
 
         // ask translator to unwrap meta to type
-        if let directlySupported = try unwrapper.unwrap(meta: meta, toType: type, at: path) {
+        if let directlySupported = try unwrapper.unwrap(meta: meta, toType: type, for: self) {
             
             return directlySupported
             

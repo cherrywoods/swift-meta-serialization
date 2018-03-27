@@ -56,9 +56,9 @@ public protocol MetaSupplier {
      
      This method will be asked to return a Meta for an instance of the type GenericNil from MetaSerialization for any nil value that is requested to be encoded. Return nil, if you don't support nil values. If you support nil values, you are invited to use NilMeta from MetaSerialization, but you may of course use any implementation here.
      - Parameter value: The value for which a wrapping meta should be returned.
-     - Parameter codingPath: The coding path (this an array of coding keys visited up to value in the order they were visited) taken up to value. codingPath is ment to be used in errors you may throw (e.g. `EncodingError`).
+     - Parameter encoder: The encoder that requests the wrap. You should use this encoder if you need to encode values yourself inside wrap or to get the current coding path (this an array of coding keys visited up to value in the order they were visited) taken up to value. It is ment to be used in errors you may throw (e.g. `EncodingError`).
      - Returns: nil or a `Meta` which wrappes value.
      */
-    func wrap<T>(for value: T, at codingPath: [CodingKey]) throws -> Meta?
+    func wrap<T>(_ value: T, for encoder: MetaEncoder) throws -> Meta?
     
 }

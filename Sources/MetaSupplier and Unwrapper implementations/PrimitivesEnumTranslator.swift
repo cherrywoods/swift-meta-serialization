@@ -137,7 +137,7 @@ open class PrimitivesEnumTranslator: MetaSupplier, Unwrapper {
     
     // MARK: Translator implementation
     
-    open func wrap<T>(for value: T, at codingPath: [CodingKey]) -> Meta? {
+    open func wrap<T>(_ value: T, for encoder: MetaEncoder) -> Meta? {
         
         // handle nil values first
         if T.self == GenericNil.self && primitives.contains(.nil) {
@@ -165,7 +165,7 @@ open class PrimitivesEnumTranslator: MetaSupplier, Unwrapper {
     
     // Use the default implementations of keyedContainerMeta and unkeyedContainerMeta
     
-    open func unwrap<T>(meta: Meta, toType type: T.Type, at codingPath: [CodingKey]) throws -> T? {
+    open func unwrap<T>(meta: Meta, toType type: T.Type, for decoder: MetaDecoder) throws -> T? {
         
         // NilMetas will not reach here
         
@@ -179,7 +179,7 @@ open class PrimitivesEnumTranslator: MetaSupplier, Unwrapper {
                 // It means that the requested type is wrong
                 
                 guard let value = (meta as? SimpleGenericMeta<T>)?.value else {
-                    let context = DecodingError.Context(codingPath: codingPath,
+                    let context = DecodingError.Context(codingPath: decoder.codingPath,
                                                         debugDescription: "Decoded value did not match requested type")
                     throw DecodingError.typeMismatch(type, context)
                 }
