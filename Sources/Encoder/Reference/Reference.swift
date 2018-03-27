@@ -142,7 +142,7 @@ public struct UnkeyedContainerElementReference: ContainerElementReference {
     /**
      Inits a new unkeyed container element reference.
      
-     Before calling this method, make sure that ref.meta is a UnkeyedContainerMeta and contains codingKey.
+     Before calling this method, make sure that ref.meta is a UnkeyedContainerMeta and index is accessible.
      
      - Parameter ref: The underlying reference.
      - index: The index to access. This index needs to be valid.

@@ -123,7 +123,7 @@ open class MetaDecoder: Decoder {
 
      If it is not, throw DecodingError.typeMissmatch.
      */
-    open func container<Key: CodingKey>(keyedBy keyType: Key.Type, for meta: Meta, at codingPath: [CodingKey]) throws -> KeyedDecodingContainer<Key> {
+    public func container<Key: CodingKey>(keyedBy keyType: Key.Type, for meta: Meta, at codingPath: [CodingKey]) throws -> KeyedDecodingContainer<Key> {
 
         guard let keyedMeta = meta as? KeyedContainerMeta else {
 
@@ -132,16 +132,22 @@ open class MetaDecoder: Decoder {
 
         }
 
+        return try decodingContainer(keyedBy: keyType, for: keyedMeta, at: codingPath)
+        
+    }
+
+    open func decodingContainer<Key: CodingKey>(keyedBy keyType: Key.Type, for keyedMeta: KeyedContainerMeta, at codingPath: [CodingKey]) throws -> KeyedDecodingContainer<Key> {
+        
         return KeyedDecodingContainer( MetaKeyedDecodingContainer<Key>(for: keyedMeta, at: codingPath, decoder: self) )
 
     }
-
+    
     /**
      Create a new UnkeyedDecodingContainer for the given meta, if it is a UnkeyedContainerMeta.
 
      If it is not, throw DecodingError.typeMissmatch.
      */
-    open func unkeyedContainer(for meta: Meta, at codingPath: [CodingKey]) throws -> UnkeyedDecodingContainer {
+    public func unkeyedContainer(for meta: Meta, at codingPath: [CodingKey]) throws -> UnkeyedDecodingContainer {
 
         guard let unkeyedMeta = meta as? UnkeyedContainerMeta else {
 
@@ -150,10 +156,16 @@ open class MetaDecoder: Decoder {
 
         }
 
+        return try unkeyedDecodingContainer(for: unkeyedMeta, at: codingPath)
+        
+    }
+
+    open func unkeyedDecodingContainer(for unkeyedMeta: UnkeyedContainerMeta, at codingPath: [CodingKey]) throws -> UnkeyedDecodingContainer {
+        
         return MetaUnkeyedDecodingContainer(for: unkeyedMeta, at: codingPath, decoder: self)
 
     }
-
+    
     /**
      Create a new SingleValueDecodingContainer for the given meta.
      */
@@ -175,11 +187,22 @@ open class MetaDecoder: Decoder {
         // store meta, so it can be decoded
         try newStorage.store(meta: meta, at: codingPath)
 
-        return MetaDecoder(at: codingPath,
-                           with: userInfo,
-                           unwrapper: unwrapper,
-                           storage: newStorage)
+        return try decoderImplementation(storage: newStorage, at: codingPath)
 
     }
 
+    /**
+     Creates a new decoder with the given storage.
+     
+     This method serves as delegate for decoder(for:, at:)'s default implementation.
+     */
+    open func decoderImplementation(storage: CodingStorage, at codingPath: [CodingKey] ) throws -> Decoder {
+        
+        return MetaDecoder(at: codingPath,
+                           with: userInfo,
+                           unwrapper: unwrapper,
+                           storage: storage)
+        
+    }
+    
 }

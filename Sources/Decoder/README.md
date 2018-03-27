@@ -27,20 +27,31 @@ Therefor there is no need to implement write back behavior or references. It is 
 |             for: CodingKey? = nil)                       |
 |             -> D                                         |
 |             where D: Decodable                           |
-| * container<Key>(keyedBy: Key.Type,                      |
+| + container<Key>(keyedBy: Key.Type,                      |
 |                  for: Meta,                              |
 |                  at: [CodingKey],                        |
 |                  -> KeyedDecodingContainer               |
 |                  where Key: CodingKey                    |
-| * unkeyedContainer(for: Meta,                            |
+| * decodingContainer<Key>(keyedBy: Key.Type,              |
+|                          for: Meta,                      |
+|                          at: [CodingKey],                |
+|                          -> KeyedDecodingContainer       |
+|                          where Key: CodingKey            |
+| + unkeyedContainer(for: Meta,                            |
 |                    at: [CodingKey],                      |
 |                    -> UnkeyedDecodingContainer           |
+| * unkeyedDecodingContainer(for: Meta,                    |
+|                            at: [CodingKey],              |
+|                            -> UnkeyedDecodingContainer   |
 | * singleValueContainer(for: Meta,                        |
 |                        at: [CodingKey])                  |
 |                        -> SingleValueDecodingContainer   |
 | * decoder(for: Meta,                                     |
 |           at: [CodingKey])                               |
 |           -> Decoder                                     |
+| * decoderImplementation(storage: CodingStorage,          |
+|                         at: [CodingKey])                 |
+|                         -> Decoder                       |
 +----------------------------------------------------------+
 | + container<Key>(keyedBy: Key.Type)                      |
 |                  -> KeyedDecodingContainer               |
@@ -63,7 +74,7 @@ As MetaEncoder, MetaDecoder can be used mulitiple types, but is not suited for p
 
 ## Overriding
 
-MetaDecoder has some open methods that are very similar to MetaEncoder's open methods. You can do the same with these methods, as you can with MetaEncoder's methods. However, there is a little difference: In the container and unkeyed container methods you need to check, that the passed meta conforms to the expected protocol (`KeyedContainerMeta` or `UnkeyedContainerMeta`). The other implementations are shaped by this expectation.
+MetaDecoder has some open methods that are very similar to MetaEncoder's open methods. You can do the same with these methods, as you can with MetaEncoder's methods.
 
 ## Feature Change Log
 ### v2.0:

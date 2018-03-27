@@ -18,22 +18,33 @@ MetaEncoder is the `Encoder` implementation of MetaSerialization.
 |           at: CodingKey? = nil)                          |
 |           -> Meta                                        |
 |           where E: Encodable                             |
-| * container<Key>(keyedBy: Key.Type,                      |
+| + container<Key>(keyedBy: Key.Type,                      |
 |                  referencing: Reference,                 |
 |                  at: [CodingKey],                        |
 |                  createNewContainer: Bool = true)        |
 |                  -> KeyedEncodingContainer               |
 |                  where Key: CodingKey                    |
-| * unkeyedContainer(referencing: Reference,               |
+| * encodingContainer<Key>(keyedBy: Key.Type,              |
+|                          referencing: Reference,         |
+|                          at: [CodingKey])                |
+|                          -> KeyedEncodingContainer       |
+|                          where Key: CodingKey            |
+| + unkeyedContainer(referencing: Reference,               |
 |                    at: [CodingKey],                      |
 |                    createNewContainer: Bool = true)      |
 |                    -> UnkeyedEncodingContainer           |
+| * unkeyedEncodingContainer(referencing: Reference        |
+|                            at: [CodingKey])              |
+|                            -> UnkeyedEncodingContainer   |
 | * singleValueContainer(referencing: Reference,           |
 |                        at: [CodingKey])                  |
 |                        -> SingleValueEncodingContainer   |
 | * encoder(referencing: Reference,                        |
 |           at: [CodingKey])                               |
 |           -> Encoder                                     |
+| * encoderImplementation(storage: CodingStorage,          |
+|                         at: [CodingKey])                 |
+|                         -> Encoder                       |
 +----------------------------------------------------------+
 | + container<Key>(keyedBy: Key.Type)                      |
 |                  -> KeyedEncodingContainer               |
@@ -63,10 +74,11 @@ You should be able to customize these methods far enough by overriding the overr
 All required methods fall back to those methods at some point. The storage managing part is also not overridable.
 
 The following methods can be overwritten:
- * `container(keyedBy:, referencing:, at:, createNewContainer:)`: This methods creates a new `KeyedEncodingContainer`. It is called by `container(keyedBy:)` and also by the `nestedContainer` methods of MetaSerialization's default encoding container implementations. You can therefor use this method to override the `KeyedEncodingContainerProtocol` implementation MetaEncoder should use. You may also customize the requesting of new `KeyedContainerMeta`s. Such containers are in the current MetaEncoder implementation only requested through this method, with a value `true` for createNewContainer.
- * `unkeyedContainer(referencing:, at:, createNewContainer:)`: This method is the equivalent to `container(keyedBy:, referencing:, at:, createNewContainer:)` for unkeyed containers.
+ * `encodingContainer(keyedBy:, referencing:, at:)`: This methods creates a new `KeyedEncodingContainer`. It is called by `container(keyedBy:)` and also by the `nestedContainer` methods of MetaSerialization's default encoding container implementations. You can therefor use this method to override the `KeyedEncodingContainerProtocol` implementation MetaEncoder should use.
+ * `unkeyedEncodingContainer(referencing:, at:)`: This method is the equivalent to `container(keyedBy:, referencing:, at:, createNewContainer:)` for unkeyed containers.
  * `singleValueContainer(referencing:, at:)`: This method creates a new `SingleValueEncodingContainer`. It is only used by `singleValueContainer()`.
  * `encoder(referencing:, at:)`: Creates a new encoder. This method is used by the default encoding container implementations to create super encoders. You may use this method to override the implementation the default implementations of `KeyedEncodingContainerProtocol` and `UnkeyedEncodingContainer` should use as super encoder.
+ * `encoderImplementation(storage:, at:)`: This is the delegate method `encoder` uses. Override this method to use your subclass for e.g. super encoders.
  * `wrap(, at:)`: The core encoding code and the core functionality of MetaSerialization is contained in this method. `wrap` requests metas from metaSupplier in this method and calls `encode(to:)`, if translator returns nil. `wrap` accesses the storage and the coding path. If you're not fine with the concept of `CodingStorage` or facing a problem, that can not be solved by a different implementation of `CodingStorage`, you may have to override this method. If you need to override this method, however, make sure to include a guard for `DirectlyEncodable` types after asking the `MetaSupplier`, because these types will typically cause endless loops, if translator does not support them (MetaSerialization publicly extends String, Bool, Int, Float, Int8, etc. to conform to `DirectlyEncodable`). This code looks like this in the default implementation:
  ```swift
  guard !(value is DirectlyEncodable) else {
