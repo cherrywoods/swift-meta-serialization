@@ -33,12 +33,12 @@ open class ArrayUnkeyedContainerMeta: UnkeyedContainerMeta, GenericMeta {
      */
     open var value: [Meta] = []
     
-    open var count: Int? {
+    open var count: Int {
         return value.count
     }
     
     open func get(at index:Int) -> Meta? {
-        guard (0..<count!).contains(index) else { // makes sure index is within its valid bounds (0 and count)
+        guard (0..<count).contains(index) else { // makes sure index is within its valid bounds (0 and count)
             return nil
         }
         return value[index]

@@ -74,12 +74,12 @@ public protocol ContainerElementReference {
 public struct KeyedContainerElementReference: ContainerElementReference {
     
     private var reference: Reference
-    private let key: CodingKey
+    private let key: MetaCodingKey
     
-    private var container: KeyedContainerMeta {
+    private var container: EncodingKeyedContainerMeta {
         
         get {
-            return (reference.meta as! KeyedContainerMeta)
+            return (reference.meta as! EncodingKeyedContainerMeta)
         }
         
         set {
@@ -94,26 +94,30 @@ public struct KeyedContainerElementReference: ContainerElementReference {
      - Parameter ref: The underlying reference.
      - codingKey: The codingKey that identifies the element to reference.
      */
-    public init(referencing ref: Reference, at codingKey: CodingKey) {
+    public init(referencing ref: Reference, at key: MetaCodingKey) {
         
-        precondition(ref.meta is KeyedContainerMeta, "ref.meta needs to be a KeyedContainerMeta.")
+        precondition(ref.meta is EncodingKeyedContainerMeta, "ref.meta needs to be a EncodingKeyedContainerMeta.")
         
         self.reference = ref
-        self.key = codingKey
+        self.key = key
         
     }
     
     public var meta: Meta {
         
-        return container[key]!
+        return container.getValue(for: key)!
         
     }
     
     public mutating func insert(_ meta: Meta) {
         
+        /*
         var copy = self
-        copy.container[key] = meta
+        copy.container.put(meta, for: key)
         self = copy
+        */
+        
+        self.container.put(meta, for: key)
         
     }
     
@@ -127,10 +131,10 @@ public struct UnkeyedContainerElementReference: ContainerElementReference {
     private var reference: Reference
     private let index: Int
     
-    private var container: UnkeyedContainerMeta {
+    private var container: EncodingUnkeyedContainerMeta {
         
         get {
-            return (reference.meta as! UnkeyedContainerMeta)
+            return (reference.meta as! EncodingUnkeyedContainerMeta)
         }
         
         set {
@@ -149,7 +153,7 @@ public struct UnkeyedContainerElementReference: ContainerElementReference {
      */
     public init(referencing ref: Reference, at index: Int) {
         
-        precondition(ref.meta is UnkeyedContainerMeta, "ref.meta needs to be a UnkeyedContainerMeta.")
+        precondition(ref.meta is EncodingUnkeyedContainerMeta, "ref.meta needs to be a EncodingUnkeyedContainerMeta.")
         
         self.reference = ref
         self.index = index

@@ -31,7 +31,7 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
     /**
      This MetaKeyedDecodingContainer's meta.
      */
-    open let meta: KeyedContainerMeta
+    open let meta: DecodingKeyedContainerMeta
     
     /**
      The decoder that created this container.
@@ -44,7 +44,7 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
     
     // MARK: - initalization
     
-    public init(for meta: KeyedContainerMeta, at codingPath: [CodingKey], decoder: MetaDecoder) {
+    public init(for meta: DecodingKeyedContainerMeta, at codingPath: [CodingKey], decoder: MetaDecoder) {
         
         self.meta = meta
         self.codingPath = codingPath
@@ -56,13 +56,30 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
     
     public var allKeys: [Key] {
         
-        return meta.allKeys() as [Key]
+        // filter all keys that are not convertible, as described in documentation
+        return meta.allKeys.flatMap { metaKey in
+            
+            if let codingKey = Key(stringValue: metaKey.stringValue) {
+                
+                return codingKey
+                
+            }
+            
+            if let intValue = metaKey.intValue {
+                
+                return Key(intValue: intValue)
+                
+            }
+                
+            return nil
+            
+        }
         
     }
     
     public func contains(_ key: Key) -> Bool {
         
-        return meta.contains(key: key)
+        return meta.contains(key: MetaCodingKey(codingKey: key))
         
     }
     
@@ -118,7 +135,7 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
     
     private func accessMeta(at key: CodingKey) throws -> Meta {
         
-        guard let subMeta = meta[key] else {
+        guard let subMeta = meta.getValue(for: MetaCodingKey(codingKey: key)) else {
             
             let context = DecodingError.Context(codingPath: codingPath,
                                                 debugDescription: "No container for key \(key) found.")
