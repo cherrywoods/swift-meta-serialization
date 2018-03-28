@@ -133,7 +133,8 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
     
     // MARK: - utilities
     
-    private func accessMeta(at key: CodingKey) throws -> Meta {
+    /// An utility mathod that acesses the meta stored at key and throws an error, if the value isn't present.
+    public func accessMeta(at key: CodingKey) throws -> Meta {
         
         guard let subMeta = meta.getValue(for: MetaCodingKey(codingKey: key)) else {
             
