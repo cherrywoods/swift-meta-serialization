@@ -27,7 +27,7 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     /**
      This MetaUnkeyedDecodingContainer's meta.
      */
-    open let meta: UnkeyedContainerMeta
+    open let meta: DecodingUnkeyedContainerMeta
     
     /**
      The decoder that created this container.
@@ -40,7 +40,7 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     
     // MARK: - initalization
     
-    public init(for meta: UnkeyedContainerMeta, at codingPath: [CodingKey], decoder: MetaDecoder) {
+    public init(for meta: DecodingUnkeyedContainerMeta, at codingPath: [CodingKey], decoder: MetaDecoder) {
         
         self.meta = meta
         self.codingPath = codingPath
@@ -51,7 +51,7 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     // MARK: - container methods
 
     open var count: Int? {
-        return meta.count
+        return meta.countIfKnown
     }
 
     open var isAtEnd: Bool {

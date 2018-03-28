@@ -22,6 +22,14 @@
 		6318C9B12047EC08009402B7 /* ReferencingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6318C9B02047EC08009402B7 /* ReferencingStorage.swift */; };
 		6318C9B22047EC08009402B7 /* ReferencingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6318C9B02047EC08009402B7 /* ReferencingStorage.swift */; };
 		6318C9B42047EC08009402B7 /* ReferencingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6318C9B02047EC08009402B7 /* ReferencingStorage.swift */; };
+		63250453206B723200BFBDA2 /* KeyedContainerMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63250452206B723200BFBDA2 /* KeyedContainerMeta.swift */; };
+		63250454206B723200BFBDA2 /* KeyedContainerMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63250452206B723200BFBDA2 /* KeyedContainerMeta.swift */; };
+		63250455206B723200BFBDA2 /* KeyedContainerMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63250452206B723200BFBDA2 /* KeyedContainerMeta.swift */; };
+		63250456206B723200BFBDA2 /* KeyedContainerMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63250452206B723200BFBDA2 /* KeyedContainerMeta.swift */; };
+		63250458206B772C00BFBDA2 /* UnkeyedContainerMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63250457206B772C00BFBDA2 /* UnkeyedContainerMeta.swift */; };
+		63250459206B772C00BFBDA2 /* UnkeyedContainerMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63250457206B772C00BFBDA2 /* UnkeyedContainerMeta.swift */; };
+		6325045A206B772C00BFBDA2 /* UnkeyedContainerMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63250457206B772C00BFBDA2 /* UnkeyedContainerMeta.swift */; };
+		6325045B206B772C00BFBDA2 /* UnkeyedContainerMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63250457206B772C00BFBDA2 /* UnkeyedContainerMeta.swift */; };
 		63268695204873F700E2CDBB /* MetaDecoder+frontend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63268694204873F700E2CDBB /* MetaDecoder+frontend.swift */; };
 		63268696204873F700E2CDBB /* MetaDecoder+frontend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63268694204873F700E2CDBB /* MetaDecoder+frontend.swift */; };
 		63268698204873F700E2CDBB /* MetaDecoder+frontend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63268694204873F700E2CDBB /* MetaDecoder+frontend.swift */; };
@@ -47,7 +55,6 @@
 		633D4D1C206264A500ADFF91 /* SingleValueDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753721FC1AD7B000A2319 /* SingleValueDecodingContainer.swift */; };
 		633D4D1D206264A500ADFF91 /* SimpleSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6393728D1FEC210900840D11 /* SimpleSerialization.swift */; };
 		633D4D1F206264A500ADFF91 /* ReferencingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6318C9B02047EC08009402B7 /* ReferencingStorage.swift */; };
-		633D4D20206264A500ADFF91 /* ContainerMetas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753691FC1AD7B000A2319 /* ContainerMetas.swift */; };
 		633D4D21206264A500ADFF91 /* SharedUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F00228204558D7009E1CA7 /* SharedUtilities.swift */; };
 		633D4D22206264A500ADFF91 /* MetaDecoder+containerMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63268699204877CC00E2CDBB /* MetaDecoder+containerMethods.swift */; };
 		633D4D23206264A500ADFF91 /* LinearCodingStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B78288204498B1005C278E /* LinearCodingStack.swift */; };
@@ -149,9 +156,6 @@
 		63E7540A1FC1AD7C000A2319 /* Reference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7535D1FC1AD7A000A2319 /* Reference.swift */; };
 		63E7540B1FC1AD7C000A2319 /* Reference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7535D1FC1AD7A000A2319 /* Reference.swift */; };
 		63E7540D1FC1AD7C000A2319 /* Reference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7535D1FC1AD7A000A2319 /* Reference.swift */; };
-		63E754321FC1AD7C000A2319 /* ContainerMetas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753691FC1AD7B000A2319 /* ContainerMetas.swift */; };
-		63E754331FC1AD7C000A2319 /* ContainerMetas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753691FC1AD7B000A2319 /* ContainerMetas.swift */; };
-		63E754351FC1AD7C000A2319 /* ContainerMetas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753691FC1AD7B000A2319 /* ContainerMetas.swift */; };
 		63E754461FC1AD7C000A2319 /* CodingKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7536F1FC1AD7B000A2319 /* CodingKeys.swift */; };
 		63E754471FC1AD7C000A2319 /* CodingKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7536F1FC1AD7B000A2319 /* CodingKeys.swift */; };
 		63E754491FC1AD7C000A2319 /* CodingKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7536F1FC1AD7B000A2319 /* CodingKeys.swift */; };
@@ -222,6 +226,8 @@
 		6318C9B02047EC08009402B7 /* ReferencingStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferencingStorage.swift; sourceTree = "<group>"; };
 		6318C9BC2047FB79009402B7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6324A03F20128114006DA7A1 /* BasicUsage.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = BasicUsage.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		63250452206B723200BFBDA2 /* KeyedContainerMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyedContainerMeta.swift; sourceTree = "<group>"; };
+		63250457206B772C00BFBDA2 /* UnkeyedContainerMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnkeyedContainerMeta.swift; sourceTree = "<group>"; };
 		6326868920486A5600E2CDBB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		63268694204873F700E2CDBB /* MetaDecoder+frontend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MetaDecoder+frontend.swift"; sourceTree = "<group>"; };
 		63268699204877CC00E2CDBB /* MetaDecoder+containerMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MetaDecoder+containerMethods.swift"; sourceTree = "<group>"; };
@@ -267,7 +273,6 @@
 		63E7535B1FC1AD7A000A2319 /* Serialization+Default Implementations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Serialization+Default Implementations.swift"; sourceTree = "<group>"; };
 		63E7535C1FC1AD7A000A2319 /* Serialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serialization.swift; sourceTree = "<group>"; };
 		63E7535D1FC1AD7A000A2319 /* Reference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reference.swift; sourceTree = "<group>"; };
-		63E753691FC1AD7B000A2319 /* ContainerMetas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerMetas.swift; sourceTree = "<group>"; };
 		63E7536F1FC1AD7B000A2319 /* CodingKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodingKeys.swift; sourceTree = "<group>"; };
 		63E753711FC1AD7B000A2319 /* KeyedDecodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyedDecodingContainer.swift; sourceTree = "<group>"; };
 		63E753721FC1AD7B000A2319 /* SingleValueDecodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleValueDecodingContainer.swift; sourceTree = "<group>"; };
@@ -486,7 +491,8 @@
 			isa = PBXGroup;
 			children = (
 				63E7537A1FC1AD7B000A2319 /* Metas.swift */,
-				63E753691FC1AD7B000A2319 /* ContainerMetas.swift */,
+				63250452206B723200BFBDA2 /* KeyedContainerMeta.swift */,
+				63250457206B772C00BFBDA2 /* UnkeyedContainerMeta.swift */,
 				63E753541FC1AD7A000A2319 /* meta default implementations */,
 				631391C72063C14400A61691 /* MetaSupplier+Defaults.swift */,
 			);
@@ -922,11 +928,11 @@
 				631391C52063BA0A00A61691 /* Unwrapper.swift in Sources */,
 				633D4D19206264A500ADFF91 /* KeyedEncodingContainer.swift in Sources */,
 				633D4D1A206264A500ADFF91 /* MetaDecoder+frontend.swift in Sources */,
+				63250455206B723200BFBDA2 /* KeyedContainerMeta.swift in Sources */,
 				633D4D1B206264A500ADFF91 /* UnkeyedDecodingContainer.swift in Sources */,
 				633D4D1C206264A500ADFF91 /* SingleValueDecodingContainer.swift in Sources */,
 				633D4D1D206264A500ADFF91 /* SimpleSerialization.swift in Sources */,
 				633D4D1F206264A500ADFF91 /* ReferencingStorage.swift in Sources */,
-				633D4D20206264A500ADFF91 /* ContainerMetas.swift in Sources */,
 				633D4D21206264A500ADFF91 /* SharedUtilities.swift in Sources */,
 				633D4D22206264A500ADFF91 /* MetaDecoder+containerMethods.swift in Sources */,
 				633D4D23206264A500ADFF91 /* LinearCodingStack.swift in Sources */,
@@ -944,6 +950,7 @@
 				633D4D30206264A500ADFF91 /* ArrayUnkeyedContainerMeta.swift in Sources */,
 				633D4D31206264A500ADFF91 /* Reference.swift in Sources */,
 				633D4D32206264A500ADFF91 /* DirectlyCodable.swift in Sources */,
+				6325045A206B772C00BFBDA2 /* UnkeyedContainerMeta.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1005,11 +1012,11 @@
 				631391C32063BA0A00A61691 /* Unwrapper.swift in Sources */,
 				63E754561FC1AD7C000A2319 /* KeyedEncodingContainer.swift in Sources */,
 				63268695204873F700E2CDBB /* MetaDecoder+frontend.swift in Sources */,
+				63250453206B723200BFBDA2 /* KeyedContainerMeta.swift in Sources */,
 				63E754521FC1AD7C000A2319 /* UnkeyedDecodingContainer.swift in Sources */,
 				63E7544E1FC1AD7C000A2319 /* SingleValueDecodingContainer.swift in Sources */,
 				6393728E1FEC210A00840D11 /* SimpleSerialization.swift in Sources */,
 				6318C9B12047EC08009402B7 /* ReferencingStorage.swift in Sources */,
-				63E754321FC1AD7C000A2319 /* ContainerMetas.swift in Sources */,
 				63F00229204558D7009E1CA7 /* SharedUtilities.swift in Sources */,
 				6326869A204877CC00E2CDBB /* MetaDecoder+containerMethods.swift in Sources */,
 				63B78289204498B1005C278E /* LinearCodingStack.swift in Sources */,
@@ -1027,6 +1034,7 @@
 				63E753EE1FC1AD7C000A2319 /* ArrayUnkeyedContainerMeta.swift in Sources */,
 				63E7540A1FC1AD7C000A2319 /* Reference.swift in Sources */,
 				63E753DE1FC1AD7C000A2319 /* DirectlyCodable.swift in Sources */,
+				63250458206B772C00BFBDA2 /* UnkeyedContainerMeta.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1049,11 +1057,11 @@
 				631391C42063BA0A00A61691 /* Unwrapper.swift in Sources */,
 				63E754571FC1AD7C000A2319 /* KeyedEncodingContainer.swift in Sources */,
 				63268696204873F700E2CDBB /* MetaDecoder+frontend.swift in Sources */,
+				63250454206B723200BFBDA2 /* KeyedContainerMeta.swift in Sources */,
 				63E754531FC1AD7C000A2319 /* UnkeyedDecodingContainer.swift in Sources */,
 				63E7544F1FC1AD7C000A2319 /* SingleValueDecodingContainer.swift in Sources */,
 				639372901FEC211A00840D11 /* SimpleSerialization.swift in Sources */,
 				6318C9B22047EC08009402B7 /* ReferencingStorage.swift in Sources */,
-				63E754331FC1AD7C000A2319 /* ContainerMetas.swift in Sources */,
 				63F0022A204558D7009E1CA7 /* SharedUtilities.swift in Sources */,
 				6326869B204877CC00E2CDBB /* MetaDecoder+containerMethods.swift in Sources */,
 				63B7828A204498B1005C278E /* LinearCodingStack.swift in Sources */,
@@ -1071,6 +1079,7 @@
 				63E753EF1FC1AD7C000A2319 /* ArrayUnkeyedContainerMeta.swift in Sources */,
 				63E7540B1FC1AD7C000A2319 /* Reference.swift in Sources */,
 				63E753DF1FC1AD7C000A2319 /* DirectlyCodable.swift in Sources */,
+				63250459206B772C00BFBDA2 /* UnkeyedContainerMeta.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1093,11 +1102,11 @@
 				631391C62063BA0A00A61691 /* Unwrapper.swift in Sources */,
 				63E754591FC1AD7C000A2319 /* KeyedEncodingContainer.swift in Sources */,
 				63268698204873F700E2CDBB /* MetaDecoder+frontend.swift in Sources */,
+				63250456206B723200BFBDA2 /* KeyedContainerMeta.swift in Sources */,
 				63E754551FC1AD7C000A2319 /* UnkeyedDecodingContainer.swift in Sources */,
 				63E754511FC1AD7C000A2319 /* SingleValueDecodingContainer.swift in Sources */,
 				63BC5BD61FC95A7E0035005D /* PrimitivesEnumTranslator.swift in Sources */,
 				6318C9B42047EC08009402B7 /* ReferencingStorage.swift in Sources */,
-				63E754351FC1AD7C000A2319 /* ContainerMetas.swift in Sources */,
 				63F0022C204558D7009E1CA7 /* SharedUtilities.swift in Sources */,
 				6326869D204877CC00E2CDBB /* MetaDecoder+containerMethods.swift in Sources */,
 				63B7828C204498B1005C278E /* LinearCodingStack.swift in Sources */,
@@ -1115,6 +1124,7 @@
 				63E753F11FC1AD7C000A2319 /* ArrayUnkeyedContainerMeta.swift in Sources */,
 				63E7540D1FC1AD7C000A2319 /* Reference.swift in Sources */,
 				63E753E11FC1AD7C000A2319 /* DirectlyCodable.swift in Sources */,
+				6325045B206B772C00BFBDA2 /* UnkeyedContainerMeta.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

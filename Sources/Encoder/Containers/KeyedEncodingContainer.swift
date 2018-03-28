@@ -44,11 +44,11 @@ open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProto
     
     // MARK: utilities
     
-    private var referencedMeta: KeyedContainerMeta {
+    private var referencedMeta: EncodingKeyedContainerMeta {
         
         get {
             
-            return reference.meta as! KeyedContainerMeta
+            return reference.meta as! EncodingKeyedContainerMeta
             
         }
         
@@ -64,7 +64,7 @@ open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProto
     
     public init(referencing reference: Reference, at codingPath: [CodingKey], encoder: MetaEncoder) {
         
-        precondition(reference.meta is KeyedContainerMeta, "reference.meta needs to conform to KeyedContainerMeta")
+        precondition(reference.meta is EncodingKeyedContainerMeta, "reference.meta needs to conform to EncodingKeyedContainerMeta")
         
         self.reference = reference
         self.codingPath = codingPath
@@ -82,7 +82,8 @@ open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProto
     
     public func encode<T: Encodable>(_ value: T, forKey key: Key) throws {
         
-        self.referencedMeta[key] = try encoder.wrap(value, at: key)
+        referencedMeta.put( try encoder.wrap(value, at: key),
+                            for: MetaCodingKey(codingKey: key) )
         
     }
     
@@ -133,7 +134,7 @@ open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProto
      */
     open func createElementReference(for key: CodingKey) -> Reference {
         
-        let elementRef = KeyedContainerElementReference(referencing: reference, at: key)
+        let elementRef = KeyedContainerElementReference(referencing: reference, at: MetaCodingKey(codingKey: key))
         return Reference.containerElement( elementRef )
         
     }

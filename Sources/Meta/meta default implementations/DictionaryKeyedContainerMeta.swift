@@ -44,41 +44,31 @@ open class DictionaryKeyedContainerMeta: KeyedContainerMeta, GenericMeta {
      */
     open var value: Dictionary<String, Meta> = [:]
     
-    /**
-     Set the value for a certain string key.
-     */
-    open subscript(stringKey: String) -> Meta? {
-        
-        get {
-            return value[stringKey]
-        }
-        
-        set {
-            self.value[stringKey] = newValue
-        }
-        
-    }
-    
     // MARK: KeyedContainerMeta implementation
     
-    open subscript(key: CodingKey) -> Meta? {
+    open var allKeys: [MetaCodingKey] {
         
-        get {
-            return value[key.stringValue]
-        }
-        
-        set {
-            self.value[key.stringValue] = newValue
-        }
+        return value.keys.map { MetaCodingKey(stringValue: $0) }
         
     }
     
-    open func allKeys<Key: CodingKey>() -> [Key] {
-        return value.keys.flatMap { Key(stringValue: $0) }
+    open func contains(key: MetaCodingKey) -> Bool {
+        
+        // if subscript returns nil, no value is contained
+        return value[key.stringValue] != nil
+        
     }
     
-    open func contains(key: CodingKey) -> Bool {
-        return value.contains(where: { (stringValue, _) in return key.stringValue == stringValue })
+    open func put(_ meta: Meta, for key: MetaCodingKey) {
+        
+        value[key.stringValue] = meta
+        
+    }
+    
+    open func getValue(for key: MetaCodingKey) -> Meta? {
+        
+        return value[key.stringValue]
+        
     }
     
 }

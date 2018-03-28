@@ -42,11 +42,11 @@ open class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
     
     // MARK: utilities
     
-    private var referencedMeta: UnkeyedContainerMeta {
+    private var referencedMeta: EncodingUnkeyedContainerMeta {
         
         get {
             
-            return reference.meta as! UnkeyedContainerMeta
+            return reference.meta as! EncodingUnkeyedContainerMeta
             
         }
         
@@ -66,7 +66,7 @@ open class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
     
     public init(referencing reference: Reference, at codingPath: [CodingKey], encoder: MetaEncoder) {
         
-        precondition(reference.meta is UnkeyedContainerMeta, "reference.meta needs to conform to KeyedContainerMeta")
+        precondition(reference.meta is EncodingUnkeyedContainerMeta, "reference.meta needs to conform to EncodingUnkeyedContainerMeta")
         
         self.reference = reference
         self.codingPath = codingPath
@@ -78,8 +78,7 @@ open class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
     
     open var count: Int {
         
-        // during encoding this value needs to be known
-        return referencedMeta.count!
+        return referencedMeta.count
         
     }
     
