@@ -78,7 +78,7 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
 
     }
 
-    open func decode<T>(_ type: T.Type) throws -> T where T : Decodable {
+    open func decode<T: Decodable>(_ type: T.Type) throws -> T {
 
         let subMeta = try accessMetaAtCurrentIndex()
         let value = try decoder.unwrap(subMeta, toType: type, for: currentCodingKey)

@@ -63,10 +63,4 @@ public protocol DecodingUnkeyedContainerMeta: Meta {
      */
     func get(at index: Int) -> Meta?
     
-    /**
-     Inserts or appends the given meta at index.
-     Index may be equals count (in this case you should append), but not larger.
-     */
-    func insert(element: Meta, at: Int)
-    
 }

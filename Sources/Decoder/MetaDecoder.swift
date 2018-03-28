@@ -128,7 +128,7 @@ open class MetaDecoder: Decoder {
         guard let keyedMeta = meta as? DecodingKeyedContainerMeta else {
 
             let context = DecodingError.Context(codingPath: codingPath, debugDescription: "Decoded value does not match the expected type.")
-            throw DecodingError.typeMismatch(DecodingKeyedDecodingContainer<Key>.self, context)
+            throw DecodingError.typeMismatch(KeyedDecodingContainer<Key>.self, context)
 
         }
 
@@ -152,7 +152,7 @@ open class MetaDecoder: Decoder {
         guard let unkeyedMeta = meta as? DecodingUnkeyedContainerMeta else {
 
             let context = DecodingError.Context(codingPath: codingPath, debugDescription: "Decoded value does not match the expected type.")
-            throw DecodingError.typeMismatch(DecodingUnkeyedDecodingContainer.self, context)
+            throw DecodingError.typeMismatch(UnkeyedDecodingContainer.self, context)
 
         }
 
