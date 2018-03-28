@@ -125,10 +125,10 @@ open class MetaDecoder: Decoder {
      */
     public func container<Key: CodingKey>(keyedBy keyType: Key.Type, for meta: Meta, at codingPath: [CodingKey]) throws -> KeyedDecodingContainer<Key> {
 
-        guard let keyedMeta = meta as? KeyedContainerMeta else {
+        guard let keyedMeta = meta as? DecodingKeyedContainerMeta else {
 
             let context = DecodingError.Context(codingPath: codingPath, debugDescription: "Decoded value does not match the expected type.")
-            throw DecodingError.typeMismatch(KeyedDecodingContainer<Key>.self, context)
+            throw DecodingError.typeMismatch(DecodingKeyedDecodingContainer<Key>.self, context)
 
         }
 
@@ -136,7 +136,7 @@ open class MetaDecoder: Decoder {
         
     }
 
-    open func decodingContainer<Key: CodingKey>(keyedBy keyType: Key.Type, for keyedMeta: KeyedContainerMeta, at codingPath: [CodingKey]) throws -> KeyedDecodingContainer<Key> {
+    open func decodingContainer<Key: CodingKey>(keyedBy keyType: Key.Type, for keyedMeta: DecodingKeyedContainerMeta, at codingPath: [CodingKey]) throws -> KeyedDecodingContainer<Key> {
         
         return KeyedDecodingContainer( MetaKeyedDecodingContainer<Key>(for: keyedMeta, at: codingPath, decoder: self) )
 
@@ -149,10 +149,10 @@ open class MetaDecoder: Decoder {
      */
     public func unkeyedContainer(for meta: Meta, at codingPath: [CodingKey]) throws -> UnkeyedDecodingContainer {
 
-        guard let unkeyedMeta = meta as? UnkeyedContainerMeta else {
+        guard let unkeyedMeta = meta as? DecodingUnkeyedContainerMeta else {
 
             let context = DecodingError.Context(codingPath: codingPath, debugDescription: "Decoded value does not match the expected type.")
-            throw DecodingError.typeMismatch(UnkeyedDecodingContainer.self, context)
+            throw DecodingError.typeMismatch(DecodingUnkeyedDecodingContainer.self, context)
 
         }
 
@@ -160,7 +160,7 @@ open class MetaDecoder: Decoder {
         
     }
 
-    open func unkeyedDecodingContainer(for unkeyedMeta: UnkeyedContainerMeta, at codingPath: [CodingKey]) throws -> UnkeyedDecodingContainer {
+    open func unkeyedDecodingContainer(for unkeyedMeta: DecodingUnkeyedContainerMeta, at codingPath: [CodingKey]) throws -> UnkeyedDecodingContainer {
         
         return MetaUnkeyedDecodingContainer(for: unkeyedMeta, at: codingPath, decoder: self)
 
