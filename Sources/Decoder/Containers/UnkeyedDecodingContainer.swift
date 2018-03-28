@@ -137,13 +137,15 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
 
     // MARK: Utilities
     
-    private var currentCodingKey: CodingKey {
+    /// An utility computed property, that returns a coding key for the current index.
+    public var currentCodingKey: CodingKey {
         
         return IndexCodingKey(intValue: self.currentIndex)!
         
     }
     
-    private func accessMetaAtCurrentIndex() throws -> Meta {
+    /// An utility method that accesses the meta stored at the current index and throws an error, if not value is present.
+    public func accessMetaAtCurrentIndex() throws -> Meta {
         
         guard let subMeta = meta.get(at: currentIndex) else {
             
