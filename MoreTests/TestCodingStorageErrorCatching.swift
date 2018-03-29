@@ -114,15 +114,15 @@ fileprivate class ThrowingStorage: CodingStorage {
     }
     
     func store(meta: Meta, at codingPath: [CodingKey]) throws {
-        throw CodingStorageError.init(reason: .pathNotFilled, path: [])
+        throw CodingStorageError(reason: .pathNotFilled, path: [])
     }
     
     func storePlaceholder(at codingPath: [CodingKey]) throws {
-        throw CodingStorageError.init(reason: .pathNotFilled, path: [])
+        throw CodingStorageError(reason: .pathNotFilled, path: [])
     }
     
     func remove(at codingPath: [CodingKey]) throws -> Meta? {
-        throw CodingStorageError.init(reason: .pathNotFilled, path: [])
+        throw CodingStorageError(reason: .pathNotFilled, path: [])
     }
     
     func fork(at codingPath: [CodingKey]) -> CodingStorage {

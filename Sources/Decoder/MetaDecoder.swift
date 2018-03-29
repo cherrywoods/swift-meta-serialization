@@ -132,12 +132,12 @@ open class MetaDecoder: Decoder {
      */
     public func container<Key: CodingKey>(keyedBy keyType: Key.Type, for passedMeta: Meta, at codingPath: [CodingKey]) throws -> KeyedDecodingContainer<Key> {
 
+        
         let meta: DecodingKeyedContainerMeta?
         if options.contains(.dynamicallyUnwrapMetaTree) {
             
-            // call unwrap if this option is set, also for containers
-            // use the passed meta, if unwrap returns nil
-            meta = try unwrapper.unwrap(meta: passedMeta, toType: DecodingKeyedContainerMeta.self, for: self)
+            // also unwrap containers, if dynamicallyUnwrapMetaTree is set
+            meta = try unwrapper.unwrap(meta: passedMeta, toType: DecodingKeyedContainerMeta.self, for: self) ?? ( passedMeta as? DecodingKeyedContainerMeta )
             
         } else {
             
@@ -172,7 +172,7 @@ open class MetaDecoder: Decoder {
         let meta: DecodingUnkeyedContainerMeta?
         if options.contains(.dynamicallyUnwrapMetaTree) {
             
-            meta = try unwrapper.unwrap(meta: passedMeta, toType: DecodingUnkeyedContainerMeta.self, for: self)
+            meta = try unwrapper.unwrap(meta: passedMeta, toType: DecodingUnkeyedContainerMeta.self, for: self) ?? ( passedMeta as? DecodingUnkeyedContainerMeta )
             
         } else {
             

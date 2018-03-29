@@ -23,11 +23,11 @@ public extension MetaSupplier {
     
     // TODO: update when these containers are rewritten. Also update documenation.
     
-    public func keyedContainerMeta() -> KeyedContainerMeta {
+    public func keyedContainerMeta() -> EncodingKeyedContainerMeta {
         return DictionaryKeyedContainerMeta()
     }
     
-    public func unkeyedContainerMeta() -> UnkeyedContainerMeta {
+    public func unkeyedContainerMeta() -> EncodingUnkeyedContainerMeta {
         return ArrayUnkeyedContainerMeta()
     }
     
