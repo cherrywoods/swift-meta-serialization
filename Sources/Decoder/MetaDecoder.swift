@@ -92,6 +92,14 @@ open class MetaDecoder: Decoder {
         let storeMeta = meta != nil
         let meta = meta ?? storage[codingPath]
 
+        // do only store and remove a meta, if storeMeta is true
+        if storeMeta { try storage.store(meta: meta, at: path) }
+        // defer removal to restore the decoder storage if an error was thrown in type.init or in unwrap
+        defer { if storeMeta { _ = try! storage.remove(at:path) } }
+
+        // already having stored before unwrap makes it possible to use container methods in unwrap.
+        // however with this store, `decoder.decode` can not be called in `unwrapper.unwrap`.
+        
         // ask translator to unwrap meta to type
         if let directlySupported = try unwrapper.unwrap(meta: meta, toType: type, for: self) {
             
@@ -112,11 +120,6 @@ open class MetaDecoder: Decoder {
             throw DecodingError.typeMismatch(type, context)
 
         }
-
-        // do only store and remove a meta, if storeMeta is true
-        if storeMeta { try storage.store(meta: meta, at: path) }
-        // defer removal to restore the decoder storage if an error was thrown in type.init
-        defer { if storeMeta { _ = try! storage.remove(at:path) } }
 
         let value = try type.init(from: self)
         return value

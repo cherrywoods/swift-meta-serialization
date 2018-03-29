@@ -78,6 +78,16 @@ open class MetaEncoder: Encoder {
         defer{ if key != nil { codingPath.removeLast() } }
         let path = codingPath
 
+        try storage.storePlaceholder(at: path)
+        defer {
+            // remove the placeholder that was stored at the path
+            // (or any incomplete metas)
+            // this makes it possible to encode another value, if an error was thrown
+            _ = try? storage.remove(at: path)
+        }
+        // having already stored a placeholder before `metaSupplier.wrap` is called
+        // makes calling Encodables `encode(to:)` safer.
+
         // check whether translator supports value directly
         if let newMeta = try metaSupplier.wrap(value, for: self) {
 
@@ -112,8 +122,6 @@ open class MetaEncoder: Encoder {
 
         }
 
-        try storage.storePlaceholder(at: path)
-
         do {
             
             // let value encode itself to this encoder
@@ -121,10 +129,6 @@ open class MetaEncoder: Encoder {
             
         } catch {
             
-            // remove the placeholder that was stored at the path
-            // (or any incomplete metas)
-            // this makes it possible to encode another value, if an error was thrown
-            _ = try? storage.remove(at: path)
             throw error
             
         }

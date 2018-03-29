@@ -38,6 +38,11 @@ public protocol Unwrapper {
      If you return nil for these containers, the meta passed to unwrap will be used as container meta, if it conforms to these types.
      Otherwise a DecodingError will be thrown.
      
+     You may in this method directly call Decodables `init(from:)` if desired or access decoders container methods otherwise.
+     However calling `decoder.decode(type:, from:)` is not allowed and will throw `MetaDecoder.Errors.decodingHasNotSucceeded`.
+     If you called `init(from:)` or one of the container methods, you must eigther return a non-nil value,
+     or the containers you requested need to align with the decoding code of T (doing this isn't recommended, return a value).
+     
      This method is called very frequently.
      
      - Parameter meta: The meta whose value you should cast to T. This meta was created by you during decode.
