@@ -19,6 +19,10 @@
 		631391C92063C14400A61691 /* MetaSupplier+Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631391C72063C14400A61691 /* MetaSupplier+Defaults.swift */; };
 		631391CA2063C14400A61691 /* MetaSupplier+Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631391C72063C14400A61691 /* MetaSupplier+Defaults.swift */; };
 		631391CB2063C14400A61691 /* MetaSupplier+Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631391C72063C14400A61691 /* MetaSupplier+Defaults.swift */; };
+		631498D0206CD2F600F00CA4 /* MetaDecoder+Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631498CF206CD2F600F00CA4 /* MetaDecoder+Options.swift */; };
+		631498D1206CD2F600F00CA4 /* MetaDecoder+Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631498CF206CD2F600F00CA4 /* MetaDecoder+Options.swift */; };
+		631498D2206CD2F600F00CA4 /* MetaDecoder+Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631498CF206CD2F600F00CA4 /* MetaDecoder+Options.swift */; };
+		631498D3206CD2F600F00CA4 /* MetaDecoder+Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631498CF206CD2F600F00CA4 /* MetaDecoder+Options.swift */; };
 		6318C9B12047EC08009402B7 /* ReferencingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6318C9B02047EC08009402B7 /* ReferencingStorage.swift */; };
 		6318C9B22047EC08009402B7 /* ReferencingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6318C9B02047EC08009402B7 /* ReferencingStorage.swift */; };
 		6318C9B42047EC08009402B7 /* ReferencingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6318C9B02047EC08009402B7 /* ReferencingStorage.swift */; };
@@ -223,6 +227,7 @@
 		631391BD2063B78200A61691 /* MetaSupplier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaSupplier.swift; sourceTree = "<group>"; };
 		631391C22063BA0A00A61691 /* Unwrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unwrapper.swift; sourceTree = "<group>"; };
 		631391C72063C14400A61691 /* MetaSupplier+Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MetaSupplier+Defaults.swift"; sourceTree = "<group>"; };
+		631498CF206CD2F600F00CA4 /* MetaDecoder+Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MetaDecoder+Options.swift"; sourceTree = "<group>"; };
 		6318C9B02047EC08009402B7 /* ReferencingStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferencingStorage.swift; sourceTree = "<group>"; };
 		6318C9BC2047FB79009402B7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6324A03F20128114006DA7A1 /* BasicUsage.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = BasicUsage.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -396,6 +401,7 @@
 				63E753431FC1AD79000A2319 /* MetaDecoder.swift */,
 				63268699204877CC00E2CDBB /* MetaDecoder+containerMethods.swift */,
 				63268694204873F700E2CDBB /* MetaDecoder+frontend.swift */,
+				631498CF206CD2F600F00CA4 /* MetaDecoder+Options.swift */,
 				6326869E20487A6100E2CDBB /* Containers */,
 			);
 			path = Decoder;
@@ -924,6 +930,7 @@
 				633D4D15206264A500ADFF91 /* SimpleGenericMeta.swift in Sources */,
 				633D4D16206264A500ADFF91 /* MetaEncoder+containerMethods.swift in Sources */,
 				633D4D17206264A500ADFF91 /* DictionaryKeyedContainerMeta.swift in Sources */,
+				631498D2206CD2F600F00CA4 /* MetaDecoder+Options.swift in Sources */,
 				633D4D18206264A500ADFF91 /* Representation+Default Implementations.swift in Sources */,
 				631391C52063BA0A00A61691 /* Unwrapper.swift in Sources */,
 				633D4D19206264A500ADFF91 /* KeyedEncodingContainer.swift in Sources */,
@@ -1008,6 +1015,7 @@
 				63E753FE1FC1AD7C000A2319 /* SimpleGenericMeta.swift in Sources */,
 				636B760220470EFA0048DEDD /* MetaEncoder+containerMethods.swift in Sources */,
 				63E753F21FC1AD7C000A2319 /* DictionaryKeyedContainerMeta.swift in Sources */,
+				631498D0206CD2F600F00CA4 /* MetaDecoder+Options.swift in Sources */,
 				63E753BA1FC1AD7C000A2319 /* Representation+Default Implementations.swift in Sources */,
 				631391C32063BA0A00A61691 /* Unwrapper.swift in Sources */,
 				63E754561FC1AD7C000A2319 /* KeyedEncodingContainer.swift in Sources */,
@@ -1053,6 +1061,7 @@
 				63E753FF1FC1AD7C000A2319 /* SimpleGenericMeta.swift in Sources */,
 				636B760320470EFA0048DEDD /* MetaEncoder+containerMethods.swift in Sources */,
 				63E753F31FC1AD7C000A2319 /* DictionaryKeyedContainerMeta.swift in Sources */,
+				631498D1206CD2F600F00CA4 /* MetaDecoder+Options.swift in Sources */,
 				63E753BB1FC1AD7C000A2319 /* Representation+Default Implementations.swift in Sources */,
 				631391C42063BA0A00A61691 /* Unwrapper.swift in Sources */,
 				63E754571FC1AD7C000A2319 /* KeyedEncodingContainer.swift in Sources */,
@@ -1098,6 +1107,7 @@
 				6393728F1FEC211A00840D11 /* SimpleSerialization.swift in Sources */,
 				636B760520470EFA0048DEDD /* MetaEncoder+containerMethods.swift in Sources */,
 				63E753F51FC1AD7C000A2319 /* DictionaryKeyedContainerMeta.swift in Sources */,
+				631498D3206CD2F600F00CA4 /* MetaDecoder+Options.swift in Sources */,
 				63E753BD1FC1AD7C000A2319 /* Representation+Default Implementations.swift in Sources */,
 				631391C62063BA0A00A61691 /* Unwrapper.swift in Sources */,
 				63E754591FC1AD7C000A2319 /* KeyedEncodingContainer.swift in Sources */,
