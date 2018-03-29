@@ -59,10 +59,9 @@ public protocol MetaSupplier {
      
      This method will be asked to return a Meta for an instance of the type GenericNil from MetaSerialization for any nil value that is requested to be encoded. Return nil, if you don't support nil values. If you support nil values, you are invited to use NilMeta from MetaSerialization, but you may of course use any meta implementation here.
      
-     You may in this method directly call Encodables `encode(to:)` if desired or access encoders container methods otherwise.
-     However calling `encoder.encode` is not allowed and will throw `MetaEncoder.Errors.encodingHasNotSucceeded`.
-     If you called `encode(to:)` or one of the container methods, you must eigther return a non-nil meta,
-     or the containers you requested need to align with the decoding code of T (doing this isn't recommended, return a meta).
+     You may not call Encodables `encode(to:)` in this method directly, or otherwise call container methods.
+     Calling these methods will conflict with the encoding of value, since you can not access the metas you created with those calls.
+     Call `encoder.encode` instead and nest your container requests inside a utility type if necessary.
      
      This method is called very frequently.
      
