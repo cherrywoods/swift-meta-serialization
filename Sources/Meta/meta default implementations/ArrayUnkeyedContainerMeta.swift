@@ -23,15 +23,16 @@ open class ArrayUnkeyedContainerMeta: UnkeyedContainerMeta, GenericMeta {
     
     public typealias SwiftValueType = [Meta]
     
-    // this init exists, because somehow otherwise no initalizer would be publicly visible
-    public init() {
-        // init with default value
+    public required init(value: [Meta] = []) {
+        
+        self.value = value
+        
     }
     
     /**
      The array value of this container.
      */
-    open var value: [Meta] = []
+    open var value: [Meta]
     
     open var count: Int {
         return value.count
