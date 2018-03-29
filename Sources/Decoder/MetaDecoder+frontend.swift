@@ -27,7 +27,13 @@ public extension MetaDecoder {
      Use this method rather than directly calling Decodable.init(from:).
      init(from:) will not detect types that are directly supported by the unwrapper.
      
-     - Throws: Aside from any errors that are thrown of unwrapper.unwrap and any `DecodingError` that has been thrown by another entity, this function will throw `MetaDecoder.Errors.decodingHasNotSucceeded` if the decoding could not succeed. In general, this error will never be thrown in code running unter the debug (and not the release) configuration. Instead the call will fail with an assertion failure.
+     There are some conditions `meta` and the metas contained in `meta` (refered to as "the meta tree") must meet:
+      * Any metas that should be seen as nil values by the decoder (for which `decodeNil` on e.g. `KeyedDecodingContainer` should return true) must conform to `NilMetaProtocol`.
+      * If you didn't set the `MetaDecoder.Options.dynamicallyUnwrapMetaTree` option on this decoder, all metas that can be seen as keyed or unkeyed containers must conform to `DecodingKeyedContainerMeta`/`DecodingUnkeyedContainerMeta`, othwise these containers can not be detected. Alternatively consider setting `.dynamicallyUnwrapMetaTree` and implementing the required container unwraping in `unwrap` of your `Unwrapper` implementation.
+     
+     - Parameter type: The type that should decoded.
+     - Parameter meta: The meta tree the decoder should decode from.
+     - Throws: Aside from any errors that are thrown of unwrapper.unwrap and any `DecodingError` that has been thrown by another entity, this function will throw `MetaDecoder.Errors.decodingHasNotSucceeded` if the decoding could not succeed. In general, this error will never be thrown in code running unter the debug (and not the release) configuration. Instead the call will fail with an assertion failure. Such an error usually indicates an invalid decoder implementation.
      */
     public func decode<D: Decodable>(type: D.Type, from meta: Meta) throws -> D {
         

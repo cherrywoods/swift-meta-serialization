@@ -19,6 +19,11 @@
 
 import Foundation
 
+/**
+ The core interface to specify MetaDecoder's decoding.
+ Implement this protocol to unwrap "primities"
+ (these are usually the types you can represent directly in your serialization format).
+ */
 public protocol Unwrapper {
     
     /**
@@ -28,13 +33,16 @@ public protocol Unwrapper {
      
      If you decoded to a Meta conforming to NilMetaProtocol, that Meta will not reach your method.
      
-     This method will be called very frequently.
+     If on a `MetaDecoder` the option `MetaDecoder.Options.dynamicallyUnwrapMetaTree is set,
+     the decoder will call `unwrap` with the types `DecodingKeyedContainerMeta` and `DecodingUnkeyedContainerMeta`.
+     If you return nil for these containers, the meta passed to unwrap will be used as container meta, if it conforms to these types.
+     Otherwise a DecodingError will be thrown.
      
-     This method will be called for every meta of the meta tree you created.
-     - Throws: If you throw a `DecodingError` in this method, MetaDecoder will replace the coding path of the `DecodingError.Context` with the actual coding path. You may therefor just use `[]` as coding path.
-     - Parameter type: The type you should cast to.
+     This method is called very frequently.
+     
      - Parameter meta: The meta whose value you should cast to T. This meta was created by you during decode.
-     - Parameter decoder: The decoder that requests the unwrap. You should use this decoder if you need to decodetypes yourself inside unwrap or to get the current coding path (this an array of coding keys visited up to meta in the order they were visited) taken up to meta. codingPath is ment to be used in errors you may throw (e.g. `DecodingError`).
+     - Parameter type: The type you should cast to.
+     - Parameter decoder: The decoder that requests the unwrap. You should use this decoder if you need to decode types yourself inside unwrap or to get the current coding path (this an array of coding keys visited up to meta in the order they were visited) taken up to meta. This coding path is ment to be used in errors you may throw (e.g. `DecodingError`).
      - Returns: A value of type T, that was constructed from meta. Returns nil, if the requested type is not supported directly.
      */
     func unwrap<T>(meta: Meta, toType type: T.Type, for decoder: MetaDecoder) throws -> T?
