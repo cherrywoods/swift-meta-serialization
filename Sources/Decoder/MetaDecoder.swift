@@ -132,20 +132,20 @@ open class MetaDecoder: Decoder {
      */
     public func container<Key: CodingKey>(keyedBy keyType: Key.Type, for passedMeta: Meta, at codingPath: [CodingKey]) throws -> KeyedDecodingContainer<Key> {
 
-        let meta: Meta
+        let meta: DecodingKeyedContainerMeta?
         if options.contains(.dynamicallyUnwrapMetaTree) {
             
             // call unwrap if this option is set, also for containers
             // use the passed meta, if unwrap returns nil
-            meta = try unwrapper.unwrap(meta: passedMeta, toType: DecodingKeyedContainerMeta.self, for: self) ?? passedMeta
+            meta = try unwrapper.unwrap(meta: passedMeta, toType: DecodingKeyedContainerMeta.self, for: self)
             
         } else {
             
-            meta = passedMeta
+            meta = passedMeta as? DecodingKeyedContainerMeta
             
         }
         
-        guard let keyedMeta = meta as? DecodingKeyedContainerMeta else {
+        guard let keyedMeta = meta else {
 
             let context = DecodingError.Context(codingPath: codingPath, debugDescription: "Decoded value does not match the expected type.")
             throw DecodingError.typeMismatch(KeyedDecodingContainer<Key>.self, context)
@@ -169,18 +169,18 @@ open class MetaDecoder: Decoder {
      */
     public func unkeyedContainer(for passedMeta: Meta, at codingPath: [CodingKey]) throws -> UnkeyedDecodingContainer {
 
-        let meta: Meta
+        let meta: DecodingUnkeyedContainerMeta?
         if options.contains(.dynamicallyUnwrapMetaTree) {
             
-            meta = try unwrapper.unwrap(meta: passedMeta, toType: DecodingUnkeyedContainerMeta.self, for: self) ?? passedMeta
+            meta = try unwrapper.unwrap(meta: passedMeta, toType: DecodingUnkeyedContainerMeta.self, for: self)
             
         } else {
             
-            meta = passedMeta
+            meta = passedMeta as? DecodingUnkeyedContainerMeta
             
         }
         
-        guard let unkeyedMeta = meta as? DecodingUnkeyedContainerMeta else {
+        guard let unkeyedMeta = meta else {
 
             let context = DecodingError.Context(codingPath: codingPath, debugDescription: "Decoded value does not match the expected type.")
             throw DecodingError.typeMismatch(UnkeyedDecodingContainer.self, context)
