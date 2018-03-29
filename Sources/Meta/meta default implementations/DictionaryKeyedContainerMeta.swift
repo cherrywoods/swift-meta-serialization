@@ -35,8 +35,10 @@ open class DictionaryKeyedContainerMeta: KeyedContainerMeta, GenericMeta {
     
     public typealias SwiftValueType = Dictionary<String, Meta>
     
-    public init() {
-        // init with default value
+    public required init(value: Dictionary<String, Meta> = [:]) {
+        
+        self.value = value
+        
     }
     
     /**
