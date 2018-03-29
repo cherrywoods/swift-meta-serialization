@@ -107,6 +107,7 @@ public protocol CodingStorage {
      Remove the meta at the given coding path.
 
      Return nil, if a placeholder is stored at the path.
+     Do also remove the placeholder.
 
      Throw CodingStorageErrors:
      - noMetaStoredAtThisCodingPath if no meta is stored at this coding path.
