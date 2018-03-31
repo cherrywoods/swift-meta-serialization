@@ -78,7 +78,7 @@ open class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
     
     open var count: Int {
         
-        return referencedMeta.count
+        return referencedMeta.numberOfMetas
         
     }
     
@@ -92,7 +92,7 @@ open class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
     
     public func encode<T: Encodable>(_ value: T) throws {
         
-        referencedMeta.insert(element: try encoder.wrap(value, at: lastCodingKey ), at: count )
+        referencedMeta.insert(try encoder.wrap(value, at: lastCodingKey ), at: count )
         
     }
     

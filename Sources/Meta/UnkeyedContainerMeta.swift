@@ -23,8 +23,8 @@ public protocol UnkeyedContainerMeta: EncodingUnkeyedContainerMeta, DecodingUnke
 
 extension UnkeyedContainerMeta {
     
-    public var countIfKnown: Int? {
-        return count
+    public var numberOfMetasIfKnown: Int? {
+        return numberOfMetas
     }
     
 }
@@ -32,7 +32,7 @@ extension UnkeyedContainerMeta {
 public protocol EncodingUnkeyedContainerMeta: Meta {
     
     /// The number of elements in the container ( 0 if no element is contained).
-    var count: Int { get }
+    var numberOfMetas: Int { get }
     
     /**
      Returns the element at the given index
@@ -44,18 +44,18 @@ public protocol EncodingUnkeyedContainerMeta: Meta {
      Inserts or appends the given meta at index.
      Index may be equals count (in this case you should append), but not larger.
      */
-    func insert(element: Meta, at: Int)
+    mutating func insert(_ meta: Meta, at: Int)
     
 }
 
 public protocol DecodingUnkeyedContainerMeta: Meta {
     
     /**
-     The number of elements in the container, if this number is known.
+     The number of metas in the container, if this number is known.
      
      Returns nil, if the number is unknown.
      */
-    var countIfKnown: Int? { get }
+    var numberOfMetasIfKnown: Int? { get }
     
     /**
      Returns the element at the given index

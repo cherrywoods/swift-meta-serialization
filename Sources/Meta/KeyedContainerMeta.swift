@@ -28,7 +28,7 @@ public typealias KeyedContainerMeta = EncodingKeyedContainerMeta&DecodingKeyedCo
 public protocol EncodingKeyedContainerMeta: Meta {
     
     /// Stores value for key (replaces the old value if there is already a value stored for key).
-    func put(_ value: Meta, for key: MetaCodingKey)
+    mutating func put(_ value: Meta, for key: MetaCodingKey)
     
     /// Returns the value contained for key in this container or nil if no value is contained. If `contains` returned true, you needs to return a non-nil value here.
     func getValue(for key: MetaCodingKey) -> Meta?

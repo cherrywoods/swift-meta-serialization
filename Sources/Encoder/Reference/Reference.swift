@@ -111,13 +111,9 @@ public struct KeyedContainerElementReference: ContainerElementReference {
     
     public mutating func insert(_ meta: Meta) {
         
-        /*
         var copy = self
         copy.container.put(meta, for: key)
         self = copy
-        */
-        
-        self.container.put(meta, for: key)
         
     }
     
@@ -168,7 +164,9 @@ public struct UnkeyedContainerElementReference: ContainerElementReference {
     
     public mutating func insert(_ meta: Meta) {
         
-        container.insert(element: meta, at: index)
+        var copy = self
+        copy.container.insert(meta, at: index)
+        self = copy
         
     }
     
