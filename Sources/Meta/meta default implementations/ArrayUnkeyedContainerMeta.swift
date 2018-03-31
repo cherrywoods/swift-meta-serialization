@@ -34,23 +34,19 @@ open class ArrayUnkeyedContainerMeta: UnkeyedContainerMeta, GenericMeta {
      */
     open var value: [Meta]
     
-    open var count: Int {
+    open var numberOfMetas: Int {
         return value.count
     }
     
     open func get(at index:Int) -> Meta? {
-        guard (0..<count).contains(index) else { // makes sure index is within its valid bounds (0 and count)
+        guard (0..<numberOfMetas).contains(index) else { // makes sure index is within its valid bounds (0 and count)
             return nil
         }
         return value[index]
     }
     
-    open func insert(element: Meta, at index: Int) {
-        value.insert(element, at: index)
-    }
-    
-    open func append(element: Meta) {
-        value.append(element)
+    open func insert(_ meta: Meta, at index: Int) {
+        value.insert(meta, at: index)
     }
     
 }

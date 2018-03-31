@@ -57,7 +57,7 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
     public var allKeys: [Key] {
         
         // filter all keys that are not convertible, as described in documentation
-        return meta.allKeys.flatMap { metaKey in
+        return meta.allKeys.compactMap { metaKey in
             
             if let codingKey = Key(stringValue: metaKey.stringValue) {
                 

@@ -51,7 +51,7 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     // MARK: - container methods
 
     open var count: Int? {
-        return meta.countIfKnown
+        return meta.numberOfMetasIfKnown
     }
 
     open var isAtEnd: Bool {

@@ -97,6 +97,14 @@
 		633D4D96206264EF00ADFF91 /* ContainerTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633D4CDC2062628300ADFF91 /* ContainerTranslator.swift */; };
 		633D4D98206264EF00ADFF91 /* MetaSerialization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E752FF1FC1A5A6000A2319 /* MetaSerialization.framework */; };
 		633D4DA220626B7C00ADFF91 /* MetaSerialization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633D4D3A206264A500ADFF91 /* MetaSerialization.framework */; };
+		63658A94206FECA800FE3F54 /* Array+UnkeyedContainerMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63658A92206FECA800FE3F54 /* Array+UnkeyedContainerMeta.swift */; };
+		63658A95206FECA800FE3F54 /* Array+UnkeyedContainerMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63658A92206FECA800FE3F54 /* Array+UnkeyedContainerMeta.swift */; };
+		63658A96206FECA800FE3F54 /* Array+UnkeyedContainerMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63658A92206FECA800FE3F54 /* Array+UnkeyedContainerMeta.swift */; };
+		63658A97206FECA800FE3F54 /* Array+UnkeyedContainerMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63658A92206FECA800FE3F54 /* Array+UnkeyedContainerMeta.swift */; };
+		63658A98206FECA800FE3F54 /* Dictionary+KeyedContainerMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63658A93206FECA800FE3F54 /* Dictionary+KeyedContainerMeta.swift */; };
+		63658A99206FECA800FE3F54 /* Dictionary+KeyedContainerMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63658A93206FECA800FE3F54 /* Dictionary+KeyedContainerMeta.swift */; };
+		63658A9A206FECA800FE3F54 /* Dictionary+KeyedContainerMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63658A93206FECA800FE3F54 /* Dictionary+KeyedContainerMeta.swift */; };
+		63658A9B206FECA800FE3F54 /* Dictionary+KeyedContainerMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63658A93206FECA800FE3F54 /* Dictionary+KeyedContainerMeta.swift */; };
 		636B760220470EFA0048DEDD /* MetaEncoder+containerMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636B760120470EFA0048DEDD /* MetaEncoder+containerMethods.swift */; };
 		636B760320470EFA0048DEDD /* MetaEncoder+containerMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636B760120470EFA0048DEDD /* MetaEncoder+containerMethods.swift */; };
 		636B760520470EFA0048DEDD /* MetaEncoder+containerMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636B760120470EFA0048DEDD /* MetaEncoder+containerMethods.swift */; };
@@ -251,6 +259,8 @@
 		633D4D7C206264EB00ADFF91 /* MetaSerializationTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MetaSerializationTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		633D4D8B206264ED00ADFF91 /* MetaSerializationTests-tvOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MetaSerializationTests-tvOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		633D4D9D206264EF00ADFF91 /* MetaSerializationTests-macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MetaSerializationTests-macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		63658A92206FECA800FE3F54 /* Array+UnkeyedContainerMeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+UnkeyedContainerMeta.swift"; sourceTree = "<group>"; };
+		63658A93206FECA800FE3F54 /* Dictionary+KeyedContainerMeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+KeyedContainerMeta.swift"; sourceTree = "<group>"; };
 		636B760120470EFA0048DEDD /* MetaEncoder+containerMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MetaEncoder+containerMethods.swift"; sourceTree = "<group>"; };
 		636B760620470F820048DEDD /* MetaEncoder+frontend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MetaEncoder+frontend.swift"; sourceTree = "<group>"; };
 		6374A5E3202C70F900F11F48 /* Foundation Primitive Codables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation Primitive Codables.swift"; sourceTree = "<group>"; };
@@ -572,6 +582,8 @@
 		63E753541FC1AD7A000A2319 /* meta default implementations */ = {
 			isa = PBXGroup;
 			children = (
+				63658A92206FECA800FE3F54 /* Array+UnkeyedContainerMeta.swift */,
+				63658A93206FECA800FE3F54 /* Dictionary+KeyedContainerMeta.swift */,
 				63E753591FC1AD7A000A2319 /* SimpleGenericMeta.swift */,
 				63E753551FC1AD7A000A2319 /* ArrayUnkeyedContainerMeta.swift */,
 				63E753561FC1AD7A000A2319 /* DictionaryKeyedContainerMeta.swift */,
@@ -919,10 +931,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63658A96206FECA800FE3F54 /* Array+UnkeyedContainerMeta.swift in Sources */,
 				633D4D0E206264A500ADFF91 /* MetaEncoder.swift in Sources */,
 				633D4D0F206264A500ADFF91 /* Foundation Primitive Codables.swift in Sources */,
 				633D4D10206264A500ADFF91 /* PrimitivesEnumTranslator.swift in Sources */,
 				633D4D11206264A500ADFF91 /* MetaEncoder+frontend.swift in Sources */,
+				63658A9A206FECA800FE3F54 /* Dictionary+KeyedContainerMeta.swift in Sources */,
 				633D4D12206264A500ADFF91 /* Representation.swift in Sources */,
 				633D4D13206264A500ADFF91 /* Metas.swift in Sources */,
 				631391C02063B78200A61691 /* MetaSupplier.swift in Sources */,
@@ -1004,10 +1018,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63658A94206FECA800FE3F54 /* Array+UnkeyedContainerMeta.swift in Sources */,
 				63E753CE1FC1AD7C000A2319 /* MetaEncoder.swift in Sources */,
 				6374A5E4202C70F900F11F48 /* Foundation Primitive Codables.swift in Sources */,
 				63BC5BD31FC95A7E0035005D /* PrimitivesEnumTranslator.swift in Sources */,
 				636B760720470F820048DEDD /* MetaEncoder+frontend.swift in Sources */,
+				63658A98206FECA800FE3F54 /* Dictionary+KeyedContainerMeta.swift in Sources */,
 				63E753BE1FC1AD7C000A2319 /* Representation.swift in Sources */,
 				63E7546A1FC1AD7C000A2319 /* Metas.swift in Sources */,
 				631391BE2063B78200A61691 /* MetaSupplier.swift in Sources */,
@@ -1050,10 +1066,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63658A95206FECA800FE3F54 /* Array+UnkeyedContainerMeta.swift in Sources */,
 				63E753CF1FC1AD7C000A2319 /* MetaEncoder.swift in Sources */,
 				6374A5E5202C70F900F11F48 /* Foundation Primitive Codables.swift in Sources */,
 				63BC5BD41FC95A7E0035005D /* PrimitivesEnumTranslator.swift in Sources */,
 				636B760820470F820048DEDD /* MetaEncoder+frontend.swift in Sources */,
+				63658A99206FECA800FE3F54 /* Dictionary+KeyedContainerMeta.swift in Sources */,
 				63E753BF1FC1AD7C000A2319 /* Representation.swift in Sources */,
 				63E7546B1FC1AD7C000A2319 /* Metas.swift in Sources */,
 				631391BF2063B78200A61691 /* MetaSupplier.swift in Sources */,
@@ -1096,10 +1114,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63658A97206FECA800FE3F54 /* Array+UnkeyedContainerMeta.swift in Sources */,
 				63E753D11FC1AD7C000A2319 /* MetaEncoder.swift in Sources */,
 				6374A5E7202C70F900F11F48 /* Foundation Primitive Codables.swift in Sources */,
 				63E753C11FC1AD7C000A2319 /* Representation.swift in Sources */,
 				636B760A20470F820048DEDD /* MetaEncoder+frontend.swift in Sources */,
+				63658A9B206FECA800FE3F54 /* Dictionary+KeyedContainerMeta.swift in Sources */,
 				63E7546D1FC1AD7C000A2319 /* Metas.swift in Sources */,
 				63E754051FC1AD7C000A2319 /* Serialization+Default Implementations.swift in Sources */,
 				631391C12063B78200A61691 /* MetaSupplier.swift in Sources */,
