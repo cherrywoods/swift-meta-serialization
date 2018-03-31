@@ -19,28 +19,32 @@ enum Container {
     case array([Container])
     case dictionary([String:Container])
     
+    static let translator = PrimitivesEnumTranslator(primitives: [ .nil, .bool, .string, .int, .double ])
+    
 }
 
-func encodeToContainer(_ input: Any?) -> Container {
+func encodeToContainer(_ input: Meta) -> Container {
     
-    if input == nil {
+    // input is eigther NilMarker, Bool, String, Int or Double
+    
+    if input is NilMarker {
         return Container.nil
-    } else if input! is Bool {
-        return Container.bool(input! as! Bool)
-    } else if input! is String {
-        return Container.string(input! as! String)
-    } else if input! is Int {
-        return Container.int(input! as! Int)
-    } else if input! is Double {
-        return Container.double(input! as! Double)
+    } else if let bool = input as? Bool {
+        return Container.bool(bool)
+    } else if let string = input as? String {
+        return Container.string(string)
+    } else if let int = input as? Int {
+        return Container.int(int)
+    } else if let double = input as? Double {
+        return Container.double(double)
         
-    } else if input! is [Any?] {
+    } else if let metaArray = input as? [Meta] {
         
-        return Container.array(input as! [Container])
+        return  Container.array( metaArray.map(encodeToContainer) )
         
-    } else if input! is [String : Any?] {
+    } else if let metaDictionary = input as? [String : Meta] {
         
-        return Container.dictionary(input as! [String : Container])
+        return Container.dictionary( metaDictionary.mapValues(encodeToContainer) )
         
     }
     
@@ -49,13 +53,11 @@ func encodeToContainer(_ input: Any?) -> Container {
     
 }
 
-func decodeFromContainer(_ input: Any?) -> Any? {
-    
-    let container = input as! Container
+func decodeFromContainer(_ container: Container) -> Meta {
     
     switch container {
     case .nil:
-        return nil
+        return NilMarker.instance
     case .bool(let value):
         return value
     case .string(let value):
@@ -67,11 +69,11 @@ func decodeFromContainer(_ input: Any?) -> Any? {
         
     case .array(let array):
         
-        return array.map { decodeFromContainer($0) }
+        return array.map(decodeFromContainer) as! Meta
         
     case .dictionary(let dictionary):
         
-        return dictionary.mapValues { decodeFromContainer($0) }
+        return dictionary.mapValues(decodeFromContainer) as! Meta
         
     }
     
