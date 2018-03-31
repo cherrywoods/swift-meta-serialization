@@ -52,7 +52,7 @@ open class MetaSingleValueDecodingContainer: SingleValueDecodingContainer {
     
     open func decodeNil() -> Bool {
         
-        return meta is NilMetaProtocol
+        return meta is NilMeta
         
     }
     

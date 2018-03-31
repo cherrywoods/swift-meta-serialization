@@ -26,13 +26,15 @@ import Foundation
 public protocol Meta {}
 
 /**
- Protocol for metas indicating null/nil or no value contained
- Please note that there's a default implementation (`NilMeta`) procided the by MetaSerialization.
+ Protocol for metas indicating null/nil or no value contained.
+ Please note that MetaSerializations `NilMarker` type is an default implementation of this protocol.
  */
-public protocol NilMetaProtocol: Meta {}
+public protocol NilMeta: Meta {}
+
+// TODO: remove GenericMeta (not necessary?)
 
 /**
- A subprotocol of Meta with a specific value and value type. 
+ A subprotocol of Meta with a specific value and value type.
  */
 public protocol GenericMeta: Meta {
     

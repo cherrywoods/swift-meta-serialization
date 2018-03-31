@@ -52,7 +52,7 @@ open class MetaSingleValueEncodingContainer: SingleValueEncodingContainer {
     
     open func encodeNil() throws {
         
-        try self.encode(GenericNil.instance)
+        try self.encode(NilMarker.instance)
         
     }
     

@@ -76,7 +76,7 @@ open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProto
     
     open func encodeNil(forKey key: Key) throws {
         
-        try encode(GenericNil.instance, forKey: key)
+        try encode(NilMarker.instance, forKey: key)
         
     }
     

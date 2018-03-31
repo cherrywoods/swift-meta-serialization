@@ -96,12 +96,12 @@ open class MetaEncoder: Encoder {
 
          The same applies for DirectlyEncodable.
 
-         We also need to throw an error, if value is an GenericNil
+         We also need to throw an error, if value is an NilMarker
          instance, because if we did not, nil values would encode
          as empty containers.
 
          All this is archieved by checking if value is DirectlyEncodable.
-         All foundation's "primitive codables" (listed above) and GenericNil too are extended
+         All foundation's "primitive codables" (listed above) and NilMarker too are extended
          to implement DirectlyCodable.
          */
 
