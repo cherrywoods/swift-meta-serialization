@@ -28,7 +28,7 @@ public extension MetaDecoder {
      init(from:) will not detect types that are directly supported by the unwrapper.
      
      There are some conditions `meta` and the metas contained in `meta` (refered to as "the meta tree") must meet:
-      * Any metas that should be seen as nil values by the decoder (for which `decodeNil` on e.g. `KeyedDecodingContainer` should return true) must conform to `NilMetaProtocol`.
+      * Any metas that should be seen as nil values by the decoder (for which `decodeNil` on e.g. `KeyedDecodingContainer` should return true) must conform to `NilMeta`.
       * If you didn't set the `MetaDecoder.Options.dynamicallyUnwrapMetaTree` option on this decoder, all metas that can be seen as keyed or unkeyed containers must conform to `DecodingKeyedContainerMeta`/`DecodingUnkeyedContainerMeta`, othwise these containers can not be detected. Alternatively consider setting `.dynamicallyUnwrapMetaTree` and implementing the required container unwraping in `unwrap` of your `Unwrapper` implementation.
      
      - Parameter type: The type that should decoded.

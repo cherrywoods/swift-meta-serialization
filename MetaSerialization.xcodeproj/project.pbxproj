@@ -51,7 +51,6 @@
 		633D4D14206264A500ADFF91 /* Serialization+Default Implementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7535B1FC1AD7A000A2319 /* Serialization+Default Implementations.swift */; };
 		633D4D15206264A500ADFF91 /* SimpleGenericMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753591FC1AD7A000A2319 /* SimpleGenericMeta.swift */; };
 		633D4D16206264A500ADFF91 /* MetaEncoder+containerMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636B760120470EFA0048DEDD /* MetaEncoder+containerMethods.swift */; };
-		633D4D17206264A500ADFF91 /* DictionaryKeyedContainerMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753561FC1AD7A000A2319 /* DictionaryKeyedContainerMeta.swift */; };
 		633D4D18206264A500ADFF91 /* Representation+Default Implementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753451FC1AD79000A2319 /* Representation+Default Implementations.swift */; };
 		633D4D19206264A500ADFF91 /* KeyedEncodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753751FC1AD7B000A2319 /* KeyedEncodingContainer.swift */; };
 		633D4D1A206264A500ADFF91 /* MetaDecoder+frontend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63268694204873F700E2CDBB /* MetaDecoder+frontend.swift */; };
@@ -69,10 +68,9 @@
 		633D4D29206264A500ADFF91 /* UnkeyedEncodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753771FC1AD7B000A2319 /* UnkeyedEncodingContainer.swift */; };
 		633D4D2A206264A500ADFF91 /* CodingDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B7825B204487F3005C278E /* CodingDictionary.swift */; };
 		633D4D2B206264A500ADFF91 /* CodingKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7536F1FC1AD7B000A2319 /* CodingKeys.swift */; };
-		633D4D2D206264A500ADFF91 /* GenericNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7537C1FC1AD7C000A2319 /* GenericNil.swift */; };
+		633D4D2D206264A500ADFF91 /* NilMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7537C1FC1AD7C000A2319 /* NilMarker.swift */; };
 		633D4D2E206264A500ADFF91 /* MetaDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753431FC1AD79000A2319 /* MetaDecoder.swift */; };
 		633D4D2F206264A500ADFF91 /* CodingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B7825520447773005C278E /* CodingStorage.swift */; };
-		633D4D30206264A500ADFF91 /* ArrayUnkeyedContainerMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753551FC1AD7A000A2319 /* ArrayUnkeyedContainerMeta.swift */; };
 		633D4D31206264A500ADFF91 /* Reference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7535D1FC1AD7A000A2319 /* Reference.swift */; };
 		633D4D32206264A500ADFF91 /* DirectlyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7534F1FC1AD7A000A2319 /* DirectlyCodable.swift */; };
 		633D4D35206264A500ADFF91 /* MetaSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 63E752DA1FC1A557000A2319 /* MetaSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -111,6 +109,14 @@
 		636B760720470F820048DEDD /* MetaEncoder+frontend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636B760620470F820048DEDD /* MetaEncoder+frontend.swift */; };
 		636B760820470F820048DEDD /* MetaEncoder+frontend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636B760620470F820048DEDD /* MetaEncoder+frontend.swift */; };
 		636B760A20470F820048DEDD /* MetaEncoder+frontend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636B760620470F820048DEDD /* MetaEncoder+frontend.swift */; };
+		63700829206FF6D000D61B90 /* PrimitivesProtocolTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63700828206FF6D000D61B90 /* PrimitivesProtocolTranslator.swift */; };
+		6370082A206FF6D000D61B90 /* PrimitivesProtocolTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63700828206FF6D000D61B90 /* PrimitivesProtocolTranslator.swift */; };
+		6370082B206FF6D000D61B90 /* PrimitivesProtocolTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63700828206FF6D000D61B90 /* PrimitivesProtocolTranslator.swift */; };
+		6370082C206FF6D000D61B90 /* PrimitivesProtocolTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63700828206FF6D000D61B90 /* PrimitivesProtocolTranslator.swift */; };
+		6370082E2070009E00D61B90 /* PrimitivesEnumTranslator+Primitives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6370082D2070009E00D61B90 /* PrimitivesEnumTranslator+Primitives.swift */; };
+		6370082F2070009E00D61B90 /* PrimitivesEnumTranslator+Primitives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6370082D2070009E00D61B90 /* PrimitivesEnumTranslator+Primitives.swift */; };
+		637008302070009E00D61B90 /* PrimitivesEnumTranslator+Primitives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6370082D2070009E00D61B90 /* PrimitivesEnumTranslator+Primitives.swift */; };
+		637008312070009E00D61B90 /* PrimitivesEnumTranslator+Primitives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6370082D2070009E00D61B90 /* PrimitivesEnumTranslator+Primitives.swift */; };
 		6374A5E4202C70F900F11F48 /* Foundation Primitive Codables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374A5E3202C70F900F11F48 /* Foundation Primitive Codables.swift */; };
 		6374A5E5202C70F900F11F48 /* Foundation Primitive Codables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374A5E3202C70F900F11F48 /* Foundation Primitive Codables.swift */; };
 		6374A5E7202C70F900F11F48 /* Foundation Primitive Codables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6374A5E3202C70F900F11F48 /* Foundation Primitive Codables.swift */; };
@@ -147,12 +153,6 @@
 		63E753DE1FC1AD7C000A2319 /* DirectlyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7534F1FC1AD7A000A2319 /* DirectlyCodable.swift */; };
 		63E753DF1FC1AD7C000A2319 /* DirectlyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7534F1FC1AD7A000A2319 /* DirectlyCodable.swift */; };
 		63E753E11FC1AD7C000A2319 /* DirectlyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7534F1FC1AD7A000A2319 /* DirectlyCodable.swift */; };
-		63E753EE1FC1AD7C000A2319 /* ArrayUnkeyedContainerMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753551FC1AD7A000A2319 /* ArrayUnkeyedContainerMeta.swift */; };
-		63E753EF1FC1AD7C000A2319 /* ArrayUnkeyedContainerMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753551FC1AD7A000A2319 /* ArrayUnkeyedContainerMeta.swift */; };
-		63E753F11FC1AD7C000A2319 /* ArrayUnkeyedContainerMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753551FC1AD7A000A2319 /* ArrayUnkeyedContainerMeta.swift */; };
-		63E753F21FC1AD7C000A2319 /* DictionaryKeyedContainerMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753561FC1AD7A000A2319 /* DictionaryKeyedContainerMeta.swift */; };
-		63E753F31FC1AD7C000A2319 /* DictionaryKeyedContainerMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753561FC1AD7A000A2319 /* DictionaryKeyedContainerMeta.swift */; };
-		63E753F51FC1AD7C000A2319 /* DictionaryKeyedContainerMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753561FC1AD7A000A2319 /* DictionaryKeyedContainerMeta.swift */; };
 		63E753FA1FC1AD7C000A2319 /* NilMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753581FC1AD7A000A2319 /* NilMeta.swift */; };
 		63E753FB1FC1AD7C000A2319 /* NilMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753581FC1AD7A000A2319 /* NilMeta.swift */; };
 		63E753FD1FC1AD7C000A2319 /* NilMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753581FC1AD7A000A2319 /* NilMeta.swift */; };
@@ -192,9 +192,9 @@
 		63E7546A1FC1AD7C000A2319 /* Metas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7537A1FC1AD7B000A2319 /* Metas.swift */; };
 		63E7546B1FC1AD7C000A2319 /* Metas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7537A1FC1AD7B000A2319 /* Metas.swift */; };
 		63E7546D1FC1AD7C000A2319 /* Metas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7537A1FC1AD7B000A2319 /* Metas.swift */; };
-		63E754721FC1AD7C000A2319 /* GenericNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7537C1FC1AD7C000A2319 /* GenericNil.swift */; };
-		63E754731FC1AD7C000A2319 /* GenericNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7537C1FC1AD7C000A2319 /* GenericNil.swift */; };
-		63E754751FC1AD7C000A2319 /* GenericNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7537C1FC1AD7C000A2319 /* GenericNil.swift */; };
+		63E754721FC1AD7C000A2319 /* NilMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7537C1FC1AD7C000A2319 /* NilMarker.swift */; };
+		63E754731FC1AD7C000A2319 /* NilMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7537C1FC1AD7C000A2319 /* NilMarker.swift */; };
+		63E754751FC1AD7C000A2319 /* NilMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7537C1FC1AD7C000A2319 /* NilMarker.swift */; };
 		63F00229204558D7009E1CA7 /* SharedUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F00228204558D7009E1CA7 /* SharedUtilities.swift */; };
 		63F0022A204558D7009E1CA7 /* SharedUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F00228204558D7009E1CA7 /* SharedUtilities.swift */; };
 		63F0022C204558D7009E1CA7 /* SharedUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F00228204558D7009E1CA7 /* SharedUtilities.swift */; };
@@ -263,6 +263,8 @@
 		63658A93206FECA800FE3F54 /* Dictionary+KeyedContainerMeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+KeyedContainerMeta.swift"; sourceTree = "<group>"; };
 		636B760120470EFA0048DEDD /* MetaEncoder+containerMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MetaEncoder+containerMethods.swift"; sourceTree = "<group>"; };
 		636B760620470F820048DEDD /* MetaEncoder+frontend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MetaEncoder+frontend.swift"; sourceTree = "<group>"; };
+		63700828206FF6D000D61B90 /* PrimitivesProtocolTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimitivesProtocolTranslator.swift; sourceTree = "<group>"; };
+		6370082D2070009E00D61B90 /* PrimitivesEnumTranslator+Primitives.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrimitivesEnumTranslator+Primitives.swift"; sourceTree = "<group>"; };
 		6374A5E3202C70F900F11F48 /* Foundation Primitive Codables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation Primitive Codables.swift"; sourceTree = "<group>"; };
 		6393728D1FEC210900840D11 /* SimpleSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleSerialization.swift; sourceTree = "<group>"; };
 		63B7825520447773005C278E /* CodingStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodingStorage.swift; sourceTree = "<group>"; };
@@ -281,8 +283,6 @@
 		63E753461FC1AD79000A2319 /* Representation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Representation.swift; sourceTree = "<group>"; };
 		63E7534A1FC1AD79000A2319 /* MetaEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetaEncoder.swift; sourceTree = "<group>"; };
 		63E7534F1FC1AD7A000A2319 /* DirectlyCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectlyCodable.swift; sourceTree = "<group>"; };
-		63E753551FC1AD7A000A2319 /* ArrayUnkeyedContainerMeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayUnkeyedContainerMeta.swift; sourceTree = "<group>"; };
-		63E753561FC1AD7A000A2319 /* DictionaryKeyedContainerMeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryKeyedContainerMeta.swift; sourceTree = "<group>"; };
 		63E753581FC1AD7A000A2319 /* NilMeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NilMeta.swift; sourceTree = "<group>"; };
 		63E753591FC1AD7A000A2319 /* SimpleGenericMeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleGenericMeta.swift; sourceTree = "<group>"; };
 		63E7535B1FC1AD7A000A2319 /* Serialization+Default Implementations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Serialization+Default Implementations.swift"; sourceTree = "<group>"; };
@@ -296,7 +296,7 @@
 		63E753761FC1AD7B000A2319 /* SingleValueEncodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleValueEncodingContainer.swift; sourceTree = "<group>"; };
 		63E753771FC1AD7B000A2319 /* UnkeyedEncodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnkeyedEncodingContainer.swift; sourceTree = "<group>"; };
 		63E7537A1FC1AD7B000A2319 /* Metas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metas.swift; sourceTree = "<group>"; };
-		63E7537C1FC1AD7C000A2319 /* GenericNil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericNil.swift; sourceTree = "<group>"; };
+		63E7537C1FC1AD7C000A2319 /* NilMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NilMarker.swift; sourceTree = "<group>"; };
 		63F00228204558D7009E1CA7 /* SharedUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedUtilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -367,7 +367,9 @@
 		631391CC2063C1B900A61691 /* MetaSupplier and Unwrapper implementations */ = {
 			isa = PBXGroup;
 			children = (
+				63700828206FF6D000D61B90 /* PrimitivesProtocolTranslator.swift */,
 				63BC5BD21FC95A7E0035005D /* PrimitivesEnumTranslator.swift */,
+				6370082D2070009E00D61B90 /* PrimitivesEnumTranslator+Primitives.swift */,
 			);
 			path = "MetaSupplier and Unwrapper implementations";
 			sourceTree = "<group>";
@@ -485,7 +487,7 @@
 		6374A5E8202C77EA00F11F48 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
-				63E7537C1FC1AD7C000A2319 /* GenericNil.swift */,
+				63E7537C1FC1AD7C000A2319 /* NilMarker.swift */,
 				63E7536F1FC1AD7B000A2319 /* CodingKeys.swift */,
 				6374A5E3202C70F900F11F48 /* Foundation Primitive Codables.swift */,
 			);
@@ -584,9 +586,7 @@
 			children = (
 				63E753591FC1AD7A000A2319 /* SimpleGenericMeta.swift */,
 				63658A92206FECA800FE3F54 /* Array+UnkeyedContainerMeta.swift */,
-				63E753551FC1AD7A000A2319 /* ArrayUnkeyedContainerMeta.swift */,
 				63658A93206FECA800FE3F54 /* Dictionary+KeyedContainerMeta.swift */,
-				63E753561FC1AD7A000A2319 /* DictionaryKeyedContainerMeta.swift */,
 				63E753581FC1AD7A000A2319 /* NilMeta.swift */,
 			);
 			path = "meta default implementations";
@@ -943,7 +943,6 @@
 				633D4D14206264A500ADFF91 /* Serialization+Default Implementations.swift in Sources */,
 				633D4D15206264A500ADFF91 /* SimpleGenericMeta.swift in Sources */,
 				633D4D16206264A500ADFF91 /* MetaEncoder+containerMethods.swift in Sources */,
-				633D4D17206264A500ADFF91 /* DictionaryKeyedContainerMeta.swift in Sources */,
 				631498D2206CD2F600F00CA4 /* MetaDecoder+Options.swift in Sources */,
 				633D4D18206264A500ADFF91 /* Representation+Default Implementations.swift in Sources */,
 				631391C52063BA0A00A61691 /* Unwrapper.swift in Sources */,
@@ -957,18 +956,19 @@
 				633D4D21206264A500ADFF91 /* SharedUtilities.swift in Sources */,
 				633D4D22206264A500ADFF91 /* MetaDecoder+containerMethods.swift in Sources */,
 				633D4D23206264A500ADFF91 /* LinearCodingStack.swift in Sources */,
+				6370082B206FF6D000D61B90 /* PrimitivesProtocolTranslator.swift in Sources */,
 				633D4D24206264A500ADFF91 /* KeyedDecodingContainer.swift in Sources */,
 				633D4D25206264A500ADFF91 /* SingleValueEncodingContainer.swift in Sources */,
 				633D4D26206264A500ADFF91 /* NilMeta.swift in Sources */,
 				633D4D28206264A500ADFF91 /* Serialization.swift in Sources */,
 				633D4D29206264A500ADFF91 /* UnkeyedEncodingContainer.swift in Sources */,
 				633D4D2A206264A500ADFF91 /* CodingDictionary.swift in Sources */,
+				637008302070009E00D61B90 /* PrimitivesEnumTranslator+Primitives.swift in Sources */,
 				633D4D2B206264A500ADFF91 /* CodingKeys.swift in Sources */,
-				633D4D2D206264A500ADFF91 /* GenericNil.swift in Sources */,
+				633D4D2D206264A500ADFF91 /* NilMarker.swift in Sources */,
 				633D4D2E206264A500ADFF91 /* MetaDecoder.swift in Sources */,
 				633D4D2F206264A500ADFF91 /* CodingStorage.swift in Sources */,
 				631391CA2063C14400A61691 /* MetaSupplier+Defaults.swift in Sources */,
-				633D4D30206264A500ADFF91 /* ArrayUnkeyedContainerMeta.swift in Sources */,
 				633D4D31206264A500ADFF91 /* Reference.swift in Sources */,
 				633D4D32206264A500ADFF91 /* DirectlyCodable.swift in Sources */,
 				6325045A206B772C00BFBDA2 /* UnkeyedContainerMeta.swift in Sources */,
@@ -1030,7 +1030,6 @@
 				63E754021FC1AD7C000A2319 /* Serialization+Default Implementations.swift in Sources */,
 				63E753FE1FC1AD7C000A2319 /* SimpleGenericMeta.swift in Sources */,
 				636B760220470EFA0048DEDD /* MetaEncoder+containerMethods.swift in Sources */,
-				63E753F21FC1AD7C000A2319 /* DictionaryKeyedContainerMeta.swift in Sources */,
 				631498D0206CD2F600F00CA4 /* MetaDecoder+Options.swift in Sources */,
 				63E753BA1FC1AD7C000A2319 /* Representation+Default Implementations.swift in Sources */,
 				631391C32063BA0A00A61691 /* Unwrapper.swift in Sources */,
@@ -1044,18 +1043,19 @@
 				63F00229204558D7009E1CA7 /* SharedUtilities.swift in Sources */,
 				6326869A204877CC00E2CDBB /* MetaDecoder+containerMethods.swift in Sources */,
 				63B78289204498B1005C278E /* LinearCodingStack.swift in Sources */,
+				63700829206FF6D000D61B90 /* PrimitivesProtocolTranslator.swift in Sources */,
 				63E7544A1FC1AD7C000A2319 /* KeyedDecodingContainer.swift in Sources */,
 				63E7545A1FC1AD7C000A2319 /* SingleValueEncodingContainer.swift in Sources */,
 				63E753FA1FC1AD7C000A2319 /* NilMeta.swift in Sources */,
 				63E754061FC1AD7C000A2319 /* Serialization.swift in Sources */,
 				63E7545E1FC1AD7C000A2319 /* UnkeyedEncodingContainer.swift in Sources */,
 				63B7825C204487F3005C278E /* CodingDictionary.swift in Sources */,
+				6370082E2070009E00D61B90 /* PrimitivesEnumTranslator+Primitives.swift in Sources */,
 				63E754461FC1AD7C000A2319 /* CodingKeys.swift in Sources */,
-				63E754721FC1AD7C000A2319 /* GenericNil.swift in Sources */,
+				63E754721FC1AD7C000A2319 /* NilMarker.swift in Sources */,
 				63E753B61FC1AD7C000A2319 /* MetaDecoder.swift in Sources */,
 				63B7825620447773005C278E /* CodingStorage.swift in Sources */,
 				631391C82063C14400A61691 /* MetaSupplier+Defaults.swift in Sources */,
-				63E753EE1FC1AD7C000A2319 /* ArrayUnkeyedContainerMeta.swift in Sources */,
 				63E7540A1FC1AD7C000A2319 /* Reference.swift in Sources */,
 				63E753DE1FC1AD7C000A2319 /* DirectlyCodable.swift in Sources */,
 				63250458206B772C00BFBDA2 /* UnkeyedContainerMeta.swift in Sources */,
@@ -1078,7 +1078,6 @@
 				63E754031FC1AD7C000A2319 /* Serialization+Default Implementations.swift in Sources */,
 				63E753FF1FC1AD7C000A2319 /* SimpleGenericMeta.swift in Sources */,
 				636B760320470EFA0048DEDD /* MetaEncoder+containerMethods.swift in Sources */,
-				63E753F31FC1AD7C000A2319 /* DictionaryKeyedContainerMeta.swift in Sources */,
 				631498D1206CD2F600F00CA4 /* MetaDecoder+Options.swift in Sources */,
 				63E753BB1FC1AD7C000A2319 /* Representation+Default Implementations.swift in Sources */,
 				631391C42063BA0A00A61691 /* Unwrapper.swift in Sources */,
@@ -1092,18 +1091,19 @@
 				63F0022A204558D7009E1CA7 /* SharedUtilities.swift in Sources */,
 				6326869B204877CC00E2CDBB /* MetaDecoder+containerMethods.swift in Sources */,
 				63B7828A204498B1005C278E /* LinearCodingStack.swift in Sources */,
+				6370082A206FF6D000D61B90 /* PrimitivesProtocolTranslator.swift in Sources */,
 				63E7544B1FC1AD7C000A2319 /* KeyedDecodingContainer.swift in Sources */,
 				63E7545B1FC1AD7C000A2319 /* SingleValueEncodingContainer.swift in Sources */,
 				63E753FB1FC1AD7C000A2319 /* NilMeta.swift in Sources */,
 				63E754071FC1AD7C000A2319 /* Serialization.swift in Sources */,
 				63E7545F1FC1AD7C000A2319 /* UnkeyedEncodingContainer.swift in Sources */,
 				63B7825D204487F3005C278E /* CodingDictionary.swift in Sources */,
+				6370082F2070009E00D61B90 /* PrimitivesEnumTranslator+Primitives.swift in Sources */,
 				63E754471FC1AD7C000A2319 /* CodingKeys.swift in Sources */,
-				63E754731FC1AD7C000A2319 /* GenericNil.swift in Sources */,
+				63E754731FC1AD7C000A2319 /* NilMarker.swift in Sources */,
 				63E753B71FC1AD7C000A2319 /* MetaDecoder.swift in Sources */,
 				63B7825720447773005C278E /* CodingStorage.swift in Sources */,
 				631391C92063C14400A61691 /* MetaSupplier+Defaults.swift in Sources */,
-				63E753EF1FC1AD7C000A2319 /* ArrayUnkeyedContainerMeta.swift in Sources */,
 				63E7540B1FC1AD7C000A2319 /* Reference.swift in Sources */,
 				63E753DF1FC1AD7C000A2319 /* DirectlyCodable.swift in Sources */,
 				63250459206B772C00BFBDA2 /* UnkeyedContainerMeta.swift in Sources */,
@@ -1126,7 +1126,6 @@
 				63E754011FC1AD7C000A2319 /* SimpleGenericMeta.swift in Sources */,
 				6393728F1FEC211A00840D11 /* SimpleSerialization.swift in Sources */,
 				636B760520470EFA0048DEDD /* MetaEncoder+containerMethods.swift in Sources */,
-				63E753F51FC1AD7C000A2319 /* DictionaryKeyedContainerMeta.swift in Sources */,
 				631498D3206CD2F600F00CA4 /* MetaDecoder+Options.swift in Sources */,
 				63E753BD1FC1AD7C000A2319 /* Representation+Default Implementations.swift in Sources */,
 				631391C62063BA0A00A61691 /* Unwrapper.swift in Sources */,
@@ -1140,18 +1139,19 @@
 				63F0022C204558D7009E1CA7 /* SharedUtilities.swift in Sources */,
 				6326869D204877CC00E2CDBB /* MetaDecoder+containerMethods.swift in Sources */,
 				63B7828C204498B1005C278E /* LinearCodingStack.swift in Sources */,
+				6370082C206FF6D000D61B90 /* PrimitivesProtocolTranslator.swift in Sources */,
 				63E7544D1FC1AD7C000A2319 /* KeyedDecodingContainer.swift in Sources */,
 				63E7545D1FC1AD7C000A2319 /* SingleValueEncodingContainer.swift in Sources */,
 				63E753FD1FC1AD7C000A2319 /* NilMeta.swift in Sources */,
 				63E754091FC1AD7C000A2319 /* Serialization.swift in Sources */,
 				63E754611FC1AD7C000A2319 /* UnkeyedEncodingContainer.swift in Sources */,
 				63B7825F204487F3005C278E /* CodingDictionary.swift in Sources */,
+				637008312070009E00D61B90 /* PrimitivesEnumTranslator+Primitives.swift in Sources */,
 				63E754491FC1AD7C000A2319 /* CodingKeys.swift in Sources */,
-				63E754751FC1AD7C000A2319 /* GenericNil.swift in Sources */,
+				63E754751FC1AD7C000A2319 /* NilMarker.swift in Sources */,
 				63E753B91FC1AD7C000A2319 /* MetaDecoder.swift in Sources */,
 				63B7825920447773005C278E /* CodingStorage.swift in Sources */,
 				631391CB2063C14400A61691 /* MetaSupplier+Defaults.swift in Sources */,
-				63E753F11FC1AD7C000A2319 /* ArrayUnkeyedContainerMeta.swift in Sources */,
 				63E7540D1FC1AD7C000A2319 /* Reference.swift in Sources */,
 				63E753E11FC1AD7C000A2319 /* DirectlyCodable.swift in Sources */,
 				6325045B206B772C00BFBDA2 /* UnkeyedContainerMeta.swift in Sources */,

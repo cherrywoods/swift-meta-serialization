@@ -31,7 +31,7 @@ public protocol Unwrapper {
      
      If you don't support the requested type directly (can't convert meta's value to T), return nil.
      
-     If you decoded to a Meta conforming to NilMetaProtocol, that Meta will not reach your method.
+     If you decoded to a Meta conforming to NilMeta, that Meta will not reach your method.
      
      If on a `MetaDecoder` the option `MetaDecoder.Options.dynamicallyUnwrapMetaTree is set,
      the decoder will call `unwrap` with the types `DecodingKeyedContainerMeta` and `DecodingUnkeyedContainerMeta`.

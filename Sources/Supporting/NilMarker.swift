@@ -1,5 +1,5 @@
 //
-//  GenericNil.swift
+//  NilMarker.swift
 //  meta-serialization
 //
 //  Copyright 2018 cherrywoods
@@ -19,10 +19,10 @@
 
 import Foundation
 
-/// Represents a nil value
-public struct GenericNil: DirectlyCodable {
+/// Represents a nil value independant of the Optionals generic Wrapped parameter.
+public struct NilMarker: DirectlyCodable {
     
-    public static let instance: GenericNil = GenericNil()
+    public static let instance: NilMarker = NilMarker()
     
     private init() {  }
     

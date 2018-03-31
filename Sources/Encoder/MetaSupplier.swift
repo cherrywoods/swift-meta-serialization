@@ -57,7 +57,8 @@ public protocol MetaSupplier {
     /**
      Creates, sets and returns a `Meta` for the given value, or returns nil if the value is not supported, respectively can not be represented in your underlying format.
      
-     This method will be asked to return a Meta for an instance of the type GenericNil from MetaSerialization for any nil value that is requested to be encoded. Return nil, if you don't support nil values. If you support nil values, you are invited to use NilMeta from MetaSerialization, but you may of course use any meta implementation here.
+     This method will be asked to return a Meta for an instance of the type NilMarker from MetaSerialization if encoding a nil value is requested.
+     Return nil if you don't support nil values. If you support nil values, you are invited to use NilMarker itself as Meta, but you may of course use any meta implementation here.
      
      You may not call Encodables `encode(to:)` in this method directly, or otherwise call container methods.
      Calling these methods will conflict with the encoding of value, since you can not access the metas you created with those calls.

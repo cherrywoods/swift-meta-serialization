@@ -19,11 +19,4 @@
 
 import Foundation
 
-/**
- A Meta for representing nil.
- */
-public struct NilMeta: NilMetaProtocol {
-    
-    public static let `nil`: NilMeta = NilMeta()
-    
-}
+extension NilMarker: NilMeta {}

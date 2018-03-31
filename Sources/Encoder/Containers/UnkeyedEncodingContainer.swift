@@ -86,7 +86,7 @@ open class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
     
     open func encodeNil() throws {
         
-        try encode(GenericNil.instance)
+        try encode(NilMarker.instance)
         
     }
     

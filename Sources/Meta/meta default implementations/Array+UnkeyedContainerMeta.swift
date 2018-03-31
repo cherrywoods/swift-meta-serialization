@@ -19,7 +19,7 @@
 
 import Foundation
     
-extension Array: UnkeyedContainerMeta, Meta where Element == Meta {
+extension Array: UnkeyedContainerMeta, EncodingUnkeyedContainerMeta, DecodingUnkeyedContainerMeta, Meta where Element == Meta {
     
     public var numberOfMetas: Int {
         return self.count
@@ -33,5 +33,7 @@ extension Array: UnkeyedContainerMeta, Meta where Element == Meta {
         return self[index]
         
     }
+    
+    // insert overlaps the right way
     
 }
