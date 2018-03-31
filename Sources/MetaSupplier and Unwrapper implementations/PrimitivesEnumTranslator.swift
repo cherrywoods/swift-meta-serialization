@@ -41,7 +41,7 @@ public struct PrimitivesEnumTranslator: MetaSupplier, Unwrapper {
     }
     
     // we use this translator as backend, but we additionaly check if the type is contained in primitives
-    let protocolTranslator = PrimitivesProtocolTranslator<PrimitivesEnumTranslatorPrimitives>()
+    let protocolTranslator = PrimitivesProtocolTranslator<PrimitivesEnumTranslatorPrimitives, PrimitivesEnumTranslatorPrimitives.Type>()
     
     public func wrap<T>(_ value: T, for encoder: MetaEncoder) throws -> Meta? {
         

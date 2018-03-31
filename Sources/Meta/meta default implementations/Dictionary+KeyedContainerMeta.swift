@@ -19,7 +19,8 @@
 
 import Foundation
 
-extension Dictionary: KeyedContainerMeta, Meta where Key == String, Value == Meta {
+// FIXME: add conditional conformance again, if swift is able to dynamically quary conditional conformace
+extension Dictionary: KeyedContainerMeta, Meta /* where Key == String, Value == Meta */ {
     
     // I assume that all CodingKeys are fully identified by their string values,
     // although I cloudn't find any documentation about this topic.
@@ -27,26 +28,34 @@ extension Dictionary: KeyedContainerMeta, Meta where Key == String, Value == Met
     
     public var allKeys: [MetaCodingKey] {
         
-        return keys.map { MetaCodingKey(stringValue: $0) }
+        precondition(Key.self == String.self && Value.self == Meta.self, "Key needs to be String and Value needs to be Meta.")
+        
+        return keys.map { MetaCodingKey(stringValue: $0 as! String) }
         
     }
     
     public func contains(key: MetaCodingKey) -> Bool {
         
+        precondition(Key.self == String.self && Value.self == Meta.self, "Key needs to be String and Value needs to be Meta.")
+        
         // if subscript returns nil, there is no value contained
-        return self[key.stringValue] != nil
+        return self[key.stringValue as! Key] != nil
         
     }
     
     public mutating func put(_ value: Meta, for key: MetaCodingKey) {
         
-        self[key.stringValue] = value
+        precondition(Key.self == String.self && Value.self == Meta.self, "Key needs to be String and Value needs to be Meta.")
+        
+        self[key.stringValue as! Key] = (value as! Value)
         
     }
     
     public func getValue(for key: MetaCodingKey) -> Meta? {
         
-        return self[key.stringValue]
+        precondition(Key.self == String.self && Value.self == Meta.self, "Key needs to be String and Value needs to be Meta.")
+        
+        return self[key.stringValue as! Key] as! Meta?
         
     }
     

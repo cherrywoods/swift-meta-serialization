@@ -69,11 +69,11 @@ func decodeFromContainer(_ container: Container) -> Meta {
         
     case .array(let array):
         
-        return array.map(decodeFromContainer) as! Meta
+        return array.map(decodeFromContainer)
         
     case .dictionary(let dictionary):
         
-        return dictionary.mapValues(decodeFromContainer) as! Meta
+        return dictionary.mapValues(decodeFromContainer)
         
     }
     
