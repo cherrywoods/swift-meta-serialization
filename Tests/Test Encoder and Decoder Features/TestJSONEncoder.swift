@@ -36,7 +36,7 @@ import XCTest
 
 class TestMetaSerializationByJSONEncoderTests : XCTestCase {
 
-    let serialization = TestUtilities.containerSerialization()
+    let serialization = TestUtilities.serialization
 
     // MARK: - Encoding Top-Level Empty Types
 

@@ -28,7 +28,7 @@ class MultipleContainerRequestsTests: XCTestCase {
         }
 
         let encodable = TestUtilities.TestCodable(encode: encodingClosure)
-        let serialization = TestUtilities.containerSerialization()
+        let serialization = TestUtilities.serialization
         let emptyArray = Container.array([])
 
         _ = TestUtilities.testEncoding(of: encodable, using: serialization, expected: emptyArray)

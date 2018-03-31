@@ -30,17 +30,3 @@ public protocol Meta {}
  Please note that MetaSerializations `NilMarker` type is an default implementation of this protocol.
  */
 public protocol NilMeta: Meta {}
-
-// TODO: remove GenericMeta (not necessary?)
-
-/**
- A subprotocol of Meta with a specific value and value type.
- */
-public protocol GenericMeta: Meta {
-    
-    associatedtype SwiftValueType
-    
-    var value: SwiftValueType { get }
-    init(value: SwiftValueType)
-    
-}

@@ -16,19 +16,9 @@ struct TestUtilities {
     
     // MARK: - container serialization
     
-    static func containerSerialization() -> SimpleSerialization<Container> {
-        
-        let translator = PrimitivesEnumTranslator(primitives: [ .nil, .bool, .string, .int, .double ],
-                                                  encode: encodeToContainer,
-                                                  decode: decodeFromContainer)
-        
-        return SimpleSerialization<Container>(translator: translator,
-                                              encodeFromMeta: translator.encode,
-                                              decodeToMeta: translator.decode)
-        
-    }
-    
-    static let serialization = containerSerialization()
+    static var serialization = SimpleSerialization<Container>(translator: Container.translator,
+                                                                       encodeFromMeta: encodeToContainer,
+                                                                       decodeToMeta: decodeFromContainer)
     
     static func testContaienrRoundTrip<T: Codable&Equatable>(of value: T,
                                                              using serialization: SimpleSerialization<Container> = serialization,
