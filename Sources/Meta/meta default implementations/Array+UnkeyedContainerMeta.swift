@@ -18,8 +18,9 @@
 //
 
 import Foundation
-    
-extension Array: UnkeyedContainerMeta, EncodingUnkeyedContainerMeta, DecodingUnkeyedContainerMeta, Meta where Element == Meta {
+
+// FIXME: add conditional conformance again, if swift is able to dynamically quary conditional conformace
+extension Array: UnkeyedContainerMeta, EncodingUnkeyedContainerMeta, DecodingUnkeyedContainerMeta, Meta /* where Element == Meta */ {
     
     public var numberOfMetas: Int {
         return self.count
@@ -27,13 +28,20 @@ extension Array: UnkeyedContainerMeta, EncodingUnkeyedContainerMeta, DecodingUnk
     
     public func get(at index:Int) -> Meta? {
         
+        precondition(Element.self == Meta.self, "Element needs to be Meta.")
+        
         guard (0..<count).contains(index) else { // makes sure index is within its valid bounds (0 and count)
             return nil
         }
-        return self[index]
+        return (self[index] as! Meta)
         
     }
     
-    // insert overlaps the right way
+    public mutating func insert(_ meta: Meta, at index: Int) {
+        
+        precondition(Element.self == Meta.self, "Element needs to be Meta.")
+        insert(meta as! Element, at: index)
+        
+    }
     
 }
