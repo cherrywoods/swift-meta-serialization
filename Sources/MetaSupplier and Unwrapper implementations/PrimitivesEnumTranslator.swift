@@ -19,9 +19,6 @@
 
 import Foundation
 
-// TODO: change encode and decode
-// TODO: in swift 5, after PrimitivesProtocolTranslator has been implemented, use that one with custom protocol Primitives: Meta and filter in wrap and unwrap as done right now.
-
 /**
  A implementation of `MetaSupplier` and `Unwrapper` that gets Metas out of your way, so you will only have to work with Arrays, Dictionarys and the Primitive types you pass to it.
  */

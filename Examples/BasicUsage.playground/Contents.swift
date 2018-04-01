@@ -35,7 +35,7 @@ import MetaSerialization
 
 // MARK: - encoding to a reduced JSON format
 
-func convertToJSON(_ value: Any?) -> String {
+func convertToJSON(_ value: Meta) -> String {
     
     // String and Int are the two supported types passed to PrimitivesEnumTranslator
     
@@ -78,7 +78,7 @@ func convertToJSON(_ value: Any?) -> String {
     
 }
 
-func convertToSwift(_ json: String) -> Any? {
+func convertToSwift(_ json: String) -> Meta {
     var json = json
     
     switch json.first! {
@@ -133,16 +133,14 @@ func toSwift(_ value: Any) -> Any? {
 // PrimitivesEnumTranslator is a verry simple implementation.
 // Usually you will write a own implementation of the Translator protocol.
 
-let translator = PrimitivesEnumTranslator(primitives: [.string, .int],
-                                          encode: toJSON,
-                                          decode: toSwift)
+let translator = PrimitivesEnumTranslator(primitives: [.string, .int])
 
 // and thats basically all of the code that is needed to encode
 // arbitrary swift objects implementing Encodable
 
 let serialization = SimpleSerialization<String>(translator: translator,
-                                                encodeFromMeta: translator.encode,
-                                                decodeToMeta: translator.decode)
+                                                encodeFromMeta: convertToJSON,
+                                                decodeToMeta: convertToSwift)
 
 // MARK: - serialization
 
