@@ -41,12 +41,12 @@ import Foundation
  However all your types need to conform to meta, otherwise the encoding process will crash at some point.
  This requirement isn't implemented in the first place, because otherwise it was not possible to set Primitive to a protocol that simply.
  
- There is another issue right now: PrimitivesProtocolTranslator needs two Generic parameters because of an inconsistency in swift's type checking realted to protocols as generic paramters (https://bugs.swift.org/browse/SR-6872?jql=text%20~%20%22type%20check%20with%20protocol%22). The first parameter should be your marker protocol and the second type should be YourMarkerProtocol.Type.
+ There is another issue right now: PrimitivesProtocolTranslator needs two Generic parameters because of an inconsistency in swift's type checking realted to protocols as generic paramters (https://bugs.swift.org/browse/SR-6872?jql=text%20~%20%22type%20check%20with%20protocol%22). If YourMarkerProtocol is your marker protocol the first type parameter should be YourMarkerProtocol and the second type should be YourMarkerProtocol.Type.
  ```
  protocol YourMarker: Meta {}
  let translator = PrimitivesProtocolTranslator<YourMarker, YourMarker.Type>()
  ```
- However, with this you may also specify two diffrent markers for encodign and decoding. There is no point against that.
+ However, with this you may also specify two diffrent markers for encodign and decoding, since the first type will be used only during encoding and the second only during decoding.
  */
 public struct PrimitivesProtocolTranslator<Primitive, PrimitiveType>: MetaSupplier, Unwrapper {
     
@@ -74,7 +74,6 @@ public struct PrimitivesProtocolTranslator<Primitive, PrimitiveType>: MetaSuppli
     public func unwrap<T>(meta: Meta, toType type: T.Type, for decoder: MetaDecoder) throws -> T? {
  
         // if type is a primtive and meta is T, it is unwrappend, otherwise not
-        // FIXME: precisely this check is not working, because Primitive is a generic parameter
         if type is PrimitiveType {
             
             return meta as? T
@@ -88,4 +87,3 @@ public struct PrimitivesProtocolTranslator<Primitive, PrimitiveType>: MetaSuppli
     }
     
 }
-

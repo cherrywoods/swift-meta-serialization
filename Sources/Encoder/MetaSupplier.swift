@@ -33,7 +33,8 @@ public protocol MetaSupplier {
      Returns an empty `EncodingKeyedContainerMeta`.
      
      This method lets you use a custom container type (e.g. NSDictionary), if required.
-     However this method has a default implementation returning a new DictionaryKeyedContainerMeta every time it is called.
+     However this method has a default implementation returning a new Dictionary<String, Meta> every time it is called.
+     (Please note that currently all dictionarys conform to `KeyedContainerMeta` because it is currently not possible to use conditional conformance here since swift isn't able to check for conditional conformance at runtime right now. If you are using another Dictionary then Dictionay<String, Meta> as keyed container meta, your code will crash).
      
      - Returns: A new, empty EncodingKeyedMetaContainer.
      - Attention: You should implement this method or keep the default implementation of it, even if you do not support keyed containers in you framework, because the documentation of Encodable specifies an empty keyed container as substitute if a value did not encode anything. Do not use precondition or assert in this method for that reason. Also keyed containers are an important part of many `encode(to:)` implementations (especially the default generated ones). Therefor it could make sence to implement some transition from keyed containers to other containers you provide. A custom implementation of `KeyedContainerMeta` is the right place for this.
@@ -44,7 +45,8 @@ public protocol MetaSupplier {
      Returns an empty `EncodingUnkeyedMetaContainer`.
      
      This method lets you use a custom container type (e.g. NSArray), if required.
-     However this method has a default implementation returning a new ArrayUnkeyedContainerMeta every time it is called.
+     However this method has a default implementation returning a new Array<Meta> every time it is called.
+     (Please note that currently all arrays conform to `UnkeyedContainerMeta` because it is currently not possible to use conditional conformance here since swift isn't able to check for conditional conformance at runtime right now. If you are using another Array then Array<Meta> as unkeyed container meta, your code will crash).
      
      - Returns: A new, empty EncodingUnkeyedMetaContainer.
      */
