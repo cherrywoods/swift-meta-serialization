@@ -31,7 +31,7 @@ open class MetaDecoder: Decoder {
     // MARK: - options
     
     /// The MetaDecoder.Options that define the behavior of this decoder.
-    open var options: MetaDecoder.Options
+    open let options: MetaDecoder.Options
     
     // MARK: - translator
 
@@ -50,7 +50,7 @@ open class MetaDecoder: Decoder {
 
      - Parameter codingPath: The coding path this decoder will start at.
      - Parameter userInfo: additional information to provide context during decoding.
-     - Parameter unwrapper: The `Unwrapper` the decoder will use to unwrap metas.
+     - Parameter unwrapper: The `Unwrapper` the decoder will use to unwrap metas. If options contains the `.dynamicallyUnwindMetaTree` option, this unwrapper needs to conform to `ContainerUnwrapper` additionally. If it does not, this initalizer will crash.
      - Parameter storage: A empty CodingStorage that should be used to store metas.
      */
     public init(at codingPath: [CodingKey] = [],
@@ -59,6 +59,13 @@ open class MetaDecoder: Decoder {
                 unwrapper: Unwrapper,
                 storage: CodingStorage = LinearCodingStack()) {
 
+        if options.contains(.dynamicallyUnwindMetaTree) {
+            
+            // make sure unwrapper conforms to ContainerUnwrapper
+            precondition(unwrapper is ContainerUnwrapper, "If the dynamically unwind meta tree option is set, unwrapper needs to conform to ContainerUnwrapper.")
+            
+        }
+        
         self.codingPath = codingPath
         self.userInfo = userInfo
         self.options = options
@@ -136,19 +143,21 @@ open class MetaDecoder: Decoder {
     public func container<Key: CodingKey>(keyedBy keyType: Key.Type, for passedMeta: Meta, at codingPath: [CodingKey]) throws -> KeyedDecodingContainer<Key> {
 
         
-        let meta: DecodingKeyedContainerMeta?
-        if options.contains(.dynamicallyUnwrapMetaTree) {
+        let meta: Meta
+        if options.contains(.dynamicallyUnwindMetaTree) {
             
             // also unwrap containers, if dynamicallyUnwrapMetaTree is set
-            meta = try unwrapper.unwrap(meta: passedMeta, toType: DecodingKeyedContainerMeta.self, for: self) ?? ( passedMeta as? DecodingKeyedContainerMeta )
+            // if this option is set, unwrapper needs to conform to ContainerUnwrapper
+            // this is also checked in the initalizer
+            meta = try (unwrapper as! ContainerUnwrapper).unwrap(meta: passedMeta, toType: DecodingKeyedContainerMeta.self, for: self) ?? passedMeta
             
         } else {
             
-            meta = passedMeta as? DecodingKeyedContainerMeta
+            meta = passedMeta
             
         }
         
-        guard let keyedMeta = meta else {
+        guard let keyedMeta = meta as? DecodingKeyedContainerMeta else {
 
             let context = DecodingError.Context(codingPath: codingPath, debugDescription: "Decoded value does not match the expected type.")
             throw DecodingError.typeMismatch(KeyedDecodingContainer<Key>.self, context)
@@ -172,18 +181,18 @@ open class MetaDecoder: Decoder {
      */
     public func unkeyedContainer(for passedMeta: Meta, at codingPath: [CodingKey]) throws -> UnkeyedDecodingContainer {
 
-        let meta: DecodingUnkeyedContainerMeta?
-        if options.contains(.dynamicallyUnwrapMetaTree) {
+        let meta: Meta
+        if options.contains(.dynamicallyUnwindMetaTree) {
             
-            meta = try unwrapper.unwrap(meta: passedMeta, toType: DecodingUnkeyedContainerMeta.self, for: self) ?? ( passedMeta as? DecodingUnkeyedContainerMeta )
+            meta = try (unwrapper as! ContainerUnwrapper).unwrap(meta: passedMeta, toType: DecodingUnkeyedContainerMeta.self, for: self) ?? passedMeta
             
         } else {
             
-            meta = passedMeta as? DecodingUnkeyedContainerMeta
+            meta = passedMeta
             
         }
         
-        guard let unkeyedMeta = meta else {
+        guard let unkeyedMeta = meta as? DecodingUnkeyedContainerMeta else {
 
             let context = DecodingError.Context(codingPath: codingPath, debugDescription: "Decoded value does not match the expected type.")
             throw DecodingError.typeMismatch(UnkeyedDecodingContainer.self, context)

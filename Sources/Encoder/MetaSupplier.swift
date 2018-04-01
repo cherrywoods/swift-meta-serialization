@@ -72,6 +72,6 @@ public protocol MetaSupplier {
      - Parameter encoder: The encoder that requests the wrap. You should use this encoder if you need to encode values yourself inside wrap or to get the current coding path (this an array of coding keys visited up to value in the order they were visited) taken up to value. It is ment to be used in errors you may throw (e.g. `EncodingError`).
      - Returns: nil or a `Meta` which wrappes value.
      */
-    func wrap<T>(_ value: T, for encoder: MetaEncoder) throws -> Meta?
+    func wrap<T>(_ value: T, for encoder: MetaEncoder) throws -> Meta? where T: Encodable
     
 }
