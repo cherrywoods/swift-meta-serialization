@@ -29,29 +29,27 @@ Luckyly Swift automatically provides me with implementations for `encode(to:)` t
 
 If you now look at the [JSONEncoder.swift file from Foundation](https://github.com/apple/swift/blob/5.0-dont-hardcode-numbers-in-objc-block-sil/stdlib/public/SDK/Foundation/JSONEncoder.swift) you can see, that there is a lot of code that needs to be written to implement a custom `Decoder` or `Encoder`. You may also see, that you might copy very large parts of this file for most serialization formats. In total: There's a lot of overhead.
 
-Now do you really want to copy this code? It will take you some time to read and understand it and if this implementation changed you would need to have to change your code too (ok if you have just one serialization framework, but already pretty anoying if you have two) (the implementation is indeed changed from time to time).
+Now do you really want to copy this code? Luckly you should not have to, because this is what MetaSerialization is for: 
+It is here to save you from copying that code and provide you a simpler interface instead.
 
-This is what MetaSerialization is for. It is here to save you from copying that code and provide you a simpler interface instead.
-
-It already is not too complicated to use MetaSerialization, but certainly it can still be easier. If you have any idea about this, please comment the issue that already exists for this, open your own issue or pull request (would be super cool 👍), or write an email to cherrywoods@posteo.de.
+It already is not too complicated to use MetaSerialization, but certainly it can still be easier. If you have any idea about this, please comment the issue that already exists for this, open your own issue or pull request (would be super cool 👍).
 
 ## What it does
 MetaSerialization provides a layer in between your serialization framework and the swift standard library interface
 (mainly Encoder and Decoder) and implements most of the overhead Encoder and Decoder require.
 
 ## How it works
-MetaSerialization provides a MetaEncoder and MetaDecoder, that depend on a so-called Translator.
+MetaSerialization provides implementations for `Encoder` and `Decoder`, `MetaEncoder` and `MetaDecoder`, that rely on a `MetaSupplier` and an `Unwrapper`.
 
-MetaDecoder and MetaEncoder create a representation of the serialized data in a meta format.
+With these helpers, `MetaDecoder` and `MetaEncoder` create a representation of the serialized data in a meta format.
 
 This format is created in a way, that in the end the *meta tree* (as I call the in-between format) will only contain values, that *are natively supported by your framework* or in other words that you can encode directly.
 
 This enables you to serialize any swift class or struct or enum you or anyone else writes, plus any array, dictionary, tuple, Int, String, and so on to an external (I call it raw) representation that only supports, say, Numbers, String and some kind of Dictionarys and Arrays by mainly writing the code to convert a swift Int to your representation of a number, a swift String to your representation of a String, a swift Array of exclusively your supported types (Number, String, Dictionary, Array in this example) to your representation of a *unkeyed container* or Array and a swift Dictionary (of exclusively your supported types) to your representation of a *keyed container* or Dictionary (or Map).
 
-Ok, this should like a lot of work and pretty complicated, but this, I guess, is what you would have to do anyway to implement the serialization process.
-In the previous example about JSON, this code be this:
-
-* convert a `KeyedContainerMeta` (you chose the concrete implementation) to this JSON: `{ ... }` (... represents other JSON you create),
+Implementing this still looks like a lot of work and pretty complicated, but this, I guess, is what you would have to do anyway to implement the serialization process.
+Concretely, in the previous example about JSON, you would need write this code:
+* convert a `KeyedContainerMeta` (you chose the concrete implementation) to this JSON: `{ ... }` (`...` represents other JSON you need create),
 * convert a `UnkeyedContainerMeta` (again, you chose which one) to this JSON: `[ ... ]`,
 * set quotation marks around Strings and convert your other primitives types.
 
@@ -101,22 +99,15 @@ MetaSerialization can only do it's work properly, if you do not use the function
 
 Furthermore you may not do anything in your encoding and decoding code. There are some limitations beyond swifts limitations, when you are using MetaSerialization (or using a framework using MetaSerialization). [Here's a list](https://github.com/cherrywoods/swift-meta-serialization/wiki/Illegal-Encoding-or-Decoding-Behaviours) of code snippets, for which MetaSerialization will give you the "go directly into the prision" card/crash.
 
-## Licensing
-This project's code could be seen in part as derivate work of JSONEncoder from Foundation, licensed under the Apache v2 license.
-Because I'm no layer I can say if realy is a such. Due to this, the Apache license file is included in this repository.
-
-This should only apply for version 1 and before. Version 2 should not be seen a derivate.
-
 ## Testing
 This project is tested against the tests of JSONEncoder from Foundation.
 
+This applies for version 1, the current release. While this release works fine in general and passes all test that JSONEncoder specifies, it isn't that great to subclass and overwrite. Due to this, there is a new version (2.0) that is currently not release ready, because a lot of added features has not been tested yet. However, 2.0 is also already capable of all JSONEncoder tests. You may clone directly from the master branch to get ther new version. 
+
 ## Licensing
-This framework is licensed at the Apache Version 2.0 License with Runtime Library Exception, the same license swift is licensed at.
+This framework is licensed at the Apache Version 2.0 License, (nearly) the same license swift is licensed at.
 
-## Spelling and grammar errors
-The project documentation and source code will contain spelling and grammar mistakes. If they obscure the meaning, please open an issue.
-
-## What could be done
+## Help wanted!
  - [ ] Include more tests
  - [ ] Write more documentation, e.g. the complete decoding example process isn't complete.
  - [ ] Provide a simpler way to use MetaSerialization
