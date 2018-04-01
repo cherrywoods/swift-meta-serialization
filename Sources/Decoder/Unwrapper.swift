@@ -33,7 +33,7 @@ public protocol Unwrapper {
      
      If you decoded to a Meta conforming to NilMeta, that Meta will not reach your method.
      
-     If on a `MetaDecoder` the option `MetaDecoder.Options.dynamicallyUnwrapMetaTree is set,
+     If on a `MetaDecoder` the option `MetaDecoder.Options.dynamicallyUnwindMetaTree` is set,
      the decoder will call `unwrap` with the types `DecodingKeyedContainerMeta` and `DecodingUnkeyedContainerMeta`.
      If you return nil for these containers, the meta passed to unwrap will be used as container meta, if it conforms to these types.
      Otherwise a DecodingError will be thrown.
@@ -45,11 +45,42 @@ public protocol Unwrapper {
      
      This method is called very frequently.
      
-     - Parameter meta: The meta whose value you should cast to T. This meta was created by you during decode.
-     - Parameter type: The type you should cast to.
+     - Parameter meta: The meta you should unwrap to T. This meta was created by you and passed to a MetaDecoder.
+     - Parameter type: The type you should unwrap to.
      - Parameter decoder: The decoder that requests the unwrap. You should use this decoder if you need to decode types yourself inside unwrap or to get the current coding path (this an array of coding keys visited up to meta in the order they were visited) taken up to meta. This coding path is ment to be used in errors you may throw (e.g. `DecodingError`).
-     - Returns: A value of type T, that was constructed from meta. Returns nil, if the requested type is not supported directly.
+     - Returns: A value of type T that was constructed from meta. Returns nil, if the requested type is not supported directly or meta not unwrappable to it.
      */
-    func unwrap<T>(meta: Meta, toType type: T.Type, for decoder: MetaDecoder) throws -> T?
+    func unwrap<T>(meta: Meta, toType type: T.Type, for decoder: MetaDecoder) throws -> T? where T: Decodable
+    
+}
+
+/**
+ An extended unwrapper that supports dynamically unwinding the meta tree (see `MetaDecoder.Options.dynamicallyUnwindMetaTree`)
+ */
+public protocol ContainerUnwrapper: Unwrapper {
+    
+    /**
+     Unwraps meta to a `DecodingKeyedContainerMeta`.
+     
+     Returning nil in this method will make MetaDecoder to try to interpret meta as `DecodingKeyedContainerMeta`.
+     Therefor, if meta does conform to `DecodingKeyedContainerMeta` you do not need to handle it in this method.
+     
+     - Parameter meta: The meta you should unwrap to a keyed container meta. This meta was created by you and passed to a MetaDecoder.
+     - Parameter decoder: The decoder that requests the unwrap. You should use this decoder if you need to decode types yourself inside unwrap or to get the current coding path (this an array of coding keys visited up to meta in the order they were visited) taken up to meta. This coding path is ment to be used in errors you may throw (e.g. `DecodingError`).
+     - Returns: A `DecodingKeyedContainerMeta` that was constructed from meta. Returns nil, if meta can not be converted to a keyed container meta.
+     */
+    func unwrap(meta: Meta, toType: DecodingKeyedContainerMeta.Protocol, for decoder: MetaDecoder) throws -> DecodingKeyedContainerMeta?
+    
+    /**
+     Unwraps meta to a `DecodingUnkeyedContainerMeta`
+     
+     Returning nil in this method will make MetaDecoder to try to interpret meta as `DecodingUnkeyedContainerMeta`.
+     Therefor, if meta does conform to `DecodingUnkeyedContainerMeta` you do not need to handle it in this method.
+     
+     - Parameter meta: The meta you should unwrap to an unkeyed container meta. This meta was created by you and passed to a MetaDecoder.
+     - Parameter decoder: The decoder that requests the unwrap. You should use this decoder if you need to decode types yourself inside unwrap or to get the current coding path (this an array of coding keys visited up to meta in the order they were visited) taken up to meta. This coding path is ment to be used in errors you may throw (e.g. `DecodingError`).
+     - Returns: A `DecodingUnkeyedContainerMeta` that was constructed from meta. Returns nil, if meta can not be converted to an unkeyed container meta.
+     */
+    func unwrap(meta: Meta, toType: DecodingUnkeyedContainerMeta.Protocol, for decoder: MetaDecoder) throws -> DecodingUnkeyedContainerMeta?
     
 }

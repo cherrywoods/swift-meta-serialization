@@ -39,11 +39,13 @@ extension MetaDecoder {
          `unwrapper.unwrap` is called, with eigther `DecodingKeyedContainerMeta` or `DecodingUnkeyedContainerMeta` for type.
          If `unwrap` returns nil, the process continues with the original meta.
          
+         Ot enable this behavior, your unwrapper also needs to conform to `ContainerUnwrapper`.
+         
          With this behavior, you may now dynamically extend your meta tree.
          You don't need to know which meta will be a keyed or unkeyed container
          and don't need meta implementations to conform to `Decoding(Un)KeyedContainerMeta` if they could be seen as such containers.
          */
-        public static let dynamicallyUnwrapMetaTree = Options(rawValue: 1 << 0)
+        public static let dynamicallyUnwindMetaTree = Options(rawValue: 1 << 0)
         
         // MARK: combinations
         
