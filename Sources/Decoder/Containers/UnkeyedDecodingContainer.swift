@@ -68,7 +68,8 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
 
     open func decodeNil() throws -> Bool {
 
-        let isNil = try accessMetaAtCurrentIndex() is NilMeta
+        let isNil = try decoder.representsNil(meta: accessMetaAtCurrentIndex())
+        
         
         // as documentation says, we should only increment currentValue,
         // if the encoded value is nil

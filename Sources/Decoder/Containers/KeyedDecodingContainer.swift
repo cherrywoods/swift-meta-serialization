@@ -87,7 +87,7 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
     
     public func decodeNil(forKey key: Key) throws -> Bool {
         
-        return try accessMeta(at: key) is NilMeta
+        return try decoder.representsNil(meta: accessMeta(at: key))
         
     }
     

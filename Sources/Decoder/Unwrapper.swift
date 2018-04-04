@@ -21,8 +21,29 @@ import Foundation
 
 /**
  The core interface to specify MetaDecoder's decoding.
- Implement this protocol to unwrap "primities"
- (these are usually the types you can represent directly in your serialization format).
+ Implement this protocol to unwrap "primities" (these are usually the types you can represent directly in your serialization format).
+ 
+ A MetaDecoder will call `unwrap` for each meta in the meta tree before decoding takes place for it.
+ There are actually two situations in which this happens.
+ A MetaDecoder asks it's unwrapper to unwrap a meta to a concrete type (like String, Int, etc.).
+ I does so by calling `unwrap` with a concrete type conforming to `Decodable`. `
+ If you return nil in this method, the MetaDecoder will call `init(from:)` on the passed type.
+ 
+ However, MetaDecoder will also try to unwrap metas to `NilMeta`, `DecodingKeyedContainerMeta` and `DecodingUnkeyedContainerMeta`.
+ These options enables you to partially postpone the creation of the meta tree until the actual containers are known.
+ 
+ Specifically, if keyed or unkeyed containers are requested for a meta from a MetaDecoder,
+ before this meta is interpreted as keyed or unkeyed container and it is expected that it conforms to `DecodingKeyedContainerMeta` respectively `DecodingUnkeyedContainerMeta`,
+ the decoder calls `unwrap`, with eigther `DecodingKeyedContainerMeta` or `DecodingUnkeyedContainerMeta` for type.
+ If `unwrap` returns nil, the process continues with the original meta.
+ 
+ With this, you may dynamically extend your meta tree.
+ You don't need to know which meta will be a keyed or unkeyed container before MetaDecoder does it's work
+ and don't need meta implementations to conform to `Decoding(Un)KeyedContainerMeta` or `NilMeta` if they could be seen as such containers or nil.
+ 
+ For these three methods, there are default implementations provided, that always return nil. `
+ If you don't override these methods, a meta tree is expected to be `static`,
+ repectively all container types and nil values need to be known before `decode` on a MetaDecoder is called.
  */
 public protocol Unwrapper {
     
@@ -52,12 +73,21 @@ public protocol Unwrapper {
      */
     func unwrap<T>(meta: Meta, toType type: T.Type, for decoder: MetaDecoder) throws -> T? where T: Decodable
     
-}
-
-/**
- An extended unwrapper that supports dynamically unwinding the meta tree (see `MetaDecoder.Options.dynamicallyUnwindMetaTree`)
- */
-public protocol ContainerUnwrapper: Unwrapper {
+    // MARK: dynamically unwind meta stack
+    
+    /**
+     Unwraps meta to a `NilMeta`.
+     
+     Returning nil in this method will make MetaDecoder try to interpret meta itself as `NilMeta`.
+     Therefor, if meta does conform to `NilMeta` you do not need to handle it in this method.
+     
+     - Note: You may not throw in this method, in diffrence to the other methods.
+     
+     - Parameter meta: The meta you should unwrap to a nil meta. This meta was created by you and passed to a MetaDecoder.
+     - Parameter decoder: The decoder that requests the unwrap. You should use this decoder if you need to decode types yourself inside unwrap or to get the current coding path (this an array of coding keys visited up to meta in the order they were visited) taken up to meta. This coding path is ment to be used in errors you may throw (e.g. `DecodingError`).
+     - Returns: A `NilMeta` that was constructed from meta. Returns nil, if meta can not be converted to a nil meta.
+     */
+    func unwrap(meta: Meta, toType: NilMeta.Protocol, for decoder: MetaDecoder) -> NilMeta?
     
     /**
      Unwraps meta to a `DecodingKeyedContainerMeta`.
@@ -82,5 +112,22 @@ public protocol ContainerUnwrapper: Unwrapper {
      - Returns: A `DecodingUnkeyedContainerMeta` that was constructed from meta. Returns nil, if meta can not be converted to an unkeyed container meta.
      */
     func unwrap(meta: Meta, toType: DecodingUnkeyedContainerMeta.Protocol, for decoder: MetaDecoder) throws -> DecodingUnkeyedContainerMeta?
+    
+}
+
+
+public extension Unwrapper {
+    
+    public func unwrap(meta: Meta, toType: NilMeta.Protocol, for decoder: MetaDecoder) -> NilMeta? {
+        return nil
+    }
+    
+    public func unwrap(meta: Meta, toType: DecodingKeyedContainerMeta.Protocol, for decoder: MetaDecoder) throws -> DecodingKeyedContainerMeta? {
+        return nil
+    }
+    
+    public func unwrap(meta: Meta, toType: DecodingUnkeyedContainerMeta.Protocol, for decoder: MetaDecoder) throws -> DecodingUnkeyedContainerMeta? {
+        return nil
+    }
     
 }
