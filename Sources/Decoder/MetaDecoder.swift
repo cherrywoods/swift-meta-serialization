@@ -28,11 +28,6 @@ open class MetaDecoder: Decoder {
 
     open var codingPath: [CodingKey]
 
-    // MARK: - options
-    
-    /// The MetaDecoder.Options that define the behavior of this decoder.
-    open let options: MetaDecoder.Options
-    
     // MARK: - translator
 
     /// The `Unwrapper` used to unwrap metas
@@ -55,20 +50,11 @@ open class MetaDecoder: Decoder {
      */
     public init(at codingPath: [CodingKey] = [],
                 with userInfo: [CodingUserInfoKey : Any] = [:],
-                options: MetaDecoder.Options = Options.defaultConfiguration,
                 unwrapper: Unwrapper,
                 storage: CodingStorage = LinearCodingStack()) {
 
-        if options.contains(.dynamicallyUnwindMetaTree) {
-            
-            // make sure unwrapper conforms to ContainerUnwrapper
-            precondition(unwrapper is ContainerUnwrapper, "If the dynamically unwind meta tree option is set, unwrapper needs to conform to ContainerUnwrapper.")
-            
-        }
-        
         self.codingPath = codingPath
         self.userInfo = userInfo
-        self.options = options
         self.unwrapper = unwrapper
         self.storage = storage
 
@@ -133,6 +119,17 @@ open class MetaDecoder: Decoder {
 
     }
 
+    // MARK: - nil values
+    
+    /// Checks whether the given meta represents a nil meta. Tries to dynamically unwrap meta if specified.
+    open func representsNil(meta passedMeta: Meta) -> Bool {
+        
+        // also unwrap nil requests
+        let meta = unwrapper.unwrap(meta: passedMeta, toType: NilMeta.self, for: self) ?? passedMeta
+        return meta is NilMeta
+        
+    }
+    
     // MARK: - container(for: meta) methods
 
     /**
@@ -141,21 +138,9 @@ open class MetaDecoder: Decoder {
      If it is not, throw DecodingError.typeMissmatch.
      */
     public func container<Key: CodingKey>(keyedBy keyType: Key.Type, for passedMeta: Meta, at codingPath: [CodingKey]) throws -> KeyedDecodingContainer<Key> {
-
         
-        let meta: Meta
-        if options.contains(.dynamicallyUnwindMetaTree) {
-            
-            // also unwrap containers, if dynamicallyUnwrapMetaTree is set
-            // if this option is set, unwrapper needs to conform to ContainerUnwrapper
-            // this is also checked in the initalizer
-            meta = try (unwrapper as! ContainerUnwrapper).unwrap(meta: passedMeta, toType: DecodingKeyedContainerMeta.self, for: self) ?? passedMeta
-            
-        } else {
-            
-            meta = passedMeta
-            
-        }
+        // also unwrap containers
+        let meta = try unwrapper.unwrap(meta: passedMeta, toType: DecodingKeyedContainerMeta.self, for: self) ?? passedMeta
         
         guard let keyedMeta = meta as? DecodingKeyedContainerMeta else {
 
@@ -181,16 +166,7 @@ open class MetaDecoder: Decoder {
      */
     public func unkeyedContainer(for passedMeta: Meta, at codingPath: [CodingKey]) throws -> UnkeyedDecodingContainer {
 
-        let meta: Meta
-        if options.contains(.dynamicallyUnwindMetaTree) {
-            
-            meta = try (unwrapper as! ContainerUnwrapper).unwrap(meta: passedMeta, toType: DecodingUnkeyedContainerMeta.self, for: self) ?? passedMeta
-            
-        } else {
-            
-            meta = passedMeta
-            
-        }
+        let meta = try unwrapper.unwrap(meta: passedMeta, toType: DecodingUnkeyedContainerMeta.self, for: self) ?? passedMeta
         
         guard let unkeyedMeta = meta as? DecodingUnkeyedContainerMeta else {
 
