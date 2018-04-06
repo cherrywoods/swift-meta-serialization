@@ -36,7 +36,7 @@ import XCTest
 
 class TestMetaSerializationByJSONEncoderTests : XCTestCase {
 
-    let serialization = TestUtilities.serialization
+    let serialization = Example1.serialization
 
     // MARK: - Encoding Top-Level Empty Types
 
@@ -50,7 +50,7 @@ class TestMetaSerializationByJSONEncoderTests : XCTestCase {
         _testRoundTrip(of: empty, expected: emptyContainer)
     }
 
-    let emptyContainer = Container.dictionary([:])
+    let emptyContainer = Example1Container.dictionary([:])
 
     // MARK: - Encoding Top-Level Single-Value Types
     func testEncodingTopLevelSingleValueEnum() {
@@ -81,8 +81,8 @@ class TestMetaSerializationByJSONEncoderTests : XCTestCase {
     func testEncodingTopLevelStructuredClass() {
         // Person is a class with multiple fields.
         // let expectedJSON = "{\"name\":\"Johnny Appleseed\",\"email\":\"appleseed@apple.com\"}"
-        let expectedContainer = Container.dictionary( [ "name": Container.string( "Johnny Appleseed" ),
-                                                        "email": Container.string( "appleseed@apple.com" )] )
+        let expectedContainer = Example1Container.dictionary( [ "name": Example1Container.string( "Johnny Appleseed" ),
+                                                        "email": Example1Container.string( "appleseed@apple.com" )] )
         let person = Person.testValue
         _testRoundTrip(of: person, expected: expectedContainer)
     }
@@ -113,13 +113,13 @@ class TestMetaSerializationByJSONEncoderTests : XCTestCase {
 
     func testEncodingTopLevelNullableType() {
         // encoding a top level nullable type is in general allowed
-        _testRoundTrip(of: EnhancedBool.true, expected: Container.bool(true))
-        _testRoundTrip(of: EnhancedBool.false, expected: Container.bool(false))
-        _testRoundTrip(of: EnhancedBool.fileNotFound, expected: Container.nil)
+        _testRoundTrip(of: EnhancedBool.true, expected: Example1Container.bool(true))
+        _testRoundTrip(of: EnhancedBool.false, expected: Example1Container.bool(false))
+        _testRoundTrip(of: EnhancedBool.fileNotFound, expected: Example1Container.nil)
 
-        _testRoundTrip(of: TopLevelWrapper(EnhancedBool.true), expected: Container.dictionary( ["value": Container.bool(true)] ) )
-        _testRoundTrip(of: TopLevelWrapper(EnhancedBool.false), expected: Container.dictionary( ["value": Container.bool(false)] ) )
-        _testRoundTrip(of: TopLevelWrapper(EnhancedBool.fileNotFound), expected: Container.dictionary( ["value": Container.nil] ) )
+        _testRoundTrip(of: TopLevelWrapper(EnhancedBool.true), expected: Example1Container.dictionary( ["value": Example1Container.bool(true)] ) )
+        _testRoundTrip(of: TopLevelWrapper(EnhancedBool.false), expected: Example1Container.dictionary( ["value": Example1Container.bool(false)] ) )
+        _testRoundTrip(of: TopLevelWrapper(EnhancedBool.fileNotFound), expected: Example1Container.dictionary( ["value": Example1Container.nil] ) )
     }
 
     // MARK: - Encoder Features
@@ -231,7 +231,7 @@ class TestMetaSerializationByJSONEncoderTests : XCTestCase {
         // Once Array decoding begins, 1 is pushed onto the container stack ([[1,2,3], 1]), and 1 is attempted to be decoded as String. This throws a .typeMismatch, but the container is not popped off the stack.
         // When attempting to decode [Int], the container stack is still ([[1,2,3], 1]), and 1 fails to decode as [Int].
         // let json = "[1,2,3]".data(using: .utf8)!
-        let container = Container.array( [ .int(1), .int(2), .int(3) ] )
+        let container = Example1Container.array( [ .int(1), .int(2), .int(3) ] )
         let _ = try! serialization.decode(toType: EitherDecodable<[String], [Int]>.self, from: container)
     }
 
@@ -245,7 +245,7 @@ class TestMetaSerializationByJSONEncoderTests : XCTestCase {
     }
 
     private func _testRoundTrip<T>(of value: T,
-                                   expected: Container? = nil) where T : Codable, T : Equatable {
+                                   expected: Example1Container? = nil) where T : Codable, T : Equatable {
 
         TestUtilities.testRoundTrip(of: value, using: serialization, expected: expected)
 

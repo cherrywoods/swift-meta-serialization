@@ -95,7 +95,7 @@ func convertToSwift(_ json: String) -> Meta {
         json = String( json.dropFirst(2).dropLast(2) )
         var array = [Any]()
         for element in json.split(separator: "\n") {
-            array.append( convertToSwift(String(element))! )
+            array.append( convertToSwift(String(element)) )
         }
         return array
     case "{":
@@ -108,19 +108,19 @@ func convertToSwift(_ json: String) -> Meta {
             // drop " and "
             let key = String( keyAndValue[0].dropFirst().dropLast() )
             // remove the blank before the values
-            let val = convertToSwift(String( keyAndValue[1].dropFirst() ))!
+            let val = convertToSwift(String( keyAndValue[1].dropFirst() ))
             dictionary[key] = val
         }
         return dictionary
     default:
         // this should be a number
-        return Int(json)
+        return Int(json)!
     }
     
 }
 
 func toJSON(_ value: Any?) -> Any {
-    return convertToJSON(value) as Any
+    return convertToJSON(value as! Meta) as Any
 }
 
 func toSwift(_ value: Any) -> Any? {

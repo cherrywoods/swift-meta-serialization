@@ -18,7 +18,7 @@ class MultipleContainerRequestsTests: XCTestCase {
      Tests whether it is possible to request two equal containers,
      e.g. two unkeyed containers.
      */
-    func testMultipleContainerRequests() {
+    func testLegitimateMultipleContainerRequests() {
 
         let encodingClosure = { (encoder: Encoder) in
 
@@ -28,8 +28,8 @@ class MultipleContainerRequestsTests: XCTestCase {
         }
 
         let encodable = TestUtilities.TestCodable(encode: encodingClosure)
-        let serialization = TestUtilities.serialization
-        let emptyArray = Container.array([])
+        let serialization = Example1.serialization
+        let emptyArray = Example1Container.array([])
 
         _ = TestUtilities.testEncoding(of: encodable, using: serialization, expected: emptyArray)
 

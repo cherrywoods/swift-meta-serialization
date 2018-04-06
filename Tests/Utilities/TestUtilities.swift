@@ -14,31 +14,25 @@ struct TestUtilities {
     
     private init() {}
     
-    // MARK: - container serialization
-    
-    static var serialization = SimpleSerialization<Container>(translator: Container.translator,
-                                                                       encodeFromMeta: encodeToContainer,
-                                                                       decodeToMeta: decodeFromContainer)
-    
     static func testContaienrRoundTrip<T: Codable&Equatable>(of value: T,
-                                                             using serialization: SimpleSerialization<Container> = serialization,
-                                                             expected: Container? = nil) {
+                                                             using serialization: SimpleSerialization<Example1Container> = Example1.serialization,
+                                                             expected: Example1Container? = nil) {
         
         testRoundTrip(of: value, using: serialization, expected: expected)
         
     }
     
     static func testContainerEncoding<T: Encodable>(of value: T,
-                                                    using serialization: SimpleSerialization<Container> = serialization,
-                                                    expected: Container? = nil) -> Container? {
+                                                    using serialization: SimpleSerialization<Example1Container> = Example1.serialization,
+                                                    expected: Example1Container? = nil) -> Example1Container? {
         
         return testEncoding(of: value, using: serialization, expected: expected)
         
     }
     
-    static func testContainerDecoding<T: Decodable&Equatable>(from raw: Container,
+    static func testContainerDecoding<T: Decodable&Equatable>(from raw: Example1Container,
                                                               to type: T.Type,
-                                                              using serialization: SimpleSerialization<Container> = serialization,
+                                                              using serialization: SimpleSerialization<Example1Container> = Example1.serialization,
                                                               expected: T? = nil) -> T? {
         
         return testDecoding(from: raw, to: type, using: serialization)

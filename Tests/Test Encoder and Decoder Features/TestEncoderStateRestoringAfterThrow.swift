@@ -39,8 +39,8 @@ class TestEncoderStateRestoringAfterThrow: XCTestCase {
         
         let value = EncodingContainer()
         // the resulting Container should be an array with only one element
-        let expected = Container.array( [ .string("should work") ] )
-        let _ = TestUtilities.testEncoding(of: value, using: TestUtilities.serialization, expected: expected)
+        let expected = Example1Container.array( [ .string("should work") ] )
+        let _ = TestUtilities.testEncoding(of: value, using: Example1.serialization, expected: expected)
         
     }
     
