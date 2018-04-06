@@ -1,5 +1,5 @@
 //
-//  ContainerTranslator.swift
+//  Example1.swift
 //  MetaSerializationTests macOS
 //
 //  Available at the terms of the LICENSE file included in this project.
@@ -9,42 +9,38 @@
 import Foundation
 @testable import MetaSerialization
 
-enum Container {
-    
-    case `nil`
-    case string(String)
-    case bool(Bool)
-    case int(Int)
-    case double(Double)
-    case array([Container])
-    case dictionary([String:Container])
+enum Example1 {
     
     static let translator = PrimitivesEnumTranslator(primitives: [ .nil, .bool, .string, .int, .double ])
     
+    static var serialization = SimpleSerialization<Example1Container>(translator: Example1.translator,
+                                                              encodeFromMeta: encodeToContainer,
+                                                              decodeToMeta: decodeFromContainer)
+    
 }
 
-func encodeToContainer(_ input: Meta) -> Container {
+func encodeToContainer(_ input: Meta) -> Example1Container {
     
     // input is eigther NilMarker, Bool, String, Int or Double
     
     if input is NilMarker {
-        return Container.nil
+        return Example1Container.nil
     } else if let bool = input as? Bool {
-        return Container.bool(bool)
+        return Example1Container.bool(bool)
     } else if let string = input as? String {
-        return Container.string(string)
+        return Example1Container.string(string)
     } else if let int = input as? Int {
-        return Container.int(int)
+        return Example1Container.int(int)
     } else if let double = input as? Double {
-        return Container.double(double)
+        return Example1Container.double(double)
         
     } else if let metaArray = input as? [Meta] {
         
-        return  Container.array( metaArray.map(encodeToContainer) )
+        return  Example1Container.array( metaArray.map(encodeToContainer) )
         
     } else if let metaDictionary = input as? [String : Meta] {
         
-        return Container.dictionary( metaDictionary.mapValues(encodeToContainer) )
+        return Example1Container.dictionary( metaDictionary.mapValues(encodeToContainer) )
         
     }
     
@@ -53,7 +49,7 @@ func encodeToContainer(_ input: Meta) -> Container {
     
 }
 
-func decodeFromContainer(_ container: Container) -> Meta {
+func decodeFromContainer(_ container: Example1Container) -> Meta {
     
     switch container {
     case .nil:
