@@ -20,7 +20,7 @@
 import Foundation
 
 /**
- Manages a UnkeyedContainerMeta
+ Manages a DecodingUnkeyedContainerMeta
  */
 open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     

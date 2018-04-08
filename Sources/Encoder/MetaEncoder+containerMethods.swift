@@ -26,12 +26,12 @@ public extension MetaEncoder {
         let path = codingPath
 
         // there needs to be a placeholder or a real meta stored at the path
-        // if there is a meta stored at path and it isn't a KeyedContainerMeta, crash
+        // if there is a meta stored at path and it isn't a EncodingKeyedContainerMeta, crash
 
         let alreadyStoringContainer = storage.storesMeta(at: path)
         if alreadyStoringContainer {
 
-            guard storage[codingPath] is KeyedContainerMeta else {
+            guard storage[codingPath] is EncodingKeyedContainerMeta else {
                 preconditionFailure("Requested a diffrent container type at a previously used coding path.")
             }
 
@@ -50,7 +50,7 @@ public extension MetaEncoder {
         let alreadyStoringContainer = storage.storesMeta(at: path)
         if alreadyStoringContainer {
 
-            guard storage[codingPath] is UnkeyedContainerMeta else {
+            guard storage[codingPath] is EncodingUnkeyedContainerMeta else {
                 preconditionFailure("Requested a second container at a previously used coding path.")
             }
 

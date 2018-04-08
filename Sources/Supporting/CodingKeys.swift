@@ -64,63 +64,82 @@ public struct IndexCodingKey: CodingKey {
 }
 
 /// An enumeration of all special coding keys meta-serialization will use
-public enum SpecialCodingKey: NonRegualarCodingKey {
+public enum SpecialCodingKey: StandardCodingKey {
     
-    /// used by the superEncoder() methods in MetaKeyed(Encoding|Decoding)Containers
-    case `super` = "super"
+    /// used by the super(Encoder|Decoder)() methods in MetaKeyed(Encoding|Decoding)Containers
+    case `super` = "super,0" // documentation says, that the int value of a super key is 0
     
 }
 
-/// A CodingKey with a special meaning. This kind of CodingKey is used
-public struct NonRegualarCodingKey: CodingKey, ExpressibleByStringLiteral, Equatable {
+/**
+ A CodingKey type initalizable with any string or int value.
+ 
+ This coding key type is exapressible by a string literal in the form `<stringValue>,<intValue>`
+ where `<stringValue>` it the keys string value and `<intValue>` is the keys int value.
+ You may ommit `,<intValue>`, in which case the coding key will have no int value.
+ You may also ommit `<stringValue>` in which case coding keys stringValue will be "\(intValue)".
+ 
+ Therefor valid string literals for a coding key are:
+  * `<stringValue>,<intValue>`
+  * `<stringValue>`
+  * `,<intValue>`
+ If the string literal includes more than one `,` sequence, only the string after the last occurence will be interpreted as int value.
+ 
+ If <intValue> isn't convertible to Int, the coding key will be initalizes with the while string literal as stringValue and without an intValue.
+ */
+public struct StandardCodingKey: CodingKey, ExpressibleByStringLiteral, Equatable {
+    
+    // MARK: - CodingKey
+    
+    public var stringValue: String
+    public var intValue: Int?
+    
+    public init(stringValue: String, intValue: Int) {
+        self.stringValue = stringValue
+        self.intValue = intValue
+    }
+    
+    public init?(stringValue: String) {
+        self.stringValue = stringValue
+    }
+ 
+    /// Sets stringValue to "\(intValue)"
+    public init?(intValue: Int) {
+        self.init(stringValue: "\(intValue)", intValue: intValue)
+    }
     
     // MARK: - string literal expressible
     
     public typealias StringLiteralType = String
     
     public init(stringLiteral string: String) {
-        self.stringValue = string
-    }
-    
-    // MARK: - Equatable
-    
-    public static func ==(lhs: NonRegualarCodingKey, rhs: NonRegualarCodingKey) -> Bool {
-        return lhs.stringValue == rhs.stringValue
-    }
-    
-    // MARK: - CodingKey
-    
-    public var stringValue: String
-    
-    public init?(stringValue: String) {
-        self.init(stringLiteral: stringValue)
-    }
-    
-    public var intValue: Int? {
         
-        switch stringValue {
-            // special cases
-        case SpecialCodingKey.super.rawValue.stringValue: // or in other words "super"
+        let parts = string.split(separator: ",")
+        guard let last = parts.last, let intValue = Int(last) else {
+            self.stringValue = string
+            return
+        }
+        
+        self.intValue = intValue
+        
+        if parts.count == 1 {
             
-            // refering to the swift standard library documentation of KeyedEncodingContainer, this is the int value for the super CodingKey
-            return 0
+            // this means no string value, literal is in form ",<intValue>"
+            self.stringValue = "\(intValue)"
             
-        default:
+        } else {
             
-            if let int = Int(stringValue) {
-                return int
-            } else {
-                return nil
-            }
+            // set string value to the whole string before the last komma.
+            self.stringValue = String( string.prefix(string.count - last.count /* do not include the ",": */- 1) )
             
         }
         
     }
     
-    public init?(intValue: Int) {
-        
-        self.init(stringValue: "\(intValue)")
-        
+    // MARK: - Equatable
+    
+    public static func ==(lhs: StandardCodingKey, rhs: StandardCodingKey) -> Bool {
+        return lhs.stringValue == rhs.stringValue && lhs.intValue == rhs.intValue
     }
     
 }

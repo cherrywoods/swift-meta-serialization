@@ -20,7 +20,7 @@
 import Foundation
 
 /**
- Manages a KeyedContainerMeta
+ Manages a EncodingKeyedContainerMeta
  */
 open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProtocol {
     
@@ -29,7 +29,7 @@ open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProto
     // MARK: properties
     
     /**
-     A reference to this containers underlying `KeyedContainerMeta`
+     A reference to this containers underlying `EncodingKeyedContainerMeta`
      */
     open var reference: Reference
     

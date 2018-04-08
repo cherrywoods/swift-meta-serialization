@@ -109,7 +109,7 @@ open class MetaDecoder: Decoder {
         guard !(type.self is DirectlyDecodable.Type) else {
 
             let context = DecodingError.Context(codingPath: codingPath,
-                                                debugDescription: "Type \(type) does not match the decoded type")
+                                                debugDescription: "Type \(type) does not match the encoded type")
             throw DecodingError.typeMismatch(type, context)
 
         }
@@ -133,7 +133,7 @@ open class MetaDecoder: Decoder {
     // MARK: - container(for: meta) methods
 
     /**
-     Create a new KeyedDecodingContainer for the given meta, if it is a KeyedContainerMeta.
+     Create a new KeyedDecodingContainer for the given meta, if it is a DecodingKeyedContainerMeta.
 
      If it is not, throw DecodingError.typeMissmatch.
      */
@@ -144,7 +144,7 @@ open class MetaDecoder: Decoder {
         
         guard let keyedMeta = meta as? DecodingKeyedContainerMeta else {
 
-            let context = DecodingError.Context(codingPath: codingPath, debugDescription: "Decoded value does not match the expected type.")
+            let context = DecodingError.Context(codingPath: codingPath, debugDescription: "Decoded value does not match the expected container type.")
             throw DecodingError.typeMismatch(KeyedDecodingContainer<Key>.self, context)
 
         }
@@ -160,7 +160,7 @@ open class MetaDecoder: Decoder {
     }
     
     /**
-     Create a new UnkeyedDecodingContainer for the given meta, if it is a UnkeyedContainerMeta.
+     Create a new UnkeyedDecodingContainer for the given meta, if it is a DecodingUnkeyedContainerMeta.
 
      If it is not, throw DecodingError.typeMissmatch.
      */
@@ -170,7 +170,7 @@ open class MetaDecoder: Decoder {
         
         guard let unkeyedMeta = meta as? DecodingUnkeyedContainerMeta else {
 
-            let context = DecodingError.Context(codingPath: codingPath, debugDescription: "Decoded value does not match the expected type.")
+            let context = DecodingError.Context(codingPath: codingPath, debugDescription: "Decoded value does not match the expected container type.")
             throw DecodingError.typeMismatch(UnkeyedDecodingContainer.self, context)
 
         }

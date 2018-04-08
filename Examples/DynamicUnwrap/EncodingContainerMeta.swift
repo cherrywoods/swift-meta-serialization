@@ -45,7 +45,7 @@ struct Example2EncodingKeyedContainerMeta: Example2EncodingContainerMeta, Encodi
     var array: [Meta] {
         
         // return alternating sequence of keys and values
-        return dictionary.reduce([]) { var array = $0; array.append($1.key); array.append($1.value); return array }
+        return dictionary.reduce([]) { var array = $0; array.append(Example2Meta.string($1.key)); array.append($1.value); return array }
         
     }
     
@@ -67,7 +67,14 @@ struct Example2EncodingUnkeyedContainerMeta: Example2EncodingContainerMeta, Enco
     }
     
     mutating func insert(_ meta: Meta, at index: Int) {
-        array[index] = meta
+        
+        if index == array.count {
+            // append in that case
+            array.append(meta)
+        } else {
+            array[index] = meta
+        }
+        
     }
     
 }

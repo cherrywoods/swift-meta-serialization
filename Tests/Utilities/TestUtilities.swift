@@ -8,102 +8,174 @@
 //
 
 import XCTest
+import Nimble
 @testable import MetaSerialization
 
 struct TestUtilities {
     
     private init() {}
     
-    static func testContaienrRoundTrip<T: Codable&Equatable>(of value: T,
-                                                             using serialization: SimpleSerialization<Example1Container> = Example1.serialization,
-                                                             expected: Example1Container? = nil) {
+    static func roundTrip<T: Codable&Equatable, S: Serialization>(_ value: T,
+                                                                  using serialization: S,
+                                                                  expected: S.Raw? = nil) where S.Raw: Equatable {
         
-        testRoundTrip(of: value, using: serialization, expected: expected)
-        
-    }
-    
-    static func testContainerEncoding<T: Encodable>(of value: T,
-                                                    using serialization: SimpleSerialization<Example1Container> = Example1.serialization,
-                                                    expected: Example1Container? = nil) -> Example1Container? {
-        
-        return testEncoding(of: value, using: serialization, expected: expected)
+        let encoded = encode(value, using: serialization, expected: expected)
+        guard encoded != nil else { return }
+        _ = decode(from: encoded!, to: type(of: value), using: serialization, expected: value)
         
     }
     
-    static func testContainerDecoding<T: Decodable&Equatable>(from raw: Example1Container,
-                                                              to type: T.Type,
-                                                              using serialization: SimpleSerialization<Example1Container> = Example1.serialization,
-                                                              expected: T? = nil) -> T? {
+    static func encode<T: Encodable, S: Serialization>(_ value: T,
+                                                       using serialization: S,
+                                                       expected: S.Raw? = nil) -> S.Raw? where S.Raw: Equatable {
         
-        return testDecoding(from: raw, to: type, using: serialization)
-        
-    }
-    
-    // MARK: - round trip
-    
-    static func testRoundTrip<T: Codable&Equatable, Raw: Equatable>(of value: T,
-                                      using serialization: SimpleSerialization<Raw>,
-                                      expected: Raw? = nil) {
-        
-        let encoded = testEncoding(of: value, using: serialization, expected: expected)
-        
-        if encoded != nil {
-            
-            let decoded = testDecoding(from: encoded!, to: type(of: value), using: serialization)
-            
-            if decoded != nil {
-                
-                XCTAssert(decoded! == value, "Value \(value) did not round-trip to the same value. Instead: \(decoded!)")
-                
-            }
-            
-        }
-        
-    }
-    
-    static func testEncoding<T: Encodable, Raw: Equatable>(of value: T,
-                                                           using serialization: SimpleSerialization<Raw>,
-                                                           expected: Raw? = nil) -> Raw? {
-        
-        var payload: Raw? = nil
         do {
             
-            payload = try serialization.encode(value)
+            let result = try serialization.encode(value)
+            
+            if expected != nil {
+                
+                expect(expected!).to(equal(result), description: "Encoded value should match the expected result.")
+            }
+            
+            return result
             
         } catch {
-            XCTFail("Failed to encode \(T.self): \(error)")
+            fail("Failed to encode value: \(value) with error: \(error)")
+            return nil
         }
-        
-        if expected != nil {
-            XCTAssert(expected! == payload!, "Produced not identical to expected.")
-        }
-        
-        return payload
         
     }
     
-    static func testDecoding<T: Decodable&Equatable, Raw>(from raw: Raw,
-                                                                   to type: T.Type,
-                                                                   using serialization: SimpleSerialization<Raw>,
-                                                                   expected: T? = nil) -> T? {
+    static func decode<T: Decodable&Equatable, S: Serialization>(from raw: S.Raw,
+                                                                 to type: T.Type,
+                                                                 using serialization: S,
+                                                                 expected: T? = nil) -> T? {
         
         do {
             
             let decoded = try serialization.decode(toType: type, from: raw)
             
             if expected != nil {
-                XCTAssert(decoded == expected!, "Produced not identical to expected.")
+                expect(expected!).to( equal(decoded), description: "Decoded value should match the expected result." )
             }
             
             return decoded
             
         } catch {
-            
-            XCTFail("Failed to decode \(T.self): \(error)")
+            fail("Failed to decode type: \(T.self) with error: \(error)")
             return nil
+        }
+        
+    }
+    
+    // MARK: failures
+    
+    static func roundTripTypeCoercionFails<T: Codable, U: Codable, S: Serialization>(_ value: T, as type: U.Type, using serialization: S) {
+        
+        do {
+            
+            let result = try serialization.encode(value)
+            _ = try serialization.decode(toType: type, from: result)
+            fail("Coercion from \(T.self) value: \(value) to type \(U.self) was expected to fail but succeeded.")
+            
+        } catch DecodingError.typeMismatch(_, _) {
+            
+            // this is the error we want
+            
+        } catch {
+            
+            fail("Unexpected error was thrown: \(error)")
             
         }
         
+    }
+    
+    static func encodeFails<T: Encodable, S: Serialization>(_ value: T, using serialization: S) {
+        
+        do {
+            
+            _ = try serialization.encode(value)
+            fail("Encoding value: \(value) was expected to fail.")
+            
+        } catch {}
+        
+    }
+
+    static func encodeFailsWithInvalidValue<T: Codable, S: Serialization>(_ value: T, using serialization: S) {
+        
+        do {
+            
+            _ = try serialization.encode(value)
+            fail("Encoding value: \(value) was expected to fail.")
+            
+        } catch EncodingError.invalidValue(_, _) {
+            
+            // this is the error we want
+            
+        } catch {
+            
+            fail("Unexpected error was thrown: \(error)")
+            
+        }
+        
+    }
+    
+    static func decodeFails<T: Decodable, S: Serialization>(_ type: T.Type, from raw: S.Raw, using serialization: S) {
+        
+        do {
+            
+            _ = try serialization.decode(toType: type, from: raw)
+            fail("Decoding type: \(type) from \(raw) was expected to fail.")
+            
+        } catch {}
+        
+    }
+
+    static func decodeFailsWithTypeMissmatch<T: Codable, S: Serialization>(_ type: T.Type, from raw: S.Raw, using serialization: S) {
+        
+        do {
+            
+            _ = try serialization.decode(toType: type, from: raw)
+            fail("Decoding type: \(type) from \(raw) was expected to fail.")
+            
+        } catch DecodingError.typeMismatch(_, _) {
+            
+            // this is the error we want
+            
+        } catch {
+            
+            fail("Unexpected error was thrown: \(error)")
+            
+        }
+        
+    }
+    
+    // MARK: - Helper Global Functions
+    static func expectEqualPaths(_ lhs: [CodingKey], _ rhs: [CodingKey], _ prefix: String) {
+        
+        if lhs.count != rhs.count {
+            fail("CodingKeys not equal: \(lhs) != \(rhs)")
+            return
+        }
+        
+        for (key1, key2) in zip(lhs, rhs) {
+            switch (key1.intValue, key2.intValue) {
+            case (.none, .none): break
+            case (.some(let i1), .some(let i2)):
+                guard i1 == i2 else {
+                    fail("CodingKeys not equal: \(lhs) != \(rhs)")
+                    return
+                }
+                
+                break
+            default:
+                fail("CodingKeys not equal: \(lhs) != \(rhs)")
+                return
+            }
+            
+            expect(key1.stringValue).to(equal(key2.stringValue))
+        }
     }
     
     // MARK: - TestCodable

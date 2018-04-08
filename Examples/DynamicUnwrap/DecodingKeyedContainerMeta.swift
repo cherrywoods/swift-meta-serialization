@@ -46,7 +46,7 @@ struct Example2DecodingKeyedContainerMeta: DecodingKeyedContainerMeta {
                 
                 // just elements are seen as keys
                 
-                guard let key = array[index] as? String else {
+                guard case Example2Meta.string(let key) = array[index] else {
                     // keys need to be Strings (and not Arrays of Strings)
                     return nil
                 }
@@ -61,10 +61,10 @@ struct Example2DecodingKeyedContainerMeta: DecodingKeyedContainerMeta {
         
         // check that there are no duplicate keys:
         // sort keys, so we don't need to compare all keys to all keys
-        keys = keys.sorted()
+        let sortedKeys = keys.sorted()
         // now we just need to go through all keys and compare with the key before
-        var lastKey = keys.first! // since array isn't empty, there is at least one key
-        for key in keys.suffix( keys.count-1 /*All keys, except the first one*/ ) {
+        var lastKey = sortedKeys.first! // since array isn't empty, there is at least one key
+        for key in sortedKeys.suffix( keys.count-1 /*All keys, except the first one*/ ) {
             
             guard key != lastKey else {
                 // if keys aren't unique, array can't be seen as a keyed container
