@@ -22,16 +22,15 @@ import Foundation
 
 struct Example2Translator: MetaSupplier, Unwrapper {
     
-    // this format does not support nil values.
-    
     // MARK: - MetaSupplier
     
     func wrap<T: Encodable>(_ value: T, for encoder: MetaEncoder) throws -> Meta? {
         
         // supply metas for Strings, Doubles, Int, all LosslessStringConvertible types
         if value is LosslessStringConvertible {
-            // String is extended to conform to Example2Meta
-            return (value as! LosslessStringConvertible).description
+            
+            return Example2Meta.string( (value as! LosslessStringConvertible).description )
+            
         }
         
         return nil
@@ -54,19 +53,29 @@ struct Example2Translator: MetaSupplier, Unwrapper {
     
     func unwrap<T>(meta: Meta, toType type: T.Type, for decoder: MetaDecoder) throws -> T? where T : Decodable {
         
-        guard type is LosslessStringConvertible.Type && meta is String else {
+        guard let example2Meta = meta as? Example2Meta, case Example2Meta.string(let string) = example2Meta, type is LosslessStringConvertible.Type else {
             return nil
         }
         
-        return (type as! LosslessStringConvertible.Type).init(meta as! String) as! T?
+        return (type as! LosslessStringConvertible.Type).init(string) as! T?
         
     }
     
     // MARK: dynamic unwrapping
     
+    func unwrap(meta: Meta, toType: NilMeta.Protocol, for decoder: MetaDecoder) -> NilMeta? {
+        
+        guard let example2Meta = meta as? Example2Meta, case Example2Meta.string(let string) = example2Meta, string == "nil" else {
+            return nil
+        }
+        
+        return NilMarker.instance
+        
+    }
+    
     func unwrap(meta: Meta, toType: DecodingKeyedContainerMeta.Protocol, for decoder: MetaDecoder) throws -> DecodingKeyedContainerMeta? {
         
-        guard let array = meta as? [Example2Meta] else {
+        guard let example2Meta = meta as? Example2Meta, case Example2Meta.array(let array) = example2Meta else {
             return nil
         }
         
@@ -76,7 +85,7 @@ struct Example2Translator: MetaSupplier, Unwrapper {
     
     func unwrap(meta: Meta, toType: DecodingUnkeyedContainerMeta.Protocol, for decoder: MetaDecoder) throws -> DecodingUnkeyedContainerMeta? {
         
-        guard let array = meta as? [Example2Meta] else {
+        guard let example2Meta = meta as? Example2Meta, case Example2Meta.array(let array) = example2Meta else {
             return nil
         }
         

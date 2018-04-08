@@ -22,7 +22,7 @@ import Foundation
 
 struct Example2Serialization: Serialization {
     
-    typealias Raw = [Meta]
+    typealias Raw = Example2Meta
     
     // MARK: decoding
     
@@ -32,7 +32,7 @@ struct Example2Serialization: Serialization {
         
     }
     
-    func convert(raw: [Meta]) throws -> Meta {
+    func convert(raw: Example2Meta) throws -> Meta {
         
         return raw
         
@@ -44,13 +44,28 @@ struct Example2Serialization: Serialization {
         return MetaEncoder(metaSupplier: Example2.translator, storage: CodingDictionary())
     }
     
-    func convert(meta: Meta) throws -> [Meta] {
+    func convert(meta: Meta) throws -> Example2Meta {
         
-        guard let container = meta as? Example2EncodingContainerMeta else {
+        guard meta is Example2EncodingContainerMeta else {
             throw Errors.notAllowedFirstLevelNonContainer
         }
         
-        return container.array
+        return _convert(meta: meta)
+        
+    }
+    
+    private func _convert(meta: Meta) -> Example2Meta {
+        
+        if let container = meta as? Example2EncodingContainerMeta {
+            
+            return .array( container.array.map( _convert ) )
+            
+        } else {
+            
+            // this are wrapped strings
+            return meta as! Example2Meta
+            
+        }
         
     }
     

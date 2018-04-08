@@ -20,14 +20,14 @@
 import Foundation
 
 /**
- Manages a UnkeyedContainerMeta
+ Manages a EncodingUnkeyedContainerMeta
  */
 open class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
     
     // MARK: properties
     
     /**
-     A reference to this containers underlying `UnkeyedContainerMeta`
+     A reference to this containers underlying `EncodingUnkeyedContainerMeta`
      */
     open var reference: Reference
     

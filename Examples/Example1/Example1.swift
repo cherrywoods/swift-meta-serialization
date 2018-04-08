@@ -13,7 +13,7 @@ enum Example1 {
     
     static let translator = PrimitivesEnumTranslator(primitives: [ .nil, .bool, .string, .int, .double ])
     
-    static var serialization = SimpleSerialization<Example1Container>(translator: Example1.translator,
+    static let serialization = SimpleSerialization<Example1Container>(translator: Example1.translator,
                                                               encodeFromMeta: encodeToContainer,
                                                               decodeToMeta: decodeFromContainer)
     

@@ -6,8 +6,8 @@ This exaple format is used to test:
  * CodingDictionary
  * not supporting first level non container values
 
-The exaple format consists of an array of Strings and arrays of Strings and arrays of Strings or ...
+## Format
 
-`["abc", "nine", "fdg", "dada"]` can be seen as unkeyed container or keyed container with keys "abc" and "fdg".
+`"["abc", "nine", "fdg", "dada"]"` can be seen as unkeyed container or keyed container with keys "abc" and "fdg".
 
-`["ghi", ["abc", "def"], "jkl": ["zyx", "wvu"]]` is another valid example
+`"["ghi", ["abc", "def"], "jkl": ["zyx", "wvu"]]"` is another valid example

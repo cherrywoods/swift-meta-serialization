@@ -1,5 +1,5 @@
 //
-//  BasicMetas.swift
+//  Nil+LosslessStringConvertible.swift
 //  MetaSerialization
 //  
 //  Copyright 2018 cherrywoods
@@ -20,10 +20,22 @@
 import Foundation
 @testable import MetaSerialization
 
-protocol Example2Meta: Meta {}
-
-// during encoding:
-extension String: Example2Meta {}
-
-// during decoding:
-extension Array: Example2Meta where Element: Meta {}
+extension NilMarker: LosslessStringConvertible {
+    
+    public init?(_ description: String) {
+        
+        guard description == "nil" else {
+            return nil
+        }
+        
+        self = NilMarker.instance
+        
+    }
+    
+    public var description: String {
+        
+        return "nil"
+        
+    }
+    
+}

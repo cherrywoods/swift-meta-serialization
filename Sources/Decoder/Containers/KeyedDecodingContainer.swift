@@ -22,7 +22,7 @@ import Foundation
 // all decoding and encoding classes (formerly structs) manage intrinsically mutable state, because this state is not set yet. That's why they are classes now.
 
 /**
- Manages a KeyedContainerMeta
+ Manages a DecodingKeyedContainerMeta
  */
 open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProtocol {
     
