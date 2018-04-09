@@ -4,212 +4,261 @@
     <title>Protocols  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <script src="js/jquery.min.js" defer></script>
     <script src="js/jazzy.js" defer></script>
     
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
   </head>
   <body>
+
+
     <a title="Protocols  Reference"></a>
-    <header>
-      <div class="content-wrapper">
-        <p><a href="index.html">MetaSerialization Docs</a> (78% documented)</p>
-      </div>
-    </header>
-    <div class="content-wrapper">
-      <p id="breadcrumbs">
-        <a href="index.html">MetaSerialization Reference</a>
-        <img id="carat" src="img/carat.png" />
-        Protocols  Reference
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          MetaSerialization Docs
+        </a>
+         (86% documented)
       </p>
-    </div>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/cherrywoods/swift-meta-serialization">
+            <img class="header-icon" src="img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">MetaSerialization Reference</a>
+      <img class="carat" src="img/carat.png" />
+      Protocols  Reference
+    </p>
+
     <div class="content-wrapper">
-      <nav class="sidebar">
+      <nav class="navigation">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="Classes.html">Classes</a>
+            <a class="nav-group-name-link" href="Guides.html">Guides</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Classes/ArrayUnkeyedContainerMeta.html">ArrayUnkeyedContainerMeta</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/DictionaryKeyedContainerMeta.html">DictionaryKeyedContainerMeta</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/MetaDecoder.html">MetaDecoder</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/MetaEncoder.html">MetaEncoder</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/MetaKeyedDecodingContainer.html">MetaKeyedDecodingContainer</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/MetaKeyedEncodingContainer.html">MetaKeyedEncodingContainer</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/MetaSingleValueDecodingContainer.html">MetaSingleValueDecodingContainer</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/MetaSingleValueEncodingContainer.html">MetaSingleValueEncodingContainer</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/MetaUnkeyedDecodingContainer.html">MetaUnkeyedDecodingContainer</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/MetaUnkeyedEncodingContainer.html">MetaUnkeyedEncodingContainer</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/PrimitivesEnumTranslator.html">PrimitivesEnumTranslator</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/PrimitivesEnumTranslator/Primitive.html">– Primitive</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/ReferencingMetaDecoder.html">ReferencingMetaDecoder</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/ReferencingMetaEncoder.html">ReferencingMetaEncoder</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/SimpleGenericMeta.html">SimpleGenericMeta</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/SimpleSerialization.html">SimpleSerialization</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/StrictCodingStack.html">StrictCodingStack</a>
+                <a class="nav-group-task-link" href="readme.html">README</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Enums.html">Enumerations</a>
+            <a class="nav-group-name-link" href="Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Enums/CodingStackStatus.html">CodingStackStatus</a>
+                <a class="nav-group-task-link" href="Classes/LinearCodingStack.html">LinearCodingStack</a>
               </li>
               <li class="nav-group-task">
-                <a href="Enums/MetaEncodingError.html">MetaEncodingError</a>
+                <a class="nav-group-task-link" href="Classes/MetaDecoder.html">MetaDecoder</a>
               </li>
               <li class="nav-group-task">
-                <a href="Enums/SpecialCodingKey.html">SpecialCodingKey</a>
+                <a class="nav-group-task-link" href="Classes/MetaDecoder/Errors.html">– Errors</a>
               </li>
               <li class="nav-group-task">
-                <a href="Enums/TranslatorError.html">TranslatorError</a>
+                <a class="nav-group-task-link" href="Classes/MetaEncoder.html">MetaEncoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/MetaEncoder/Errors.html">– Errors</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/MetaKeyedDecodingContainer.html">MetaKeyedDecodingContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/MetaKeyedEncodingContainer.html">MetaKeyedEncodingContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/MetaSingleValueDecodingContainer.html">MetaSingleValueDecodingContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/MetaSingleValueEncodingContainer.html">MetaSingleValueEncodingContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/MetaUnkeyedDecodingContainer.html">MetaUnkeyedDecodingContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/MetaUnkeyedEncodingContainer.html">MetaUnkeyedEncodingContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/ReferencingCodingStorage.html">ReferencingCodingStorage</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SimpleSerialization.html">SimpleSerialization</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Protocols.html">Protocols</a>
+            <a class="nav-group-name-link" href="Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Protocols/CodingStack.html">CodingStack</a>
+                <a class="nav-group-task-link" href="Enums/Reference.html">Reference</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/ContainerReference.html">ContainerReference</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/DecodingRepresentation.html">DecodingRepresentation</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/DirectlyDecodable.html">DirectlyDecodable</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/DirectlyEncodable.html">DirectlyEncodable</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/EncodingRepresentation.html">EncodingRepresentation</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/GenericMeta.html">GenericMeta</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/IntermediateDecoder.html">IntermediateDecoder</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/IntermediateEncoder.html">IntermediateEncoder</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/KeyedContainerMeta.html">KeyedContainerMeta</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/Meta.html">Meta</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/MetaCoder.html">MetaCoder</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols.html#/s:17MetaSerialization03NilA8ProtocolP">NilMetaProtocol</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/Reference.html">Reference</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/Translator.html">Translator</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/UnkeyedContainerMeta.html">UnkeyedContainerMeta</a>
+                <a class="nav-group-task-link" href="Enums/SpecialCodingKey.html">SpecialCodingKey</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Structs.html">Structures</a>
+            <a class="nav-group-name-link" href="Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Structs/DirectReference.html">DirectReference</a>
+                <a class="nav-group-task-link" href="Extensions/Array.html">Array</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/EmptyOnlyKeyedContainerMeta.html">EmptyOnlyKeyedContainerMeta</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/GenericNil.html">GenericNil</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/IndexCodingKey.html">IndexCodingKey</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/KeyedContainerReference.html">KeyedContainerReference</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/NilMeta.html">NilMeta</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/NonRegualarCodingKey.html">NonRegualarCodingKey</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/StackReference.html">StackReference</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/UnkeyedContainerReference.html">UnkeyedContainerReference</a>
+                <a class="nav-group-task-link" href="Extensions/Dictionary.html">Dictionary</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Typealiases.html">Type Aliases</a>
+            <a class="nav-group-name-link" href="Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Typealiases.html#/s:17MetaSerialization15DirectlyCodablea">DirectlyCodable</a>
+                <a class="nav-group-task-link" href="Protocols/CodingStorage.html">CodingStorage</a>
               </li>
               <li class="nav-group-task">
-                <a href="Typealiases.html#/s:17MetaSerialization14Representationa">Representation</a>
+                <a class="nav-group-task-link" href="Protocols/ContainerElementReference.html">ContainerElementReference</a>
               </li>
               <li class="nav-group-task">
-                <a href="Typealiases.html#/s:17MetaSerialization0B0a">Serialization</a>
+                <a class="nav-group-task-link" href="Protocols/DecodingKeyedContainerMeta.html">DecodingKeyedContainerMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/DecodingRepresentation.html">DecodingRepresentation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/DecodingUnkeyedContainerMeta.html">DecodingUnkeyedContainerMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/DirectlyDecodable.html">DirectlyDecodable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/DirectlyEncodable.html">DirectlyEncodable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/EncodingKeyedContainerMeta.html">EncodingKeyedContainerMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/EncodingRepresentation.html">EncodingRepresentation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/EncodingUnkeyedContainerMeta.html">EncodingUnkeyedContainerMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IntermediateDecoder.html">IntermediateDecoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IntermediateEncoder.html">IntermediateEncoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols.html#/s:17MetaSerialization0A0P">Meta</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/MetaSupplier.html">MetaSupplier</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols.html#/s:17MetaSerialization03NilA0P">NilMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/UnkeyedContainerMeta.html">UnkeyedContainerMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/Unwrapper.html">Unwrapper</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/CodingStorageError.html">CodingStorageError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/CodingStorageError/Reason.html">– Reason</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IndexCodingKey.html">IndexCodingKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/KeyedContainerElementReference.html">KeyedContainerElementReference</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/KeyedErrorContainer.html">KeyedErrorContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/MetaCodingKey.html">MetaCodingKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/NilMarker.html">NilMarker</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/PrimitivesEnumTranslator.html">PrimitivesEnumTranslator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/PrimitivesEnumTranslator/Primitive.html">– Primitive</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/PrimitivesProtocolTranslator.html">PrimitivesProtocolTranslator</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/StandardCodingKey.html">StandardCodingKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/UnkeyedContainerElementReference.html">UnkeyedContainerElementReference</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Typealiases.html#/s:17MetaSerialization15DirectlyCodablea">DirectlyCodable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Typealiases.html#/s:17MetaSerialization14ErrorContainera">ErrorContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Typealiases.html#/s:17MetaSerialization12ErrorEncodera">ErrorEncoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Typealiases.html#/s:17MetaSerialization014KeyedContainerA0a">KeyedContainerMeta</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Typealiases.html#/s:17MetaSerialization14Representationa">Representation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Typealiases.html#/s:17MetaSerialization0B0a">Serialization</a>
               </li>
             </ul>
           </li>
         </ul>
       </nav>
       <article class="main-content">
-        <section>
-          <section class="section">
+
+        <section class="section">
+          <div class="section-content">
             <h1>Protocols</h1>
             <p>The following protocols are available globally.</p>
 
-          </section>
-          <section class="section task-group-section">
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
             <div class="task-group">
-              <ul>
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -223,7 +272,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A protocol for encoded data, that will only be written.</p>
+                        <p>A protocol for encoded data that will only be written.</p>
 
 <p>Please refer to the documentation of Representation for more information about usage.</p>
 
@@ -256,7 +305,7 @@ For example you may provide a userInfo dictionary or an initial codingPath.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A protocol for encoded data, that will only be read.</p>
+                        <p>A protocol for encoded data that will only be read.</p>
 
 <p>Please refer to the documentation of Representation for more information about usage.</p>
 
@@ -279,7 +328,7 @@ For example you may provide a userInfo dictionary or an initial codingPath.</p>
               </ul>
             </div>
             <div class="task-group">
-              <ul>
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -293,10 +342,9 @@ For example you may provide a userInfo dictionary or an initial codingPath.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A container wraping a certain value
-This container is used at the meta- or in between stage of coding, the meta-serialization framework performs</p>
+                        <p>A container wrapping a certain value.
+This container is used at the meta or in between stage of encoding and decoding that MetaSerialization performs.</p>
 
-                        <a href="Protocols/Meta.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -312,9 +360,9 @@ This container is used at the meta- or in between stage of coding, the meta-seri
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:17MetaSerialization03NilA8ProtocolP"></a>
-                    <a name="//apple_ref/swift/Protocol/NilMetaProtocol" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization03NilA8ProtocolP">NilMetaProtocol</a>
+                    <a name="/s:17MetaSerialization03NilA0P"></a>
+                    <a name="//apple_ref/swift/Protocol/NilMeta" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization03NilA0P">NilMeta</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -322,45 +370,15 @@ This container is used at the meta- or in between stage of coding, the meta-seri
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Protocol for metas indicating null/nil or no value contained
-Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.html">NilMeta</a></code> procided the by meta-serialization framework.</p>
+                        <p>Protocol for metas indicating null/nil or no value contained.
+Please note that MetaSerializations <code><a href="Structs/NilMarker.html">NilMarker</a></code> type is an default implementation of this protocol.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">NilMetaProtocol</span><span class="p">:</span> <span class="kt"><a href="Protocols/Meta.html">Meta</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:17MetaSerialization07GenericA0P"></a>
-                    <a name="//apple_ref/swift/Protocol/GenericMeta" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization07GenericA0P">GenericMeta</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A subprotocol of Meta, enabeling you to rely on a specfic type, so you don&rsquo;t need to check for this type all the time</p>
-
-<p>meta-serialization provides default implementations for set(value:) and get(). set(value:) will crash (using the precodingtion method) the programm if a value with the wrong type is passed to set(value:). However, meta-serialization will never do this, unless you do not implement wrappingMeta(forSwiftType:) in your implementation of Translator with faults.</p>
-
-                        <a href="Protocols/GenericMeta.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">GenericMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/Meta.html">Meta</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">NilMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:17MetaSerialization0A0P">Meta</a></span></code></pre>
 
                         </div>
                       </div>
@@ -370,7 +388,42 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
               </ul>
             </div>
             <div class="task-group">
-              <ul>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17MetaSerialization0A8SupplierP"></a>
+                    <a name="//apple_ref/swift/Protocol/MetaSupplier" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization0A8SupplierP">MetaSupplier</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The core interface to specify MetaEncoder&rsquo;s encoding.
+Implement this protocol to set encoding <q>primities</q>
+(these are usually the types you can represent directly in your serialization format)
+and container implementations.</p>
+
+                        <a href="Protocols/MetaSupplier.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">MetaSupplier</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -384,7 +437,7 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This protocol provides a blueprint for an intermediate encoder, that does simply delegate the task of encoding to a Encoder.</p>
+                        <p>This protocol provides a blueprint for an intermediate encoder, that does simply delegate the task of encoding to a <code>Encoder</code>.</p>
 
                         <a href="Protocols/IntermediateEncoder.html" class="slightly-smaller">See more</a>
                       </div>
@@ -430,13 +483,13 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
               </ul>
             </div>
             <div class="task-group">
-              <ul>
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:17MetaSerialization0A5CoderP"></a>
-                    <a name="//apple_ref/swift/Protocol/MetaCoder" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization0A5CoderP">MetaCoder</a>
+                    <a name="/s:17MetaSerialization9UnwrapperP"></a>
+                    <a name="//apple_ref/swift/Protocol/Unwrapper" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization9UnwrapperP">Unwrapper</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -444,15 +497,38 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>common interface for encoder and decoder</p>
+                        <p>The core interface to specify MetaDecoder&rsquo;s decoding.
+Implement this protocol to unwrap <q>primities</q> (these are usually the types you can represent directly in your serialization format).</p>
 
-                        <a href="Protocols/MetaCoder.html" class="slightly-smaller">See more</a>
+<p>A MetaDecoder will call <code>unwrap</code> for each meta in the meta tree before decoding takes place for it.
+There are actually two situations in which this happens.
+A MetaDecoder asks it&rsquo;s unwrapper to unwrap a meta to a concrete type (like String, Int, etc.).
+I does so by calling <code>unwrap</code> with a concrete type conforming to <code>Decodable</code>. <code>
+If you return nil in this method, the MetaDecoder will call</code>init(from:)` on the passed type.</p>
+
+<p>However, MetaDecoder will also try to unwrap metas to <code><a href="Protocols.html#/s:17MetaSerialization03NilA0P">NilMeta</a></code>, <code><a href="Protocols/DecodingKeyedContainerMeta.html">DecodingKeyedContainerMeta</a></code> and <code><a href="Protocols/DecodingUnkeyedContainerMeta.html">DecodingUnkeyedContainerMeta</a></code>.
+These options enables you to partially postpone the creation of the meta tree until the actual containers are known.</p>
+
+<p>Specifically, if keyed or unkeyed containers are requested for a meta from a MetaDecoder,
+before this meta is interpreted as keyed or unkeyed container and it is expected that it conforms to <code><a href="Protocols/DecodingKeyedContainerMeta.html">DecodingKeyedContainerMeta</a></code> respectively <code><a href="Protocols/DecodingUnkeyedContainerMeta.html">DecodingUnkeyedContainerMeta</a></code>,
+the decoder calls <code>unwrap</code>, with eigther <code><a href="Protocols/DecodingKeyedContainerMeta.html">DecodingKeyedContainerMeta</a></code> or <code><a href="Protocols/DecodingUnkeyedContainerMeta.html">DecodingUnkeyedContainerMeta</a></code> for type.
+If <code>unwrap</code> returns nil, the process continues with the original meta.</p>
+
+<p>With this, you may dynamically extend your meta tree.
+You don&rsquo;t need to know which meta will be a keyed or unkeyed container before MetaDecoder does it&rsquo;s work
+and don&rsquo;t need meta implementations to conform to <code>Decoding(Un)KeyedContainerMeta</code> or <code><a href="Protocols.html#/s:17MetaSerialization03NilA0P">NilMeta</a></code> if they could be seen as such containers or nil.</p>
+
+<p>For these three methods, there are default implementations provided, that always return nil. <code>
+If you don&#39;t override these methods, a meta tree is expected to be</code>static<code>,
+repectively all container types and nil values need to be known before</code>decode` on a MetaDecoder is called.</p>
+
+                        <a href="Protocols/Unwrapper.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">MetaCoder</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Unwrapper</span></code></pre>
 
                         </div>
                       </div>
@@ -462,13 +538,13 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
               </ul>
             </div>
             <div class="task-group">
-              <ul>
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:17MetaSerialization014KeyedContainerA0P"></a>
-                    <a name="//apple_ref/swift/Protocol/KeyedContainerMeta" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization014KeyedContainerA0P">KeyedContainerMeta</a>
+                    <a name="/s:17MetaSerialization022EncodingKeyedContainerA0P"></a>
+                    <a name="//apple_ref/swift/Protocol/EncodingKeyedContainerMeta" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization022EncodingKeyedContainerA0P">EncodingKeyedContainerMeta</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -476,17 +552,16 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A meta for a keyed collection of metas.</p>
+                        <p>A meta for a keyed collection of metas during encoding.
+The key is always a MetaCodingKey. How these keys are handled internal is left to the implementor.</p>
 
-<p>The key is always a CodingKey. How these keys are handled internal is left to the implementor.</p>
-
-                        <a href="Protocols/KeyedContainerMeta.html" class="slightly-smaller">See more</a>
+                        <a href="Protocols/EncodingKeyedContainerMeta.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">KeyedContainerMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/Meta.html">Meta</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">EncodingKeyedContainerMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:17MetaSerialization0A0P">Meta</a></span></code></pre>
 
                         </div>
                       </div>
@@ -496,9 +571,9 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:17MetaSerialization016UnkeyedContainerA0P"></a>
-                    <a name="//apple_ref/swift/Protocol/UnkeyedContainerMeta" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization016UnkeyedContainerA0P">UnkeyedContainerMeta</a>
+                    <a name="/s:17MetaSerialization022DecodingKeyedContainerA0P"></a>
+                    <a name="//apple_ref/swift/Protocol/DecodingKeyedContainerMeta" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization022DecodingKeyedContainerA0P">DecodingKeyedContainerMeta</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -506,51 +581,16 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A meta for a unkeyed collection of metas.</p>
+                        <p>A meta for a keyed collection of metas during decoding.
+The key is always a MetaCodingKey. How these keys are handled internal is left to the implementor.</p>
 
-<p>The indexiation starts at 0 and ends at count-1, with steps of size 1 (if you have 4 elements, they have to be indexed 0,1,2,3).</p>
-
-<p>You may not use custom indexes, if you liked meta-serialization to work properly.</p>
-
-                        <a href="Protocols/UnkeyedContainerMeta.html" class="slightly-smaller">See more</a>
+                        <a href="Protocols/DecodingKeyedContainerMeta.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">UnkeyedContainerMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/Meta.html">Meta</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:17MetaSerialization10TranslatorP"></a>
-                    <a name="//apple_ref/swift/Protocol/Translator" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization10TranslatorP">Translator</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Protocols/Translator.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Translator</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">DecodingKeyedContainerMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:17MetaSerialization0A0P">Meta</a></span></code></pre>
 
                         </div>
                       </div>
@@ -560,13 +600,13 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
               </ul>
             </div>
             <div class="task-group">
-              <ul>
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:17MetaSerialization11CodingStackP"></a>
-                    <a name="//apple_ref/swift/Protocol/CodingStack" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization11CodingStackP">CodingStack</a>
+                    <a name="/s:17MetaSerialization13CodingStorageP"></a>
+                    <a name="//apple_ref/swift/Protocol/CodingStorage" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization13CodingStorageP">CodingStorage</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -574,15 +614,24 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>CodingStorage is the central storing unit used by <code><a href="Classes/MetaEncoder.html">MetaEncoder</a></code> as well as <code><a href="Classes/MetaDecoder.html">MetaDecoder</a></code>.</p>
 
-                        <a href="Protocols/CodingStack.html" class="slightly-smaller">See more</a>
+<p>CodingStorages store metas at coding paths (arrays of coding keys). Note that <code>[]</code> is also a valid path.</p>
+
+<p>The way how it stores them is implementation dependant and is correlated with the general abilities MetaSerialization can supply.</p>
+
+<p>In general, a single MetaEncoder or MetaDecoder will store and remove metas in a strictly linear manner.
+This means that this workflow is followed:</p>
+
+<p>store -&gt; this workflow nested -&gt; this workflow nested -&gt; &hellip; -&gt; this workflow nested -&gt; remove</p>
+
+                        <a href="Protocols/CodingStorage.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CodingStack</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CodingStorage</span></code></pre>
 
                         </div>
                       </div>
@@ -592,13 +641,13 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
               </ul>
             </div>
             <div class="task-group">
-              <ul>
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:17MetaSerialization9ReferenceP"></a>
-                    <a name="//apple_ref/swift/Protocol/Reference" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization9ReferenceP">Reference</a>
+                    <a name="/s:17MetaSerialization25ContainerElementReferenceP"></a>
+                    <a name="//apple_ref/swift/Protocol/ContainerElementReference" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization25ContainerElementReferenceP">ContainerElementReference</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -606,43 +655,15 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>References a value inside another container meta.</p>
 
-                        <a href="Protocols/Reference.html" class="slightly-smaller">See more</a>
+                        <a href="Protocols/ContainerElementReference.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Reference</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:17MetaSerialization18ContainerReferenceP"></a>
-                    <a name="//apple_ref/swift/Protocol/ContainerReference" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization18ContainerReferenceP">ContainerReference</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Protocols/ContainerReference.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ContainerReference</span><span class="p">:</span> <span class="kt"><a href="Protocols/Reference.html">Reference</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ContainerElementReference</span></code></pre>
 
                         </div>
                       </div>
@@ -652,7 +673,7 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
               </ul>
             </div>
             <div class="task-group">
-              <ul>
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -668,8 +689,7 @@ Please note that there&rsquo;s a implementation <code><a href="Structs/NilMeta.h
                       <div class="abstract">
                         <p>Implement this protocol if a type is supported directly by the Translator.</p>
 
-<p>MetaSerialization will throw an error, if a translator does not support your type directly.
-Therefor init(from:) will never be called.</p>
+<p>MetaSerialization will throw an error, if a unwrapper does not support the implementing type directly.</p>
 
                         <a href="Protocols/DirectlyDecodable.html" class="slightly-smaller">See more</a>
                       </div>
@@ -699,8 +719,7 @@ Therefor init(from:) will never be called.</p>
                       <div class="abstract">
                         <p>Implement this protocol if a type is supported directly by the Translator.</p>
 
-<p>MetaSerialization will throw an error, if a translator does not support your type directly.
-Therefor encode(to:) will never be called.</p>
+<p>MetaSerialization will throw an error, if a translator does not support your type directly.</p>
 
                         <a href="Protocols/DirectlyEncodable.html" class="slightly-smaller">See more</a>
                       </div>
@@ -717,14 +736,100 @@ Therefor encode(to:) will never be called.</p>
                 </li>
               </ul>
             </div>
-          </section>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17MetaSerialization016UnkeyedContainerA0P"></a>
+                    <a name="//apple_ref/swift/Protocol/UnkeyedContainerMeta" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization016UnkeyedContainerA0P">UnkeyedContainerMeta</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Protocols/UnkeyedContainerMeta.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">UnkeyedContainerMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols/EncodingUnkeyedContainerMeta.html">EncodingUnkeyedContainerMeta</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/DecodingUnkeyedContainerMeta.html">DecodingUnkeyedContainerMeta</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17MetaSerialization024EncodingUnkeyedContainerA0P"></a>
+                    <a name="//apple_ref/swift/Protocol/EncodingUnkeyedContainerMeta" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization024EncodingUnkeyedContainerA0P">EncodingUnkeyedContainerMeta</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Protocols/EncodingUnkeyedContainerMeta.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">EncodingUnkeyedContainerMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:17MetaSerialization0A0P">Meta</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17MetaSerialization024DecodingUnkeyedContainerA0P"></a>
+                    <a name="//apple_ref/swift/Protocol/DecodingUnkeyedContainerMeta" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization024DecodingUnkeyedContainerA0P">DecodingUnkeyedContainerMeta</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Protocols/DecodingUnkeyedContainerMeta.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">DecodingUnkeyedContainerMeta</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:17MetaSerialization0A0P">Meta</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
         </section>
-        <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/cherrywoods/swift-meta-serialization" target="_blank" rel="external">cherrywoods</a>. All rights reserved. (Last updated: 2018-02-09)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
-        </section>
+
       </article>
     </div>
+    <section class="footer">
+      <p>© 2016 cherrywoods under <a class="link" href="https://github.com/cherrywoods/swift-meta-serialization/blob/master/LICENSE" target="_blank" rel="external">Apache 2.0 license</a>.</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
   </body>
 </div>
 </html>
