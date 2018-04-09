@@ -47,7 +47,7 @@ public extension MetaDecoder {
             
         } catch let storageError as CodingStorageError {
             
-            switch (storageError.reason) {
+            switch storageError.reason {
             case .alreadyStoringValueAtThisCodingPath: assertionFailure("Illegal decode: Double store at coding path: \(storageError.path)")
             case .pathNotFilled: assertionFailure("Misuse of CodingStorage: path not filled: \(storageError.path)")
             case .noMetaStoredAtThisCodingPath: assertionFailure("Misuse of CodingStorage: expected stored meta at path: \(storageError.path)")

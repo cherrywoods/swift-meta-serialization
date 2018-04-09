@@ -34,7 +34,7 @@ public enum Reference {
         
         get {
             
-            switch(self) {
+            switch self {
             case .direct(let storage, let path):
                 return storage[path]
             case .containerElement(let containerReference):
@@ -45,7 +45,7 @@ public enum Reference {
         
         set {
             
-            switch(self) {
+            switch self {
             case .direct(var storage, let path):
                 storage[path] = newValue
             case .containerElement(var containerReference):

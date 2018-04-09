@@ -13,7 +13,7 @@ The current tests cover:
  * dynamic meta tree unwrapping
  * `StandardCodingKey` 
  * Representation
- *ErrorContainer
+ * ErrorContainer
  
  Additional, a few smaller usability concepts are tested
   * Not allowing top level single value types

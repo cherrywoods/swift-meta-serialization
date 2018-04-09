@@ -130,7 +130,7 @@ extension String: Example3Representation {
                 case 0:
                     // here we get the keys, the values are calculatable
                     
-                    guard elements.count > index + 2 /*the index value should be found at*/ else {
+                    guard elements.count > index + 2 /* the index value should be found at */ else {
                         throw Example3.Errors.invalidlyFormatedString(self)
                     }
                     
