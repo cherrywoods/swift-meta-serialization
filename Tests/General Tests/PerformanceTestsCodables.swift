@@ -26,8 +26,22 @@ struct Tree<T>: Codable where T: Codable {
     
     init(dummy: T, depth: Int, width: Int) {
         
-        root = Node(value: dummy, children: Tree.createTree(dummy: dummy, depth: depth, width: width))
+        root = Node(value: dummy, children: Tree.createTree(dummy: dummy, depth: depth - 1, width: width))
         
+        
+    }
+    
+    var depth: Int {
+    
+        var depth = 0
+        var node = root
+    
+        while !node.children.isEmpty {
+            depth += 1
+            node = node.children.first!
+        }
+        
+        return depth
         
     }
     

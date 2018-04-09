@@ -18,16 +18,40 @@
 // 
 
 import XCTest
+@testable import MetaSerialization
 
 class PerformanceTests: XCTestCase {
 
-    func testPerformanceOfEncodingSingleValues() {
+    var array: [Int]!
+    var encodedArray: Example2Meta!
+    
+    var tree: Tree<Int>!
+    var encodedTree: Example2Meta!
+    
+    override func setUp() {
+        
+        array = [Int](repeating: 0, count: 1000)
+        encodedArray = .array( [Example2Meta](repeating: .string("0"), count: 1000) )
+        
+        tree = Tree<Int>(dummy: 0, depth: 1000, width: 1)
+        // create the encoded tree
+        var last = Example2Meta.array( [.string("value"), .string("0"), .string("children"), .array([])] )
+        for _ in (0..<1000) {
+            last = Example2Meta.array( [.string("value"), .string("0"), .string("children"), .array( [ last ])] )
+        }
+        encodedTree = .array([.string("root"), last])
+        
+    }
+    
+    // MARK: - Array
+    // MARK: LinearCodingStack
+    
+    func testPerformanceOfEncodingSingleValuesLinearCodingStack() {
         
         // this performace test will encode a large array of single values
         // by doing this it should test mainly the performance of the encode and wrap methods.
         
-        let serialization = Example1.serialization
-        let array = [Int](repeating: 0, count: 1000)
+        let serialization = Example2.linearCodingStackSerialization
         
         self.measure {
             
@@ -37,13 +61,12 @@ class PerformanceTests: XCTestCase {
         
     }
 
-    func testPerformanceOfDecodingSingleValues() {
+    func testPerformanceOfDecodingSingleValuesLinearCodingStack() {
         
         // this performace test will encode a large array of single values
         // by doing this it should test mainly the performance of the encode and wrap methods.
         
-        let serialization = Example1.serialization
-        let encodedArray = Example1Container.array( [Example1Container](repeating: .int(0), count: 1000) )
+        let serialization = Example2.linearCodingStackSerialization
         
         self.measure {
             
@@ -53,4 +76,102 @@ class PerformanceTests: XCTestCase {
         
     }
 
+    // MARK: CodingDictionary
+    
+    func testPerformanceOfEncodingSingleValuesCodingDictionary() {
+        
+        // this performace test will encode a large array of single values
+        // by doing this it should test mainly the performance of the encode and wrap methods.
+        
+        let serialization = Example2.codingDictionarySerialization
+        
+        self.measure {
+            
+            _ = try! serialization.encode(array)
+            
+        }
+        
+    }
+    
+    func testPerformanceOfDecodingSingleValuesCodingDictionary() {
+        
+        // this performace test will encode a large array of single values
+        // by doing this it should test mainly the performance of the encode and wrap methods.
+        
+        let serialization = Example2.codingDictionarySerialization
+        
+        self.measure {
+            
+            _ = try! serialization.decode(toType: [Int].self, from: encodedArray)
+            
+        }
+        
+    }
+
+    // MARK: - Tree
+    // MARK: LinearCodingStack
+    
+    func testPerformanceOfEncodingDeeplyNestedLinearCodingStack() {
+        
+        // this performace test will encode a large array of single values
+        // by doing this it should test mainly the performance of the encode and wrap methods.
+        
+        let serialization = Example2.linearCodingStackSerialization
+        
+        self.measure {
+            
+            _ = try! serialization.encode(tree)
+            
+        }
+        
+    }
+    
+    func testPerformanceOfDecodingDeeplyNestedLinearCodingStack() {
+        
+        // this performace test will encode a large array of single values
+        // by doing this it should test mainly the performance of the encode and wrap methods.
+        
+        let serialization = Example2.linearCodingStackSerialization
+        
+        self.measure {
+            
+            _ = try! serialization.decode(toType: Tree<Int>.self, from: encodedTree)
+            
+        }
+        
+    }
+    
+    // MARK: CodingDictionary
+    
+    // Inefficient => remove
+    
+    func testPerformanceOfEncodingDeeplyNestedCodingDictionary() {
+        
+        // this performace test will encode a large array of single values
+        // by doing this it should test mainly the performance of the encode and wrap methods.
+        
+        let serialization = Example2.codingDictionarySerialization
+        
+        self.measure {
+            
+            _ = try! serialization.encode(tree)
+            
+        }
+        
+    }
+    
+    func testPerformanceOfDecodingDeeplyNestedCodingDictionary() {
+        
+        // this performace test will encode a large array of single values
+        // by doing this it should test mainly the performance of the encode and wrap methods.
+        
+        let serialization = Example2.codingDictionarySerialization
+        
+        self.measure {
+            
+            _ = try! serialization.decode(toType: Tree<Int>.self, from: encodedTree)
+            
+        }
+        
+    }
 }
