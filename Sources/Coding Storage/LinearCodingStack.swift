@@ -169,4 +169,12 @@ open class LinearCodingStack: CodingStorage {
         
     }
     
+    // MARK: Utilities
+    
+    private struct PlaceholderMeta: Meta {
+        
+        static let instance = PlaceholderMeta()
+        
+    }
+
 }

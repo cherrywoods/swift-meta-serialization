@@ -3,7 +3,6 @@
 This exaple format is used to test:
  * dynamic meta tree unwrapping 
  * not supporting nil
- * CodingDictionary
  * not supporting first level non container values
 
 ## Format

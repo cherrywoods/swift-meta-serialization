@@ -53,7 +53,6 @@
 		633D4D1C206264A500ADFF91 /* SingleValueDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753721FC1AD7B000A2319 /* SingleValueDecodingContainer.swift */; };
 		633D4D1D206264A500ADFF91 /* SimpleSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6393728D1FEC210900840D11 /* SimpleSerialization.swift */; };
 		633D4D1F206264A500ADFF91 /* ReferencingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6318C9B02047EC08009402B7 /* ReferencingStorage.swift */; };
-		633D4D21206264A500ADFF91 /* SharedUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F00228204558D7009E1CA7 /* SharedUtilities.swift */; };
 		633D4D22206264A500ADFF91 /* MetaDecoder+containerMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63268699204877CC00E2CDBB /* MetaDecoder+containerMethods.swift */; };
 		633D4D23206264A500ADFF91 /* LinearCodingStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B78288204498B1005C278E /* LinearCodingStack.swift */; };
 		633D4D24206264A500ADFF91 /* KeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E753711FC1AD7B000A2319 /* KeyedDecodingContainer.swift */; };
@@ -264,9 +263,6 @@
 		63E754721FC1AD7C000A2319 /* NilMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7537C1FC1AD7C000A2319 /* NilMarker.swift */; };
 		63E754731FC1AD7C000A2319 /* NilMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7537C1FC1AD7C000A2319 /* NilMarker.swift */; };
 		63E754751FC1AD7C000A2319 /* NilMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E7537C1FC1AD7C000A2319 /* NilMarker.swift */; };
-		63F00229204558D7009E1CA7 /* SharedUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F00228204558D7009E1CA7 /* SharedUtilities.swift */; };
-		63F0022A204558D7009E1CA7 /* SharedUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F00228204558D7009E1CA7 /* SharedUtilities.swift */; };
-		63F0022C204558D7009E1CA7 /* SharedUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F00228204558D7009E1CA7 /* SharedUtilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -440,7 +436,6 @@
 		63E753771FC1AD7B000A2319 /* UnkeyedEncodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnkeyedEncodingContainer.swift; sourceTree = "<group>"; };
 		63E7537A1FC1AD7B000A2319 /* Metas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metas.swift; sourceTree = "<group>"; };
 		63E7537C1FC1AD7C000A2319 /* NilMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NilMarker.swift; sourceTree = "<group>"; };
-		63F00228204558D7009E1CA7 /* SharedUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedUtilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -691,7 +686,6 @@
 			children = (
 				63B7825520447773005C278E /* CodingStorage.swift */,
 				63B78288204498B1005C278E /* LinearCodingStack.swift */,
-				63F00228204558D7009E1CA7 /* SharedUtilities.swift */,
 			);
 			path = "Coding Storage";
 			sourceTree = "<group>";
@@ -1167,7 +1161,6 @@
 				633D4D1C206264A500ADFF91 /* SingleValueDecodingContainer.swift in Sources */,
 				633D4D1D206264A500ADFF91 /* SimpleSerialization.swift in Sources */,
 				633D4D1F206264A500ADFF91 /* ReferencingStorage.swift in Sources */,
-				633D4D21206264A500ADFF91 /* SharedUtilities.swift in Sources */,
 				633D4D22206264A500ADFF91 /* MetaDecoder+containerMethods.swift in Sources */,
 				633D4D23206264A500ADFF91 /* LinearCodingStack.swift in Sources */,
 				6370082B206FF6D000D61B90 /* PrimitivesProtocolTranslator.swift in Sources */,
@@ -1315,7 +1308,6 @@
 				63E7544E1FC1AD7C000A2319 /* SingleValueDecodingContainer.swift in Sources */,
 				6393728E1FEC210A00840D11 /* SimpleSerialization.swift in Sources */,
 				6318C9B12047EC08009402B7 /* ReferencingStorage.swift in Sources */,
-				63F00229204558D7009E1CA7 /* SharedUtilities.swift in Sources */,
 				6326869A204877CC00E2CDBB /* MetaDecoder+containerMethods.swift in Sources */,
 				63B78289204498B1005C278E /* LinearCodingStack.swift in Sources */,
 				63700829206FF6D000D61B90 /* PrimitivesProtocolTranslator.swift in Sources */,
@@ -1361,7 +1353,6 @@
 				63E7544F1FC1AD7C000A2319 /* SingleValueDecodingContainer.swift in Sources */,
 				639372901FEC211A00840D11 /* SimpleSerialization.swift in Sources */,
 				6318C9B22047EC08009402B7 /* ReferencingStorage.swift in Sources */,
-				63F0022A204558D7009E1CA7 /* SharedUtilities.swift in Sources */,
 				6326869B204877CC00E2CDBB /* MetaDecoder+containerMethods.swift in Sources */,
 				63B7828A204498B1005C278E /* LinearCodingStack.swift in Sources */,
 				6370082A206FF6D000D61B90 /* PrimitivesProtocolTranslator.swift in Sources */,
@@ -1407,7 +1398,6 @@
 				63E754511FC1AD7C000A2319 /* SingleValueDecodingContainer.swift in Sources */,
 				63BC5BD61FC95A7E0035005D /* PrimitivesEnumTranslator.swift in Sources */,
 				6318C9B42047EC08009402B7 /* ReferencingStorage.swift in Sources */,
-				63F0022C204558D7009E1CA7 /* SharedUtilities.swift in Sources */,
 				6326869D204877CC00E2CDBB /* MetaDecoder+containerMethods.swift in Sources */,
 				63B7828C204498B1005C278E /* LinearCodingStack.swift in Sources */,
 				6370082C206FF6D000D61B90 /* PrimitivesProtocolTranslator.swift in Sources */,

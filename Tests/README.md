@@ -9,7 +9,6 @@ Basically these tests were rewritten using Quick and Nimble. Some parts of the o
 The current tests cover:
  * general tests from JSONEncoder plus a few additionals
  *  `LinearCodingStack`
- * `CodingDictionary`
  * dynamic meta tree unwrapping
  * `StandardCodingKey` 
  * Representation

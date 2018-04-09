@@ -42,7 +42,6 @@ public class SimpleSerialization<R>: Serialization {
     
     public func provideNewEncoder() -> MetaEncoder {
         
-        // TODO: check for best default with some speed tests
         return MetaEncoder(metaSupplier: translator, storage: LinearCodingStack())
         
     }
