@@ -45,9 +45,9 @@ public struct CodingStorageError: Error {
 }
 
 /**
- CodingStorage is the central storing unit of encoding as wall as decoding.
-
- It stores metas at coding paths (arrays of coding keys). Note that `[]` is also a valid path.
+ CodingStorage is the central storing unit used by `MetaEncoder` as well as `MetaDecoder`.
+ 
+ CodingStorages store metas at coding paths (arrays of coding keys). Note that `[]` is also a valid path.
 
  The way how it stores them is implementation dependant and is correlated with the general abilities MetaSerialization can supply.
 
@@ -55,10 +55,6 @@ public struct CodingStorageError: Error {
  This means that this workflow is followed:
 
  store -> this workflow nested -> this workflow nested -> ... -> this workflow nested -> remove
-
- However multiple encoders/decoders can work on a single storage.
- This also depends on your implementation.
- All new encoders/decoders will call fork and use the storage returned by it.
  */
 public protocol CodingStorage {
 
