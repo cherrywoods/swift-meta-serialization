@@ -36,10 +36,11 @@ struct StandardBehavior<S: Serialization> where S.Raw: Equatable {
     // Address, Person,
     // Numbers, Mapping,
     // Company,
+    // Button,
     // Employee,
+    // CoffeeDrinker,
     func test(expected: [String : S.Raw], allowTopLevelSingleValues allowTLSV: Bool, allowNestedContainers allowNC: Bool, allowNils: Bool) {
         
-        // emptys
         describe("emptys") {
             
             testSingle("empty struct", value: EmptyStruct(), expected: expected["empty"])
@@ -89,13 +90,25 @@ struct StandardBehavior<S: Serialization> where S.Raw: Equatable {
         
         describe("deep structured class") {
             
-            failOrSucceed(succeed: allowNC, "company", value: Company.testValue, expected: expected["company"])
+            failOrSucceed(succeed: allowNC, "company", value: Company.testValue, expected: expected["Company"])
+            
+        }
+        
+        describe("deep nested class") {
+            
+            failOrSucceed(succeed: allowNC, "button", value: Button.testValue, expected: expected["Button"])
             
         }
         
         describe("class sharing encoder with super") {
             
-            testSingle("employee", value: Employee.testValue, expected: expected["employee"])
+            testSingle("employee", value: Employee.testValue, expected: expected["Employee"])
+            
+        }
+        
+        describe("class using super encoder") {
+            
+            failOrSucceed(succeed: allowNC, "coffee drinker", value: CoffeeDrinker.testValue, expected: expected["CoffeeDrinker"])
             
         }
         
