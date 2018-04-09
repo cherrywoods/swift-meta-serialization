@@ -170,4 +170,3 @@ open class LinearCodingStack: CodingStorage {
     }
     
 }
-

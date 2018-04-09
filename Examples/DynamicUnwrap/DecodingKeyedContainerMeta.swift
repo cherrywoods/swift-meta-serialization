@@ -64,7 +64,7 @@ struct Example2DecodingKeyedContainerMeta: DecodingKeyedContainerMeta {
         let sortedKeys = keys.sorted()
         // now we just need to go through all keys and compare with the key before
         var lastKey = sortedKeys.first! // since array isn't empty, there is at least one key
-        for key in sortedKeys.suffix( keys.count-1 /*All keys, except the first one*/ ) {
+        for key in sortedKeys.suffix( keys.count-1 /* All keys, except the first one */ ) {
             
             guard key != lastKey else {
                 // if keys aren't unique, array can't be seen as a keyed container
