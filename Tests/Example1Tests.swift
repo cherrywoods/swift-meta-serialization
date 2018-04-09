@@ -36,7 +36,8 @@ class Example1Spec: QuickSpec {
                                        "EnhancedBool.fileNotFound" : Example1Container.nil,
                                        "wrapped(EnhancedBool.true)" : Example1Container.dictionary( ["value": Example1Container.bool(true)] ),
                                        "wrapped(EnhancedBool.false)" : Example1Container.dictionary( ["value": Example1Container.bool(false)] ),
-                                       "wrapped(EnhancedBool.fileNotFound)" : Example1Container.dictionary( ["value": Example1Container.nil] ), ],
+                                       "wrapped(EnhancedBool.fileNotFound)" : Example1Container.dictionary( ["value": Example1Container.nil] ),
+                                       "CoffeeDrinker" : .dictionary([ "super" : .dictionary( [ "name" : .string("Jane Doe"), "email" : .string("jdoe@example.com")] ), "coffeeLevel" : .int(70) ])],
                            allowTopLevelSingleValues: true, allowNestedContainers: true, allowNils: true)
         
         let stateRestoreTests = StateRestoringAfterThrow(serialization: Example1.serialization)

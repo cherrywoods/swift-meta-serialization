@@ -77,3 +77,26 @@ extension Example1Container: Hashable {
     }
     
 }
+
+extension Example1Container: CustomStringConvertible {
+    
+    var description: String {
+        switch self {
+        case .nil:
+            return "nil"
+        case .bool(let val):
+            return val.description
+        case .string(let val):
+            return val.description
+        case .int(let val):
+            return val.description
+        case .double(let val):
+            return val.description
+        case .array(let val):
+            return val.description
+        case .dictionary(let val):
+            return val.description
+        }
+    }
+    
+}

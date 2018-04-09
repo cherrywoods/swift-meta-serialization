@@ -18,7 +18,7 @@ class TestCodingStorageErrorCatching: XCTestCase {
     
     func testEncodingError() {
         
-        let encoder = MetaEncoder(translator: ErrornousTranslator(), storage: ThrowingStorage())
+        let encoder = MetaEncoder(metaSupplier: ErrornousTranslator(), storage: ThrowingStorage())
         
         do {
             
@@ -43,11 +43,11 @@ class TestCodingStorageErrorCatching: XCTestCase {
     
     func testDecodingError() {
         
-        let decoder = MetaDecoder(translator: ErrornousTranslator(), storage: ThrowingStorage())
+        let decoder = MetaDecoder(unwrapper: ErrornousTranslator(), storage: ThrowingStorage())
         
         do {
             
-            let _ = try decoder.decode(type: TestStruct.self, from: NilMeta.nil)
+            let _ = try decoder.decode(type: TestStruct.self, from: NilMarker.instance)
             
         } catch is CodingStorageError {
             
@@ -77,22 +77,14 @@ fileprivate struct TestStruct: Codable {
     
 }
 
-fileprivate class ErrornousTranslator: Translator {
+fileprivate class ErrornousTranslator: MetaSupplier, Unwrapper {
     
-    func wrappingMeta<T>(for value: T) -> Meta? {
+    func wrap<T>(_ value: T, for encoder: MetaEncoder) throws -> Meta? where T : Encodable {
         return nil
     }
     
-    func unwrap<T>(meta: Meta, toType type: T.Type) throws -> T? {
+    func unwrap<T>(meta: Meta, toType type: T.Type, for decoder: MetaDecoder) throws -> T? where T : Decodable {
         return nil
-    }
-    
-    func encode<Raw>(_ meta: Meta) throws -> Raw {
-        return meta as! Raw
-    }
-    
-    func decode<Raw>(_ raw: Raw) throws -> Meta {
-        return raw as! Meta
     }
     
 }
@@ -102,7 +94,7 @@ fileprivate class ThrowingStorage: CodingStorage {
     subscript(codingPath: [CodingKey]) -> Meta {
         
         get {
-            return NilMeta.nil
+            return NilMarker.instance
         }
         
         set(newValue) {}
