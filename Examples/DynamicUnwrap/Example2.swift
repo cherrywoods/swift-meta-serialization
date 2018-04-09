@@ -25,8 +25,4 @@ enum Example2 {
     static let translator = Example2Translator()
     static let serialization = Example2Serialization()
     
-    // used by performance tests
-    static let linearCodingStackSerialization = Example2Serialization(codingStorageSupplier: { LinearCodingStack() })
-    static let codingDictionarySerialization = Example2Serialization(codingStorageSupplier: { CodingDictionary() })
-    
 }

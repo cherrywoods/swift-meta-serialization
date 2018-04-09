@@ -24,16 +24,11 @@ struct Example2Serialization: Serialization {
     
     typealias Raw = Example2Meta
     
-    let storageSupplier: () -> CodingStorage
-    init(codingStorageSupplier: @escaping () -> CodingStorage = { CodingDictionary() }) {
-        self.storageSupplier = codingStorageSupplier
-    }
-    
     // MARK: decoding
     
     func provideNewDecoder() -> MetaDecoder {
         
-        return MetaDecoder(unwrapper: Example2.translator, storage: storageSupplier())
+        return MetaDecoder(unwrapper: Example2.translator)
         
     }
     
@@ -46,7 +41,7 @@ struct Example2Serialization: Serialization {
     // MARK: encoding
     
     func provideNewEncoder() -> MetaEncoder {
-        return MetaEncoder(metaSupplier: Example2.translator, storage: storageSupplier())
+        return MetaEncoder(metaSupplier: Example2.translator)
     }
     
     func convert(meta: Meta) throws -> Example2Meta {
