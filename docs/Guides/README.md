@@ -1,3 +1,9 @@
+# Welcome to the MetaSerialization docs
+
+This is the place where you can find guides about MetaSerialization and documentation for all public types from MetaSerialization.
+
+A good point to start is `MetaEncoder` or `MetaDecoder`, or reading the guides linked to in this file.
+
 ## What it does
 MetaSerialization provides a layer in between your serialization framework and the swift standard library interface
 (mainly Encoder and Decoder) and implements most of the overhead Encoder and Decoder require.
