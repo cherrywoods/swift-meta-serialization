@@ -1,10 +1,27 @@
 language: swift
 osx_image: xcode9.3
+env:
+  global:
+  - FRAMEWORK_NAME=MetaSerialization
 before_install:
-  - brew update && brew bundle
-install: 
-  - carthage update 
+- brew update
+- brew outdated carthage || brew upgrade carthage
+before_script:
+- carthage bootstrap
 script:
-  - xcodebuild -scheme MetaSerialization\ macOS -project MetaSerialization.xcodeproj build test
+- xcodebuild -scheme MetaSerialization\ macOS -project MetaSerialization.xcodeproj
+  build test
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+- bash <(curl -s https://codecov.io/bash)
+before_deploy:
+- carthage build --no-skip-current
+- carthage archive $FRAMEWORK_NAME
+deploy:
+  provider: releases
+  api_key:
+    secure: fHC4O4nkZs/0TQEgkRaFOqOJPWTe0+zg24ekb4pwwo4u08JnSwi+wSqGvSG446CivIEeILFr0rY0xhIgX1fuKAMcqCjE1GaNBQjvQeA0aKrzJKiPAXXywVFJ2UW2h6mgb+G+4s4S/n+F+gUuyiuqqUNhyUI5DUkyLmG9uRwqifSEEk+Vb6oVHrmoruqYFL/oGcVp3rAolyRVZENAVC77Lln8RkP+kX/OmLTItI77feJdyMFDK1jDN0ZKleq2+5GkjHmq5Qsb768FnO6NDwkQX58b15c9Peh2CsfH8vPPg0bnO+kKYiNIgBsXedZzRGPxoyPX6BvIdgBq8IiccjdeQURm9KgX2LeqOCNbx++8m+waN4LbE1xcLn5pta9CswrPYYG8n7jcQOd6olbOi7OQl1oHevJhpdnrX+esO/Qly0443B3vabXbq0mOsIEP47EmO56um/LSfknkgB6Uj+c86byZw3MT3i0gFHR5Z7GpPmKrS4f99ks/AubnhFUoL3ODDmvgWhmzz4QAEFRBCpb8vXlAuPKjFkmHAtpHMg0zx1bjEZlDawOj2LesRgMbFGICHpGF8i1+r5m8mNV5LBNg7jK6YflSIrX88782pFBMfEuCzdko6AxzqhFn9xdxSN5uIrJMtceysuUW+9y5hhwF3OtNUbxSm4avaDYM0lonCrU=
+  file: "$FRAMEWORK_NAME.framework.zip"
+  skip_cleanup: true
+  on:
+    repo: cherrywoods/swift-meta-serialization
+    tags: true
