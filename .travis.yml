@@ -9,8 +9,7 @@ before_install:
 before_script:
 - carthage bootstrap
 script:
-- xcodebuild -scheme MetaSerialization\ macOS -project MetaSerialization.xcodeproj
-  build test
+- xcodebuild -scheme MetaSerialization\ macOS -project MetaSerialization.xcodeproj -quiet build test
 after_success:
 - bash <(curl -s https://codecov.io/bash) -J 'MetaSerialization'  
 before_deploy:
