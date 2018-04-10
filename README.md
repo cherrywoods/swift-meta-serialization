@@ -1,6 +1,7 @@
 # MetaSerialization
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) 
 [![Build Status](https://travis-ci.org/cherrywoods/swift-meta-serialization.svg?branch=testing)](https://travis-ci.org/cherrywoods/swift-meta-serialization)
+[![codecov](https://codecov.io/gh/cherrywoods/swift-meta-serialization/branch/master/graph/badge.svg)](https://codecov.io/gh/cherrywoods/swift-meta-serialization)
 
 MetaSerialization is a framework to simplify the creation of new serialisation libraries for the swift standard library environment (Encodable, Decodable, Codable, etc.)
 It's aim is to let anyone create a serialization library that works with the swift serialization framework by nearly just writing the real serialization code. 
@@ -30,14 +31,11 @@ All test can be found in the [Tests folder](https://github.com/cherrywoods/swift
 
 MetaSerialization uses [Quick](https://github.com/Quick/Quick) and [Nimble](https://github.com/Quick/Nimble) for testing.
 
-Checkout the source-only branch, if you aren't interested in the contained examples and the tests, but just the 
+Checkout the source-only branch, if you aren't interested in the contained examples and the tests.
 
-This applies for version 1, the current release. While this release works fine in general and passes all test that JSONEncoder specifies, it isn't that great to subclass and overwrite. Due to this, there is a new version (2.0) that is currently not release ready, because a lot of added features has not been tested yet. However, 2.0 is also already capable of all JSONEncoder tests. You may clone directly from the master branch to get the new version.
+## Versions
+### 2.0
+Version 2 
 
 ## Licensing
 This framework is licensed at the Apache Version 2.0 License, (nearly) the same license swift is licensed at.
-
-## Help wanted!
- - [ ] Include more tests
- - [ ] Write more documentation, e.g. the complete decoding example process isn't complete.
- - [ ] Provide a simpler way to use MetaSerialization
