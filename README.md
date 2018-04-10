@@ -6,7 +6,10 @@ MetaSerialization is a framework to simplify the creation of new serialisation l
 It's aim is to let anyone create a serialization library that works with the swift serialization framework by nearly just writing the real serialization code. To archive this goal, it includes a default `Encoder` and `Decoder` implementation that delegate a small part of their work to implementations of `MetaSupplier` / `Unwrapper`, but are furthermore extendible. Most common use cases should however not require overriding eigther `MetaEncoder` or `MetaDecoder`, but should be archivable with a short custom implementation of `MetaSupplier` / `Unwrapper`. In the most extreme form, it is possible to build codable support for an existing framework in [2 lines of code](https://github.com/cherrywoods/swift-meta-serialization/blob/73f067c2c542d4548813d3c8884755dee270ec64/Examples/Example1/Example1.swift#L14-L16).
 
 ## Installation
-MetaSerialization is available using [CocoaPods](), Carthage and Swift Package Manager.
+MetaSerialization supports these dependency managers:
+ - [CocoaPods](https://github.com/cherrywoods/swift-meta-serialization/blob/master/docs/Guides/Installation.md#cocoapods),
+ - [Carthage](https://github.com/cherrywoods/swift-meta-serialization/blob/master/docs/Guides/Installation.md#carthage)
+ - [Swift Package Manager](https://github.com/cherrywoods/swift-meta-serialization/blob/master/docs/Guides/Installation.md#swift-package-manager).
 
 ## Introduction
 Lets pretend you liked to serialize to JSON and want to write your own library for this (yes, there are all ready frameworks for this and Foundation also contains an implementation, but lets also pretend you want to have your own).
@@ -32,7 +35,7 @@ Luckyly Swift automatically provides me with implementations for `encode(to:)` t
 
 If you now look at the [JSONEncoder.swift file from Foundation](https://github.com/apple/swift/blob/5.0-dont-hardcode-numbers-in-objc-block-sil/stdlib/public/SDK/Foundation/JSONEncoder.swift) you can see, that there is a lot of code that needs to be written to implement a custom `Decoder` or `Encoder`. You may also see, that you might copy very large parts of this file for most serialization formats. In total: There's a lot of overhead.
 
-Now do you really want to copy this code? Luckly you should not have to, because this is what MetaSerialization is for: 
+Now do you really want to copy this code? Luckly you should not have to, because this is what MetaSerialization is for:
 It is here to save you from copying that code and provide you a simpler interface instead.
 
 It already is not too complicated to use MetaSerialization, but certainly it can still be easier. If you have any idea about this, please comment the issue that already exists for this, open your own issue or pull request (would be super cool 👍).
@@ -105,7 +108,7 @@ Furthermore you may not do anything in your encoding and decoding code. There ar
 ## Testing
 This project is tested against the tests of JSONEncoder from Foundation.
 
-This applies for version 1, the current release. While this release works fine in general and passes all test that JSONEncoder specifies, it isn't that great to subclass and overwrite. Due to this, there is a new version (2.0) that is currently not release ready, because a lot of added features has not been tested yet. However, 2.0 is also already capable of all JSONEncoder tests. You may clone directly from the master branch to get ther new version. 
+This applies for version 1, the current release. While this release works fine in general and passes all test that JSONEncoder specifies, it isn't that great to subclass and overwrite. Due to this, there is a new version (2.0) that is currently not release ready, because a lot of added features has not been tested yet. However, 2.0 is also already capable of all JSONEncoder tests. You may clone directly from the master branch to get ther new version.
 
 ## Licensing
 This framework is licensed at the Apache Version 2.0 License, (nearly) the same license swift is licensed at.
