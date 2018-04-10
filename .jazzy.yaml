@@ -4,7 +4,7 @@ copyright: '© 2016 cherrywoods under [Apache 2.0 license](https://github.com/ch
 module: MetaSerialization
 module_version: 2.0
 readme: docs/Guides/README.md
-documentation: docs/*.md
+documentation: docs/Guides/*.md
 github_url: https://github.com/cherrywoods/swift-meta-serialization
 undocumented_text: "" 
 theme: fullwidth

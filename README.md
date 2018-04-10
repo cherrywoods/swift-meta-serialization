@@ -11,34 +11,8 @@ MetaSerialization supports these dependency managers:
  - [Carthage](https://github.com/cherrywoods/swift-meta-serialization/blob/master/docs/Guides/Installation.md#carthage)
  - [Swift Package Manager](https://github.com/cherrywoods/swift-meta-serialization/blob/master/docs/Guides/Installation.md#swift-package-manager).
 
-## Introduction
-Lets pretend you liked to serialize to JSON and want to write your own library for this (yes, there are all ready frameworks for this and Foundation also contains an implementation, but lets also pretend you want to have your own).
+## Documentation
 
-If your write this library, you will somehow have to implement things like this:
-
-* convert `Dictionary<String, Any>` to `{ ... }` in JSON,
-* convert `Array<Any>` to `[ ... ]`,
-* set quotation marks around Strings,
-
-and much more. But how will you handle any type that someone using your framework created? For example my special car type:
-``` swift
-class Car: Codable {
-    let color: String
-    let maxSpeed: Int
-    var currentSpeed: Int
-    ...
-}
-```
-I would like to store and transmit it using JSON. You can't consider this type in your implementation, because you can't know all these custom types...
-
-Luckyly Swift automatically provides me with implementations for `encode(to:)` to encode and `init(from:)` to decode, because `Car` conforms to `Codable`. But those implementations need `Decoder` and `Encoder` implementations.
-
-If you now look at the [JSONEncoder.swift file from Foundation](https://github.com/apple/swift/blob/5.0-dont-hardcode-numbers-in-objc-block-sil/stdlib/public/SDK/Foundation/JSONEncoder.swift) you can see, that there is a lot of code that needs to be written to implement a custom `Decoder` or `Encoder`. You may also see, that you might copy very large parts of this file for most serialization formats. In total: There's a lot of overhead.
-
-Now do you really want to copy this code? Luckly you should not have to, because this is what MetaSerialization is for:
-It is here to save you from copying that code and provide you a simpler interface instead.
-
-It already is not too complicated to use MetaSerialization, but certainly it can still be easier. If you have any idea about this, please comment the issue that already exists for this, open your own issue or pull request (would be super cool 👍).
 
 ## What it does
 MetaSerialization provides a layer in between your serialization framework and the swift standard library interface
