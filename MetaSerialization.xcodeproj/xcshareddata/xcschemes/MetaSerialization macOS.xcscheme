@@ -20,6 +20,20 @@
                ReferencedContainer = "container:MetaSerialization.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "633D4D8D206264EF00ADFF91"
+               BuildableName = "MetaSerializationTests-macOS.xctest"
+               BlueprintName = "MetaSerializationTests-macOS"
+               ReferencedContainer = "container:MetaSerialization.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
