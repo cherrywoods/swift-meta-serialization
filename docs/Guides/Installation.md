@@ -17,14 +17,14 @@ If you don't have a Cartfile, create a new one in the base folder of your projec
 Run `carthage update` from your command line. Now you need to add MetaSerialization and your other dependencies to your project. To do this, follow the guide at https://github.com/Carthage/Carthage#adding-frameworks-to-an-application.
 
 You can find more information about Carthage at https://github.com/Carthage/Carthage.
-## Swift Package Manager
+## [Swift Package Manager](https://swift.org/getting-started/#using-the-package-manager)
 Add this line to your dependencies in your Package.swift file:
 ```swift
 .Package(url: "https://github.com/cherrywoods/swift-meta-serialization.git", majorVersion: 2)
 ```
-You can create a new Package.swift file by running `swift package init` from command line in the base folder of your project. `swift build` will download MetaSerialization and your further dependencies. 
+You can create a new Package.swift file by running `swift package init` from command line in the base folder of your project. `swift build` will download MetaSerialization and your further dependencies.
 
 Find out more about the Swift Package Manager at https://swift.org/getting-started/#using-the-package-manager
-## Git Submodules
+## [Git Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
 You can also use git submodules to use MetaSerialization in your project.
 You can find a good guide about that in the [documentation of the Quick project](https://github.com/Quick/Quick/blob/master/Documentation/en-us/InstallingQuick.md#git-submodules).
