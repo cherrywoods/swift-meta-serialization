@@ -30,6 +30,7 @@ All test can be found in the [Tests folder](https://github.com/cherrywoods/swift
 
 MetaSerialization uses [Quick](https://github.com/Quick/Quick) and [Nimble](https://github.com/Quick/Nimble) for testing.
 
+Checkout the source-only branch, if you aren't interested in the contained examples and the tests, but just the 
 
 This applies for version 1, the current release. While this release works fine in general and passes all test that JSONEncoder specifies, it isn't that great to subclass and overwrite. Due to this, there is a new version (2.0) that is currently not release ready, because a lot of added features has not been tested yet. However, 2.0 is also already capable of all JSONEncoder tests. You may clone directly from the master branch to get the new version.
 
