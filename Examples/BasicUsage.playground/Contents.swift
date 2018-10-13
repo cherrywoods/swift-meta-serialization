@@ -54,21 +54,21 @@ func convertToJSON(_ value: Meta) -> String {
     // Array and Dictionary always need
     // to be supported when using PrimitivesEnumTranslator
     
-    if let array = value as? Array<String> {
+    if let array = value as? Array<Meta> {
         
         var json = "[ \n"
         for element in array {
-            json += element + "\n"
+            json += convertToJSON(element) + "\n"
         }
         return json + "]"
         
     }
     
-    if let dictionary = value as? Dictionary<String, String> {
+    if let dictionary = value as? Dictionary<String, Meta> {
         
         var json = "{ \n"
         for (key, val) in dictionary {
-            json += "\"\(key)\": \(val)\n"
+            json += "\"\(key)\": \(convertToJSON(val))\n"
         }
         return json + "}"
         
@@ -93,7 +93,7 @@ func convertToSwift(_ json: String) -> Meta {
         // [ at the beginning -> array
         // trim of [\n and \n]
         json = String( json.dropFirst(2).dropLast(2) )
-        var array = [Any]()
+        var array = [Meta]()
         for element in json.split(separator: "\n") {
             array.append( convertToSwift(String(element)) )
         }
@@ -102,7 +102,7 @@ func convertToSwift(_ json: String) -> Meta {
         // { -> dictionary
         // trim {\n and \n}
         json = String( json.dropFirst(2).dropLast(2) )
-        var dictionary = [String: Any]()
+        var dictionary = [String: Meta]()
         for line in json.split(separator: "\n") {
             let keyAndValue = line.split(separator: ":")
             // drop " and "
