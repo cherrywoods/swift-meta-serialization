@@ -31,16 +31,16 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
     /**
      This MetaKeyedDecodingContainer's meta.
      */
-    open let meta: DecodingKeyedContainerMeta
+    public let meta: DecodingKeyedContainerMeta
     
     /**
      The decoder that created this container.
      
      Decoding, creating new containers and creating super decoders is delegated to it.
      */
-    open let decoder: MetaDecoder
+    public let decoder: MetaDecoder
     
-    open let codingPath: [CodingKey]
+    public let codingPath: [CodingKey]
     
     // MARK: - initalization
     

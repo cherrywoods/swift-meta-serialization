@@ -27,16 +27,16 @@ open class MetaSingleValueDecodingContainer: SingleValueDecodingContainer {
     /**
      This MetaSingleValueDecodingContainer's meta.
      */
-    open let meta: Meta
+    public let meta: Meta
     
     /**
      The decoder that created this container.
      
      Decoding is delegated to it.
      */
-    open let decoder: MetaDecoder
+    public let decoder: MetaDecoder
     
-    open let codingPath: [CodingKey]
+    public let codingPath: [CodingKey]
     
     // MARK: - initalization
     

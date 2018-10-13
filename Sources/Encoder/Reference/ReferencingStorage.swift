@@ -29,7 +29,7 @@ open class ReferencingCodingStorage: CodingStorage {
     // MARK: properties
     
     open var reference: Reference
-    open let basePath: [CodingKey]
+    public let basePath: [CodingKey]
     open var delegate: CodingStorage
     
     // MARK: init

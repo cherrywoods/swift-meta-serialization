@@ -36,9 +36,9 @@ open class MetaSingleValueEncodingContainer: SingleValueEncodingContainer {
      
      Encoding is delegated to it.
      */
-    open let encoder: MetaEncoder
+    public let encoder: MetaEncoder
     
-    open let codingPath: [CodingKey]
+    public let codingPath: [CodingKey]
     
     // MARK: - initalization
     

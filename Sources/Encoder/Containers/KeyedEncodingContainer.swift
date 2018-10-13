@@ -38,9 +38,9 @@ open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProto
      
      Encoding, creating new containers and creating super encoders is delegated to it.
      */
-    open let encoder: MetaEncoder
+    public let encoder: MetaEncoder
     
-    open let codingPath: [CodingKey]
+    public let codingPath: [CodingKey]
     
     // MARK: utilities
     

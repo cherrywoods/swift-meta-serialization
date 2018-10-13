@@ -24,14 +24,14 @@ open class MetaDecoder: Decoder {
 
     // MARK: - general properties
 
-    open let userInfo: [CodingUserInfoKey : Any]
+    public let userInfo: [CodingUserInfoKey : Any]
 
     open var codingPath: [CodingKey]
 
     // MARK: - translator
 
     /// The `Unwrapper` used to unwrap metas
-    open let unwrapper: Unwrapper
+    public let unwrapper: Unwrapper
 
     // MARK: - storage
 

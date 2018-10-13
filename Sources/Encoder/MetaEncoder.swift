@@ -24,14 +24,14 @@ open class MetaEncoder: Encoder {
 
     // MARK: - general properties
 
-    open let userInfo: [CodingUserInfoKey : Any]
+    public let userInfo: [CodingUserInfoKey : Any]
 
     open var codingPath: [CodingKey]
 
     // MARK: - translator
 
     /// The translator used to get and finally translate Metas
-    open let metaSupplier: MetaSupplier
+    public let metaSupplier: MetaSupplier
 
     // MARK: - storage
 

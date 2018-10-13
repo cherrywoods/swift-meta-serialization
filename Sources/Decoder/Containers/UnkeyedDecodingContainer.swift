@@ -27,16 +27,16 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     /**
      This MetaUnkeyedDecodingContainer's meta.
      */
-    open let meta: DecodingUnkeyedContainerMeta
+    public let meta: DecodingUnkeyedContainerMeta
     
     /**
      The decoder that created this container.
      
      Decoding, creating new containers and creating super decoders is delegated to it.
      */
-    open let decoder: MetaDecoder
+    public let decoder: MetaDecoder
     
-    open let codingPath: [CodingKey]
+    public let codingPath: [CodingKey]
     
     // MARK: - initalization
     
