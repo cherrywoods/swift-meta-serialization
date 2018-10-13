@@ -37,6 +37,7 @@ Checkout the source-only branch, if you aren't interested in the contained examp
 ### Swift version
 | Swift Version | MetaSerialization Version |
 | ------------- | ------------------------------- |
+| 4.2           | 2.1.0                           |
 | 4.1.2           | 2.0.1                                     |
 | 4.1              | 2.0                                        | 
 | 4.0              | 1.0                                        |
