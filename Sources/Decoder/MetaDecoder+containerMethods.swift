@@ -21,21 +21,21 @@ import Foundation
 
 public extension MetaDecoder {
     
-    public func container<Key: CodingKey>(keyedBy keyType: Key.Type) throws -> KeyedDecodingContainer<Key> {
+    func container<Key: CodingKey>(keyedBy keyType: Key.Type) throws -> KeyedDecodingContainer<Key> {
         
         let path = codingPath
         return try container(keyedBy: keyType, for: storage[path], at: path)
         
     }
     
-    public func unkeyedContainer() throws -> UnkeyedDecodingContainer {
+    func unkeyedContainer() throws -> UnkeyedDecodingContainer {
         
         let path = codingPath
         return try unkeyedContainer(for: storage[path], at: path)
         
     }
     
-    public func singleValueContainer() throws -> SingleValueDecodingContainer {
+    func singleValueContainer() throws -> SingleValueDecodingContainer {
         
         let path = codingPath
         return try singleValueContainer(for: storage[path], at: path)

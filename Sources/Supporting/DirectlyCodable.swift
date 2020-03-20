@@ -35,7 +35,7 @@ public protocol DirectlyDecodable: Decodable {}
 
 public extension DirectlyDecodable {
     
-    public init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         assertionFailure("Should not call init(from:) initalizer of DirectlyDecodable type. Rather call decode on a container. Request a single value container, if you want to decode just one value.")
         // this implementation seems to match the implementation of String, Int, etc.
         // this implementation can cause endless loops and is therefor guarded by an assertion failure
@@ -53,7 +53,7 @@ public protocol DirectlyEncodable: Encodable {}
 
 public extension DirectlyEncodable {
     
-    public func encode(to encoder: Encoder) throws {
+    func encode(to encoder: Encoder) throws {
         assertionFailure("Should not call encode(to:) of DirectlyEncodable type. Rather call encode on a container. Request a single value container, if you want to encode just one value.")
         // this implementation seems to match the implementation of String, Int, etc.
         // this implementation can cause endless loops and is therefor guarded by an assertion failure

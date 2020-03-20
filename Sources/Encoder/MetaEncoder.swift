@@ -124,7 +124,7 @@ open class MetaEncoder: Encoder {
             // remove the placeholder that was stored at the path
             // (or any incomplete metas)
             // this makes it possible to encode another value, if an error was thrown
-            _ = try? storage.remove(at: path)
+            _ = ((try? storage.remove(at: path)) as Meta??)
             throw error
             
         }

@@ -118,15 +118,15 @@ public protocol Unwrapper {
 
 public extension Unwrapper {
     
-    public func unwrap(meta: Meta, toType: NilMeta.Protocol, for decoder: MetaDecoder) -> NilMeta? {
+    func unwrap(meta: Meta, toType: NilMeta.Protocol, for decoder: MetaDecoder) -> NilMeta? {
         return nil
     }
     
-    public func unwrap(meta: Meta, toType: DecodingKeyedContainerMeta.Protocol, for decoder: MetaDecoder) throws -> DecodingKeyedContainerMeta? {
+    func unwrap(meta: Meta, toType: DecodingKeyedContainerMeta.Protocol, for decoder: MetaDecoder) throws -> DecodingKeyedContainerMeta? {
         return nil
     }
     
-    public func unwrap(meta: Meta, toType: DecodingUnkeyedContainerMeta.Protocol, for decoder: MetaDecoder) throws -> DecodingUnkeyedContainerMeta? {
+    func unwrap(meta: Meta, toType: DecodingUnkeyedContainerMeta.Protocol, for decoder: MetaDecoder) throws -> DecodingUnkeyedContainerMeta? {
         return nil
     }
     

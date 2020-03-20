@@ -25,7 +25,7 @@ public extension PrimitivesEnumTranslator {
      This enum contains cases for all primitive types PrimitivesEnumTranslator can handle.
      The provided cases correspond to the types from the standard library, that have no mode of serializing themselves to another type (rely on a SingleValue(Encoding/Decoding)Container).
      */
-    public enum Primitive: Hashable {
+    enum Primitive: Hashable {
         
         /// stands for swifts String type
         case string

@@ -21,11 +21,11 @@ import Foundation
 
 public extension MetaSupplier {
     
-    public func keyedContainerMeta() -> EncodingKeyedContainerMeta {
+    func keyedContainerMeta() -> EncodingKeyedContainerMeta {
         return Dictionary<String, Meta>()
     }
     
-    public func unkeyedContainerMeta() -> EncodingUnkeyedContainerMeta {
+    func unkeyedContainerMeta() -> EncodingUnkeyedContainerMeta {
         return Array<Meta>()
     }
     

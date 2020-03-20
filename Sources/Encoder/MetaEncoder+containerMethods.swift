@@ -21,7 +21,7 @@ import Foundation
 
 public extension MetaEncoder {
 
-    public func container<Key: CodingKey>(keyedBy keyType: Key.Type) -> KeyedEncodingContainer<Key> {
+    func container<Key: CodingKey>(keyedBy keyType: Key.Type) -> KeyedEncodingContainer<Key> {
 
         let path = codingPath
 
@@ -43,7 +43,7 @@ public extension MetaEncoder {
 
     }
 
-    public func unkeyedContainer() -> UnkeyedEncodingContainer {
+    func unkeyedContainer() -> UnkeyedEncodingContainer {
 
         let path = codingPath
 
@@ -61,7 +61,7 @@ public extension MetaEncoder {
 
     }
 
-    public func singleValueContainer() -> SingleValueEncodingContainer {
+    func singleValueContainer() -> SingleValueEncodingContainer {
 
         // A little bit strangely but not easily preventable,
         // a entity can request a keyed or unkeyed container

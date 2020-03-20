@@ -34,7 +34,7 @@ public extension MetaEncoder {
      
      - Throws: Aside from any errors that are thrown of metaSupplier.wrap and any `EncodingError` that has been thrown by another entity, this function will throw `MetaEncoder.Errors.encodingHasNotSucceeded` if the encoding could not succeed. In general, this error will never be thrown in code running unter the debug (and not the release) configuration. Instead the call will fail with an assertion failure. Such an error usually indicates an invalid encoder implementation or a missuse of an encoder.
      */
-    public func encode<E: Encodable>(_ value: E) throws -> Meta {
+    func encode<E: Encodable>(_ value: E) throws -> Meta {
         
         // encode over wrap function
         // this will keep E from encoding itself,
@@ -62,7 +62,7 @@ public extension MetaEncoder {
         
     }
     
-    public enum Errors: Error {
+    enum Errors: Error {
         
         /// Thrown if the encoding process hasn't succeeded.
         case encodingHasNotSucceeded

@@ -35,7 +35,7 @@ public extension MetaDecoder {
      - Parameter meta: The meta tree the decoder should decode from.
      - Throws: Aside from any errors that are thrown of unwrapper.unwrap and any `DecodingError` that has been thrown by another entity, this function will throw `MetaDecoder.Errors.decodingHasNotSucceeded` if the decoding could not succeed. In general, this error will never be thrown in code running unter the debug (and not the release) configuration. Instead the call will fail with an assertion failure. Such an error usually indicates an invalid decoder implementation or a missuse of a decoder.
      */
-    public func decode<D: Decodable>(type: D.Type, from meta: Meta) throws -> D {
+    func decode<D: Decodable>(type: D.Type, from meta: Meta) throws -> D {
         
         do {
             
@@ -63,7 +63,7 @@ public extension MetaDecoder {
         
     }
     
-    public enum Errors: Error {
+    enum Errors: Error {
         
         /// Thrown if the decoding process hasn't succeeded.
         case decodingHasNotSucceeded

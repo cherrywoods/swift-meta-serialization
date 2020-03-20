@@ -34,22 +34,22 @@ enum Example1Container {
 
 extension Example1Container: Hashable {
     
-    var hashValue: Int {
+    func hash(into hasher: inout Hasher) {
         switch self {
         case .nil:
-            return 42
+            hasher.combine(42)
         case .bool(let val):
-            return val.hashValue
+            hasher.combine(val)
         case .string(let val):
-            return val.hashValue
+            hasher.combine(val)
         case .int(let val):
-            return val.hashValue
+            hasher.combine(val)
         case .double(let val):
-            return val.hashValue
+            hasher.combine(val)
         case .array(let val):
-            return val.count.hashValue
+            hasher.combine(val)
         case .dictionary(let val):
-            return val.count.hashValue
+            hasher.combine(val)
         }
     }
     
