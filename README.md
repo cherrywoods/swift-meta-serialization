@@ -36,11 +36,12 @@ Checkout the source-only branch, if you aren't interested in the contained examp
 ## Versions
 ### Swift version
 | Swift Version | MetaSerialization Version |
-| ------------- | ------------------------------- |
-| 4.2           | 2.1.0                           |
-| 4.1.2           | 2.0.1                                     |
-| 4.1              | 2.0                                        | 
-| 4.0              | 1.0                                        |
+| ------------- | --------------------------|
+| 5.1           | 2.2                       |
+| 4.2           | 2.1.0                     |
+| 4.1.2         | 2.0.1                     |
+| 4.1           | 2.0                       | 
+| 4.0           | 1.0                       |
 ### 2.0
 Version 2 added a bunch of features, separated encoding and decoding where necessary and provided better overriding options for `Meta(De|En)coder`. However, this resulted in a more closed environment, where not everything is overridable, as it as in version 1.
 ### 1.0
