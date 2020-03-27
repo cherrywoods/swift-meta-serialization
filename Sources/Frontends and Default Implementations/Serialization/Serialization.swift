@@ -22,7 +22,7 @@ import Foundation
 /**
  This protocol provides a blueprint for a serialization class.
  
- A serialization class is an intermediate, delegating the tasks of encoding and decoding to an Encoder or Decoder, but does so while the user creates a new instance of it and uses this classes methods instead of them of Encodable and Decodable (as he would if you used Representation)
+ A serialization class is an intermediate, delegating the tasks of encoding and decoding to an Encoder or Decoder, but does so while the user creates a new instance of it and uses this classes methods instead of them of Encodable and Decodable (as one would if you used Representation)
  */
 public typealias Serialization = IntermediateEncoder & IntermediateDecoder
 
