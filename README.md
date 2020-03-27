@@ -1,6 +1,6 @@
 # MetaSerialization
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Build Status](https://travis-ci.org/cherrywoods/swift-meta-serialization.svg?branch=testing)](https://travis-ci.org/cherrywoods/swift-meta-serialization)
+[![Build Status](https://travis-ci.org/cherrywoods/swift-meta-serialization.svg?branch=master)](https://travis-ci.org/cherrywoods/swift-meta-serialization)
 [![codecov](https://codecov.io/gh/cherrywoods/swift-meta-serialization/branch/master/graph/badge.svg)](https://codecov.io/gh/cherrywoods/swift-meta-serialization)
 
 MetaSerialization is a framework to simplify the creation of new serialisation libraries for the swift standard library environment (Encodable, Decodable, Codable, etc.)
