@@ -21,9 +21,9 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="../index.html">
-          MetaSerialization Docs
+          MetaSerialization 2.0 Docs
         </a>
-         (86% documented)
+         (87% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -135,7 +135,49 @@
                 <a class="nav-group-task-link" href="../Extensions/Array.html">Array</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:Sb">Bool</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Extensions/Dictionary.html">Dictionary</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:Sd">Double</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:Sf">Float</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:Si">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s5Int16V">Int16</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s5Int32V">Int32</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s5Int64V">Int64</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s4Int8V">Int8</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:SS">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:Su">UInt</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s6UInt16V">UInt16</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s6UInt32V">UInt32</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s6UInt64V">UInt64</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s5UInt8V">UInt8</a>
               </li>
             </ul>
           </li>
@@ -264,11 +306,11 @@
       <article class="main-content">
 
         <section class="section">
-          <div class="section-content">
+          <div class="section-content top-matter">
             <h1>StandardCodingKey</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">StandardCodingKey</span><span class="p">:</span> <span class="kt">CodingKey</span><span class="p">,</span> <span class="kt">ExpressibleByStringLiteral</span><span class="p">,</span> <span class="kt">Equatable</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">StandardCodingKey</span> <span class="p">:</span> <span class="kt">CodingKey</span><span class="p">,</span> <span class="kt">ExpressibleByStringLiteral</span><span class="p">,</span> <span class="kt">Equatable</span></code></pre>
 
                 </div>
               </div>
@@ -277,7 +319,7 @@
 <p>This coding key type is exapressible by a string literal in the form <code>&lt;stringValue&gt;,&lt;intValue&gt;</code>
 where <code>&lt;stringValue&gt;</code> it the keys string value and <code>&lt;intValue&gt;</code> is the keys int value.
 You may ommit <code>,&lt;intValue&gt;</code>, in which case the coding key will have no int value.
-You may also ommit <code>&lt;stringValue&gt;</code> in which case coding keys stringValue will be <q>\(intValue)</q>.</p>
+You may also ommit <code>&lt;stringValue&gt;</code> in which case coding keys stringValue will be &ldquo;(intValue)&rdquo;.</p>
 
 <p>Therefor valid string literals for a coding key are:</p>
 
@@ -299,9 +341,11 @@ If the string literal includes more than one <code>,</code> sequence, only the s
               <div class="task-name-container">
                 <a name="/CodingKey"></a>
                 <a name="//apple_ref/swift/Section/CodingKey" class="dashAnchor"></a>
-                <a href="#/CodingKey">
-                  <h3 class="section-name">CodingKey</h3>
-                </a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/CodingKey"></a>
+                  <h3 class="section-name"><p>CodingKey</p>
+</h3>
+                </div>
               </div>
               <ul class="item-container">
                 <li class="item">
@@ -359,9 +403,9 @@ If the string literal includes more than one <code>,</code> sequence, only the s
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:17MetaSerialization17StandardCodingKeyVACSS11stringValue_Si03intG0tcfc"></a>
+                    <a name="/s:17MetaSerialization17StandardCodingKeyV11stringValue03intG0ACSS_Sitcfc"></a>
                     <a name="//apple_ref/swift/Method/init(stringValue:intValue:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization17StandardCodingKeyVACSS11stringValue_Si03intG0tcfc">init(stringValue:intValue:)</a>
+                    <a class="token" href="#/s:17MetaSerialization17StandardCodingKeyV11stringValue03intG0ACSS_Sitcfc">init(stringValue:intValue:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -385,9 +429,9 @@ If the string literal includes more than one <code>,</code> sequence, only the s
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s9CodingKeyPxSgSS11stringValue_tcfc"></a>
+                    <a name="/s:s9CodingKeyP11stringValuexSgSS_tcfc"></a>
                     <a name="//apple_ref/swift/Method/init(stringValue:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s9CodingKeyPxSgSS11stringValue_tcfc">init(stringValue:)</a>
+                    <a class="token" href="#/s:s9CodingKeyP11stringValuexSgSS_tcfc">init(stringValue:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -411,9 +455,9 @@ If the string literal includes more than one <code>,</code> sequence, only the s
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:17MetaSerialization17StandardCodingKeyVACSgSi8intValue_tcfc"></a>
+                    <a name="/s:17MetaSerialization17StandardCodingKeyV8intValueACSgSi_tcfc"></a>
                     <a name="//apple_ref/swift/Method/init(intValue:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization17StandardCodingKeyVACSgSi8intValue_tcfc">init(intValue:)</a>
+                    <a class="token" href="#/s:17MetaSerialization17StandardCodingKeyV8intValueACSgSi_tcfc">init(intValue:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -421,7 +465,7 @@ If the string literal includes more than one <code>,</code> sequence, only the s
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Sets stringValue to <q>\(intValue)</q></p>
+                        <p>Sets stringValue to &ldquo;(intValue)&rdquo;</p>
 
                       </div>
                       <div class="declaration">
@@ -441,17 +485,19 @@ If the string literal includes more than one <code>,</code> sequence, only the s
               <div class="task-name-container">
                 <a name="/string%20literal%20expressible"></a>
                 <a name="//apple_ref/swift/Section/string literal expressible" class="dashAnchor"></a>
-                <a href="#/string%20literal%20expressible">
-                  <h3 class="section-name">string literal expressible</h3>
-                </a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/string%20literal%20expressible"></a>
+                  <h3 class="section-name"><p>string literal expressible</p>
+</h3>
+                </div>
               </div>
               <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s26ExpressibleByStringLiteralP0cD4Type"></a>
+                    <a name="/s:s26ExpressibleByStringLiteralP0cD4TypeQa"></a>
                     <a name="//apple_ref/swift/Alias/StringLiteralType" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s26ExpressibleByStringLiteralP0cD4Type">StringLiteralType</a>
+                    <a class="token" href="#/s:s26ExpressibleByStringLiteralP0cD4TypeQa">StringLiteralType</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -475,9 +521,9 @@ If the string literal includes more than one <code>,</code> sequence, only the s
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s26ExpressibleByStringLiteralPx0cD4TypeQz06stringD0_tcfc"></a>
+                    <a name="/s:s26ExpressibleByStringLiteralP06stringD0x0cD4TypeQz_tcfc"></a>
                     <a name="//apple_ref/swift/Method/init(stringLiteral:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s26ExpressibleByStringLiteralPx0cD4TypeQz06stringD0_tcfc">init(stringLiteral:)</a>
+                    <a class="token" href="#/s:s26ExpressibleByStringLiteralP06stringD0x0cD4TypeQz_tcfc">init(stringLiteral:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -504,17 +550,19 @@ If the string literal includes more than one <code>,</code> sequence, only the s
               <div class="task-name-container">
                 <a name="/Equatable"></a>
                 <a name="//apple_ref/swift/Section/Equatable" class="dashAnchor"></a>
-                <a href="#/Equatable">
-                  <h3 class="section-name">Equatable</h3>
-                </a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Equatable"></a>
+                  <h3 class="section-name"><p>Equatable</p>
+</h3>
+                </div>
               </div>
               <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s9EquatableP2eeoiSbx_xtFZ"></a>
+                    <a name="/s:SQ2eeoiySbx_xtFZ"></a>
                     <a name="//apple_ref/swift/Method/==(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s9EquatableP2eeoiSbx_xtFZ">==(_:_:)</a>
+                    <a class="token" href="#/s:SQ2eeoiySbx_xtFZ">==(_:_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -528,7 +576,7 @@ If the string literal includes more than one <code>,</code> sequence, only the s
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="o">==</span><span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="kt">StandardCodingKey</span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt">StandardCodingKey</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="o">==</span> <span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="kt">StandardCodingKey</span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt">StandardCodingKey</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -544,7 +592,7 @@ If the string literal includes more than one <code>,</code> sequence, only the s
     </div>
     <section class="footer">
       <p>© 2016 cherrywoods under <a class="link" href="https://github.com/cherrywoods/swift-meta-serialization/blob/master/LICENSE" target="_blank" rel="external">Apache 2.0 license</a>.</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

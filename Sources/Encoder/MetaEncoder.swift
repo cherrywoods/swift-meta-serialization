@@ -43,9 +43,9 @@ open class MetaEncoder: Encoder {
     /**
      Initalizes a new MetaEncoder with the given values.
 
-     - Parameter codingPath: The coding path this decoder will start at
-     - Parameter userInfo: additional information to provide context during decoding
-     - Parameter translator: The translator the decoder will use to translate Metas.
+     - Parameter codingPath: The coding path this encoder will start at
+     - Parameter userInfo: additional information to provide context during encoding
+     - Parameter translator: The translator the encoder will use to translate Metas.
      - Parameter storage: A empty CodingStorage that should be used to store metas.
      */
     public init(at codingPath: [CodingKey] = [],
@@ -63,13 +63,13 @@ open class MetaEncoder: Encoder {
     // MARK: - wrap
 
     /**
-     Wraps a value to a meta using translator.wrap and calling value.encode if translator.wrapreturned nil.
+     Wraps a value to a meta using `metaSupplier.wrap` and calling `value.encode` if `metaSupplier.wrap` returned nil.
 
-     If value conforms to DirectlyEncdable, or is an Int, Int8, Int16, Int32, Int64, UInt, UInt8, UInt16, UInt32, UInt64, Float, Double, Bool or String and
-     not supported directly by translator (this means translator.wrappingMeta(for: value) returns nil, this method throws EncodingError.invalidValue. This is required, because otherwise, these types would endlessly try to encode themselves into single value containers.
+     If value conforms to `DirectlyEncodable`, or is an `Int`, `Int8`, `Int16`, `Int32`, `Int64`, `UInt`, `UInt8`, `UInt16`, `UInt32`, `UInt64`, `Float`, `Double`, `Bool` or `String` and
+     not supported directly by meta supplier (this means `metaSupplier.wrap` returns nil), this method throws `EncodingError.invalidValue`. This is required because otherwise, these types would endlessly try to encode themselves into single value containers.
 
      - Parameter value: The value to wrap
-     - Parameter key: The key at which vaue should be encoded. This encoders coding path is extended with this key. If key is nil, the coding path isn't extended.
+     - Parameter key: The key at which `value` should be encoded. This encoders coding path is extended with this key. If key is nil, the coding path isn't extended.
      - Throws: EncodingError and CodingStorageError
      */
     open func wrap<E>(_ value: E, at key: CodingKey? = nil) throws -> Meta where E: Encodable {
@@ -86,7 +86,7 @@ open class MetaEncoder: Encoder {
 
         }
 
-        // ** now the value's type is not supported natively by translator **
+        // ** now the value's type is not supported natively by metaSupplier **
 
         /*
          Need to throw an error, if value is an Int, Int8, Int16, Int32, Int64, UInt, UInt8, UInt16, UInt32, UInt64, Float, Double, Bool or String

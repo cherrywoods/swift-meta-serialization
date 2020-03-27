@@ -21,9 +21,9 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="../index.html">
-          MetaSerialization Docs
+          MetaSerialization 2.0 Docs
         </a>
-         (86% documented)
+         (87% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -135,7 +135,49 @@
                 <a class="nav-group-task-link" href="../Extensions/Array.html">Array</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:Sb">Bool</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Extensions/Dictionary.html">Dictionary</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:Sd">Double</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:Sf">Float</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:Si">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s5Int16V">Int16</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s5Int32V">Int32</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s5Int64V">Int64</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s4Int8V">Int8</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:SS">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:Su">UInt</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s6UInt16V">UInt16</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s6UInt32V">UInt32</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s6UInt64V">UInt64</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s5UInt8V">UInt8</a>
               </li>
             </ul>
           </li>
@@ -264,7 +306,7 @@
       <article class="main-content">
 
         <section class="section">
-          <div class="section-content">
+          <div class="section-content top-matter">
             <h1>MetaSupplier</h1>
               <div class="declaration">
                 <div class="language">
@@ -273,7 +315,7 @@
                 </div>
               </div>
             <p>The core interface to specify MetaEncoder&rsquo;s encoding.
-Implement this protocol to set encoding <q>primities</q>
+Implement this protocol to set encoding &ldquo;primities&rdquo;
 (these are usually the types you can represent directly in your serialization format)
 and container implementations.</p>
 
@@ -286,9 +328,11 @@ and container implementations.</p>
               <div class="task-name-container">
                 <a name="/containers"></a>
                 <a name="//apple_ref/swift/Section/containers" class="dashAnchor"></a>
-                <a href="#/containers">
-                  <h3 class="section-name">containers</h3>
-                </a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/containers"></a>
+                  <h3 class="section-name"><p>containers</p>
+</h3>
+                </div>
               </div>
               <ul class="item-container">
                 <li class="item">
@@ -310,8 +354,7 @@ and container implementations.</p>
                         <p>Returns an empty <code><a href="../Protocols/EncodingKeyedContainerMeta.html">EncodingKeyedContainerMeta</a></code>.</p>
 
 <p>This method lets you use a custom container type (e.g. NSDictionary), if required.
-However this method has a default implementation returning a new Dictionary<String, Meta> every time it is called.
-(Please note that currently all dictionarys conform to <code><a href="../Typealiases.html#/s:17MetaSerialization014KeyedContainerA0a">KeyedContainerMeta</a></code> because it is currently not possible to use conditional conformance here since swift isn&rsquo;t able to check for conditional conformance at runtime right now. If you are using another Dictionary then Dictionay<String, Meta> as keyed container meta, your code will crash).</p>
+However this method has a default implementation returning a new Dictionary<String, Meta> every time it is called.</p>
 <div class="aside aside-attention">
     <p class="aside-title">Attention</p>
     You should implement this method or keep the default implementation of it, even if you do not support keyed containers in you framework, because the documentation of Encodable specifies an empty keyed container as substitute if a value did not encode anything. Do not use precondition or assert in this method for that reason. Also keyed containers are an important part of many <code>encode(to:)</code> implementations (especially the default generated ones). Therefor it could make sence to implement some transition from keyed containers to other containers you provide. A custom implementation of <code><a href="../Protocols/EncodingKeyedContainerMeta.html">EncodingKeyedContainerMeta</a></code> is the right place for this.
@@ -357,8 +400,7 @@ However this method has a default implementation returning a new Dictionary<Stri
                         <p>Returns an empty <code>EncodingUnkeyedMetaContainer</code>.</p>
 
 <p>This method lets you use a custom container type (e.g. NSArray), if required.
-However this method has a default implementation returning a new Array<Meta> every time it is called.
-(Please note that currently all arrays conform to <code><a href="../Protocols/UnkeyedContainerMeta.html">UnkeyedContainerMeta</a></code> because it is currently not possible to use conditional conformance here since swift isn&rsquo;t able to check for conditional conformance at runtime right now. If you are using another Array then Array<Meta> as unkeyed container meta, your code will crash).</p>
+However this method has a default implementation returning a new Array<Meta> every time it is called.</p>
 
                       </div>
                       <h4>Default Implementation</h4>
@@ -386,17 +428,19 @@ However this method has a default implementation returning a new Array<Meta> eve
               <div class="task-name-container">
                 <a name="/wrapper"></a>
                 <a name="//apple_ref/swift/Section/wrapper" class="dashAnchor"></a>
-                <a href="#/wrapper">
-                  <h3 class="section-name">wrapper</h3>
-                </a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/wrapper"></a>
+                  <h3 class="section-name"><p>wrapper</p>
+</h3>
+                </div>
               </div>
               <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:17MetaSerialization0A8SupplierP4wrapAA0A0_pSgqd___AA0A7EncoderC3fortKs9EncodableRd__lF"></a>
+                    <a name="/s:17MetaSerialization0A8SupplierP4wrap_3forAA0A0_pSgqd___AA0A7EncoderCtKSERd__lF"></a>
                     <a name="//apple_ref/swift/Method/wrap(_:for:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization0A8SupplierP4wrapAA0A0_pSgqd___AA0A7EncoderC3fortKs9EncodableRd__lF">wrap(_:for:)</a>
+                    <a class="token" href="#/s:17MetaSerialization0A8SupplierP4wrap_3forAA0A0_pSgqd___AA0A7EncoderCtKSERd__lF">wrap(_:for:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -409,8 +453,8 @@ However this method has a default implementation returning a new Array<Meta> eve
 <p>This method will be asked to return a Meta for an instance of the type NilMarker from MetaSerialization if encoding a nil value is requested.
 Return nil if you don&rsquo;t support nil values. If you support nil values, you are invited to use NilMarker itself as Meta, but you may of course use any meta implementation here.</p>
 
-<p>You may not call Encodables <code>encode(to:)</code> in this method directly, or otherwise call container methods.
-Calling these methods will conflict with the encoding of value, since you can not access the metas you created with those calls.
+<p>You may not call Encodables <code>encode(to:)</code> in this method directly, neighter one of the container methods.
+Calling these methods will conflict with the encoding of <code>value</code>, since you can not access the metas you created with those calls.
 Call <code>encoder.encode</code> instead and nest your container requests inside a utility type if necessary.</p>
 
 <p>This method is called very frequently.</p>
@@ -420,7 +464,7 @@ Call <code>encoder.encode</code> instead and nest your container requests inside
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">wrap</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">T</span><span class="p">,</span> <span class="k">for</span> <span class="nv">encoder</span><span class="p">:</span> <span class="kt"><a href="../Classes/MetaEncoder.html">MetaEncoder</a></span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols.html#/s:17MetaSerialization0A0P">Meta</a></span><span class="p">?</span> <span class="k">where</span> <span class="kt">T</span><span class="p">:</span> <span class="kt">Encodable</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">wrap</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">T</span><span class="p">,</span> <span class="k">for</span> <span class="nv">encoder</span><span class="p">:</span> <span class="kt"><a href="../Classes/MetaEncoder.html">MetaEncoder</a></span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols.html#/s:17MetaSerialization0A0P">Meta</a></span><span class="p">?</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">Encodable</span></code></pre>
 
                         </div>
                       </div>
@@ -448,7 +492,7 @@ Call <code>encoder.encode</code> instead and nest your container requests inside
                               </td>
                               <td>
                                 <div>
-                                  <p>The encoder that requests the wrap. You should use this encoder if you need to encode values yourself inside wrap or to get the current coding path (this an array of coding keys visited up to value in the order they were visited) taken up to value. It is ment to be used in errors you may throw (e.g. <code>EncodingError</code>).</p>
+                                  <p>The encoder that requests the wrap. You should use this encoder if you need to encode values yourself inside wrap or to get the current coding path (this an array of coding keys visited up to value in the order they were visited taken up to <code>value</code>). The coding path is ment to be used in errors you may throw (e.g. <code>EncodingError</code>).</p>
                                 </div>
                               </td>
                             </tr>
@@ -471,7 +515,7 @@ Call <code>encoder.encode</code> instead and nest your container requests inside
     </div>
     <section class="footer">
       <p>© 2016 cherrywoods under <a class="link" href="https://github.com/cherrywoods/swift-meta-serialization/blob/master/LICENSE" target="_blank" rel="external">Apache 2.0 license</a>.</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

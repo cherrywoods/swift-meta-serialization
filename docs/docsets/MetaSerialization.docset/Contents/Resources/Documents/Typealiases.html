@@ -14,15 +14,16 @@
   </head>
   <body>
 
+    <a name="//apple_ref/swift/Section/Type Aliases" class="dashAnchor"></a>
 
     <a title="Type Aliases  Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="index.html">
-          MetaSerialization Docs
+          MetaSerialization 2.0 Docs
         </a>
-         (86% documented)
+         (87% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -134,7 +135,49 @@
                 <a class="nav-group-task-link" href="Extensions/Array.html">Array</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:Sb">Bool</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Extensions/Dictionary.html">Dictionary</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:Sd">Double</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:Sf">Float</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:Si">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:s5Int16V">Int16</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:s5Int32V">Int32</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:s5Int64V">Int64</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:s4Int8V">Int8</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:SS">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:Su">UInt</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:s6UInt16V">UInt16</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:s6UInt32V">UInt32</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:s6UInt64V">UInt64</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:s5UInt8V">UInt8</a>
               </li>
             </ul>
           </li>
@@ -263,7 +306,7 @@
       <article class="main-content">
 
         <section class="section">
-          <div class="section-content">
+          <div class="section-content top-matter">
             <h1>Type Aliases</h1>
             <p>The following type aliases are available globally.</p>
 
@@ -272,110 +315,6 @@
 
         <section class="section">
           <div class="section-content">
-            <div class="task-group">
-              <ul class="item-container">
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:17MetaSerialization14Representationa"></a>
-                    <a name="//apple_ref/swift/Alias/Representation" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization14Representationa">Representation</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A protocol for any kind of encoded information.</p>
-
-<p>To use this protocol extend your raw data type to conform to this protocol.
-Implement provideNewEncoder() and provideNewDecoder(). You may just return a new MetaEncoder/MetaDecoder there. Also implement convert() -&gt; Meta and init(meta: Meta).</p>
-
-<p>After extending your raw type, use init(encoding: ) to encode and decode(type: ) to decode.</p>
-
-<p>It is usefull to write a subprotocol of Representation before you extend your raw data type.
-For example, if you want to write a library for parsing JSON,
-first write a marker protocol JSON: Representation, for which you provide the default implementation in an extension and then extends your raw type, e.g. Data by JSON.
-When you encode or decode to or from the raw type you should give the reader and swift a hint what format to use, by adding <code>as JSON</code> to the raw types object. This will save you time if you decide to add another serialization framwork to your application that has the same raw representation type and will give some hints about what you are doing right inside your code.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Representation</span> <span class="o">=</span> <span class="kt"><a href="Protocols/EncodingRepresentation.html">EncodingRepresentation</a></span> <span class="o">&amp;</span> <span class="kt"><a href="Protocols/DecodingRepresentation.html">DecodingRepresentation</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:17MetaSerialization014KeyedContainerA0a"></a>
-                    <a name="//apple_ref/swift/Alias/KeyedContainerMeta" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization014KeyedContainerA0a">KeyedContainerMeta</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">KeyedContainerMeta</span> <span class="o">=</span> <span class="kt"><a href="Protocols/EncodingKeyedContainerMeta.html">EncodingKeyedContainerMeta</a></span><span class="o">&amp;</span><span class="kt"><a href="Protocols/DecodingKeyedContainerMeta.html">DecodingKeyedContainerMeta</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:17MetaSerialization0B0a"></a>
-                    <a name="//apple_ref/swift/Alias/Serialization" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization0B0a">Serialization</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>This protocol provides a blueprint for a serialization class.</p>
-
-<p>A serialization class is an intermediate, delegating the tasks of encoding and decoding to an Encoder or Decoder, but does so while the user creates a new instance of it and uses this classes methods instead of them of Encodable and Decodable (as he would if you used Representation)</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Serialization</span> <span class="o">=</span> <span class="kt"><a href="Protocols/IntermediateEncoder.html">IntermediateEncoder</a></span> <span class="o">&amp;</span> <span class="kt"><a href="Protocols/IntermediateDecoder.html">IntermediateDecoder</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
             <div class="task-group">
               <ul class="item-container">
                 <li class="item">
@@ -432,10 +371,98 @@ When you encode or decode to or from the raw type you should give the reader and
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17MetaSerialization14Representationa"></a>
+                    <a name="//apple_ref/swift/Alias/Representation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization14Representationa">Representation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A protocol for any kind of encoded information.</p>
+
+<p>To use this protocol extend your raw data type to conform to this protocol.
+Implement provideNewEncoder() and provideNewDecoder(). You may just return a new MetaEncoder/MetaDecoder there. Also implement convert() -&gt; Meta and init(meta: Meta).</p>
+
+<p>After extending your raw type, use init(encoding: ) to encode and decode(type: ) to decode.</p>
+
+<p>It is usefull to write a subprotocol of Representation before you extend your raw data type.
+For example, if you want to write a library for parsing JSON,
+first write a marker protocol JSON: Representation, for which you provide the default implementation in an extension and then extends your raw type, e.g. Data by JSON.
+When you encode or decode to or from the raw type you should give the reader and swift a hint what format to use, by adding <code>as JSON</code> to the raw types object. This will save you time if you decide to add another serialization framwork to your application that has the same raw representation type and will give some hints about what you are doing right inside your code.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Representation</span> <span class="o">=</span> <span class="kt"><a href="Protocols/EncodingRepresentation.html">EncodingRepresentation</a></span> <span class="o">&amp;</span> <span class="kt"><a href="Protocols/DecodingRepresentation.html">DecodingRepresentation</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17MetaSerialization0B0a"></a>
+                    <a name="//apple_ref/swift/Alias/Serialization" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization0B0a">Serialization</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This protocol provides a blueprint for a serialization class.</p>
+
+<p>A serialization class is an intermediate, delegating the tasks of encoding and decoding to an Encoder or Decoder, but does so while the user creates a new instance of it and uses this classes methods instead of them of Encodable and Decodable (as he would if you used Representation)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Serialization</span> <span class="o">=</span> <span class="kt"><a href="Protocols/IntermediateEncoder.html">IntermediateEncoder</a></span> <span class="o">&amp;</span> <span class="kt"><a href="Protocols/IntermediateDecoder.html">IntermediateDecoder</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17MetaSerialization014KeyedContainerA0a"></a>
+                    <a name="//apple_ref/swift/Alias/KeyedContainerMeta" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization014KeyedContainerA0a">KeyedContainerMeta</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">KeyedContainerMeta</span> <span class="o">=</span> <span class="kt"><a href="Protocols/EncodingKeyedContainerMeta.html">EncodingKeyedContainerMeta</a></span> <span class="o">&amp;</span> <span class="kt"><a href="Protocols/DecodingKeyedContainerMeta.html">DecodingKeyedContainerMeta</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -478,7 +505,7 @@ For implementation details, see DirectlyDecodable and DirectlyEncodable</p>
     </div>
     <section class="footer">
       <p>© 2016 cherrywoods under <a class="link" href="https://github.com/cherrywoods/swift-meta-serialization/blob/master/LICENSE" target="_blank" rel="external">Apache 2.0 license</a>.</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

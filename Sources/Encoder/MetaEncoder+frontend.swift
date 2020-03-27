@@ -28,11 +28,11 @@ public extension MetaEncoder {
      encode(to:) will not detect types in the first place
      that are directly supported by the `MetaSupplier`.
      
-     Example: If data is a Data instance and the `MetaSupplier` supportes
-     Data objects directly. Then calling data.encode(to:) will not fall back
-     to that support, it will be encoded the way Data encodes itself.
+     Example: If data is a `ExampleData` instance and the `MetaSupplier` supportes
+     `ExampleData` objects directly. Then calling `data.encode(to:)` will not fall back
+     to that support, it will be encoded the way `ExampleData` encodes itself.
      
-     - Throws: Aside from any errors that are thrown of metaSupplier.wrap and any `EncodingError` that has been thrown by another entity, this function will throw `MetaEncoder.Errors.encodingHasNotSucceeded` if the encoding could not succeed. In general, this error will never be thrown in code running unter the debug (and not the release) configuration. Instead the call will fail with an assertion failure. Such an error usually indicates an invalid encoder implementation or a missuse of an encoder.
+     - Throws: Aside from any errors that are thrown by `metaSupplier.wrap` and any `EncodingError` that has been thrown by another entity, this function will throw `MetaEncoder.Errors.encodingHasNotSucceeded` if the encoding could not succeed. In general, this error will never be thrown in code running unter the debug (and not the release) configuration. Instead the call will fail with an assertion failure. Such an error usually indicates an invalid encoder implementation or a missuse of an encoder.
      */
     func encode<E: Encodable>(_ value: E) throws -> Meta {
         
@@ -64,7 +64,7 @@ public extension MetaEncoder {
     
     enum Errors: Error {
         
-        /// Thrown if the encoding process hasn't succeeded.
+        /// Thrown if the encoding process hasn't succeeded. Indicates invalid encoder implementations or missuse of an encoder.
         case encodingHasNotSucceeded
         
     }

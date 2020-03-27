@@ -63,7 +63,7 @@ open class MetaDecoder: Decoder {
     // MARK: - upwrap
 
     /**
-     Unwraps a meta to a real value using translator.unwrap and calling type.init if translator.unwrap returned nil.
+     Unwraps a meta to a real value using `unwrapper.unwrap` and calling `type.init(from:)` if `unwrapper.unwrap` returned nil.
 
      - Parameter meta: the Meta to unwrap, if you pass nil, the meta at this decoders current coding path will be used.
      - Parameter type: The type to unwrap to
@@ -93,17 +93,18 @@ open class MetaDecoder: Decoder {
         // already having stored before unwrap makes it possible to use container methods in unwrap.
         // however with this store, `decoder.decode` can not be called in `unwrapper.unwrap`.
         
-        // ask translator to unwrap meta to type
+        // ask unwrapper to unwrap meta to type
         if let directlySupported = try unwrapper.unwrap(meta: meta, toType: type, for: self) {
             
             return directlySupported
             
         }
 
-        // ** translator does not support type natively, so it needs to decode itself **
+        // ** unwrapper does not support type natively, so it needs to decode itself **
 
         /*
          It is important to throw an error if type implements DirectlyDecodable
+         to avoid endless recursion,
          see MetaEncoder.wrap for more information
          */
         guard !(type.self is DirectlyDecodable.Type) else {

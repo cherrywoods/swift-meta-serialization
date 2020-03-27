@@ -26,7 +26,7 @@ import Foundation
  A MetaDecoder will call `unwrap` for each meta in the meta tree before decoding takes place for it.
  There are actually two situations in which this happens.
  A MetaDecoder asks it's unwrapper to unwrap a meta to a concrete type (like String, Int, etc.).
- I does so by calling `unwrap` with a concrete type conforming to `Decodable`. `
+ It does so by calling `unwrap` with a concrete type conforming to `Decodable`. `
  If you return nil in this method, the MetaDecoder will call `init(from:)` on the passed type.
  
  However, MetaDecoder will also try to unwrap metas to `NilMeta`, `DecodingKeyedContainerMeta` and `DecodingUnkeyedContainerMeta`.
@@ -41,9 +41,9 @@ import Foundation
  You don't need to know which meta will be a keyed or unkeyed container before MetaDecoder does it's work
  and don't need meta implementations to conform to `Decoding(Un)KeyedContainerMeta` or `NilMeta` if they could be seen as such containers or nil.
  
- For these three methods, there are default implementations provided, that always return nil. `
- If you don't override these methods, a meta tree is expected to be `static`,
- repectively all container types and nil values need to be known before `decode` on a MetaDecoder is called.
+ For these three `unwrap` variants (where `type = NilMeta.Protocol`, `type = DecodingKeyedContainerMeta.Protocol` or `type = DecodingUnkeyedContainerMeta.Protocol`), there are default implementations provided, that always return nil.
+ If you don't override these methods, a meta tree is expected to be "static",
+ which means that all container types and nil values need to be known before `decode` on a MetaDecoder is called.
  */
 public protocol Unwrapper {
     

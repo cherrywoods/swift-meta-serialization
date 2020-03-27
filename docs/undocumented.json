@@ -72,14 +72,14 @@
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Decoder/MetaDecoder.swift",
-      "line": 156,
+      "line": 157,
       "symbol": "MetaDecoder.decodingContainer(keyedBy:for:at:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Decoder/MetaDecoder.swift",
-      "line": 182,
+      "line": 183,
       "symbol": "MetaDecoder.unkeyedDecodingContainer(for:at:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -261,16 +261,16 @@
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Meta/UnkeyedContainerMeta.swift",
-      "line": null,
+      "line": 22,
       "symbol": "UnkeyedContainerMeta",
-      "symbol_kind": "source.lang.swift.decl.extension",
+      "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
       "file": "/Users/David/Documents/Programmierung/MetaSerialization/Sources/Meta/UnkeyedContainerMeta.swift",
-      "line": 22,
+      "line": 24,
       "symbol": "UnkeyedContainerMeta",
-      "symbol_kind": "source.lang.swift.decl.protocol",
+      "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {

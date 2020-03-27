@@ -21,9 +21,9 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="../index.html">
-          MetaSerialization Docs
+          MetaSerialization 2.0 Docs
         </a>
-         (86% documented)
+         (87% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -135,7 +135,49 @@
                 <a class="nav-group-task-link" href="../Extensions/Array.html">Array</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:Sb">Bool</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Extensions/Dictionary.html">Dictionary</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:Sd">Double</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:Sf">Float</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:Si">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s5Int16V">Int16</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s5Int32V">Int32</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s5Int64V">Int64</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s4Int8V">Int8</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:SS">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:Su">UInt</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s6UInt16V">UInt16</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s6UInt32V">UInt32</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s6UInt64V">UInt64</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s5UInt8V">UInt8</a>
               </li>
             </ul>
           </li>
@@ -264,11 +306,11 @@
       <article class="main-content">
 
         <section class="section">
-          <div class="section-content">
+          <div class="section-content top-matter">
             <h1>MetaSingleValueDecodingContainer</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MetaSingleValueDecodingContainer</span><span class="p">:</span> <span class="kt">SingleValueDecodingContainer</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MetaSingleValueDecodingContainer</span> <span class="p">:</span> <span class="kt">SingleValueDecodingContainer</span></code></pre>
 
                 </div>
               </div>
@@ -301,7 +343,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">let</span> <span class="nv">meta</span><span class="p">:</span> <span class="kt"><a href="../Protocols.html#/s:17MetaSerialization0A0P">Meta</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">meta</span><span class="p">:</span> <span class="kt"><a href="../Protocols.html#/s:17MetaSerialization0A0P">Meta</a></span></code></pre>
 
                         </div>
                       </div>
@@ -330,7 +372,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">let</span> <span class="nv">decoder</span><span class="p">:</span> <span class="kt"><a href="../Classes/MetaDecoder.html">MetaDecoder</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">decoder</span><span class="p">:</span> <span class="kt"><a href="../Classes/MetaDecoder.html">MetaDecoder</a></span></code></pre>
 
                         </div>
                       </div>
@@ -356,7 +398,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">let</span> <span class="nv">codingPath</span><span class="p">:</span> <span class="p">[</span><span class="kt">CodingKey</span><span class="p">]</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">codingPath</span><span class="p">:</span> <span class="p">[</span><span class="kt">CodingKey</span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
@@ -369,17 +411,19 @@
               <div class="task-name-container">
                 <a name="/initalization"></a>
                 <a name="//apple_ref/swift/Section/initalization" class="dashAnchor"></a>
-                <a href="#/initalization">
-                  <h3 class="section-name">initalization</h3>
-                </a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/initalization"></a>
+                  <h3 class="section-name"><p>initalization</p>
+</h3>
+                </div>
               </div>
               <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:17MetaSerialization0A28SingleValueDecodingContainerCAcA0A0_p3for_Says9CodingKey_pG2atAA0A7DecoderC7decodertcfc"></a>
+                    <a name="/s:17MetaSerialization0A28SingleValueDecodingContainerC3for2at7decoderAcA0A0_p_Says9CodingKey_pGAA0A7DecoderCtcfc"></a>
                     <a name="//apple_ref/swift/Method/init(for:at:decoder:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization0A28SingleValueDecodingContainerCAcA0A0_p3for_Says9CodingKey_pG2atAA0A7DecoderC7decodertcfc">init(for:at:decoder:)</a>
+                    <a class="token" href="#/s:17MetaSerialization0A28SingleValueDecodingContainerC3for2at7decoderAcA0A0_p_Says9CodingKey_pGAA0A7DecoderCtcfc">init(for:at:decoder:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -406,9 +450,11 @@
               <div class="task-name-container">
                 <a name="/decoding"></a>
                 <a name="//apple_ref/swift/Section/decoding" class="dashAnchor"></a>
-                <a href="#/decoding">
-                  <h3 class="section-name">decoding</h3>
-                </a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/decoding"></a>
+                  <h3 class="section-name"><p>decoding</p>
+</h3>
+                </div>
               </div>
               <ul class="item-container">
                 <li class="item">
@@ -440,9 +486,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s28SingleValueDecodingContainerP6decodeS2bmKF"></a>
+                    <a name="/s:s28SingleValueDecodingContainerP6decodeyS2bmKF"></a>
                     <a name="//apple_ref/swift/Method/decode(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s28SingleValueDecodingContainerP6decodeS2bmKF">decode(_:)</a>
+                    <a class="token" href="#/s:s28SingleValueDecodingContainerP6decodeyS2bmKF">decode(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -472,7 +518,7 @@
     </div>
     <section class="footer">
       <p>© 2016 cherrywoods under <a class="link" href="https://github.com/cherrywoods/swift-meta-serialization/blob/master/LICENSE" target="_blank" rel="external">Apache 2.0 license</a>.</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

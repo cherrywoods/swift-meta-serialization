@@ -21,9 +21,9 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="../index.html">
-          MetaSerialization Docs
+          MetaSerialization 2.0 Docs
         </a>
-         (86% documented)
+         (87% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -135,7 +135,49 @@
                 <a class="nav-group-task-link" href="../Extensions/Array.html">Array</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:Sb">Bool</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Extensions/Dictionary.html">Dictionary</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:Sd">Double</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:Sf">Float</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:Si">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s5Int16V">Int16</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s5Int32V">Int32</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s5Int64V">Int64</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s4Int8V">Int8</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:SS">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:Su">UInt</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s6UInt16V">UInt16</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s6UInt32V">UInt32</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s6UInt64V">UInt64</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions.html#/s:s5UInt8V">UInt8</a>
               </li>
             </ul>
           </li>
@@ -264,20 +306,20 @@
       <article class="main-content">
 
         <section class="section">
-          <div class="section-content">
+          <div class="section-content top-matter">
             <h1>PrimitivesProtocolTranslator</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">PrimitivesProtocolTranslator</span><span class="o">&lt;</span><span class="kt">Primitive</span><span class="p">,</span> <span class="kt">PrimitiveType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt"><a href="../Protocols/MetaSupplier.html">MetaSupplier</a></span><span class="p">,</span> <span class="kt"><a href="../Protocols/Unwrapper.html">Unwrapper</a></span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">PrimitivesProtocolTranslator</span><span class="o">&lt;</span><span class="kt">Primitive</span><span class="p">,</span> <span class="kt">PrimitiveType</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/MetaSupplier.html">MetaSupplier</a></span><span class="p">,</span> <span class="kt"><a href="../Protocols/Unwrapper.html">Unwrapper</a></span></code></pre>
 
                 </div>
               </div>
             <p>This <code><a href="../Protocols/MetaSupplier.html">MetaSupplier</a></code> and <code><a href="../Protocols/Unwrapper.html">Unwrapper</a></code> implementation provides an easy way to use MetaSerialization.</p>
 
 <p>To use it, define a marker protocol and extend your primitive types (the types you can represent directly in your end format, e.g. String, Int, etc&hellip;) to conform to it:</p>
-<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">Primitive</span><span class="p">:</span> <span class="nf">Meta</span> <span class="p">{}</span>
-<span class="kd">extension</span> <span class="kt">String</span><span class="p">:</span> <span class="nf">Primitive</span> <span class="p">{}</span>
-<span class="kd">extension</span> <span class="kt">Int</span><span class="p">:</span> <span class="nf">Primitive</span> <span class="p">{}</span>
+<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">Primitive</span><span class="p">:</span> <span class="kt">Meta</span> <span class="p">{}</span>
+<span class="kd">extension</span> <span class="kt">String</span><span class="p">:</span> <span class="kt">Primitive</span> <span class="p">{}</span>
+<span class="kd">extension</span> <span class="kt">Int</span><span class="p">:</span> <span class="kt">Primitive</span> <span class="p">{}</span>
 <span class="o">...</span>
 </code></pre>
 
@@ -294,7 +336,7 @@ However all your types need to conform to meta, otherwise the encoding process w
 This requirement isn&rsquo;t implemented in the first place, because otherwise it was not possible to set Primitive to a protocol that simply.</p>
 
 <p>There is another issue right now: PrimitivesProtocolTranslator needs two Generic parameters because of an inconsistency in swift&rsquo;s type checking realted to protocols as generic paramters (<a href="https://bugs.swift.org/browse/SR-6872?jql=text%20%7E%20%22type%20check%20with%20protocol%22">https://bugs.swift.org/browse/SR-6872?jql=text%20~%20%22type%20check%20with%20protocol%22</a>). If YourMarkerProtocol is your marker protocol the first type parameter should be YourMarkerProtocol and the second type should be YourMarkerProtocol.Type.</p>
-<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">YourMarker</span><span class="p">:</span> <span class="nf">Meta</span> <span class="p">{}</span>
+<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">YourMarker</span><span class="p">:</span> <span class="kt">Meta</span> <span class="p">{}</span>
 <span class="k">let</span> <span class="nv">translator</span> <span class="o">=</span> <span class="kt">PrimitivesProtocolTranslator</span><span class="o">&lt;</span><span class="kt">YourMarker</span><span class="p">,</span> <span class="kt">YourMarker</span><span class="o">.</span><span class="k">Type</span><span class="o">&gt;</span><span class="p">()</span>
 </code></pre>
 
@@ -306,13 +348,6 @@ This requirement isn&rsquo;t implemented in the first place, because otherwise i
         <section class="section">
           <div class="section-content">
             <div class="task-group">
-              <div class="task-name-container">
-                <a name="/FIXME:%20implement%20the%20to%20meta%20constraint%20better%20if%20variadic%20generics%20get%20implemented"></a>
-                <a name="//apple_ref/swift/Section/FIXME: implement the to meta constraint better if variadic generics get implemented" class="dashAnchor"></a>
-                <a href="#/FIXME:%20implement%20the%20to%20meta%20constraint%20better%20if%20variadic%20generics%20get%20implemented">
-                  <h3 class="section-name">FIXME: implement the to meta constraint better if variadic generics get implemented</h3>
-                </a>
-              </div>
               <ul class="item-container">
                 <li class="item">
                   <div>
@@ -343,9 +378,9 @@ This requirement isn&rsquo;t implemented in the first place, because otherwise i
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:17MetaSerialization0A8SupplierP4wrapAA0A0_pSgqd___AA0A7EncoderC3fortKs9EncodableRd__lF"></a>
+                    <a name="/s:17MetaSerialization0A8SupplierP4wrap_3forAA0A0_pSgqd___AA0A7EncoderCtKSERd__lF"></a>
                     <a name="//apple_ref/swift/Method/wrap(_:for:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization0A8SupplierP4wrapAA0A0_pSgqd___AA0A7EncoderC3fortKs9EncodableRd__lF">wrap(_:for:)</a>
+                    <a class="token" href="#/s:17MetaSerialization0A8SupplierP4wrap_3forAA0A0_pSgqd___AA0A7EncoderCtKSERd__lF">wrap(_:for:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -369,9 +404,9 @@ This requirement isn&rsquo;t implemented in the first place, because otherwise i
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:17MetaSerialization9UnwrapperP6unwrapqd__SgAA0A0_p4meta_qd__m6toTypeAA0A7DecoderC3fortKs9DecodableRd__lF"></a>
+                    <a name="/s:17MetaSerialization9UnwrapperP6unwrap4meta6toType3forqd__SgAA0A0_p_qd__mAA0A7DecoderCtKSeRd__lF"></a>
                     <a name="//apple_ref/swift/Method/unwrap(meta:toType:for:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization9UnwrapperP6unwrapqd__SgAA0A0_p4meta_qd__m6toTypeAA0A7DecoderC3fortKs9DecodableRd__lF">unwrap(meta:toType:for:)</a>
+                    <a class="token" href="#/s:17MetaSerialization9UnwrapperP6unwrap4meta6toType3forqd__SgAA0A0_p_qd__mAA0A7DecoderCtKSeRd__lF">unwrap(meta:toType:for:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -401,7 +436,7 @@ This requirement isn&rsquo;t implemented in the first place, because otherwise i
     </div>
     <section class="footer">
       <p>© 2016 cherrywoods under <a class="link" href="https://github.com/cherrywoods/swift-meta-serialization/blob/master/LICENSE" target="_blank" rel="external">Apache 2.0 license</a>.</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

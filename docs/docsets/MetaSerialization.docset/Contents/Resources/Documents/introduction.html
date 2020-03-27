@@ -20,9 +20,9 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="index.html">
-          MetaSerialization Docs
+          MetaSerialization 2.0 Docs
         </a>
-         (86% documented)
+         (87% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -134,7 +134,49 @@
                 <a class="nav-group-task-link" href="Extensions/Array.html">Array</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:Sb">Bool</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Extensions/Dictionary.html">Dictionary</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:Sd">Double</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:Sf">Float</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:Si">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:s5Int16V">Int16</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:s5Int32V">Int32</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:s5Int64V">Int64</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:s4Int8V">Int8</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:SS">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:Su">UInt</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:s6UInt16V">UInt16</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:s6UInt32V">UInt32</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:s6UInt64V">UInt64</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:s5UInt8V">UInt8</a>
               </li>
             </ul>
           </li>
@@ -263,7 +305,7 @@
       <article class="main-content">
 
         <section class="section">
-          <div class="section-content">
+          <div class="section-content top-matter">
             
             <h1 id='introduction' class='heading'>Introduction</h1>
 
@@ -278,7 +320,7 @@
 </ul>
 
 <p>and much more. But how will you handle any type that someone using your framework created? For example my special car type:</p>
-<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">Car</span><span class="p">:</span> <span class="nf">Codable</span> <span class="p">{</span>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">Car</span><span class="p">:</span> <span class="kt">Codable</span> <span class="p">{</span>
     <span class="k">let</span> <span class="nv">color</span><span class="p">:</span> <span class="kt">String</span>
     <span class="k">let</span> <span class="nv">maxSpeed</span><span class="p">:</span> <span class="kt">Int</span>
     <span class="k">var</span> <span class="nv">currentSpeed</span><span class="p">:</span> <span class="kt">Int</span>
@@ -296,7 +338,7 @@
 It is here to save you from copying and provide you a simpler interface instead.</p>
 
 <p>If you already implemented the code above, it should be possible integrate MetaSerialization into your project and provide support for <code>Codable</code> types in just two lines of code:</p>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">translator</span> <span class="o">=</span> <span class="nf">PrimitivesEnumTranslator</span><span class="p">(</span><span class="nv">primitives</span><span class="p">:</span> <span class="o">.</span><span class="n">all</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">translator</span> <span class="o">=</span> <span class="kt">PrimitivesEnumTranslator</span><span class="p">(</span><span class="nv">primitives</span><span class="p">:</span> <span class="o">.</span><span class="n">all</span><span class="p">)</span>
 <span class="k">let</span> <span class="nv">serialization</span> <span class="o">=</span> <span class="kt">SimpleSerialization</span><span class="o">&lt;</span><span class="kt">Example1Container</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">translator</span><span class="p">:</span> <span class="n">translator</span><span class="p">,</span> <span class="nv">encodeFromMeta</span><span class="p">:</span> <span class="n">yourEncodingFunction</span><span class="p">,</span> <span class="nv">decodeToMeta</span><span class="p">:</span> <span class="n">yourDecodingFunction</span><span class="p">)</span>
 </code></pre>
 
@@ -311,7 +353,7 @@ Read the <a href="https://github.com/cherrywoods/swift-meta-serialization/blob/m
     </div>
     <section class="footer">
       <p>© 2016 cherrywoods under <a class="link" href="https://github.com/cherrywoods/swift-meta-serialization/blob/master/LICENSE" target="_blank" rel="external">Apache 2.0 license</a>.</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

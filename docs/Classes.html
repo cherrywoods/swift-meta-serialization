@@ -14,15 +14,16 @@
   </head>
   <body>
 
+    <a name="//apple_ref/swift/Section/Classes" class="dashAnchor"></a>
 
     <a title="Classes  Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="index.html">
-          MetaSerialization Docs
+          MetaSerialization 2.0 Docs
         </a>
-         (86% documented)
+         (87% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -134,7 +135,49 @@
                 <a class="nav-group-task-link" href="Extensions/Array.html">Array</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:Sb">Bool</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Extensions/Dictionary.html">Dictionary</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:Sd">Double</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:Sf">Float</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:Si">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:s5Int16V">Int16</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:s5Int32V">Int32</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:s5Int64V">Int64</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:s4Int8V">Int8</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:SS">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:Su">UInt</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:s6UInt16V">UInt16</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:s6UInt32V">UInt32</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:s6UInt64V">UInt64</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/s:s5UInt8V">UInt8</a>
               </li>
             </ul>
           </li>
@@ -263,7 +306,7 @@
       <article class="main-content">
 
         <section class="section">
-          <div class="section-content">
+          <div class="section-content top-matter">
             <h1>Classes</h1>
             <p>The following classes are available globally.</p>
 
@@ -272,233 +315,6 @@
 
         <section class="section">
           <div class="section-content">
-            <div class="task-group">
-              <ul class="item-container">
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:17MetaSerialization0A7EncoderC"></a>
-                    <a name="//apple_ref/swift/Class/MetaEncoder" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization0A7EncoderC">MetaEncoder</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>An <code>Encoder</code> that constucts a <code><a href="Protocols.html#/s:17MetaSerialization0A0P">Meta</a></code> instead of encoding to a concrete format.</p>
-
-                        <a href="Classes/MetaEncoder.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MetaEncoder</span><span class="p">:</span> <span class="kt">Encoder</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:17MetaSerialization0A22KeyedEncodingContainerC"></a>
-                    <a name="//apple_ref/swift/Class/MetaKeyedEncodingContainer" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization0A22KeyedEncodingContainerC">MetaKeyedEncodingContainer</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Manages a EncodingKeyedContainerMeta</p>
-
-                        <a href="Classes/MetaKeyedEncodingContainer.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MetaKeyedEncodingContainer</span><span class="o">&lt;</span><span class="kt">K</span><span class="p">:</span> <span class="kt">CodingKey</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">KeyedEncodingContainerProtocol</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:17MetaSerialization0A7DecoderC"></a>
-                    <a name="//apple_ref/swift/Class/MetaDecoder" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization0A7DecoderC">MetaDecoder</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A <code>Decoder</code> that decodes from a <code><a href="Protocols.html#/s:17MetaSerialization0A0P">Meta</a></code> instead from a concrete format.</p>
-
-                        <a href="Classes/MetaDecoder.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MetaDecoder</span><span class="p">:</span> <span class="kt">Decoder</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:17MetaSerialization0A24UnkeyedDecodingContainerC"></a>
-                    <a name="//apple_ref/swift/Class/MetaUnkeyedDecodingContainer" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization0A24UnkeyedDecodingContainerC">MetaUnkeyedDecodingContainer</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Manages a DecodingUnkeyedContainerMeta</p>
-
-                        <a href="Classes/MetaUnkeyedDecodingContainer.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MetaUnkeyedDecodingContainer</span><span class="p">:</span> <span class="kt">UnkeyedDecodingContainer</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:17MetaSerialization0A28SingleValueDecodingContainerC"></a>
-                    <a name="//apple_ref/swift/Class/MetaSingleValueDecodingContainer" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization0A28SingleValueDecodingContainerC">MetaSingleValueDecodingContainer</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Manages all kinds of metas, that represent some kind of single value</p>
-
-                        <a href="Classes/MetaSingleValueDecodingContainer.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MetaSingleValueDecodingContainer</span><span class="p">:</span> <span class="kt">SingleValueDecodingContainer</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:17MetaSerialization06SimpleB0C"></a>
-                    <a name="//apple_ref/swift/Class/SimpleSerialization" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization06SimpleB0C">SimpleSerialization</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Provides a simple Serialization class, you pass a translator in initalization.
-SimpleSerialization uses that translator for all objects it serializes.</p>
-
-                        <a href="Classes/SimpleSerialization.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">SimpleSerialization</span><span class="o">&lt;</span><span class="kt">R</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt"><a href="Typealiases.html#/s:17MetaSerialization0B0a">Serialization</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:17MetaSerialization24ReferencingCodingStorageC"></a>
-                    <a name="//apple_ref/swift/Class/ReferencingCodingStorage" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17MetaSerialization24ReferencingCodingStorageC">ReferencingCodingStorage</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A CodingStorage that writes the meta on it&rsquo;s base path back to another storage.</p>
-
-<p>This storage will writeback the meta stored to the base path to reference.</p>
-
-                        <a href="Classes/ReferencingCodingStorage.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">ReferencingCodingStorage</span><span class="p">:</span> <span class="kt"><a href="Protocols/CodingStorage.html">CodingStorage</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
             <div class="task-group">
               <ul class="item-container">
                 <li class="item">
@@ -524,17 +340,13 @@ SimpleSerialization uses that translator for all objects it serializes.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">LinearCodingStack</span><span class="p">:</span> <span class="kt"><a href="Protocols/CodingStorage.html">CodingStorage</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">LinearCodingStack</span> <span class="p">:</span> <span class="kt"><a href="Protocols/CodingStorage.html">CodingStorage</a></span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -556,17 +368,125 @@ SimpleSerialization uses that translator for all objects it serializes.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MetaKeyedDecodingContainer</span><span class="o">&lt;</span><span class="kt">K</span><span class="p">:</span> <span class="kt">CodingKey</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">KeyedDecodingContainerProtocol</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MetaKeyedDecodingContainer</span><span class="o">&lt;</span><span class="kt">K</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt">KeyedDecodingContainerProtocol</span> <span class="k">where</span> <span class="kt">K</span> <span class="p">:</span> <span class="kt">CodingKey</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17MetaSerialization0A28SingleValueDecodingContainerC"></a>
+                    <a name="//apple_ref/swift/Class/MetaSingleValueDecodingContainer" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization0A28SingleValueDecodingContainerC">MetaSingleValueDecodingContainer</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Manages all kinds of metas, that represent some kind of single value</p>
+
+                        <a href="Classes/MetaSingleValueDecodingContainer.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MetaSingleValueDecodingContainer</span> <span class="p">:</span> <span class="kt">SingleValueDecodingContainer</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17MetaSerialization0A24UnkeyedDecodingContainerC"></a>
+                    <a name="//apple_ref/swift/Class/MetaUnkeyedDecodingContainer" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization0A24UnkeyedDecodingContainerC">MetaUnkeyedDecodingContainer</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Manages a DecodingUnkeyedContainerMeta</p>
+
+                        <a href="Classes/MetaUnkeyedDecodingContainer.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MetaUnkeyedDecodingContainer</span> <span class="p">:</span> <span class="kt">UnkeyedDecodingContainer</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17MetaSerialization0A7DecoderC"></a>
+                    <a name="//apple_ref/swift/Class/MetaDecoder" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization0A7DecoderC">MetaDecoder</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A <code>Decoder</code> that decodes from a <code><a href="Protocols.html#/s:17MetaSerialization0A0P">Meta</a></code> instead from a concrete format.</p>
+
+                        <a href="Classes/MetaDecoder.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MetaDecoder</span> <span class="p">:</span> <span class="kt">Decoder</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17MetaSerialization0A22KeyedEncodingContainerC"></a>
+                    <a name="//apple_ref/swift/Class/MetaKeyedEncodingContainer" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization0A22KeyedEncodingContainerC">MetaKeyedEncodingContainer</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Manages a EncodingKeyedContainerMeta</p>
+
+                        <a href="Classes/MetaKeyedEncodingContainer.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MetaKeyedEncodingContainer</span><span class="o">&lt;</span><span class="kt">K</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt">KeyedEncodingContainerProtocol</span> <span class="k">where</span> <span class="kt">K</span> <span class="p">:</span> <span class="kt">CodingKey</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -588,17 +508,13 @@ SimpleSerialization uses that translator for all objects it serializes.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MetaSingleValueEncodingContainer</span><span class="p">:</span> <span class="kt">SingleValueEncodingContainer</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MetaSingleValueEncodingContainer</span> <span class="p">:</span> <span class="kt">SingleValueEncodingContainer</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -620,7 +536,94 @@ SimpleSerialization uses that translator for all objects it serializes.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MetaUnkeyedEncodingContainer</span><span class="p">:</span> <span class="kt">UnkeyedEncodingContainer</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MetaUnkeyedEncodingContainer</span> <span class="p">:</span> <span class="kt">UnkeyedEncodingContainer</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17MetaSerialization0A7EncoderC"></a>
+                    <a name="//apple_ref/swift/Class/MetaEncoder" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization0A7EncoderC">MetaEncoder</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An <code>Encoder</code> that constucts a <code><a href="Protocols.html#/s:17MetaSerialization0A0P">Meta</a></code> instead of encoding to a concrete format.</p>
+
+                        <a href="Classes/MetaEncoder.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MetaEncoder</span> <span class="p">:</span> <span class="kt">Encoder</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17MetaSerialization24ReferencingCodingStorageC"></a>
+                    <a name="//apple_ref/swift/Class/ReferencingCodingStorage" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization24ReferencingCodingStorageC">ReferencingCodingStorage</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A CodingStorage that writes the meta on it&rsquo;s base path back to another storage.</p>
+
+<p>This storage will writeback the meta stored to the base path to reference.</p>
+
+                        <a href="Classes/ReferencingCodingStorage.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">ReferencingCodingStorage</span> <span class="p">:</span> <span class="kt"><a href="Protocols/CodingStorage.html">CodingStorage</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17MetaSerialization06SimpleB0C"></a>
+                    <a name="//apple_ref/swift/Class/SimpleSerialization" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17MetaSerialization06SimpleB0C">SimpleSerialization</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Provides a simple Serialization class, you pass a translator in initalization.
+SimpleSerialization uses that translator for all objects it serializes.</p>
+
+                        <a href="Classes/SimpleSerialization.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">SimpleSerialization</span><span class="o">&lt;</span><span class="kt">R</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="Typealiases.html#/s:17MetaSerialization0B0a">Serialization</a></span></code></pre>
 
                         </div>
                       </div>
@@ -636,7 +639,7 @@ SimpleSerialization uses that translator for all objects it serializes.</p>
     </div>
     <section class="footer">
       <p>© 2016 cherrywoods under <a class="link" href="https://github.com/cherrywoods/swift-meta-serialization/blob/master/LICENSE" target="_blank" rel="external">Apache 2.0 license</a>.</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
