@@ -44,7 +44,6 @@
 		632E8FB5242146D700870704 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6366C43820776F29000C208A /* Quick.framework */; };
 		632E8FB6242146E400870704 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6366C43F20776F50000C208A /* Nimble.framework */; platformFilter = ios; };
 		632E8FB7242146E600870704 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6366C44120776F52000C208A /* Quick.framework */; platformFilter = ios; };
-		632E8FBF24214A3600870704 /* MetaSerialization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 632E8FBE24214A3600870704 /* MetaSerialization.framework */; };
 		632E8FC524214E0200870704 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 632E8FC424214E0200870704 /* Nimble.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		632E8FC724214E0800870704 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 632E8FC624214E0800870704 /* Quick.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		633D4D032062646900ADFF91 /* TestCodingStorageErrorCatching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633D4CFB206262A900ADFF91 /* TestCodingStorageErrorCatching.swift */; };
@@ -483,7 +482,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				632E8FBF24214A3600870704 /* MetaSerialization.framework in Frameworks */,
 				632E8FB4242146D500870704 /* Nimble.framework in Frameworks */,
 				632E8FB5242146D700870704 /* Quick.framework in Frameworks */,
 			);
@@ -1023,7 +1021,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1140;
 				TargetAttributes = {
 					633D4CFF2062646900ADFF91 = {
 						LastSwiftMigration = 1130;
@@ -2085,7 +2083,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -2169,7 +2167,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
