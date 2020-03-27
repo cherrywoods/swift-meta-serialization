@@ -9,8 +9,8 @@ In the most extreme form, it is possible to build codable support for an existin
 
 ## Installation
 MetaSerialization fully supports these dependency managers:
- - [Carthage](https://github.com/cherrywoods/swift-meta-serialization/blob/master/docs/Guides/Installation.md#carthage)
- These dependency managers are also supported but may not be up to date:
+ - [Carthage](https://github.com/cherrywoods/swift-meta-serialization/blob/master/docs/Guides/Installation.md#carthage)  
+These dependency managers are also supported but may not be up to date:
  - [CocoaPods](https://github.com/cherrywoods/swift-meta-serialization/blob/master/docs/Guides/Installation.md#cocoapods),
  - [Swift Package Manager](https://github.com/cherrywoods/swift-meta-serialization/blob/master/docs/Guides/Installation.md#swift-package-manager).
 
