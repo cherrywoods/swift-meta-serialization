@@ -61,15 +61,15 @@ public protocol CodingStorage {
     /**
      Accesses the meta at the given coding path.
 
-     You may not expect that you already stored a meta at codingPath.
-     However you may expect, that the path is filled up to codingPath[0..<codingPath.endIndex-1].
+     You may not expect that you already stored a meta at `codingPath`.
+     However, you may expect that the path is filled up to `codingPath[0..<codingPath.endIndex-1]`.
      */
     subscript (codingPath: [CodingKey]) -> Meta { get set }
 
     /**
      Returns whether a meta is stored at the coding path.
 
-     If a placeholder was requested for this path, return false.
+     If a placeholder was requested for this path, returns `false`.
 
      If this function returns true for a certain path, it must be safe to subscript to this path.
      */
@@ -80,9 +80,9 @@ public protocol CodingStorage {
 
      If there's currently a placeholder stored at the given path, replace the placeholder.
 
-     Throw CodingStorageErrors:
-      - alreadyStoringValueAtThisCodingPath if the storage already stores a meta at the given coding path
-      - pathNotFilled if there is no meta present for codingPath[0..<lastIndex-1]
+     Throw `CodingStorageErrors`:
+      - `.alreadyStoringValueAtThisCodingPath` if the storage already stores a meta at the given coding path
+      - `.pathNotFilled` if there is no meta present for `codingPath[0..<lastIndex-1]`
 
      - Throws: `CodingStorageError`
      */
@@ -91,9 +91,9 @@ public protocol CodingStorage {
     /**
      Store a placeholder at the coding path.
 
-     Throw CodingStorageErrors:
-     - alreadyStoringValueAtThisCodingPath if the storage already stores a meta at the given coding path
-     - pathNotFilled if there is no meta present for codingPath[0..<lastIndex-1]
+     Throw `CodingStorageErrors`:
+     - `.alreadyStoringValueAtThisCodingPath` if the storage already stores a meta at the given coding path
+     - ``.pathNotFilled` if there is no meta present for `codingPath[0..<lastIndex-1]`
 
      - Throws: `CodingStorageError`
      */
@@ -105,21 +105,18 @@ public protocol CodingStorage {
      Return nil, if a placeholder is stored at the path.
      Do also remove the placeholder.
 
-     Throw CodingStorageErrors:
-     - noMetaStoredAtThisCodingPath if no meta is stored at this coding path.
-
-     - Throws: `CodingStorageError`
+     - Throws: `CodingStorageError.noMetaStoredAtThisCodingPath`  if no meta is stored at this coding path.
      */
     func remove(at codingPath: [CodingKey]) throws -> Meta?
 
     /**
-     Return a CodingStoreage an new (super) encoder/decoder can work on.
+     Return a CodingStorage a new (super) encoder/decoder can work on.
 
-     This new storage needs to be able to coop with coding paths for which values are stored in the
-     storage fork is called on, but not in them teirselves.
+     This new storage needs to be able to coop with coding paths for which values are stored in the forked
+     storage, but not in the new one itself.
 
-     This means, that it is legitimate to call store(... at: [a, b, c]) on the storage returned by this function,
-     if [a, b, c] was passed to fork, although there are no metas stored for [], [a] and [a, b] in the returned stroage.
+     This means, that it is legitimate to call `store(... at: [a, b, c])` on the storage returned by this function,
+     if `[a, b, c]` was passed to fork, although there are no metas stored for `[]`, `[a]` and `[a, b]` in the returned stroage.
      Accessing paths below the given coding path may fail.
       */
     func fork(at codingPath: [CodingKey]) -> CodingStorage
