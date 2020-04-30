@@ -87,6 +87,18 @@ open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProto
         
     }
     
+    /**
+     Depending on the `MetaEncoder` implementation, eigther unconditionally encodes `object`, or (if the meta encoder supports it) only encodes a reference to `object` if the identical instance was or will be encoded somewhere else during the encoding process.
+     
+     `MetaEncoder` itself does not support conditional encoding. Check out `ConditionalEncodingMetaEncoder` if you need conditiona encoding. 
+     */
+    public func encodeConditional<T: Encodable>(_ object: T, forKey key: K) throws where T : AnyObject {
+        
+        referencedMeta.put( try encoder.wrapConditional(object, at: key),
+                            for: MetaCodingKey(codingKey: key) )
+        
+    }
+    
     // MARK: - nested container
     
     public func nestedContainer<NestedKey: CodingKey>(keyedBy keyType: NestedKey.Type, forKey key: K) -> KeyedEncodingContainer<NestedKey> {

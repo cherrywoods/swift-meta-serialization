@@ -59,7 +59,7 @@ public enum Reference {
 }
 
 /**
- References a value inside another container meta.
+ References a value inside a container meta.
  */
 public protocol ContainerElementReference {
     

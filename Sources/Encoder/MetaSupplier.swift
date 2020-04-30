@@ -50,6 +50,20 @@ public protocol MetaSupplier {
      */
     func unkeyedContainerMeta() -> EncodingUnkeyedContainerMeta
     
+    /**
+     Returns a specialized meta for conditional encoding.
+     Such a meta container must be encoded as nil, if the given object was not encoded unconditionally another time during the same encoding process.
+     
+     If the same object was unconditionally encoded once again,
+     the meta returned by this method will typically be encoded as some kind of link to the place where the other instance was encoded.
+    
+     Return nil if you don't support conditional encoding. This will trigger the MetaEncoder to encode `object` unconditionally,
+     mimicing the default behavior of the `encodeConditional` methods.
+     
+     The default implementation of this method just returns nil.
+     */
+    func conditionalEncodingMeta(for object: AnyObject) throws -> Meta?
+    
     // see Meta/MetaSupplier+Defaults for default implementations
     
     // MARK: wrapper

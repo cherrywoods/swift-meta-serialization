@@ -19,7 +19,13 @@
 
 import Foundation
 
-/// An `Encoder` that constucts a `Meta` instead of encoding to a concrete format.
+/**
+ An `Encoder` that constucts a `Meta` instead of encoding to a concrete format.
+ 
+ Use the `encode` method of a MetaEncoder to encode a value into a inbetween (meta) representation. You can specify details of this meta representation using the `MetaSupplier`.
+ 
+ This encoder does not support conditional encoding using the method `encodeConditional` on `KeyedEncodingContainer` and `UnkeyedEncodingContainer` instances. Use of these methods will fallback to unconditional encoding.  Please use the `ConditionalEncodingMetaEncoder` subclass, if you require conditional encoding capabilities.
+ */
 open class MetaEncoder: Encoder {
 
     // MARK: - general properties
@@ -72,7 +78,7 @@ open class MetaEncoder: Encoder {
      - Parameter key: The key at which `value` should be encoded. This encoders coding path is extended with this key. If key is nil, the coding path isn't extended.
      - Throws: EncodingError and CodingStorageError
      */
-    open func wrap<E>(_ value: E, at key: CodingKey? = nil) throws -> Meta where E: Encodable {
+    open func wrap<E: Encodable>(_ value: E, at key: CodingKey? = nil) throws -> Meta {
 
         if key != nil { codingPath.append(key!) }
         defer{ if key != nil { codingPath.removeLast() } }
@@ -134,7 +140,26 @@ open class MetaEncoder: Encoder {
         return try storage.remove(at: path) ?? metaSupplier.keyedContainerMeta()
 
     }
-
+    
+    /**
+     Wraps an object that is conditionally encoded using `encodeConditional` using an KeyedEncodingContainer or UnkeyedEncodingContainer.
+     
+     The `MetaSupplier` is asked to provide a meta for this task using `conditionalEncodingMeta(for:)`. If it returns nil, `wrap` is called to encode `object` unconditionally, mimicking the behavior of the default implementation of `encodeConditional` of `KeyedEncodingContainer` and `UnkeyedEncodingContainer`.
+     
+     - Throws: all errors `wrap` throws are rethrown.
+     - Note: This method has no variant without `at` since only encoding containers make use of it.
+     */
+    open func wrapConditional<E: Encodable>(_ object: E, at key: CodingKey) throws -> Meta where E : AnyObject {
+        
+        guard let newMeta = try metaSupplier.conditionalEncodingMeta(for: object) else {
+            // encode unconditionally
+            return try wrap(object, at: key)
+        }
+        
+        return newMeta
+        
+    }
+    
     // MARK: - container(referencing:) methods
 
     /**

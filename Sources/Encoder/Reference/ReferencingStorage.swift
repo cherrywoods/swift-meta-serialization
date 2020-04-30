@@ -22,7 +22,7 @@ import Foundation
 /**
  A CodingStorage that writes the meta on it's base path back to another storage.
  
- This storage will writeback the meta stored to the base path to reference.
+ This storage will writeback the meta stored to the base path to `reference`.
  */
 open class ReferencingCodingStorage: CodingStorage {
     

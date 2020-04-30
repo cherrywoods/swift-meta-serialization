@@ -29,4 +29,8 @@ public extension MetaSupplier {
         return Array<Meta>()
     }
     
+    func conditionalEncodingMeta(for object: AnyObject) -> Meta? {
+        return nil
+    }
+    
 }

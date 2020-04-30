@@ -7,6 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6306CC3924559C4400BFC346 /* ConditionalEncodingMetaEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306CC3824559C4400BFC346 /* ConditionalEncodingMetaEncoder.swift */; };
+		6306CC3A24559C4400BFC346 /* ConditionalEncodingMetaEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306CC3824559C4400BFC346 /* ConditionalEncodingMetaEncoder.swift */; };
+		6306CC3B24559C4400BFC346 /* ConditionalEncodingMetaEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306CC3824559C4400BFC346 /* ConditionalEncodingMetaEncoder.swift */; };
+		6306CC3C24559C4400BFC346 /* ConditionalEncodingMetaEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306CC3824559C4400BFC346 /* ConditionalEncodingMetaEncoder.swift */; };
+		6306CC3D24559C4400BFC346 /* ConditionalEncodingMetaEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306CC3824559C4400BFC346 /* ConditionalEncodingMetaEncoder.swift */; };
+		6306CC3E24559C4400BFC346 /* ConditionalEncodingMetaEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306CC3824559C4400BFC346 /* ConditionalEncodingMetaEncoder.swift */; };
+		6306CC3F24559C4400BFC346 /* ConditionalEncodingMetaEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306CC3824559C4400BFC346 /* ConditionalEncodingMetaEncoder.swift */; };
+		6306CC4024559C4400BFC346 /* ConditionalEncodingMetaEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306CC3824559C4400BFC346 /* ConditionalEncodingMetaEncoder.swift */; };
+		6306CC422455A4E000BFC346 /* ConditionalEncodingPayloadIdentityMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306CC412455A4E000BFC346 /* ConditionalEncodingPayloadIdentityMap.swift */; };
+		6306CC432455A4E000BFC346 /* ConditionalEncodingPayloadIdentityMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306CC412455A4E000BFC346 /* ConditionalEncodingPayloadIdentityMap.swift */; };
+		6306CC442455A4E000BFC346 /* ConditionalEncodingPayloadIdentityMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306CC412455A4E000BFC346 /* ConditionalEncodingPayloadIdentityMap.swift */; };
+		6306CC452455A4E000BFC346 /* ConditionalEncodingPayloadIdentityMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306CC412455A4E000BFC346 /* ConditionalEncodingPayloadIdentityMap.swift */; };
+		6306CC462455A4E000BFC346 /* ConditionalEncodingPayloadIdentityMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306CC412455A4E000BFC346 /* ConditionalEncodingPayloadIdentityMap.swift */; };
+		6306CC472455A4E000BFC346 /* ConditionalEncodingPayloadIdentityMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306CC412455A4E000BFC346 /* ConditionalEncodingPayloadIdentityMap.swift */; };
+		6306CC482455A4E000BFC346 /* ConditionalEncodingPayloadIdentityMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306CC412455A4E000BFC346 /* ConditionalEncodingPayloadIdentityMap.swift */; };
+		6306CC492455A4E000BFC346 /* ConditionalEncodingPayloadIdentityMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306CC412455A4E000BFC346 /* ConditionalEncodingPayloadIdentityMap.swift */; };
 		631391BE2063B78200A61691 /* MetaSupplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631391BD2063B78200A61691 /* MetaSupplier.swift */; };
 		631391BF2063B78200A61691 /* MetaSupplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631391BD2063B78200A61691 /* MetaSupplier.swift */; };
 		631391C02063B78200A61691 /* MetaSupplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631391BD2063B78200A61691 /* MetaSupplier.swift */; };
@@ -330,6 +346,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6306CC3824559C4400BFC346 /* ConditionalEncodingMetaEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalEncodingMetaEncoder.swift; sourceTree = "<group>"; };
+		6306CC412455A4E000BFC346 /* ConditionalEncodingPayloadIdentityMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalEncodingPayloadIdentityMap.swift; sourceTree = "<group>"; };
 		631391BD2063B78200A61691 /* MetaSupplier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaSupplier.swift; sourceTree = "<group>"; };
 		631391C22063BA0A00A61691 /* Unwrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unwrapper.swift; sourceTree = "<group>"; };
 		631391C72063C14400A61691 /* MetaSupplier+Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MetaSupplier+Defaults.swift"; sourceTree = "<group>"; };
@@ -511,6 +529,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6306CC3724559BFE00BFC346 /* ConditionalEncoding */ = {
+			isa = PBXGroup;
+			children = (
+				6306CC3824559C4400BFC346 /* ConditionalEncodingMetaEncoder.swift */,
+				6306CC412455A4E000BFC346 /* ConditionalEncodingPayloadIdentityMap.swift */,
+			);
+			path = ConditionalEncoding;
+			sourceTree = "<group>";
+		};
 		631391CC2063C1B900A61691 /* MetaSupplier and Unwrapper Implementations */ = {
 			isa = PBXGroup;
 			children = (
@@ -531,6 +558,7 @@
 				636B760620470F820048DEDD /* MetaEncoder+frontend.swift */,
 				6318C9C72048047B009402B7 /* Reference */,
 				63E753741FC1AD7B000A2319 /* Containers */,
+				6306CC3724559BFE00BFC346 /* ConditionalEncoding */,
 				6357153F207A0D60009141B5 /* Utilities */,
 			);
 			path = Encoder;
@@ -1150,8 +1178,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				63A1743A207B74DE0073BA3E /* ShortExample.swift in Sources */,
+				6306CC4024559C4400BFC346 /* ConditionalEncodingMetaEncoder.swift in Sources */,
 				63A17431207B722E0073BA3E /* DirectlyCodable.swift in Sources */,
 				633D4D032062646900ADFF91 /* TestCodingStorageErrorCatching.swift in Sources */,
+				6306CC492455A4E000BFC346 /* ConditionalEncodingPayloadIdentityMap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1178,6 +1208,7 @@
 				633D4D1B206264A500ADFF91 /* UnkeyedDecodingContainer.swift in Sources */,
 				633D4D1C206264A500ADFF91 /* SingleValueDecodingContainer.swift in Sources */,
 				633D4D1D206264A500ADFF91 /* SimpleSerialization.swift in Sources */,
+				6306CC442455A4E000BFC346 /* ConditionalEncodingPayloadIdentityMap.swift in Sources */,
 				633D4D1F206264A500ADFF91 /* ReferencingStorage.swift in Sources */,
 				633D4D22206264A500ADFF91 /* MetaDecoder+containerMethods.swift in Sources */,
 				633D4D23206264A500ADFF91 /* LinearCodingStack.swift in Sources */,
@@ -1189,6 +1220,7 @@
 				633D4D29206264A500ADFF91 /* MetaUnkeyedEncodingContainer.swift in Sources */,
 				637008302070009E00D61B90 /* PrimitivesEnumTranslator+Primitives.swift in Sources */,
 				633D4D2B206264A500ADFF91 /* CodingKeys.swift in Sources */,
+				6306CC3B24559C4400BFC346 /* ConditionalEncodingMetaEncoder.swift in Sources */,
 				633D4D2D206264A500ADFF91 /* NilMarker.swift in Sources */,
 				633D4D2E206264A500ADFF91 /* MetaDecoder.swift in Sources */,
 				633D4D2F206264A500ADFF91 /* CodingStorage.swift in Sources */,
@@ -1225,10 +1257,12 @@
 				6357154A207A1CDC009141B5 /* CodingKeyTest.swift in Sources */,
 				63571564207A79B8009141B5 /* Example3Tests.swift in Sources */,
 				633D4D75206264EB00ADFF91 /* Example1.swift in Sources */,
+				6306CC462455A4E000BFC346 /* ConditionalEncodingPayloadIdentityMap.swift in Sources */,
 				6357155C207A6A16009141B5 /* Example3Metas.swift in Sources */,
 				63616AE62077E35500408C7C /* Nil+LosslessStringConvertible.swift in Sources */,
 				63616AD92077D54100408C7C /* Example2Tests.swift in Sources */,
 				6366C46B20778BCE000C208A /* Example1Tests.swift in Sources */,
+				6306CC3D24559C4400BFC346 /* ConditionalEncodingMetaEncoder.swift in Sources */,
 				63571550207A2B7F009141B5 /* Example3.swift in Sources */,
 				63B80E972076A8790066CD5F /* EncodingContainerMeta.swift in Sources */,
 			);
@@ -1259,10 +1293,12 @@
 				6357154B207A1CDD009141B5 /* CodingKeyTest.swift in Sources */,
 				63571565207A79B8009141B5 /* Example3Tests.swift in Sources */,
 				633D4D85206264ED00ADFF91 /* Example1.swift in Sources */,
+				6306CC472455A4E000BFC346 /* ConditionalEncodingPayloadIdentityMap.swift in Sources */,
 				6357155D207A6A16009141B5 /* Example3Metas.swift in Sources */,
 				63616AE72077E35500408C7C /* Nil+LosslessStringConvertible.swift in Sources */,
 				63616ADA2077D54100408C7C /* Example2Tests.swift in Sources */,
 				6366C46C20778BCE000C208A /* Example1Tests.swift in Sources */,
+				6306CC3E24559C4400BFC346 /* ConditionalEncodingMetaEncoder.swift in Sources */,
 				63571551207A2B7F009141B5 /* Example3.swift in Sources */,
 				63B80E982076A8790066CD5F /* EncodingContainerMeta.swift in Sources */,
 			);
@@ -1293,10 +1329,12 @@
 				6357154C207A1CDD009141B5 /* CodingKeyTest.swift in Sources */,
 				63571566207A79B8009141B5 /* Example3Tests.swift in Sources */,
 				633D4D96206264EF00ADFF91 /* Example1.swift in Sources */,
+				6306CC482455A4E000BFC346 /* ConditionalEncodingPayloadIdentityMap.swift in Sources */,
 				6357155E207A6A16009141B5 /* Example3Metas.swift in Sources */,
 				63616AE82077E35500408C7C /* Nil+LosslessStringConvertible.swift in Sources */,
 				63616ADB2077D54100408C7C /* Example2Tests.swift in Sources */,
 				6366C46D20778BCE000C208A /* Example1Tests.swift in Sources */,
+				6306CC3F24559C4400BFC346 /* ConditionalEncodingMetaEncoder.swift in Sources */,
 				63571552207A2B7F009141B5 /* Example3.swift in Sources */,
 				63B80E992076A8790066CD5F /* EncodingContainerMeta.swift in Sources */,
 			);
@@ -1325,6 +1363,7 @@
 				63E754521FC1AD7C000A2319 /* UnkeyedDecodingContainer.swift in Sources */,
 				63E7544E1FC1AD7C000A2319 /* SingleValueDecodingContainer.swift in Sources */,
 				6393728E1FEC210A00840D11 /* SimpleSerialization.swift in Sources */,
+				6306CC422455A4E000BFC346 /* ConditionalEncodingPayloadIdentityMap.swift in Sources */,
 				6318C9B12047EC08009402B7 /* ReferencingStorage.swift in Sources */,
 				6326869A204877CC00E2CDBB /* MetaDecoder+containerMethods.swift in Sources */,
 				63B78289204498B1005C278E /* LinearCodingStack.swift in Sources */,
@@ -1336,6 +1375,7 @@
 				63E7545E1FC1AD7C000A2319 /* MetaUnkeyedEncodingContainer.swift in Sources */,
 				6370082E2070009E00D61B90 /* PrimitivesEnumTranslator+Primitives.swift in Sources */,
 				63E754461FC1AD7C000A2319 /* CodingKeys.swift in Sources */,
+				6306CC3924559C4400BFC346 /* ConditionalEncodingMetaEncoder.swift in Sources */,
 				63E754721FC1AD7C000A2319 /* NilMarker.swift in Sources */,
 				63E753B61FC1AD7C000A2319 /* MetaDecoder.swift in Sources */,
 				63B7825620447773005C278E /* CodingStorage.swift in Sources */,
@@ -1370,6 +1410,7 @@
 				63E754531FC1AD7C000A2319 /* UnkeyedDecodingContainer.swift in Sources */,
 				63E7544F1FC1AD7C000A2319 /* SingleValueDecodingContainer.swift in Sources */,
 				639372901FEC211A00840D11 /* SimpleSerialization.swift in Sources */,
+				6306CC432455A4E000BFC346 /* ConditionalEncodingPayloadIdentityMap.swift in Sources */,
 				6318C9B22047EC08009402B7 /* ReferencingStorage.swift in Sources */,
 				6326869B204877CC00E2CDBB /* MetaDecoder+containerMethods.swift in Sources */,
 				63B7828A204498B1005C278E /* LinearCodingStack.swift in Sources */,
@@ -1381,6 +1422,7 @@
 				63E7545F1FC1AD7C000A2319 /* MetaUnkeyedEncodingContainer.swift in Sources */,
 				6370082F2070009E00D61B90 /* PrimitivesEnumTranslator+Primitives.swift in Sources */,
 				63E754471FC1AD7C000A2319 /* CodingKeys.swift in Sources */,
+				6306CC3A24559C4400BFC346 /* ConditionalEncodingMetaEncoder.swift in Sources */,
 				63E754731FC1AD7C000A2319 /* NilMarker.swift in Sources */,
 				63E753B71FC1AD7C000A2319 /* MetaDecoder.swift in Sources */,
 				63B7825720447773005C278E /* CodingStorage.swift in Sources */,
@@ -1415,6 +1457,7 @@
 				63E754551FC1AD7C000A2319 /* UnkeyedDecodingContainer.swift in Sources */,
 				63E754511FC1AD7C000A2319 /* SingleValueDecodingContainer.swift in Sources */,
 				63BC5BD61FC95A7E0035005D /* PrimitivesEnumTranslator.swift in Sources */,
+				6306CC452455A4E000BFC346 /* ConditionalEncodingPayloadIdentityMap.swift in Sources */,
 				6318C9B42047EC08009402B7 /* ReferencingStorage.swift in Sources */,
 				6326869D204877CC00E2CDBB /* MetaDecoder+containerMethods.swift in Sources */,
 				63B7828C204498B1005C278E /* LinearCodingStack.swift in Sources */,
@@ -1426,6 +1469,7 @@
 				63E754611FC1AD7C000A2319 /* MetaUnkeyedEncodingContainer.swift in Sources */,
 				637008312070009E00D61B90 /* PrimitivesEnumTranslator+Primitives.swift in Sources */,
 				63E754491FC1AD7C000A2319 /* CodingKeys.swift in Sources */,
+				6306CC3C24559C4400BFC346 /* ConditionalEncodingMetaEncoder.swift in Sources */,
 				63E754751FC1AD7C000A2319 /* NilMarker.swift in Sources */,
 				63E753B91FC1AD7C000A2319 /* MetaDecoder.swift in Sources */,
 				63B7825920447773005C278E /* CodingStorage.swift in Sources */,

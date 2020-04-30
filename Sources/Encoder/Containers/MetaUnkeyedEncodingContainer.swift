@@ -92,7 +92,18 @@ open class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
     
     public func encode<T: Encodable>(_ value: T) throws {
         
-        referencedMeta.insert(try encoder.wrap(value, at: lastCodingKey ), at: count )
+        referencedMeta.insert(try encoder.wrap(value, at: lastCodingKey), at: count)
+        
+    }
+    
+    /**
+     Depending on the `MetaEncoder` implementation, eigther unconditionally encodes `object`, or (if the meta encoder supports it) only encodes a reference to `object` if the identical instance was or will be encoded somewhere else during the encoding process.
+     
+     `MetaEncoder` itself does not support conditional encoding. Check out `ConditionalEncodingMetaEncoder` if you need conditiona encoding.
+     */
+    public func encodeConditional<T>(_ object: T) throws where T : AnyObject, T : Encodable {
+        
+        referencedMeta.insert( try encoder.wrapConditional(object, at: lastCodingKey), at: count)
         
     }
     
