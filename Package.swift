@@ -6,9 +6,9 @@ import PackageDescription
 let package = Package(
     name: "MetaSerialization",
     products: [
-        .library(
-            name: "MetaSerialization",
-            targets: ["MetaSerialization"]
-        )
+        .library(name: "MetaSerializationMacOS", targets: ["MetaSerialization macOS"]),
+        .library(name: "MetaSerializationIOS", targets: ["MetaSerialization iOS"]),
+        .library(name: "MetaSerializationWatchOS", targets: ["MetaSerialization watchOS"]),
+        .library(name: "MetaSerializationTVOS", targets: ["MetaSerialization tvOS"]),
     ]
 )
