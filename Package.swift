@@ -3,4 +3,12 @@
 
 import PackageDescription
 
-let package = Package( name: "MetaSerialization" )
+let package = Package(
+    name: "MetaSerialization",
+    products: [
+        .library(
+            name: "MetaSerialization",
+            targets: ["MetaSerialization"]
+        )
+    ]
+)
