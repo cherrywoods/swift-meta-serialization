@@ -9,6 +9,9 @@ let package = Package(
         .library(name: "MetaSerialization", targets: ["MetaSerialization"]),
     ],
     targets: [
-        .target(name: "MetaSerialization"),
+        .target(
+            name: "MetaSerialization",
+            path: "Sources"
+        ),
     ]
 )
