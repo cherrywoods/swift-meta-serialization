@@ -22,7 +22,7 @@ import Foundation
 public extension MetaSupplier {
     
     func keyedContainerMeta() -> EncodingKeyedContainerMeta {
-        return OrderedKeyedContainer()
+        return Dictionary<String, Meta>()
     }
     
     func unkeyedContainerMeta() -> EncodingUnkeyedContainerMeta {

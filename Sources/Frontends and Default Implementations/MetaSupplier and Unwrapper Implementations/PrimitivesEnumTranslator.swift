@@ -25,20 +25,23 @@ import Foundation
 public struct PrimitivesEnumTranslator: MetaSupplier, Unwrapper {
     
     let primitives: Set<Primitive>
+    let useOrderedKeyedContainer: Bool
     
     /**
      Create a new PrimitivesEnumTranslator.
      - Parameter primitives: A set of primitives types you can handle directly. The default value is Primitive.all.
+     - Parameter maintainOrder: Whether to use a keyed container that maintains the insertion order. If true, the keyed containers you receive are instances of OrderedKeyedContainer. If false, they are simple Dictionaries. Unkeyed containers always maintain insertion order.
      - Note: You have to pass Primitive.all, if you wan't do be able to handle all of swifts standard types.
      */
-    public init( primitives: Set<Primitive> = Primitive.all) {
+    public init( primitives: Set<Primitive> = Primitive.all, maintainOrder useOrderedKeyedContainer: Bool = false) {
         
         self.primitives = primitives
+        self.useOrderedKeyedContainer = useOrderedKeyedContainer
         
     }
     
     // we use this translator as backend, but we additionaly check if the type is contained in primitives
-    let protocolTranslator = PrimitivesProtocolTranslator<PrimitivesEnumTranslatorPrimitives, PrimitivesEnumTranslatorPrimitives.Type>()
+    let protocolTranslator: PrimitivesProtocolTranslator<any PrimitivesEnumTranslatorPrimitives, any PrimitivesEnumTranslatorPrimitives.Type> = PrimitivesProtocolTranslator<PrimitivesEnumTranslatorPrimitives, PrimitivesEnumTranslatorPrimitives.Type>()
     
     public func wrap<T>(_ value: T, for encoder: MetaEncoder) throws -> Meta? {
         
@@ -68,6 +71,14 @@ public struct PrimitivesEnumTranslator: MetaSupplier, Unwrapper {
         
         return try protocolTranslator.unwrap(meta: meta, toType: type, for: decoder)
         
+    }
+
+    public func keyedContainerMeta() -> any EncodingKeyedContainerMeta {
+        if self.useOrderedKeyedContainer {
+            return OrderedKeyedContainer()
+        } else {
+            return Dictionary<String, Meta>()
+        }
     }
     
 }

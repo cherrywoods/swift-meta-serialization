@@ -42,10 +42,6 @@ func encodeToContainer(_ input: Meta) -> Example1Container {
         
         return Example1Container.dictionary( metaDictionary.mapValues(encodeToContainer) )
         
-    } else if let metaDictionary = input as? OrderedKeyedContainer {
-
-        return Example1Container.dictionary( metaDictionary.dictionary.mapValues(encodeToContainer) )
-        
     }
     
     // execution of this shows a bug
