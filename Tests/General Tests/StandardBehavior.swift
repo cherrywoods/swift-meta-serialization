@@ -28,6 +28,7 @@ import Nimble
 struct StandardBehavior<S: Serialization> where S.Raw: Equatable {
     
     let serialization: S
+    let qs: QuickSpec.Type
     
     // keys for expected:
     // empty, empty unkeyed,
@@ -41,14 +42,14 @@ struct StandardBehavior<S: Serialization> where S.Raw: Equatable {
     // CoffeeDrinker,
     func test(expected: [String : S.Raw], allowTopLevelSingleValues allowTLSV: Bool, allowNestedContainers allowNC: Bool, allowNils: Bool) {
         
-        describe("emptys") {
+        qs.describe("emptys") {
             
             testSingle("empty struct", value: EmptyStruct(), expected: expected["empty"])
             testSingle("empty class", value: EmptyClass(), expected: expected["empty"])
             
         }
         
-        describe("top level singles") {
+        qs.describe("top level singles") {
             
             failOrSucceed(succeed: allowTLSV, "Switch.on", value: Switch.on, expected: expected["Switch.on"])
             failOrSucceed(succeed: allowTLSV, "Switch.off", value: Switch.off, expected: expected["Switch.off"])
@@ -61,7 +62,7 @@ struct StandardBehavior<S: Serialization> where S.Raw: Equatable {
             
         }
         
-        describe("wrapped top level singles") {
+        qs.describe("wrapped top level singles") {
             
             testSingle("wrapped Switch.on", value: TopLevelWrapper(Switch.on), expected: expected["wrapped(Switch.on)"])
             testSingle("wrapped Switch.off", value: TopLevelWrapper(Switch.off), expected: expected["wrapped(Switch.off)"])
@@ -74,55 +75,55 @@ struct StandardBehavior<S: Serialization> where S.Raw: Equatable {
             
         }
         
-        describe("top level structured types") {
+        qs.describe("top level structured types") {
             
             testSingle("Address", value: Address.testValue, expected: expected["Address"])
             testSingle("Person", value: Person.testValue, expected: expected["Person"])
             
         }
         
-        describe("structures type though single value container") {
+        qs.describe("structures type though single value container") {
             
             testSingle("Number", value: Numbers.testValue, expected: expected["Numbers"])
             failOrSucceed(succeed: allowNils, "Mapping", value: Mapping.testValue, expected: expected["Mapping"])
             
         }
         
-        describe("deep structured class") {
+        qs.describe("deep structured class") {
             
             failOrSucceed(succeed: allowNC, "company", value: Company.testValue, expected: expected["Company"])
             
         }
         
-        describe("deep nested class") {
+        qs.describe("deep nested class") {
             
             failOrSucceed(succeed: allowNC, "button", value: Button.testValue, expected: expected["Button"])
             
         }
         
-        describe("class sharing encoder with super") {
+        qs.describe("class sharing encoder with super") {
             
             testSingle("employee", value: Employee.testValue, expected: expected["Employee"])
             
         }
         
-        describe("class using super encoder") {
+        qs.describe("class using super encoder") {
             
             failOrSucceed(succeed: allowNC, "coffee drinker", value: CoffeeDrinker.testValue, expected: expected["CoffeeDrinker"])
             
         }
         
-        describe("encoder features") {
+        qs.describe("encoder features") {
             
             // these tests can't work if nested containers aren't allowed
             
             if allowNC {
                 
-                it("does nested container coding paths right") {
+                qs.it("does nested container coding paths right") {
                     _ = TestUtilities.encode(NestedContainersTestType(), using: self.serialization)
                 }
                 
-                it("does super encoder coding paths right") {
+                qs.it("does super encoder coding paths right") {
                     _ = TestUtilities.encode(NestedContainersTestType(testSuperEncoder: true), using: self.serialization)
                 }
                 
@@ -130,7 +131,7 @@ struct StandardBehavior<S: Serialization> where S.Raw: Equatable {
             
         }
         
-        it("allows requesting equal containers multiple times") {
+        qs.it("allows requesting equal containers multiple times") {
             
             _ = TestUtilities.encode(MultipleContainerRequestsType(), using: self.serialization, expected: expected["empty unkeyed"])
             
@@ -148,7 +149,7 @@ struct StandardBehavior<S: Serialization> where S.Raw: Equatable {
         } else {
             
             // expect encoding failure
-            it("encoding " + description + " fails") {
+            qs.it("encoding " + description + " fails") {
                 
                 TestUtilities.encodeFails(value, using: self.serialization)
                 
@@ -160,7 +161,7 @@ struct StandardBehavior<S: Serialization> where S.Raw: Equatable {
     
     func testSingle<T: Codable&Equatable>(_ description: String, value: T, expected: S.Raw?) {
         
-        it("round trips " + description) {
+        qs.it("round trips " + description) {
             
             TestUtilities.roundTrip(value, using: self.serialization, expected: expected)
             

@@ -25,12 +25,13 @@ import Nimble
 struct StateRestoringAfterThrow<S: Serialization> where S.Raw: Equatable {
     
     let serialization: S
+    let qs: QuickSpec.Type
     
     // keys for expected:
     // encoded, toDecode,
     func test(information: [String : S.Raw]) {
         
-        it("restores state after throw during encode") {
+        qs.it("restores state after throw during encode") {
             
             // encode something into container that throws on call of encode(to:)
             // encode something normal again: Should succeed in MetaSerialization
@@ -38,7 +39,7 @@ struct StateRestoringAfterThrow<S: Serialization> where S.Raw: Equatable {
             
         }
         
-        it("restores state after throw during decode") {
+        qs.it("restores state after throw during decode") {
             
             // This is an equivalent to the decoder state test of TestJSONEncoder
             // The issue resolved by this is: SR-6048

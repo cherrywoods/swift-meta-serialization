@@ -23,9 +23,9 @@ import Nimble
 
 class Example3Spec: QuickSpec {
     
-    override func spec() {
+    override class func spec() {
         
-        let standardTests = StandardBehavior(serialization: Example3.serialization)
+        let standardTests = StandardBehavior(serialization: Example3.serialization, qs: self)
         standardTests.test(expected: [ "empty" : "keyed;",
                                        "empty unkeyed" : "unkeyed;",
                                        "person" : "keyed;*name*:*Johnny Appleseed*,*email*:*appleseed@apple.com*,",

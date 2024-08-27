@@ -22,6 +22,13 @@ import XCTest
 
 class PerformanceTests: XCTestCase {
 
+    static var allTests = [
+        ("testPerformanceOfEncodingSingleValuesLinearCodingStack", testPerformanceOfEncodingSingleValuesLinearCodingStack),
+        ("testPerformanceOfDecodingSingleValuesLinearCodingStack", testPerformanceOfDecodingSingleValuesLinearCodingStack),
+        ("testPerformanceOfEncodingDeeplyNestedLinearCodingStack", testPerformanceOfEncodingDeeplyNestedLinearCodingStack),
+        ("testPerformanceOfDecodingDeeplyNestedLinearCodingStack", testPerformanceOfDecodingDeeplyNestedLinearCodingStack),
+    ]
+
     var array: [Int]!
     var encodedArray: Example1Container!
     

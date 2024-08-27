@@ -24,9 +24,9 @@ import Nimble
 
 class Example1Spec: QuickSpec {
     
-    override func spec() {
+    override class func spec() {
         
-        let standardTests = StandardBehavior(serialization: Example1.serialization)
+        let standardTests = StandardBehavior(serialization: Example1.serialization, qs: self)
         standardTests.test(expected: [ "empty" : Example1Container.dictionary([:]),
                                        "empty unkeyed" : Example1Container.array([]),
                                        "person" : Example1Container.dictionary( [ "name": Example1Container.string( "Johnny Appleseed" ),
@@ -40,7 +40,7 @@ class Example1Spec: QuickSpec {
                                        "CoffeeDrinker" : .dictionary([ "super" : .dictionary( [ "name" : .string("Jane Doe"), "email" : .string("jdoe@example.com")] ), "coffeeLevel" : .int(70) ])],
                            allowTopLevelSingleValues: true, allowNestedContainers: true, allowNils: true)
         
-        let stateRestoreTests = StateRestoringAfterThrow(serialization: Example1.serialization)
+        let stateRestoreTests = StateRestoringAfterThrow(serialization: Example1.serialization, qs: self)
         stateRestoreTests.test(information: [ "encoded" : Example1Container.array( [ .string("should work") ]),
                                               "toDecode" : Example1Container.array( [ .string("a"), .string("b"), .string("c") ] )] )
         
