@@ -1,5 +1,4 @@
-// swift-tools-version:5.0
-// The swift-tools-version declares the minimum version of Swift required to build this package.
+// swift-tools-version:5.7
 
 import PackageDescription
 
@@ -13,18 +12,17 @@ let package = Package(
         .package(url: "https://github.com/Quick/Nimble.git", from: "12.0.0"),
     ],
     targets: [
-        .target(
-            name: "MetaSerialization",
-            path: "Sources"
-        ),
+        .target(name: "MetaSerialization"),
         .testTarget(
             name: "MetaSerializationTests",
             dependencies: [
                 .byName(name: "Quick"),
                 .byName(name: "Nimble"),
-                .target(name: "MetaSerialization"),
+                .target(name: "MetaSerialization")
             ], 
-            path: "Tests"
-        ),
+            exclude: [
+                "Tests/Info.plist"
+            ]
+        )
     ]
 )

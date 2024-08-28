@@ -2,7 +2,7 @@
 //  BasicUsage.playground
 //  MetaSerialization
 //
-//  Copyright 2018 cherrywoods
+//  Copyright 2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -22,18 +22,20 @@ import MetaSerialization
 
 /*
  
- This playground contains a verry basic example
- of the usage of MetaSerialization
+ This playground contains a simple example
+ of using MetaSerialization
  
- A simple Translator will be created,
- that converts (certain) swift objects
- to some kind of simple json format.
+ It creates a simple Translator,
+ that converts basic Swift objects 
+ (String, Int, Array, and Dictionar)
+ to a simplified JSON format.
  
- For that Translator a Serialization instance will be created and used.
+ Next, it creates a Serialization instance for that Translator
+ and uses it so serialize complex Swift objects.
  
  */
 
-// MARK: - encoding to a reduced JSON format
+// MARK: - encoding to a simplified JSON format
 
 func convertToJSON(_ value: Meta) -> String {
     
@@ -84,14 +86,10 @@ func convertToSwift(_ json: String) -> Meta {
     switch json.first! {
     case "\"":
         // " at the beginning -> this is a string
-        // remove the two "s
-        // ( note that it is realy important to
-        // return Strings and not Substrings,
-        // because PrimitivesEnumTranslator can't handle Substrings )
         return String(json.dropFirst().dropLast())
     case "[":
         // [ at the beginning -> array
-        // trim of [\n and \n]
+        // trim [\n and \n]
         json = String( json.dropFirst(2).dropLast(2) )
         var array = [Meta]()
         for element in json.split(separator: "\n") {
@@ -130,21 +128,21 @@ func toSwift(_ value: Any) -> Any? {
 // MARK: - using MetaSerialization
 
 // Translators are a key part of MetaSerialization.
-// PrimitivesEnumTranslator is a verry simple implementation.
-// Usually you will write a own implementation of the Translator protocol.
+// PrimitivesEnumTranslator is a basic implementation.
+// You will probably write a own implementation of the Translator protocol.
 
 let translator = PrimitivesEnumTranslator(primitives: [.string, .int])
 
 // and thats basically all of the code that is needed to encode
-// arbitrary swift objects implementing Encodable
+// arbitrary Swift objects implementing Encodable
 
 let serialization = SimpleSerialization<String>(translator: translator,
                                                 encodeFromMeta: convertToJSON,
                                                 decodeToMeta: convertToSwift)
 
-// MARK: - serialization
+// MARK: - Serialization
 
-// these are just some example instances
+// Some example objects
 
 struct Shape: Codable {
     
@@ -153,18 +151,18 @@ struct Shape: Codable {
     
 }
 
-let triange = Shape(numberOfSides: 3, sideLength: 4)
-let array = [ "three", "four", "six" ]
-let dictionary = [ "triangle" : 3, "square" : 4, "hexagon" : 6 ]
+let triange1 = Shape(numberOfSides: 3, sideLength: 4)
+let triange2 = Shape(numberOfSides: 3, sideLength: 1)
+let square: Shape = Shape(numberOfSides: 4, sideLength: 2)
+let hexagon: Shape = Shape(numberOfSides: 6, sideLength: 7)
+
+let triangles = [ triangle1, triange2 ]
+let dictionary = [ "triangles" : triangles, "squares" : [square], "hexagons" : [hexagon] ]
 
 // MARK: encoding
 
-let encodedTriagle = try! serialization.encode(triange)
-let encodedArray = try! serialization.encode(array)
-let encodedDictionary = try! serialization.encode(dictionary)
+let encoded = try! serialization.encode(dictionary)
 
 // MARK: decoding
 
-try! serialization.decode(toType: Shape.self, from: encodedTriagle)
-try! serialization.decode(toType: [String].self, from: encodedArray)
-try! serialization.decode(toType: [String:Int].self, from: encodedDictionary)
+try! serialization.decode(toType: [String:Array[Shape]].self, from: encoded)

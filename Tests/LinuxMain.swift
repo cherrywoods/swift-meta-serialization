@@ -1,5 +1,5 @@
 //
-//  Example1Tests.swift
+//  LinuxMain.swift
 //  MetaSerialization
 //  
 //  Copyright 2024 cherrywoods
@@ -20,7 +20,7 @@
 import XCTest
 import Quick
 
-@testable import MetaSerialization
+@testable import MetaSerializationTests
 
 @main struct Main {
     static func main() {
