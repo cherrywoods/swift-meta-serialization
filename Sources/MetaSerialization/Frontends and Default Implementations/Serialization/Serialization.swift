@@ -2,7 +2,7 @@
 //  Serialization.swift
 //  MetaSerialization
 //
-//  Copyright 2018 cherrywoods
+//  Copyright 2018+2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -20,9 +20,7 @@
 import Foundation
 
 /**
- This protocol provides a blueprint for a serialization class.
- 
- A serialization class is an intermediate, delegating the tasks of encoding and decoding to an Encoder or Decoder, but does so while the user creates a new instance of it and uses this classes methods instead of them of Encodable and Decodable (as one would if you used Representation)
+ This protocol provides a blueprint for a serialization class that provides a front-facing interface for serialization.
  */
 public typealias Serialization = IntermediateEncoder & IntermediateDecoder
 

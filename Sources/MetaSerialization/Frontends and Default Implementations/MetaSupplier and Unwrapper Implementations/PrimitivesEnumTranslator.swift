@@ -2,7 +2,7 @@
 //  PrimitivesEnumTranslator.swift
 //  MetaSerialization
 //
-//  Copyright 2018 cherrywoods
+//  Copyright 2018+2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -20,7 +20,8 @@
 import Foundation
 
 /**
- A implementation of `MetaSupplier` and `Unwrapper` that gets Metas out of your way, so you will only have to work with Arrays, Dictionarys and the Primitive types you pass to it.
+ A implementation of `MetaSupplier` and `Unwrapper` that gets Metas out of your way.
+ You only have to work with Arrays, Dictionarys and the Primitive types you pass to it.
  */
 public struct PrimitivesEnumTranslator: MetaSupplier, Unwrapper {
     
@@ -31,7 +32,7 @@ public struct PrimitivesEnumTranslator: MetaSupplier, Unwrapper {
      Create a new PrimitivesEnumTranslator.
      - Parameter primitives: A set of primitives types you can handle directly. The default value is Primitive.all.
      - Parameter maintainOrder: Whether to use a keyed container that maintains the insertion order. If true, the keyed containers you receive are instances of OrderedKeyedContainer. If false, they are simple Dictionaries. Unkeyed containers always maintain insertion order.
-     - Note: You have to pass Primitive.all, if you wan't do be able to handle all of swifts standard types.
+     - Note: Use Primitive.all, to handle all of Swifts standard types.
      */
     public init( primitives: Set<Primitive> = Primitive.all, maintainOrder useOrderedKeyedContainer: Bool = false) {
         

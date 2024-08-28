@@ -2,7 +2,7 @@
 //  KeyedContainerMeta.swift
 //  MetaSerialization
 //  
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -22,32 +22,33 @@ import Foundation
 public typealias KeyedContainerMeta = EncodingKeyedContainerMeta&DecodingKeyedContainerMeta
 
 /**
- A meta for a keyed collection of metas during encoding.
- The key is always a MetaCodingKey. How these keys are handled internal is left to the implementor.
+ A Meta for a keyed collection of Metas during encoding.
+ The key is always a MetaCodingKey. 
+ How these keys are handled internal is left to the implementation.
  */
 public protocol EncodingKeyedContainerMeta: Meta {
     
-    /// Stores value for key (replaces the old value if there is already a value stored for key).
+    /// Stores `value`` for the `key` (replaces the old value if there is already a value stored for `key`).
     mutating func put(_ value: Meta, for key: MetaCodingKey)
     
-    /// Returns the value contained for key in this container or nil if no value is contained. If `contains` returned true, you needs to return a non-nil value here.
+    /// Returns the value contained for `key`` in this container, or nil if no value is contained. If `contains` returned true, this method returns a non-nil value.
     func getValue(for key: MetaCodingKey) -> Meta?
     
 }
 
 /**
- A meta for a keyed collection of metas during decoding.
- The key is always a MetaCodingKey. How these keys are handled internal is left to the implementor.
+ A Meta for a keyed collection of Metas during decoding.
+ The key is always a MetaCodingKey. How these keys are handled internal is left to the implementation.
  */
 public protocol DecodingKeyedContainerMeta: Meta {
     
-    /// Returns the value contained for key in this container or nil if no value is contained. If `contains` returned true, you needs to return a non-nil value here.
+    /// Returns the value contained for `key` in this container, or nil if no value is contained. If `contains` returned true, this method returns a non-nil value.
     func getValue(for key: MetaCodingKey) -> Meta?
     
-    /// Returns all keys in this container as `MetaCodingKey`.
+    /// Returns all keys in this container as `MetaCodingKeys`.
     var allKeys: [MetaCodingKey] { get }
     
-    /// returns whether key is contained in this container.
+    /// Returns whether key is contained in this container.
     func contains(key: MetaCodingKey) -> Bool
     
 }
@@ -60,7 +61,7 @@ public struct MetaCodingKey {
     /// The int value of a coding key
     public let intValue: Int?
     
-    /// Initalizes stringValue and intValue with the string and int values of codingKey
+    /// Initalizes `stringValue` and `intValue` with the string and int values of `codingKey`.
     public init(codingKey: CodingKey) {
         
         self.stringValue = codingKey.stringValue
@@ -68,7 +69,7 @@ public struct MetaCodingKey {
         
     }
     
-    /// Initalizes with the given string and int value. The intValue is nil by default.
+    /// Initalizes with the given string and int value. The `intValue` is nil by default.
     public init(stringValue: String, intValue: Int? = nil) {
         
         self.stringValue = stringValue

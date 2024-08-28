@@ -2,7 +2,7 @@
 //  Foundation Primitive Codables.swift
 //  MetaSerialization
 //
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -24,13 +24,11 @@ import Foundation
  In this file String, Bool, Float, Double, Int, Int8, Int16, Int32, Int64, UInt, UInt8, UInt16, UInt32 and UInt64
  are extended to conform to DirectlyCodable.
 
- This is done to prevent endless callbacks if a format (expressed by a MetaSupplier or an Unwrapper) does not support one of these types.
-
- Because if wrappingMeta returns nil for e.g. a String value,
- wrap will then call encode(to:) on this string again,
- it will request a single value container and call encode on this container,
- this leads to another call of encode(to:) on the string, and so on, and so on.
-
+ This is done to prevent endless callbacks if a format (expressed by a MetaSupplier or an Unwrapper) does not support one of these types:
+ If wrappingMeta returns nil for, say, a String value,
+ wrap then would call encode(to:) on this string again.
+ The string then request a single value container and call encode on this container.
+ This leads to another call of encode(to:) on the string, and so on.
  */
 
 extension String: DirectlyCodable {}

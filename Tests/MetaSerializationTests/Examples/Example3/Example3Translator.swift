@@ -2,7 +2,7 @@
 //  Translator.swift
 //  MetaSerialization
 //  
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ struct Example3Translator: MetaSupplier, Unwrapper {
             return nil
         }
         
-        // supply metas for all LosslessStringConvertible types
+        // supply Metas for all LosslessStringConvertible types
         // nil also works because NilMarker is already extended in Example2
         guard let description = (value as? LosslessStringConvertible)?.description else {
             return nil
@@ -38,8 +38,8 @@ struct Example3Translator: MetaSupplier, Unwrapper {
         
     }
     
-    // use default keyed and unkeyed containers
-    // will be Arrays of String and Dictionarys of Strings and Strings
+    // Use the default keyed and unkeyed containers:
+    // Arrays of String and Dictionarys of Strings and Strings
     
     func unwrap<T>(meta: Meta, toType type: T.Type, for decoder: MetaDecoder) throws -> T? where T : Decodable {
         

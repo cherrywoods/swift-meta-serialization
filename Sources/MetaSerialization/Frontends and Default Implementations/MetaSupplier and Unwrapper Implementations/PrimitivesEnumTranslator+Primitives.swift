@@ -2,7 +2,7 @@
 //  PrimitivesEnumTranslator+primitives.swift
 //  MetaSerialization
 //  
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -66,7 +66,7 @@ public extension PrimitivesEnumTranslator {
         /// Creates a new Primitive for the given type if it matches one of this enums cases.
         public init?<T>(from type: T.Type) {
             
-            if        type.self is String.Type {
+            if type.self is String.Type {
                 self = .string
             } else if type.self is Bool.Type {
                 self = .bool

@@ -20,8 +20,7 @@
 import Foundation
 
 /**
- Provides a simple Serialization class, you pass a translator in initalization.
- SimpleSerialization uses that translator for all objects it serializes.
+ A simple serialization interface based on a translator.
  */
 public class SimpleSerialization<R>: Serialization {
     

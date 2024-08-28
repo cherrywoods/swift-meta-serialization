@@ -2,7 +2,7 @@
 //  KeyedDecodingContainer.swift
 //  meta-serialization
 //
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -19,24 +19,22 @@
 
 import Foundation
 
-// all decoding and encoding classes (formerly structs) manage intrinsically mutable state, because this state is not set yet. That's why they are classes now.
-
 /**
- Manages a DecodingKeyedContainerMeta
+ Manages a DecodingKeyedContainerMeta (for example, a Dictionary).
  */
 open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProtocol {
     
     public typealias Key = K
     
     /**
-     This MetaKeyedDecodingContainer's meta.
+     This MetaKeyedDecodingContainer's Meta.
      */
     public let meta: DecodingKeyedContainerMeta
     
     /**
-     The decoder that created this container.
+     The Decoder that created this container.
      
-     Decoding, creating new containers and creating super decoders is delegated to it.
+     Decoding, creating new containers, and creating super decoders is delegated to this Decoder.
      */
     public let decoder: MetaDecoder
     
@@ -133,7 +131,7 @@ open class MetaKeyedDecodingContainer<K: CodingKey>: KeyedDecodingContainerProto
     
     // MARK: - utilities
     
-    /// An utility mathod that acesses the meta stored at key and throws an error, if the value isn't present.
+    /// An utility method that acesses the meta stored at key and throws an error if the value isn't present.
     public func accessMeta(at key: CodingKey) throws -> Meta {
         
         guard let subMeta = meta.getValue(for: MetaCodingKey(codingKey: key)) else {

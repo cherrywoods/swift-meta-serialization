@@ -2,7 +2,7 @@
 //  ErrorContainer.swift
 //  MetaSerialization
 //  
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 //  limitations under the License.
 // 
 
-// the idea for this kind of container came up for me first in https://forums.swift.org/t/nestedcontainer-in-keyedencodingcontainer-and-unkeyedencodingcontainer-should-be-throwing/11566
+// See also: https://forums.swift.org/t/nestedcontainer-in-keyedencodingcontainer-and-unkeyedencodingcontainer-should-be-throwing/11566
 
 import Foundation
 

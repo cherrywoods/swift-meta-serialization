@@ -2,7 +2,7 @@
 //  Representation.swift
 //  MetaSerialization
 //  
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -38,8 +38,8 @@ extension String: Example3Representation {
     
     public init(meta: Meta) throws {
         
-        // convert from an (unnested) array or dictionary to a pure string with markers
-        // see README.md for more details
+        // Convert from an (unnested) array or dictionary to a pure string with markers.
+        // See README.md for more details
         
         if let string = meta as? String {
             
@@ -79,7 +79,7 @@ extension String: Example3Representation {
             
             var meta = [Meta]()
             
-            // this will sufficently split values and komma separators
+            // this will sufficently split values and comma separators
             let elements = self.dropFirst( "unkeyed;".count ).split(separator: "*")
             
             // now filter out the separators by dropping every secoding element which should be ,
@@ -107,7 +107,7 @@ extension String: Example3Representation {
             
             var meta = [String : Meta]()
             
-            // this will sufficently split values and komma separators
+            // this will sufficently split values and comma separators
             let elements = self.dropFirst( "keyed;".count ).split(separator: "*")
             
             // now filter out the separators by dropping every secoding element

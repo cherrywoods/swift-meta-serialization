@@ -2,8 +2,8 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Build Status](https://travis-ci.org/cherrywoods/swift-meta-serialization.svg?branch=master)](https://travis-ci.org/cherrywoods/swift-meta-serialization)
 
-MetaSerialization is a framework to simplify the creation of new serialisation libraries for the swift standard library environment (Encodable, Decodable, Codable, etc.)
-It's aim is to let anyone create a serialization library that works with the swift serialization framework by nearly just writing the real serialization code.
+MetaSerialization is a framework to simplify the creation of new serialisation libraries for the Swift standard library environment (`Encodable`, `Decodable`, `Codable`, etc.).
+It's aim is to let anyone create a serialization library that works with the Swift serialization framework by nearly just writing the real serialization code.
 To archive this goal, it includes a default `Encoder` and `Decoder` implementation that delegate a small part of their work to implementations of `MetaSupplier` / `Unwrapper`, but are furthermore extendible. Most common use cases should however not require overriding eigther `MetaEncoder` or `MetaDecoder`, but should be archivable with a short custom implementation of `MetaSupplier` / `Unwrapper`.
 In the most extreme form, it is possible to build codable support for an existing framework in [2 lines of code](https://github.com/cherrywoods/swift-meta-serialization/blob/73f067c2c542d4548813d3c8884755dee270ec64/Examples/Example1/Example1.swift#L14-L16).
 
@@ -37,6 +37,7 @@ Checkout the source-only branch, if you aren't interested in the contained examp
 ### Swift version
 | Swift Version | MetaSerialization Version |
 | ------------- | --------------------------|
+| 5.2           | 2.3                       |
 | 5.1           | 2.2                       |
 | 4.2           | 2.1.0                     |
 | 4.1.2         | 2.0.1                     |

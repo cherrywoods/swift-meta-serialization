@@ -2,7 +2,7 @@
 //  MetaEncoder+frontend.swift
 //  MetaSerialization
 //
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -22,17 +22,17 @@ import Foundation
 public extension MetaEncoder {
     
     /**
-     Encodes the given value to a meta tree.
+     Encodes the given value to a Meta tree.
      
      Use this method rather than directly calling encode(to:) of `Encodable`.
-     encode(to:) will not detect types in the first place
+     Using encode(to:) will not detect types in the first place
      that are directly supported by the `MetaSupplier`.
      
      Example: If data is a `ExampleData` instance and the `MetaSupplier` supportes
      `ExampleData` objects directly. Then calling `data.encode(to:)` will not fall back
      to that support, it will be encoded the way `ExampleData` encodes itself.
      
-     - Throws: Aside from any errors that are thrown by `metaSupplier.wrap` and any `EncodingError` that has been thrown by another entity, this function will throw `MetaEncoder.Errors.encodingHasNotSucceeded` if the encoding could not succeed. In general, this error will never be thrown in code running unter the debug (and not the release) configuration. Instead the call will fail with an assertion failure. Such an error usually indicates an invalid encoder implementation or a missuse of an encoder.
+     - Throws: Aside from any errors that are thrown by `metaSupplier.wrap` and any `EncodingError` that has been thrown by another entity, this function will throw `MetaEncoder.Errors.encodingHasNotSucceeded` if the encoding could not succeed. 
      */
     func encode<E: Encodable>(_ value: E) throws -> Meta {
         

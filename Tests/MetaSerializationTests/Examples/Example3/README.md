@@ -12,5 +12,5 @@ Example3 serializes to strings in the form
 `"unkeyed;*abc*,*def*,*ghi*,*1*,"`
 `"keyed;*key1*:*value1*,*key2*:*value2*,"`
 `"*single value*"`
-Containers are marked with key words all values are strings surrounded by `**`. 
-`*` is not allowed in string values.
+Containers are marked with key words. All single values are strings surrounded by `**`. 
+For simplicity, `*` is not allowed in string values.

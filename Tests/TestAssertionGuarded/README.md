@@ -1,6 +1,8 @@
-# Target: MoreTests
-This test target exists to test some errors that aren't testable in the debug build configuration, because they are guarded by assertionFailures.
-
-Because this target's build configuration is set to release, it is possible to check for these errors
-
-If run in debug build configuration the test will fail to complete with an assertion failure. 
+# Test Assertion Guarded Features
+The tests in this directory test features that are normaly guarded by assertions.
+These tests exist to test the fallback the baviour that MetaSerialization provides when assertions are disabled (for example, in release mode).
+If the tests are run in debug mode (standard for testing), all tests in this directory are skipped.
+To run the tests, execute
+```bash
+swift test -c release
+```

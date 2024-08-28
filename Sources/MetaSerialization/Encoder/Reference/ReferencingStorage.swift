@@ -2,7 +2,7 @@
 //  ReferencingStorage.swift
 //  MetaSerialization
 //
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -20,9 +20,9 @@
 import Foundation
 
 /**
- A CodingStorage that writes the meta on it's base path back to another storage.
+ A CodingStorage that writes the Meta on it's base path back to another storage.
  
- This storage will writeback the meta stored to the base path to reference.
+ This storage will write back the Meta stored to the base path to reference.
  */
 open class ReferencingCodingStorage: CodingStorage {
     
@@ -35,9 +35,9 @@ open class ReferencingCodingStorage: CodingStorage {
     // MARK: init
     
     /**
-     Creates a new ReferencingCodingStorage for base path that writes back to the given reference and uses storage as underlying delegate.
+     Creates a new ReferencingCodingStorage for a base path that writes back to the given reference and uses storage as the underlying delegate.
      
-     storage needs to be able to store a meta at basePath.
+     The storage needs to be able to store a Meta at basePath.
      */
     public init(referencing reference: Reference, delegatingTo storage: CodingStorage, at basePath: [CodingKey] ) {
         
@@ -134,27 +134,22 @@ fileprivate extension Array where Element == CodingKey {
     static func ==(lhs: [CodingKey], rhs: [CodingKey]) -> Bool {
         
         guard lhs.count == rhs.count else {
-            // if paths do not have equal lengths, they can not be equal
             return false
         }
         
         var lhsKey: CodingKey, rhsKey: CodingKey
         
-        // run through keys from the end to the start, to speed up the implementation
-        // typically paths will match on the first keys but diverge later
         for index in (0..<lhs.count).reversed() {
             
             lhsKey = lhs[ lhs.startIndex.advanced(by: index) ]
             rhsKey = rhs[ rhs.startIndex.advanced(by: index) ]
             
-            // compare by string values, asserting that their string values identify them
             guard lhsKey.stringValue == rhsKey.stringValue else {
                 return false
             }
             
         }
         
-        // if all keys matched (by string values) paths are seen as equal
         return true
         
     }

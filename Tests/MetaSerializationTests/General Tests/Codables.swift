@@ -9,7 +9,7 @@
  Concretely lines 1006 to 1520 are contained in this file.
  
  Large parts of the original content were removed,
- visibility modifiers were removed, some other lines were simply replaced.
+ visibility modifiers were removed, some other lines were replaced.
  
  The original license is included in this repository
  in the file SWIFT-LICENSE.txt.

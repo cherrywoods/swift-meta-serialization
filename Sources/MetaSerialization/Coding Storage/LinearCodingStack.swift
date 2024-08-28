@@ -2,7 +2,7 @@
 //  LinearCodingStack.swift
 //  MetaSerialization
 //
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -20,28 +20,26 @@
 import Foundation
 
 /**
- A `CodingStorage` that stores it's metas on a stack.
+ A `CodingStorage` that stores it's Metas on a stack.
  
  This coding stack requires a strictly sequential (de|en)coding process.
  */
 open class LinearCodingStack: CodingStorage {
     
-    /**
-     Stores the metas.
-     */
     private var stack: [Meta]
     
-    // MARK: working with coding paths
-    
-    /// simply projects paths to their length
+    /** 
+     Coding paths do not need to be contained in the stack up to this depth. Beyond it they need to.
+     For working with sub-encodes and -decoders.
+    */
+    private let initialDepth: Int
+
+    /// Projects paths to the number of elements in this (sub)-stack
     private func convertToIndex(codingPath: [CodingKey]) -> Int {
         
-        return codingPath.count - tolerationDepth
+        return codingPath.count - initialDepth
         
     }
-    
-    /// coding paths do not need to be contained in the stack up to this depth. Beyond it they need to.
-    private let tolerationDepth: Int
     
     // MARK: initalization
     
@@ -50,7 +48,7 @@ open class LinearCodingStack: CodingStorage {
         
         // unconditionally store a placeholder at the root path.
         self.stack = [ PlaceholderMeta.instance ]
-        self.tolerationDepth = root.count
+        self.initialDepth = root.count
         
     }
     
@@ -96,7 +94,7 @@ open class LinearCodingStack: CodingStorage {
             
         } else {
             
-            // if index is bigger than the last used index
+            // if index is larger than the last used index
             // there is no value stored
             return false
             

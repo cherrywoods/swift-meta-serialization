@@ -2,7 +2,7 @@
 //  MetaContainers.swift
 //  MetaSerialization
 //
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -21,12 +21,12 @@ import Foundation
 
 /**
  A container wrapping a certain value.
- This container is used at the meta or in between stage of encoding and decoding that MetaSerialization performs.
+ This container is used at the Meta or in between stage of encoding and decoding that MetaSerialization performs.
  */
 public protocol Meta {}
 
 /**
- Protocol for metas indicating null/nil or no value contained.
+ Protocol for Metas indicating null/nil or no value contained.
  Please note that MetaSerializations `NilMarker` type is an default implementation of this protocol.
  */
 public protocol NilMeta: Meta {}

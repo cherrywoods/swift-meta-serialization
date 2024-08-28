@@ -2,7 +2,7 @@
 //  CodingKeys.swift
 //  meta-serialization
 //
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -19,16 +19,15 @@
 
 import Foundation
 
-/// A special coding key represents an index in an unkeyed container
+/// A special coding key represents an index in an unkeyed container.
 public struct IndexCodingKey: CodingKey {
     
-    /// the index
     public let intValue: Int?
     
     /**
-     construct a new IndexCodingKey by passing an index.
-     This initalizer will fail, if intValue is not a valid index, i.e. is smaller than 0
-     - Paramter intValue: the index. Must be larger or equal than 0, otherwise the initalizer will fail
+     Construct a new `IndexCodingKey` by passing an index.
+     This initalizer will fail if intValue is not a valid index (if it is smaller than 0).
+     - Paramter intValue: the index. Must be larger or equal than 0.
      */
     public init?(intValue: Int) {
         
@@ -41,15 +40,14 @@ public struct IndexCodingKey: CodingKey {
     
     // MARK: casting to and from strings
     
-    /// will return the index as string value
+    /// Returns the index as string value.
     public var stringValue: String {
         return "\(intValue!)"
     }
     
     /**
-     constructs a new IndexCodingKey from the given sting, that needs to be base 10 encoded intenger representation.
-     this initalizer used Int(_ description: String) to convert stringValue
-     see Int(_ description: String) for mere details about which strings will succeed
+     Constructs a new IndexCodingKey from the given sting that needs to be a base 10 encoded intenger.
+     This initalizer use Int(_ description: String) to convert the `stringValue`.
      */
     public init?(stringValue string: String) {
         
@@ -63,27 +61,26 @@ public struct IndexCodingKey: CodingKey {
     
 }
 
-/// An enumeration of all special coding keys meta-serialization will use
+/// An enumeration of all special coding keys meta-serialization uses.
 public enum SpecialCodingKey: StandardCodingKey {
     
-    /// used by the super(Encoder|Decoder)() methods in MetaKeyed(Encoding|Decoding)Containers
-    case `super` = "super,0" // documentation says, that the int value of a super key is 0
+    /// Used by the `superEncoder()` and `superDecoder()` methods in `MetaKeyedEncodingContainer` and `MetaKeyedDecodingContainer`.
+    case `super` = "super,0" // documentation says that the int value of a super key is 0
     
 }
 
 /**
  A CodingKey type initalizable with any string or int value.
  
- This coding key type is exapressible by a string literal in the form `<stringValue>,<intValue>`
+ This coding key type is can be represented by a string literal in the form `<stringValue>,<intValue>`
  where `<stringValue>` it the keys string value and `<intValue>` is the keys int value.
  You may ommit `,<intValue>`, in which case the coding key will have no int value.
  You may also ommit `<stringValue>` in which case coding keys stringValue will be "\(intValue)".
  
- Therefor valid string literals for a coding key are:
+ Valid string literals for a coding key are:
   * `<stringValue>,<intValue>`
   * `<stringValue>`
   * `,<intValue>`
- If the string literal includes more than one `,` sequence, only the string after the last occurence will be interpreted as int value.
  
  If <intValue> isn't convertible to Int, the coding key will be initalizes with the while string literal as stringValue and without an intValue.
  */
@@ -103,7 +100,7 @@ public struct StandardCodingKey: CodingKey, ExpressibleByStringLiteral, Equatabl
         self.stringValue = stringValue
     }
  
-    /// Sets stringValue to "\(intValue)"
+    /// Sets stringValue to "\(intValue)".
     public init?(intValue: Int) {
         self.init(stringValue: "\(intValue)", intValue: intValue)
     }

@@ -1,8 +1,8 @@
 //
 //  PerformanceTests.swift
-//  MetaSerializationTests-iOS
+//  MetaSerializationTests
 //  
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -56,9 +56,6 @@ class PerformanceTests: XCTestCase {
     
     // MARK: - Array
     
-    // this performace test will encode a large array of single values
-    // by doing this it should test mainly the performance of the encode and wrap methods.
-    
     func testPerformanceOfEncodingSingleValuesLinearCodingStack() {
         
         self.measure {
@@ -80,9 +77,6 @@ class PerformanceTests: XCTestCase {
     }
 
     // MARK: - Tree
-    
-    // this performace test will encode a large array of single values
-    // by doing this it should test mainly the performance of the encode and wrap methods.
     
     func testPerformanceOfEncodingDeeplyNestedLinearCodingStack() {
         

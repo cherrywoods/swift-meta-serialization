@@ -1,8 +1,8 @@
 //
 //  ShortExample.swift
-//  MoreTests
+//  TestAssertionGuarded
 //  
-//  Copyright 2024 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
 import Foundation
 import MetaSerialization
 
-// this example is based on example3
+// This example is based on Example3
 
 struct ShortExampleSerialization: Serialization {
     

@@ -2,7 +2,7 @@
 //  SingleValueEncodingContainer.swift
 //  meta-serialization
 //
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
 import Foundation
 
 /**
- Manages all kinds of metas, that represent some kind of single value
+ Manages Metas, that represent a single value (for example, a String or Int).
  */
 open class MetaSingleValueEncodingContainer: SingleValueEncodingContainer {
     
@@ -58,8 +58,8 @@ open class MetaSingleValueEncodingContainer: SingleValueEncodingContainer {
     
     public func encode<T>(_ value: T) throws where T : Encodable {
         
-        // MetaEncoder stores a placeholder when singleValueContainer is called
-        // if there is now another meta stored at this path, another meta
+        // MetaEncoder stores a placeholder when singleValueContainer is called.
+        // If there is now another Meta stored at this path, another Meta
         // has already been encoded.
         
         guard !encoder.storage.storesMeta(at: codingPath) else {

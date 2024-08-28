@@ -2,7 +2,7 @@
 //  UnkeyedEncodingContainer.swift
 //  meta-serialization
 //
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -20,21 +20,21 @@
 import Foundation
 
 /**
- Manages a EncodingUnkeyedContainerMeta
+ Manages a EncodingUnkeyedContainerMeta (for example, an Array).
  */
 open class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
     
     // MARK: properties
     
     /**
-     A reference to this containers underlying `EncodingUnkeyedContainerMeta`
+     A reference to this containers underlying `EncodingUnkeyedContainerMeta`.
      */
     open var reference: Reference
     
     /**
      The encoder that created this container.
      
-     Encoding, creating new containers and creating super encoders is delegated to it.
+     Encoding, creating new containers, and creating super encoders is delegated to this encoder.
      */
     public let encoder: MetaEncoder
     
@@ -134,7 +134,7 @@ open class MetaUnkeyedEncodingContainer: UnkeyedEncodingContainer {
     /**
      Create a new reference for the element at the given index.
      
-     nestedContainer, nestedUnkeyedContainer and superEncoder use this method to create element references.
+     The nestedContainer, nestedUnkeyedContainer, and superEncoder methods use this method to create element references.
      */
     open func createElementReference(for index: Int) -> Reference {
         

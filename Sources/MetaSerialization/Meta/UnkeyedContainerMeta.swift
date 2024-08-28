@@ -2,7 +2,7 @@
 //  UnkeyedContainerMeta.swift
 //  MetaSerialization
 //  
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -31,17 +31,16 @@ extension UnkeyedContainerMeta {
 
 public protocol EncodingUnkeyedContainerMeta: Meta {
     
-    /// The number of elements in the container ( 0 if no element is contained).
+    /// The number of elements in the container (0 if no element is contained).
     var numberOfMetas: Int { get }
     
     /**
-     Returns the element at the given index
-     or nil, if the index is smaller than 0 or bigger or equal than count.
+     Returns the element at the given index or nil, if the index is smaller than 0 or larger or equal than count.
      */
     func get(at index: Int) -> Meta?
     
     /**
-     Inserts or appends the given meta at index.
+     Inserts or appends the given Meta at index.
      Index may be equals count (in this case you should append), but not larger.
      */
     mutating func insert(_ meta: Meta, at index: Int)
@@ -51,15 +50,14 @@ public protocol EncodingUnkeyedContainerMeta: Meta {
 public protocol DecodingUnkeyedContainerMeta: Meta {
     
     /**
-     The number of metas in the container, if this number is known.
+     The number of Metas in the container, if this number is known.
      
      Returns nil, if the number is unknown.
      */
     var numberOfMetasIfKnown: Int? { get }
     
     /**
-     Returns the element at the given index
-     or nil, if the index is smaller than 0 or bigger or equal than count.
+     Returns the element at the given index or nil, if the index is smaller than 0 or larger or equal than count.
      */
     func get(at index: Int) -> Meta?
     

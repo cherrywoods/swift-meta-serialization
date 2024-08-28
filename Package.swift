@@ -35,7 +35,7 @@ let package = Package(
                 "Examples/README.md",
                 "Examples/Example1/README.md",
                 "Examples/Example3/README.md",
-                "Examples/DynamicUnwrap/README.md",
+                "Examples/Example2 DynamicUnwrap/README.md",
             ]
         ),
         .testTarget(

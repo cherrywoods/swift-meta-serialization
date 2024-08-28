@@ -1,8 +1,8 @@
 output: docs
 author: cherrywoods
-copyright: '© 2016 cherrywoods under [Apache 2.0 license](https://github.com/cherrywoods/swift-meta-serialization/blob/master/LICENSE).'
+copyright: '© 2024 cherrywoods under [Apache 2.0 license](https://github.com/cherrywoods/swift-meta-serialization/blob/master/LICENSE).'
 module: MetaSerialization
-module_version: 2.0
+module_version: 2.3
 readme: docs/Guides/README.md
 documentation: docs/Guides/*.md
 github_url: https://github.com/cherrywoods/swift-meta-serialization

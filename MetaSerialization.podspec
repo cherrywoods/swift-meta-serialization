@@ -6,8 +6,8 @@
 Pod::Spec.new do |s|
 
   s.name         = "MetaSerialization"
-  s.version      = "2.1.0"
-  s.summary      = "A framework to simplify the creation of new serialisation-frameworks for the swift standard library serialization environment"
+  s.version      = "2.3.0"
+  s.summary      = "A framework to simplify the creation of new serialisation frameworks for the Swift standard library serialization environment"
 
   s.homepage     = "https://github.com/cherrywoods/swift-meta-serialization"
 

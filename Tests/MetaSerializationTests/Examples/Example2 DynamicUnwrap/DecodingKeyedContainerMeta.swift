@@ -2,7 +2,7 @@
 //  DecodingKeyedContainerMeta.swift
 //  MetaSerialization
 //  
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ struct Example2DecodingKeyedContainerMeta: DecodingKeyedContainerMeta {
     
     let values: Dictionary<String, Example2Meta>
     
-    /// Returns a new decoding container meta, if array can be seen a keyed container.
+    /// Returns a new decoding container Meta, if array can be seen a keyed container.
     init?(array: [Example2Meta]) {
         
         guard !array.isEmpty else {
@@ -34,7 +34,7 @@ struct Example2DecodingKeyedContainerMeta: DecodingKeyedContainerMeta {
         }
         
         guard array.count % 2 == 0 else {
-            // if the number of elements isn't just, it can't be an array of key value pairs.
+            // if the number of elements isn't even, it can't be an array of key value pairs.
             return nil
         }
         

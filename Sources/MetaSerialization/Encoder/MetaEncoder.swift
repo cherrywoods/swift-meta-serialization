@@ -2,7 +2,7 @@
 //  MetaCoder.swift
 //  MetaSerialization
 //
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ open class MetaEncoder: Encoder {
 
     // MARK: - translator
 
-    /// The translator used to get and finally translate Metas
+    /// The translator used to get and translate Metas
     public let metaSupplier: MetaSupplier
 
     // MARK: - storage
@@ -66,7 +66,8 @@ open class MetaEncoder: Encoder {
      Wraps a value to a meta using `metaSupplier.wrap` and calling `value.encode` if `metaSupplier.wrap` returned nil.
 
      If value conforms to `DirectlyEncodable`, or is an `Int`, `Int8`, `Int16`, `Int32`, `Int64`, `UInt`, `UInt8`, `UInt16`, `UInt32`, `UInt64`, `Float`, `Double`, `Bool` or `String` and
-     not supported directly by meta supplier (this means `metaSupplier.wrap` returns nil), this method throws `EncodingError.invalidValue`. This is required because otherwise, these types would endlessly try to encode themselves into single value containers.
+     not supported directly by meta supplier (this means `metaSupplier.wrap` returns nil), this method throws `EncodingError.invalidValue`. 
+     This is required because, otherwise, these types would endlessly try to encode themselves into single value containers.
 
      - Parameter value: The value to wrap
      - Parameter key: The key at which `value` should be encoded. This encoders coding path is extended with this key. If key is nil, the coding path isn't extended.
@@ -90,13 +91,14 @@ open class MetaEncoder: Encoder {
 
         /*
          Need to throw an error, if value is an Int, Int8, Int16, Int32, Int64, UInt, UInt8, UInt16, UInt32, UInt64, Float, Double, Bool or String
-         but isn't supported by the translator,
-         because if not, an endless callback would follow
+         but isn't supported by the translator.
+         If we didn't do this, the value would try to encode itself again in a SingleValueContainer, leading to
+         an endless recursion.
          see Foundation Primitive Codables.swift for more information.
 
          The same applies for DirectlyEncodable.
 
-         We also need to throw an error, if value is an NilMarker
+         We also need to throw an error if value is an NilMarker
          instance, because if we did not, nil values would encode
          as empty containers.
 
@@ -122,7 +124,7 @@ open class MetaEncoder: Encoder {
         } catch {
             
             // remove the placeholder that was stored at the path
-            // (or any incomplete metas)
+            // (or any incomplete Metas)
             // this makes it possible to encode another value, if an error was thrown
             _ = ((try? storage.remove(at: path)) as Meta??)
             throw error

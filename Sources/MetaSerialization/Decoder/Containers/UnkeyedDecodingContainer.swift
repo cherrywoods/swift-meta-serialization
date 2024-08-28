@@ -2,7 +2,7 @@
 //  UnkeyedDecodingContainer.swift
 //  meta-serialization
 //
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -20,19 +20,19 @@
 import Foundation
 
 /**
- Manages a DecodingUnkeyedContainerMeta
+ Manages a DecodingUnkeyedContainerMeta (for example, an Array).
  */
 open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     
     /**
-     This MetaUnkeyedDecodingContainer's meta.
+     This MetaUnkeyedDecodingContainer's Meta.
      */
     public let meta: DecodingUnkeyedContainerMeta
     
     /**
-     The decoder that created this container.
+     The Decoder that created this container.
      
-     Decoding, creating new containers and creating super decoders is delegated to it.
+     Decoding, creating new containers, and creating super decoders is delegated to it.
      */
     public let decoder: MetaDecoder
     
@@ -138,14 +138,14 @@ open class MetaUnkeyedDecodingContainer: UnkeyedDecodingContainer {
 
     // MARK: Utilities
     
-    /// An utility computed property, that returns a coding key for the current index.
+    /// An utility computed property that returns a coding key for the current index.
     public var currentCodingKey: CodingKey {
         
         return IndexCodingKey(intValue: self.currentIndex)!
         
     }
     
-    /// An utility method that accesses the meta stored at the current index and throws an error, if not value is present.
+    /// An utility method that accesses the Meta stored at the current index and throws an error if not value is present.
     public func accessMetaAtCurrentIndex() throws -> Meta {
         
         guard let subMeta = meta.get(at: currentIndex) else {

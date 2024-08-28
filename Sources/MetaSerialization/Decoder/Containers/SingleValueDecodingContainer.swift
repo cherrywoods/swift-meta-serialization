@@ -2,7 +2,7 @@
 //  SingleValueDecodingContainer.swift
 //  meta-serialization
 //
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -20,17 +20,17 @@
 import Foundation
 
 /**
- Manages all kinds of metas, that represent some kind of single value
+ Manages all Metas, that represent a single value (for example, a String or an Int).
  */
 open class MetaSingleValueDecodingContainer: SingleValueDecodingContainer {
     
     /**
-     This MetaSingleValueDecodingContainer's meta.
+     This MetaSingleValueDecodingContainer's Meta.
      */
     public let meta: Meta
     
     /**
-     The decoder that created this container.
+     The Decoder that created this container.
      
      Decoding is delegated to it.
      */

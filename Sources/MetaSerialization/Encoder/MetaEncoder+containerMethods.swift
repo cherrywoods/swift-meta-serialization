@@ -2,7 +2,7 @@
 //  MetaEncoder+containerMethods.swift
 //  MetaSerialization
 //
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -38,7 +38,6 @@ public extension MetaEncoder {
         }
 
         let reference = Reference.direct(storage, path)
-        // only create a new container, if there isn't already one
         return container(keyedBy: keyType, referencing: reference, at: path, createNewContainer: !alreadyStoringContainer)
 
     }
@@ -65,7 +64,7 @@ public extension MetaEncoder {
 
         // A little bit strangely but not easily preventable,
         // a entity can request a keyed or unkeyed container
-        // and then request a SingleValueContainer reffering to the meta of the keyed or unkeyed container.
+        // and then request a SingleValueContainer referring to the Meta of the keyed or unkeyed container.
 
         let path = codingPath
         let reference = Reference.direct(storage, path)

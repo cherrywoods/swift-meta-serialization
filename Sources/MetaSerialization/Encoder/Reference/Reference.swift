@@ -2,7 +2,7 @@
 //  Reference.swift
 //  MetaSerialization
 //
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -18,9 +18,9 @@
 //
 
 /**
- A reference to some meta, eigther on the storage, or inside another container meta.
+ A reference to some Meta, eigther on the storage, or inside another container Meta.
  
- References are used to rewrite copy types directly to the place where they are stored.
+ References are used to rewrite copy types (structs) directly to the place where they are stored.
  */
 public enum Reference {
     
@@ -29,7 +29,7 @@ public enum Reference {
     /// A reference to an element inside another container.
     case containerElement( ContainerElementReference )
     
-    /// The referenced meta.
+    /// The referenced Meta.
     public var meta: Meta {
         
         get {
@@ -59,7 +59,7 @@ public enum Reference {
 }
 
 /**
- References a value inside another container meta.
+ References a value inside another container Meta.
  */
 public protocol ContainerElementReference {
     
@@ -69,7 +69,7 @@ public protocol ContainerElementReference {
 }
 
 /**
- References an element in any keyed container meta. This meta may be in the storage of another container or directly on the stack.
+ References an element in any keyed container Meta. This Meta may be in the storage of another container or directly on the stack.
  */
 public struct KeyedContainerElementReference: ContainerElementReference {
     
@@ -89,7 +89,7 @@ public struct KeyedContainerElementReference: ContainerElementReference {
     }
     
     /**
-     Inits a new keyed container element reference.
+     Initializes a new keyed container element reference.
      
      - Parameter ref: The underlying reference.
      - codingKey: The codingKey that identifies the element to reference.
@@ -120,7 +120,7 @@ public struct KeyedContainerElementReference: ContainerElementReference {
 }
 
 /**
- References an element in any unkeyed container meta. This meta may be in the storage of another container or directly on the stack.
+ References an element in any unkeyed container Meta. This Meta may be in the storage of another container or directly on the stack.
  */
 public struct UnkeyedContainerElementReference: ContainerElementReference {
     
@@ -140,7 +140,7 @@ public struct UnkeyedContainerElementReference: ContainerElementReference {
     }
     
     /**
-     Inits a new unkeyed container element reference.
+     Initializes a new unkeyed container element reference.
      
      Before calling this method, make sure that ref.meta is a EncodingUnkeyedContainerMeta and index is accessible.
      

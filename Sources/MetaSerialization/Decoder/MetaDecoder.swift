@@ -2,7 +2,7 @@
 //  MetaDecoder.swift
 //  MetaSerialization
 //
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@
 
 import Foundation
 
-/// A `Decoder` that decodes from a `Meta` instead from a concrete format.
+/// A `Decoder` that decodes from a Meta instead from a concrete format.
 open class MetaDecoder: Decoder {
 
     // MARK: - general properties
@@ -35,7 +35,7 @@ open class MetaDecoder: Decoder {
 
     // MARK: - storage
 
-    /// A StorageAccessor to this decoder's private storage
+    /// Access to to this decoder's private storage
     open var storage: CodingStorage
 
     // MARK: - initalization
@@ -45,8 +45,8 @@ open class MetaDecoder: Decoder {
 
      - Parameter codingPath: The coding path this decoder will start at.
      - Parameter userInfo: additional information to provide context during decoding.
-     - Parameter unwrapper: The `Unwrapper` the decoder will use to unwrap metas. If options contains the `.dynamicallyUnwindMetaTree` option, this unwrapper needs to conform to `ContainerUnwrapper` additionally. If it does not, this initalizer will crash.
-     - Parameter storage: A empty CodingStorage that should be used to store metas.
+     - Parameter unwrapper: The `Unwrapper` the decoder will use to unwrap Metas.
+     - Parameter storage: A empty CodingStorage that should be used to store Metas.
      */
     public init(at codingPath: [CodingKey] = [],
                 with userInfo: [CodingUserInfoKey : Any] = [:],
@@ -63,11 +63,11 @@ open class MetaDecoder: Decoder {
     // MARK: - upwrap
 
     /**
-     Unwraps a meta to a real value using `unwrapper.unwrap` and calling `type.init(from:)` if `unwrapper.unwrap` returned nil.
+     Unwraps a meta to a proper Swift value using `unwrapper.unwrap` and calling `type.init(from:)` if `unwrapper.unwrap` returned nil.
 
-     - Parameter meta: the Meta to unwrap, if you pass nil, the meta at this decoders current coding path will be used.
-     - Parameter type: The type to unwrap to
-     - Parameter key: The key at which meta should be decoded. This decoders coding path is extended with this key.
+     - Parameter meta: the Meta to unwrap. If you pass nil, the Meta at this decoders current coding path is deconded.
+     - Parameter type: The Swift type to unwrap to.
+     - Parameter key: The key at which the Meta is to be decoded. This decoders coding path is extended with this key.
      - Throws: DecodingError and CodingStorageError
      */
     open func unwrap<D: Decodable>(_ meta: Meta? = nil,
@@ -80,12 +80,9 @@ open class MetaDecoder: Decoder {
         defer { if key != nil { codingPath.removeLast() } }
         let path = codingPath
 
-        // only store meta, if it isn't nil,
-        // because if it is nil, we use a meta that is already stored
         let storeMeta = meta != nil
         let meta = meta ?? storage[codingPath]
 
-        // do only store and remove a meta, if storeMeta is true
         if storeMeta { try storage.store(meta: meta, at: path) }
         // defer removal to restore the decoder storage if an error was thrown in type.init or in unwrap
         defer { if storeMeta { _ = try! storage.remove(at:path) } }
@@ -122,7 +119,7 @@ open class MetaDecoder: Decoder {
 
     // MARK: - nil values
     
-    /// Checks whether the given meta represents a nil meta. Tries to dynamically unwrap meta if specified.
+    /// Checks whether the given Meta represents a NilMeta. Tries to dynamically unwrap Meta if specified.
     open func representsNil(meta passedMeta: Meta) -> Bool {
         
         // also unwrap nil requests
@@ -134,7 +131,7 @@ open class MetaDecoder: Decoder {
     // MARK: - container(for: meta) methods
 
     /**
-     Create a new KeyedDecodingContainer for the given meta, if it is a DecodingKeyedContainerMeta.
+     Create a new KeyedDecodingContainer for the given Meta, if it is a DecodingKeyedContainerMeta.
 
      If it is not, throw DecodingError.typeMissmatch.
      */
@@ -161,7 +158,7 @@ open class MetaDecoder: Decoder {
     }
     
     /**
-     Create a new UnkeyedDecodingContainer for the given meta, if it is a DecodingUnkeyedContainerMeta.
+     Create a new UnkeyedDecodingContainer for the given Meta, if it is a DecodingUnkeyedContainerMeta.
 
      If it is not, throw DecodingError.typeMissmatch.
      */
@@ -187,7 +184,7 @@ open class MetaDecoder: Decoder {
     }
     
     /**
-     Create a new SingleValueDecodingContainer for the given meta.
+     Create a new SingleValueDecodingContainer for the given Meta.
      */
     open func singleValueContainer(for meta: Meta, at codingPath: [CodingKey]) throws -> SingleValueDecodingContainer {
 
@@ -198,7 +195,7 @@ open class MetaDecoder: Decoder {
     // MARK: - super decoder
 
     /**
-     Creates a new decoder that decodes the given meta. This decoder can for example be used as super decoder.
+     Creates a new decoder that decodes the given Meta. This decoder can for example be used as super decoder.
      */
     open func decoder(for meta: Meta, at codingPath: [CodingKey]) throws -> Decoder {
 
@@ -214,7 +211,7 @@ open class MetaDecoder: Decoder {
     /**
      Creates a new decoder with the given storage.
      
-     This method serves as delegate for decoder(for:, at:)'s default implementation.
+     This method is used as delegate for decoder(for:, at:)'s default implementation.
      */
     open func decoderImplementation(storage: CodingStorage, at codingPath: [CodingKey] ) throws -> Decoder {
         

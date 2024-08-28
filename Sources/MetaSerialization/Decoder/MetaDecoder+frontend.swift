@@ -2,7 +2,7 @@
 //  MetaDecoder+frontend.swift
 //  MetaSerialization
 //
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -22,14 +22,14 @@ import Foundation
 public extension MetaDecoder {
     
     /**
-     Decodes a value of type D from the given meta tree.
+     Decodes a value of type D from the given Meta tree.
      
      Use this method rather than directly calling Decodable.init(from:).
      init(from:) will not detect types that are directly supported by the unwrapper.
      
-     There are some conditions `meta` and the metas contained in `meta` (refered to as "the meta tree") must meet:
+     There are some conditions `meta` and the Metas contained in `meta` (refered to as "the meta tree") must meet:
       * Any metas that should be seen as nil values by the decoder (for which `decodeNil` on e.g. `KeyedDecodingContainer` should return true) must conform to `NilMeta`.
-      * If you didn't set the `MetaDecoder.Options.dynamicallyUnwindMetaTree` option on this decoder, all metas that can be seen as keyed or unkeyed containers must conform to `DecodingKeyedContainerMeta`/`DecodingUnkeyedContainerMeta`, othwise these containers can not be detected. Alternatively consider setting `.dynamicallyUnwindMetaTree` and implementing the required container unwraping in `unwrap` of your `Unwrapper` implementation.
+      * All Metas that can be seen as keyed or unkeyed containers must conform to `DecodingKeyedContainerMeta`/`DecodingUnkeyedContainerMeta`, othwise these containers can not be detected. 
      
      - Parameter type: The type that should decoded.
      - Parameter meta: The meta tree the decoder should decode from.
@@ -39,7 +39,7 @@ public extension MetaDecoder {
         
         do {
             
-            // will store the decoded meta at the current path
+            // will store the decoded Meta at the current path
             // if it isn't directly supported by the translator
             // this current path should be the root path of decoder,
             // but in principle it is also possible to call this somewhere else

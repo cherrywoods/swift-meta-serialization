@@ -2,7 +2,7 @@
 //  PrimitivesProtocolTranslator.swift
 //  MetaSerialization
 //  
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -32,16 +32,16 @@ import Foundation
  If you wan't to allow nil values, extend NilMarker to conform to your marker protocol.
  
  Now create a PrimitivesProtocolTranslator with your marker protocol as generic Primitive parameter.
- If you pass this translator to a MetaEncoder, the encoder will create a meta tree that consists only of types conforming to your marker protocol,
+ If you pass this translator to a MetaEncoder, the encoder will create a Meta tree that consists only of types conforming to your marker protocol,
  Array<Meta> where the elements will also conform to your marker protocol and Dictionary<String,Meta> (again conforming to marker) (the string keys aren't aviodable per se).
  These arrays and dictionaries may be arbitrarily nested. Note that the arrays (and dictionaries)
  will be of type Array<Meta> and not Array<YourMarkerProtocol> but you may safely assume that they conform to your marker protocol.
  
- The definition of PrimitivesProtocolTranslator does not require Primitive to conform to Meta.
- However all your types need to conform to meta, otherwise the encoding process will crash at some point.
+ The definition of PrimitivesProtocolTranslator does not require Primitive to conform to `Meta``.
+ However all your types need to conform to `Meta`, otherwise the encoding process will crash at some point.
  This requirement isn't implemented in the first place, because otherwise it was not possible to set Primitive to a protocol that simply.
  
- There is another issue right now: PrimitivesProtocolTranslator needs two Generic parameters because of an inconsistency in swift's type checking realted to protocols as generic paramters (https://bugs.swift.org/browse/SR-6872?jql=text%20~%20%22type%20check%20with%20protocol%22). If YourMarkerProtocol is your marker protocol the first type parameter should be YourMarkerProtocol and the second type should be YourMarkerProtocol.Type.
+ There is another issue right now: PrimitivesProtocolTranslator needs two Generic parameters because of an inconsistency in Swift's type checking related to protocols as generic paramters (https://bugs.swift.org/browse/SR-6872?jql=text%20~%20%22type%20check%20with%20protocol%22). If YourMarkerProtocol is your marker protocol the first type parameter should be YourMarkerProtocol and the second type should be YourMarkerProtocol.Type.
  ```
  protocol YourMarker: Meta {}
  let translator = PrimitivesProtocolTranslator<YourMarker, YourMarker.Type>()

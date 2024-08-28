@@ -2,7 +2,7 @@
 //  KeyedCodingContainer.swift
 //  meta-serialization
 //
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
 import Foundation
 
 /**
- Manages a EncodingKeyedContainerMeta
+ Manages a EncodingKeyedContainerMeta (for example, a Dictionary).
  */
 open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProtocol {
     
@@ -29,14 +29,14 @@ open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProto
     // MARK: properties
     
     /**
-     A reference to this containers underlying `EncodingKeyedContainerMeta`
+     A reference to this containers underlying `EncodingKeyedContainerMeta`.
      */
     open var reference: Reference
     
     /**
      The encoder that created this container.
      
-     Encoding, creating new containers and creating super encoders is delegated to it.
+     Encoding, creating new containers, and creating super encoders is delegated to this encoder.
      */
     public let encoder: MetaEncoder
     
@@ -130,7 +130,7 @@ open class MetaKeyedEncodingContainer<K: CodingKey>: KeyedEncodingContainerProto
     /**
      Create a new reference for the element at the given coding key.
      
-     nestedContainer, nestedUnkeyedContainer and superEncoder use this method to create element references.
+     The nestedContainer, nestedUnkeyedContainer, and superEncoder methods use this method to create element references.
      */
     open func createElementReference(for key: CodingKey) -> Reference {
         

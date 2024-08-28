@@ -2,7 +2,7 @@
 //  PerformanceTestsCodables.swift
 //  MetaSerialization
 //  
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@
 
 import Foundation
 
-/// A recursive tree structure (with controlable nesting grade)
+/// A recursive tree structure.
 struct Tree<T>: Codable where T: Codable {
     
     fileprivate var root: Node<T>

@@ -1,8 +1,8 @@
 //
-//  Dynamic.swift
+//  Example2Translator.swift
 //  MetaSerialization
 //  
-//  Copyright 2018 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ struct Example2Translator: MetaSupplier, Unwrapper {
     
     func wrap<T: Encodable>(_ value: T, for encoder: MetaEncoder) throws -> Meta? {
         
-        // supply metas for Strings, Doubles, Int, all LosslessStringConvertible types
+        // Supply Metas for Strings, Doubles, Int, all LosslessStringConvertible types
         if value is LosslessStringConvertible {
             
             return Example2Meta.string( (value as! LosslessStringConvertible).description )
