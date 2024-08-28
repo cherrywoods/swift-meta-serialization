@@ -21,13 +21,18 @@ import XCTest
 import Quick
 
 @testable import MetaSerializationTests
+@testable import TestAssertionGuarded 
 
 @main struct Main {
     static func main() {
         Quick.QCKMain(
             [CodingKeySpec.self, Example1Spec.self, Example2Spec.self, Example3Spec.self], 
             configurations: [], 
-            testCases: [testCase(PerformanceTests.allTests)]
+            testCases: [
+                testCase(PerformanceTests.allTests), 
+                testCase(DirectlyCodableTests.allTests),
+                testCase(TestCodingStorageErrorCatching.allTests),
+            ]
         )
     }
 }

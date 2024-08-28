@@ -15,9 +15,16 @@ import MetaSerialization
 
 /// Tests that no CodingStorageErrors reaches to the end user
 class TestCodingStorageErrorCatching: XCTestCase {
+
+    static var allTests = [
+        ("testEncodingError", testEncodingError),
+        ("testDecodingError", testDecodingError),
+    ]
     
     func testEncodingError() throws {
-        throw XCTSkip("This test hits an assertionFailure, crashing the test run")
+        #if DEBUG
+            throw XCTSkip("Run in release mode (swift test -c release) to run this test")
+        #endif
 
         let encoder = MetaEncoder(metaSupplier: ErrornousTranslator(), storage: ThrowingStorage())
         
@@ -43,7 +50,9 @@ class TestCodingStorageErrorCatching: XCTestCase {
     }
     
     func testDecodingError() throws {
-        throw XCTSkip("This test hits an assertionFailure, crashing the test run")
+        #if DEBUG
+            throw XCTSkip("Run in release mode (swift test -c release) to run this test")
+        #endif
 
         let decoder = MetaDecoder(unwrapper: ErrornousTranslator(), storage: ThrowingStorage())
         

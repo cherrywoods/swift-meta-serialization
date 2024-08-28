@@ -21,7 +21,18 @@ let package = Package(
                 .target(name: "MetaSerialization")
             ], 
             exclude: [
-                "MetaSerializationTests/Info.plist"
+                "Info.plist"
+            ]
+        ),
+        .testTarget(
+            name: "TestAssertionGuarded",
+            dependencies: [
+                .byName(name: "Quick"),
+                .byName(name: "Nimble"),
+                .target(name: "MetaSerialization")
+            ], 
+            exclude: [
+                "Info.plist"
             ]
         )
     ]

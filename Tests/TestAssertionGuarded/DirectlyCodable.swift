@@ -2,7 +2,7 @@
 //  DirectlyCodable.swift
 //  MoreTests
 //  
-//  Copyright 2018 cherrywoods
+//  Copyright 2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -18,12 +18,18 @@
 // 
 
 import XCTest
-import MetaSerialization
+@testable import MetaSerialization
 
 class DirectlyCodableTests: XCTestCase {
+
+    static var allTests = [
+        ("testDirecltyCodable", testDirecltyCodable),
+    ]
     
     func testDirecltyCodable() throws {
-        throw XCTSkip("This test hits an assertionFailure, crashing the test run")
+        #if DEBUG
+            throw XCTSkip("Run in release mode (swift test -c release) to run this test")
+        #endif
         
         let wrapper = BadWrapper(value: CoffeeLevel.testValue)
         let serialization = ShortExampleSerialization()
