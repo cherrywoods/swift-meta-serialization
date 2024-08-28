@@ -12,7 +12,16 @@ let package = Package(
         .package(url: "https://github.com/Quick/Nimble.git", from: "12.0.0"),
     ],
     targets: [
-        .target(name: "MetaSerialization"),
+        .target(
+            name: "MetaSerialization",
+            exclude: [
+                "Info.plist",
+                "README.md",
+                "Encoder/README.md",
+                "Decoder/README.md",
+                "Coding Storage/README.md",
+            ]
+        ),
         .testTarget(
             name: "MetaSerializationTests",
             dependencies: [
@@ -21,7 +30,12 @@ let package = Package(
                 .target(name: "MetaSerialization")
             ], 
             exclude: [
-                "Info.plist"
+                "Info.plist",
+                "README.md",
+                "Examples/README.md",
+                "Examples/Example1/README.md",
+                "Examples/Example3/README.md",
+                "Examples/DynamicUnwrap/README.md",
             ]
         ),
         .testTarget(
@@ -32,7 +46,8 @@ let package = Package(
                 .target(name: "MetaSerialization")
             ], 
             exclude: [
-                "Info.plist"
+                "Info.plist",
+                "README.md"
             ]
         )
     ]
