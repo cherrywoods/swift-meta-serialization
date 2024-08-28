@@ -1,8 +1,8 @@
 //
-//  SuperShortExample.swift
+//  ShortExample.swift
 //  MoreTests
 //  
-//  Copyright 2018 cherrywoods
+//  Copyright 2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -83,7 +83,7 @@ struct ShortExampleSerialization: Serialization {
             
             var meta = [Meta]()
             
-            // this will sufficently split values and komma separators
+            // this will sufficently split values and comma separators
             let elements = raw.dropFirst( "unkeyed;".count ).split(separator: "*")
             
             // now filter out the separators by dropping every secoding element which should be ,

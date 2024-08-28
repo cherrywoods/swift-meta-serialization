@@ -23,9 +23,9 @@ import Nimble
 
 class Example2Spec: QuickSpec {
     
-    override func spec() {
+    override class func spec() {
         
-        let standardTests = StandardBehavior(serialization: Example2.serialization)
+        let standardTests = StandardBehavior(serialization: Example2.serialization, qs: self)
         standardTests.test(expected: [ "empty" : Example2Meta.array([]),
                                        "empty unkeyed" : Example2Meta.array([]),
                                        "person" : Example2Meta.array([.string("name"), .string("Johnny Appleseed"),
@@ -38,7 +38,7 @@ class Example2Spec: QuickSpec {
                                        "wrapped(EnhancedBool.fileNotFound)" : Example2Meta.array( [.string("value"), .string("nil")] ) ],
                            allowTopLevelSingleValues: false, allowNestedContainers: true, allowNils: true)
         
-        let stateRestoreTests = StateRestoringAfterThrow(serialization: Example2.serialization)
+        let stateRestoreTests = StateRestoringAfterThrow(serialization: Example2.serialization, qs: self)
         stateRestoreTests.test(information: [ "encoded" : Example2Meta.array( [ .string("should work") ]),
                                               "toDecode" : Example2Meta.array( [ .string("a"), .string("b"), .string("c") ] )] )
         

@@ -23,7 +23,7 @@ import Nimble
 
 class CodingKeySpec: QuickSpec {
     
-    override func spec() {
+    override class func spec() {
         
         describe("StandardCodingKey") {
             
