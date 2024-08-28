@@ -21,7 +21,7 @@ let package = Package(
                 .target(name: "MetaSerialization")
             ], 
             exclude: [
-                "Tests/Info.plist"
+                "MetaSerializationTests/Info.plist"
             ]
         )
     ]
