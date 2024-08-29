@@ -2,7 +2,7 @@
 //  BasicUsage.playground
 //  MetaSerialization
 //
-//  Copyright 2024 cherrywoods
+//  Copyright 2018-2024 cherrywoods
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -23,23 +23,34 @@ import MetaSerialization
 /*
  
  This playground contains a simple example
- of using MetaSerialization
+ of using MetaSerialization to serialize Swift objects
+ into a simplified JSON format.
+
+ The fundamental idea is to use MetaSerialization to
+ transform Swift objects into a tree of nested Dictionaries
+ and Arrays. 
+ Subsequently, this playground converts this tree into a 
+ JSON string.
  
- It creates a simple Translator,
- that converts basic Swift objects 
- (String, Int, Array, and Dictionar)
+ To achieve this, it first creates a basic Translator object
+ that converts Strings, Ints, Arrays, and Dictionaries
  to a simplified JSON format.
- 
- Next, it creates a Serialization instance for that Translator
- and uses it so serialize complex Swift objects.
- 
+ Next, it creates a Serialization instance for this Translator
+ and uses it so serialize more complex Swift objects.
+
  */
 
-// MARK: - encoding to a simplified JSON format
 
+/**
+ Transform a Array or Dictionary of Strings, Ints, and further nested
+ Arrays and Dictionaries (type: Meta) into a JSON string.
+ */
 func convertToJSON(_ value: Meta) -> String {
     
-    // String and Int are the two supported types passed to PrimitivesEnumTranslator
+    // String and Int are two fundamental data types that 
+    // we support directly in this example.
+    // In a real-world application, you would also add Double,
+    // Int8, and other fundamental data types here.
     
     if let string = value as? String {
         
@@ -51,11 +62,7 @@ func convertToJSON(_ value: Meta) -> String {
         
     }
     
-    // both Arrays and Dictionarys already contain encoded values
-    
-    // Array and Dictionary always need
-    // to be supported when using PrimitivesEnumTranslator
-    
+    // Nested "containers": Array and Dictionary.
     if let array = value as? Array<Meta> {
         
         var json = "[ \n"
@@ -80,6 +87,10 @@ func convertToJSON(_ value: Meta) -> String {
     
 }
 
+/**
+ The other way around: JSON string to nested Array or Dictionary
+ of Strings and Ints.
+ */
 func convertToSwift(_ json: String) -> Meta {
     var json = json
     
@@ -111,7 +122,7 @@ func convertToSwift(_ json: String) -> Meta {
         }
         return dictionary
     default:
-        // this should be a number
+        // this should be an integer
         return Int(json)!
     }
     
@@ -125,24 +136,14 @@ func toSwift(_ value: Any) -> Any? {
     return convertToSwift(value as! String)
 }
 
-// MARK: - using MetaSerialization
+// Now: use MetaSerialization to support more complex Swift types.
+let serialization = SimpleSerialization<String>(
+    encodeFromMeta: convertToJSON,
+    decodeToMeta: convertToSwift
+)
+// That's all it takes!
 
-// Translators are a key part of MetaSerialization.
-// PrimitivesEnumTranslator is a basic implementation.
-// You will probably write a own implementation of the Translator protocol.
-
-let translator = PrimitivesEnumTranslator(primitives: [.string, .int])
-
-// and thats basically all of the code that is needed to encode
-// arbitrary Swift objects implementing Encodable
-
-let serialization = SimpleSerialization<String>(translator: translator,
-                                                encodeFromMeta: convertToJSON,
-                                                decodeToMeta: convertToSwift)
-
-// MARK: - Serialization
-
-// Some example objects
+// Now let's try it out!
 
 struct Shape: Codable {
     
@@ -151,18 +152,23 @@ struct Shape: Codable {
     
 }
 
+struct ShapeWorld: Codable {
+
+    let triangles: [Shape]
+    let squares: [Shape]
+    let other: [Shape]
+
+}
+
 let triange1 = Shape(numberOfSides: 3, sideLength: 4)
 let triange2 = Shape(numberOfSides: 3, sideLength: 1)
 let square: Shape = Shape(numberOfSides: 4, sideLength: 2)
 let hexagon: Shape = Shape(numberOfSides: 6, sideLength: 7)
 
-let triangles = [ triangle1, triange2 ]
-let dictionary = [ "triangles" : triangles, "squares" : [square], "hexagons" : [hexagon] ]
+let world = ShapeWorld(triangles: [triange1, triange2], squares: [square], other: [hexagon])
 
-// MARK: encoding
+// To JSON!
+let encoded = try! serialization.encode(world)
 
-let encoded = try! serialization.encode(dictionary)
-
-// MARK: decoding
-
-try! serialization.decode(toType: [String:Array[Shape]].self, from: encoded)
+// Back to Swift.
+try! serialization.decode(toType: ShapeWorld.self, from: encoded)

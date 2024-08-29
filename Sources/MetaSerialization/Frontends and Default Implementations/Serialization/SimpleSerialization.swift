@@ -31,7 +31,7 @@ public class SimpleSerialization<R>: Serialization {
     private let encode: (Meta) throws -> R
     private let decode: (R) throws -> Meta
     
-    public init(translator: MetaSupplier&Unwrapper, encodeFromMeta: @escaping (Meta) throws -> R, decodeToMeta: @escaping (R) throws -> Meta) {
+    public init(translator: MetaSupplier&Unwrapper = PrimitivesEnumTranslator(), encodeFromMeta: @escaping (Meta) throws -> R, decodeToMeta: @escaping (R) throws -> Meta) {
         
         self.translator = translator
         self.encode = encodeFromMeta

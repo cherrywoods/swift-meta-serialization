@@ -3,16 +3,25 @@
 [![Build Status](https://travis-ci.org/cherrywoods/swift-meta-serialization.svg?branch=master)](https://travis-ci.org/cherrywoods/swift-meta-serialization)
 
 MetaSerialization is a framework to simplify the creation of new serialisation libraries for the Swift standard library environment (`Encodable`, `Decodable`, `Codable`, etc.).
-It's aim is to let anyone create a serialization library that works with the Swift serialization framework by nearly just writing the real serialization code.
-To archive this goal, it includes a default `Encoder` and `Decoder` implementation that delegate a small part of their work to implementations of `MetaSupplier` / `Unwrapper`, but are furthermore extendible. Most common use cases should however not require overriding eigther `MetaEncoder` or `MetaDecoder`, but should be archivable with a short custom implementation of `MetaSupplier` / `Unwrapper`.
-In the most extreme form, it is possible to build codable support for an existing framework in [2 lines of code](https://github.com/cherrywoods/swift-meta-serialization/blob/73f067c2c542d4548813d3c8884755dee270ec64/Examples/Example1/Example1.swift#L14-L16).
+Do you already have code to convert a (nested) Dictionary or Array of basic types (String, Int, etc) to your end format (for example, JSON, YAML, XML)?
+Then add support for arbitrary `Codable` Swift types using just one line:
+```swift
+let serialization = SimpleSerialization<YOUR FORMAT>(encodeFromMeta: YOUR ENCODING FUNCTION, decodeToMeta: YOUR DECONDING FUNCTION)
+serialization.encode(anythingCodable)  // done :)
+```
+A more complete example is contained in the `BasicUsage` playground.
+At it's core, MetaSerialization provides a `Encoder` and `Decoder` implementation with several supporting objects moving around it.
+The central idea is that these implementations convert Swift objects into a *meta* format (intermediate format).
+In the example above, this is the nested Dictionary/Array.
+Every part of the process is implemented to be highly customizable, so that MetaSerialization can also support more advanced use cases (for example, different meta formats, formats with anchors).
+More advanced examples can be found here:
+- TODO.
 
 ## Installation
-MetaSerialization fully supports these dependency managers:
- - [Carthage](https://github.com/cherrywoods/swift-meta-serialization/blob/master/docs/Guides/Installation.md#carthage)  
-These dependency managers are also supported but may not be up to date:
- - [CocoaPods](https://github.com/cherrywoods/swift-meta-serialization/blob/master/docs/Guides/Installation.md#cocoapods),
+Install MetaSerialization using one of these dependency managers:
  - [Swift Package Manager](https://github.com/cherrywoods/swift-meta-serialization/blob/master/docs/Guides/Installation.md#swift-package-manager).
+ - [Carthage](https://github.com/cherrywoods/swift-meta-serialization/blob/master/docs/Guides/Installation.md#carthage)  
+ - [CocoaPods](https://github.com/cherrywoods/swift-meta-serialization/blob/master/docs/Guides/Installation.md#cocoapods),
 
 ## Documentation
 Is available at https://cherrywoods.github.io/swift-meta-serialization/ or in the docs folder of this repository.
@@ -43,9 +52,15 @@ Checkout the source-only branch, if you aren't interested in the contained examp
 | 4.1.2         | 2.0.1                     |
 | 4.1           | 2.0                       | 
 | 4.0           | 1.0                       |
+
+### 2.3
+Version 2.3 adds an optional feature to maintain the insertion order in keyed containers, fixes the tests, and updates the documentation.
+
 ### 2.0
 Version 2 added a bunch of features, separated encoding and decoding where necessary and provided better overriding options for `Meta(De|En)coder`. However, this resulted in a more closed environment, where not everything is overridable, as it as in version 1.
+
 ### 1.0
 Version 1 was very similar to Foundations JSONEncoder implementation. Almost everything way declared open.
+
 ## Licensing
 This framework is licensed at the Apache Version 2.0 License, (nearly) the same license swift is licensed at.
