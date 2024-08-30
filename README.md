@@ -1,6 +1,5 @@
 # MetaSerialization
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Build Status](https://travis-ci.org/cherrywoods/swift-meta-serialization.svg?branch=master)](https://travis-ci.org/cherrywoods/swift-meta-serialization)
 
 MetaSerialization is a framework to simplify the creation of new serialisation libraries for the Swift standard library environment (`Encodable`, `Decodable`, `Codable`, etc.).
 Do you already have code to convert a (nested) Dictionary or Array of basic types (String, Int, etc) to your end format (for example, JSON, YAML, XML)?
@@ -14,33 +13,32 @@ At it's core, MetaSerialization provides a `Encoder` and `Decoder` implementatio
 The central idea is that these implementations convert Swift objects into a *meta* format (intermediate format).
 In the example above, this is the nested Dictionary/Array.
 Every part of the process is implemented to be highly customizable, so that MetaSerialization can also support more advanced use cases (for example, different meta formats, formats with anchors).
-More advanced examples can be found here:
-- TODO.
+
+You can find more examples in the [this examples folder](https://github.com/cherrywoods/swift-meta-serialization/tree/main/Tests/MetaSerializationTests/Examples) (used for unit tests).
+Additionally, https://github.com/cherrywoods/meta-serialization-examples provides two extended examples.
 
 ## Installation
 Install MetaSerialization using one of these dependency managers:
- - [Swift Package Manager](https://github.com/cherrywoods/swift-meta-serialization/blob/master/docs/Guides/Installation.md#swift-package-manager).
- - [Carthage](https://github.com/cherrywoods/swift-meta-serialization/blob/master/docs/Guides/Installation.md#carthage)  
- - [CocoaPods](https://github.com/cherrywoods/swift-meta-serialization/blob/master/docs/Guides/Installation.md#cocoapods),
+ - [Swift Package Manager](https://github.com/cherrywoods/swift-meta-serialization/blob/main/docs/Guides/Installation.md#swift-package-manager)
+ - [Carthage](https://github.com/cherrywoods/swift-meta-serialization/blob/main/docs/Guides/Installation.md#carthage)
+ - [CocoaPods](https://github.com/cherrywoods/swift-meta-serialization/blob/main/docs/Guides/Installation.md#cocoapods) (latest version 2.3 not available, only 2.1).
 
 ## Documentation
-Is available at https://cherrywoods.github.io/swift-meta-serialization/ or in the docs folder of this repository.
-These docs also include an [introduction page](https://cherrywoods.github.io/swift-meta-serialization/introduction.html) that outlines the general problem that should be solved by MetaSerialization and a [getting started guide](https://cherrywoods.github.io/swift-meta-serialization/getting-started.html).
+Please refer to the docstrings embedded in the source code for API docs. 
+Help for installing MetaSerialization and getting started using the framework is available here: https://github.com/cherrywoods/swift-meta-serialization/tree/master/docs/Guides.
+These documents will probably leave you with some unanswered questions. Please ask them on the discussions page: https://github.com/cherrywoods/swift-meta-serialization/discussions 
+- Not sure whether MetaSerialization can help you? Ask! https://github.com/cherrywoods/swift-meta-serialization/discussions/categories/can-i-use-this-for
+- The docs are vague/unclear/do not cover something? https://github.com/cherrywoods/swift-meta-serialization/discussions/categories/q-a
+- I would love to see your usecases if you want to share: https://github.com/cherrywoods/swift-meta-serialization/discussions/categories/show-and-tell
 
-You can find a few additional resources in the [wiki tab of this repository](https://github.com/cherrywoods/swift-meta-serialization/wiki). However those guides are mostly about version 1 and might not be helpfull for the current version.
+Issues and pull requests are also very welcome!
+Just make sure you stick to the [Code of Conduct](https://github.com/cherrywoods/swift-meta-serialization/blob/main/CODE_OF_CONDUCT.md).
 
-Feel free to open an issue if you have questions about this framework. All suggestions to improve MetaSerialization or it's documentation are welcome (as long as you stick to the [Code of Conduct](https://github.com/cherrywoods/swift-meta-serialization/blob/master/CODE_OF_CONDUCT.md)).
-
-## Limitation
+## Limitations
 MetaSerialization can only do it's work properly, if you do not use the function encode(to: ) of the Encodable protocol directly in your implementation of it. Use the encode methods of the (Un)Keyed/SingleValueEncodingContainers instead.
 
-## Testing
-This project is tested against the tests of JSONEncoder from Foundation among other tests specifically designed for MetaSerialization.
-All test can be found in the [Tests folder](https://github.com/cherrywoods/swift-meta-serialization/tree/master/Tests).
-
-MetaSerialization uses [Quick](https://github.com/Quick/Quick) and [Nimble](https://github.com/Quick/Nimble) for testing.
-
-Checkout the source-only branch, if you aren't interested in the contained examples and the tests.
+## Maintainance Status
+I am maintaining this project as a hobby aside my full-time job. I will answer to questions/issues/pull requests within one or two days, but resolving issues may take more time. 
 
 ## Versions
 ### Swift version
