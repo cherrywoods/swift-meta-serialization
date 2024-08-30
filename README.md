@@ -62,3 +62,10 @@ Version 1 was very similar to Foundations JSONEncoder implementation. Almost eve
 
 ## Licensing
 This framework is licensed at the Apache Version 2.0 License, (nearly) the same license swift is licensed at.
+
+## Contributors
+Many thanks to everyone who contributed to this project! 
+- @ilg - Isaac Greenspan
+
+Main contributor and maintainer:
+- @cherrywoods - David Boetius (me)
